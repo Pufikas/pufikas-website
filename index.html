@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pufikas site</title>
+    <title>pufikas.dev</title>
 </head>
-<body>
-    <script src="script.js"></script>
+<body class="scanlines" id="page">
     <link rel="stylesheet" href="style.css">
 
     <div id="container">
@@ -15,6 +14,28 @@
         <table>
             <tbody>
                 <tr>
+                    <!-- SIDE PANEL LEFT -->
+                    <td id="left-panel">
+                        <div id="timer" class="box">
+                            <span id="time" class="center">00:00:00</span>
+                        </div>
+                        <div id="side-panel" class="box">
+                            <img src="./assets/ballin.gif" style="width: 100%; height: 100%;">
+                            <p class="small center">game winning shot</p>
+                        </div>
+                        <div id="side-panel" class="box">
+                            <img src="./assets/mikuconcert.jpg" style="width: 100%; height: 100%;">
+                        </div>
+                        <div id="side-panel" class="box">
+                            <img src="./assets/mikuconcert.jpg" style="width: 100%; height: 100%;">
+                        </div>
+                        <!-- OPTIONS -->
+                        <div id="side-panel" class="box">
+                            <input type="checkbox" id="scanlinesCheck" onclick="disableOption('scanline')">
+                            <label for="scanlinesCheck">disable scanlines</label>
+                        </div>
+                    </td>
+
                     <!-- MAIN PANEL -->
                     <td id="main-panel">
                         <div id="main" class="box">
@@ -26,7 +47,7 @@
                             <br>
                             <p>This is my cute and simple website, inspired by other cool sites!!</p>
                             <br>
-                            <p>You can find a lot of random info here</p>
+                            
                             
                             <br>
 
@@ -35,34 +56,48 @@
                             <ul style="margin-block-start: 5px">
                                 <li>I'm from Lithuania</li>
                                 <li>My most used programming language is JavaScript</li>
-                                <li>I'm studying in cybernetics</li>
-                                <li>I code random stuff!</li>
                                 <li>I like anime and cute stuff!</li>
                                 <li>I love technology!</li>
                                 <li>I love simple designs</li>
                             </ul>
                         </div>
 
+                        <div class="box" style="border: none;">
+                            smt?
+                        </div>
+
                         <div class="box" style="margin-top: 10px">
-                            <h2>PROJECTS</h2>
+                            <h2>HIGHLIGHTED PROJECTS</h2>
                             <br>
+                            <p>for all projects see my <a target="_blank" rel="nofollow" href="https://github.com/Pufikas">GitHub</a></p>
+                            <br>
+
                             <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/Weather">
                                 <h3>* Weather</h3>
                             </a>
                             <br>
                             A simple app using weather api
+
                         </div>                    
                     </td>
+                    
+                    <!-- SIDE PANEL (MENU) RIGHT -->
+                    <td id="menu-panel">
 
-                    <!-- SIDE PANEL (MENU) -->
-                     <td id="menu-panel">
-                        <div id="side-panel" class="box">
+                        <div style="position: absolute; margin-top: -24px; font-size: 10px; opacity: 40%; margin-left: 50px;">
+                            <img src="./assets/miku_hello.png" class="emoji">
+                            <img src="./assets/miku_love.png" class="emoji">
+                            <img src="./assets/miku_smirk.png" class="emoji">
+                            <img src="./assets/miku_comfy.png" class="emoji">
+                        </div>
+                         
+                         <div id="side-panel" class="box">
                             <h2>NAV</h2>
                             
                             <br>
-                            <a id="home-link" class="navlink" href="/">HOME</a>
+                            <a id="home-link" class="navlink" href="/">ABOUT ME</a>
                             <br>
-                            <a id="home-link" class="navlink" href="/">HOME</a>
+                            <a id="home-link" class="navlink" href="/"></a>
                             <br>
                             <a id="home-link" class="navlink" href="/">HOME</a>
                             <br>
@@ -77,7 +112,9 @@
 
                         <div class="box">
                             <h2>Cool sites!</h2>
-                            
+                            <a href="https://maschinensturmer.neocities.org/"><img src="https://maschinensturmer.neocities.org/ningenshikkakubotan.png"/></a>
+                            <a href="https://lilithdev.neocities.org/"><img src="https://lilithdev.neocities.org/buttons/lilithdevbtn.gif"></a>
+                            <a href="https://specifix.dev"><img src="https://specifix.dev/images/88x31.png" width="88" height="31" loading="lazy" alt="specifix.dev :3" /></a>
                         </div>
 
                      </td>
@@ -85,5 +122,6 @@
             </tbody>
         </table>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

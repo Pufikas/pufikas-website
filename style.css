@@ -1,11 +1,11 @@
 @import url(base.css);
 
 body {
-    background-color: black;
+    background-color: rgb(7, 15, 27);
 }
 
 #container {
-    width: 900px;
+    width: 1200px;
     margin: 0 auto;
 }
 
@@ -13,11 +13,19 @@ body {
     text-align: center;
     padding-top: 5px;
     margin-right: 50px;
+    font-size: 50px;
+    
 }
 
 #main-panel {
     width: 675px;
     vertical-align: baseline;
+}
+
+.emoji {
+    cursor: url("./assets/cursor/help.cur"), auto;
+    width: 24px; 
+    height: 24px;
 }
 
 .box {
@@ -30,7 +38,7 @@ body {
 
 h2 {
     color: var(--link-color);
-    font-family: "Pixel NES";
+    font-family: "Pixel NES" !important;
     margin: 0;
     display: inline;
 }
@@ -39,6 +47,7 @@ a {
     text-decoration: none;
     color: var(--link-color);
     transition: 0.75;
+    cursor: url(./assets/cursor/select.cur), auto;
 }
 
 #avatar {
@@ -51,5 +60,65 @@ a {
 #menu-panel {
     width: 225px;
     max-width: 225px;
-    vertical-align: baseline;
+    vertical-align: top;
+}
+
+#left-panel {
+    width: 225px;
+    max-width: 225px;
+}
+
+.center {
+    text-align: center !important;
+    display: block;
+}
+
+.small {
+    font-size: 8px;
+    font-style: italic;
+}
+
+@keyframes scanline {
+    0% {
+        transform: translate3d(0, 200000%, 0);
+    }
+}
+@keyframes scanlines {
+    0% {
+        background-position: 0 50%;
+    }
+}
+
+.scanlines {
+    overflow: hidden;
+    position: relative;
+}
+.scanlines:before,
+.scanlines:after {
+    display: block;
+    pointer-events: none;
+    content: "";
+    position: absolute;
+}
+.scanlines:before {
+    width: 100%;
+    height: 2px;
+    z-index: 2147483649;
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 0.75;
+    animation: scanline 6s linear infinite;
+}
+.scanlines:after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2147483648;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.1) 51%
+    );
+    background-size: 100% 4px;
+    animation: scanlines 5s steps(30) infinite;
 }

@@ -1,0 +1,48 @@
+﻿[Arrow]
+Path=Hatsune Miku - Normal Select.cur
+
+[UpArrow]
+Path=Hatsune Miku - Alternate Select.cur
+
+[Wait]
+Path=Hatsune Miku - Busy.cur
+
+[SizeNWSE]
+Path=Hatsune Miku - Diagonal Resize 1.cur
+
+[SizeNESW]
+Path=Hatsune Miku - Diagonal Resize 2.cur
+
+[Help]
+Path=Hatsune Miku - Help Select.cur
+
+[SizeWE]
+Path=Hatsune Miku - Horizontal Resize.cur
+
+[Hand]
+Path=Hatsune Miku - Link Select.cur
+
+[Pin]
+Path=Hatsune Miku - Location Select.cur
+
+[SizeAll]
+Path=Hatsune Miku - Move.cur
+
+[Person]
+Path=Hatsune Miku - Person Select.cur
+
+[Crosshair]
+Path=Hatsune Miku - Precision Select.cur
+
+[IBeam]
+Path=Hatsune Miku - Text Select.cur
+
+[No]
+Path=Hatsune Miku - Unavailable.cur
+
+[SizeNS]
+Path=Hatsune Miku - Vertcal Resize.cur
+
+[AppStarting]
+Path=Hatsune Miku - Working in Background.cur
+
