@@ -19,7 +19,9 @@ body {
 
 #main-panel {
     width: 675px;
+    min-width: 675px;
     vertical-align: baseline;
+    
 }
 
 .emoji {
@@ -50,6 +52,11 @@ a {
     cursor: url(./assets/cursor/select.cur), auto;
 }
 
+ul {
+    list-style-type: none;
+    font-family: JetBrains Mono, monospace !important;
+}
+
 #avatar {
     float: left;
     margin: 10px 10px 5px 5px;
@@ -76,6 +83,14 @@ a {
 .small {
     font-size: 8px;
     font-style: italic;
+}
+
+.hidden {
+    display: none;
+}
+
+.active {
+    animation: ease-in 2s;
 }
 
 @keyframes scanline {
