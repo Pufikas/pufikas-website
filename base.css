@@ -1,7 +1,11 @@
 
-html {
+body {
   cursor: url("./assets/cursor/normal.cur"), auto !important;
 }
+
+/* html {
+  
+} */
 
 :root {
     --link-color: cyan;

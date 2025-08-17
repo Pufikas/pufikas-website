@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pufikas.dev</title>
 </head>
-<body class="scanlines" id="page">
+<body id="page">
     <link rel="stylesheet" href="style.css">
 
-    <div id="container">
+    <div id="container" class="scanlines">
         <div id="logo">PUFIKAS</div>
         
         <table>
@@ -19,18 +19,27 @@
                         <div id="timer" class="box">
                             <span id="time" class="center">00:00:00</span>
                         </div>
-                        <div id="side-panel" class="box">
+                        <div class="box">
                             <img src="./assets/ballin.gif" style="width: 100%; height: 100%;">
                             <p class="small center">game winning shot</p>
                         </div>
-                        <div id="side-panel" class="box">
+                        <div class="box">
                             <img src="./assets/mikuconcert.jpg" style="width: 100%; height: 100%;">
                         </div>
-                        <div id="side-panel" class="box">
+                        <div class="box">
                             <img src="./assets/mikuconcert.jpg" style="width: 100%; height: 100%;">
                         </div>
+                        <!-- MUSIC PLAYER -->
+                        <div class="box">
+                            <div class="music-player" id="music-player">
+                                <audio id="audioplayer" src="./assets/music/0.mp3"></audio>
+                            </div>
+                            <button id="audio-play-previous"><</button>
+                            <button id="audio-pause">||</button>
+                            <button id="audio-play-next" onclick="audioPlayNext()">></button>
+                         </div>
                         <!-- OPTIONS -->
-                        <div id="side-panel" class="box">
+                        <div class="box">
                             <input type="checkbox" id="scanlinesCheck" onclick="disableOption('scanline')">
                             <label for="scanlinesCheck">disable scanlines</label>
                         </div>
@@ -63,7 +72,8 @@
                         </div>
 
                         <div class="box" style="border: none;">
-                            smt?
+                            <img src="https://maschinensturmer.neocities.org/button/mikum.gif">
+                            <img src="https://maschinensturmer.neocities.org/button/tetom.gif">
                         </div>
 
                         <div class="box" style="margin-top: 10px">
@@ -123,7 +133,7 @@
                             <img src="./assets/miku_comfy.png" class="emoji">
                         </div>
                          
-                         <div id="side-panel" class="box">
+                         <div id="nav-panel" class="box">
                             <h2>NAV</h2>
                             
                             <br>
@@ -142,18 +152,28 @@
                             <img src="./assets/hatsune-miku.gif" style="width: 180px; height: 100px;">
                         </div>
 
-                        <div class="box">
+                        <div id="cool-sites-panel" class="box">
                             <h2>Cool sites!</h2>
                             <a target="_blank" rel="nofollow" href="https://maschinensturmer.neocities.org/"><img src="https://maschinensturmer.neocities.org/ningenshikkakubotan.png"/></a>
                             <a target="_blank" rel="nofollow" href="https://lilithdev.neocities.org/"><img src="https://lilithdev.neocities.org/buttons/lilithdevbtn.gif"></a>
                             <a target="_blank" rel="nofollow" href="https://specifix.dev"><img src="https://specifix.dev/images/88x31.png" width="88" height="31" loading="lazy" alt="specifix.dev :3" /></a>
                         </div>
 
+                        <!-- WEBRINGS -->
+                        <div id="webring-panel" class="box">
+                            
+                        </div>
                      </td>
                 </tr>
             </tbody>
         </table>
+
     </div>
+
+    <div id="footer">
+        <img src="./assets/miku2.png">
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+let counter = 0;
+
+
+
 function timer() {
     let res = document.getElementById("time");
     let d = new Date();
@@ -26,6 +30,30 @@ function showPanel(option) {
             panel.classList.add("hidden");
         }
     })
+}
+
+function loadStuff() {
+    const audioPlayer = document.getElementById
+}
+
+let music = [
+    ""
+]
+
+function audioPlayNext() {
+    const audio = document.getElementById("audioplayer");
+    const songs = [
+        "0.mp3",
+        "1.mp3",
+        "2.mp3",
+    ];
+
+    counter = (counter + 1) % songs.length;
+    audio.src = `./assets/music/${songs[counter]}`;
+    audio.volume = 0.2;
+    audio.play();
+
+    console.log(counter)
 }
 
 setInterval(timer, 1000);

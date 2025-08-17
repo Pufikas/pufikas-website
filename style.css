@@ -57,6 +57,13 @@ ul {
     font-family: JetBrains Mono, monospace !important;
 }
 
+#footer {
+    position: fixed;
+    right: -1px;
+    bottom: -1px;
+    z-index: 100;
+}
+
 #avatar {
     float: left;
     margin: 10px 10px 5px 5px;
