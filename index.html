@@ -31,12 +31,23 @@
                         </div>
                         <!-- MUSIC PLAYER -->
                         <div class="box">
+                            
+                            <div id="audio-timeline">
+                                <span id="audio-duration">0:00</span>
+                                <div id="audio-progress-container">
+                                    <div id="audio-progress-line"></div>
+                                </div>
+                                <span id="audio-total">0:00</span>
+                            </div>
+
                             <div class="music-player" id="music-player">
                                 <audio id="audioplayer" src="./assets/music/0.mp3"></audio>
                             </div>
-                            <button id="audio-play-previous"><</button>
-                            <button id="audio-pause">||</button>
-                            <button id="audio-play-next" onclick="audioPlayNext()">></button>
+                            <div class="music-controls center">
+                                <button id="audio-play-previous"><</button>
+                                <button id="audio-pause-play" onclick="playAudio()">❚❚</button>
+                                <button id="audio-play-next" onclick="audioPlayNext()">></button>
+                            </div>
                          </div>
                         <!-- OPTIONS -->
                         <div class="box">

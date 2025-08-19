@@ -1,6 +1,13 @@
 let counter = 0;
-
-
+const songs = [
+    "0.mp3",
+    "1.mp3",
+    "2.mp3",
+];
+const audio = document.getElementById("audioplayer");
+const audioDuration = document.getElementById("audio-duration");
+const audioTotal = document.getElementById("audio-total");
+const line = document.getElementById("audio-progress-line");
 
 function timer() {
     let res = document.getElementById("time");
@@ -40,14 +47,20 @@ let music = [
     ""
 ]
 
-function audioPlayNext() {
-    const audio = document.getElementById("audioplayer");
-    const songs = [
-        "0.mp3",
-        "1.mp3",
-        "2.mp3",
-    ];
+function playAudio() {
+    const btn = document.getElementById("audio-pause-play");
 
+    if (audio.paused) {
+        audio.play();
+        btn.innerText = "▶"
+    } else {
+        audio.pause();
+        btn.innerText = "❚❚"
+    }
+
+}
+
+function audioPlayNext() {
     counter = (counter + 1) % songs.length;
     audio.src = `./assets/music/${songs[counter]}`;
     audio.volume = 0.2;
@@ -55,5 +68,21 @@ function audioPlayNext() {
 
     console.log(counter)
 }
+
+function formatTime(sec) {
+    const min = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${min}:${s.toString().padStart(2, '0')}`;
+}
+
+audio.addEventListener("loadedmetadata", () => {
+    audioTotal.textContent = formatTime(audio.duration);
+});
+
+audio.addEventListener("timeupdate", () => {
+    audioDuration.textContent = formatTime(audio.currentTime);
+    const progress = (audio.currentTime / audio.duration) * 100;
+    line.style.width = `${progress}%`;
+});
 
 setInterval(timer, 1000);
