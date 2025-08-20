@@ -57,7 +57,7 @@ ul {
     font-family: JetBrains Mono, monospace !important;
 }
 
-#audio-progress-container {
+#audio-progress-container, #audio-volume {
     flex: 1;
     position: relative;
     height: 4px;
@@ -65,14 +65,19 @@ ul {
     border-radius: 2px;
     cursor: pointer;
     overflow: hidden;
+    margin-top: 4px;
 }
   
-#audio-progress-line {
+#audio-progress-line, #audio-volume-line {
     height: 100%;
     width: 0%;
-    background: var(--link-color);
     transition: width 0.1s linear;
     will-change: width;
+    background: var(--m-primary);
+}
+
+#audio-volume-line {
+    background: var(--link-color) !important;
 }
 
 #audio-timeline {
@@ -81,6 +86,7 @@ ul {
     gap: 8px;
     width: 180px;
 }
+
 
 #footer {
     position: fixed;
@@ -107,9 +113,12 @@ ul {
     max-width: 225px;
 }
 
+
+
 .center {
     text-align: center !important;
     display: block;
+    margin: auto;
 }
 
 .small {

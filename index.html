@@ -31,7 +31,13 @@
                         </div>
                         <!-- MUSIC PLAYER -->
                         <div class="box">
-                            
+                            <div id="audio-meta">
+                                <div id="audio-cover"></div>           
+                                <div id="audio-volume">
+                                    <div id="audio-volume-line"></div>
+                                </div>
+                            </div>
+
                             <div id="audio-timeline">
                                 <span id="audio-duration">0:00</span>
                                 <div id="audio-progress-container">
@@ -41,12 +47,13 @@
                             </div>
 
                             <div class="music-player" id="music-player">
-                                <audio id="audioplayer" src="./assets/music/0.mp3"></audio>
+                                <audio id="audio-player" src="./assets/music/0.mp3"></audio>
                             </div>
+
                             <div class="music-controls center">
                                 <button id="audio-play-previous"><</button>
-                                <button id="audio-pause-play" onclick="playAudio()">❚❚</button>
-                                <button id="audio-play-next" onclick="audioPlayNext()">></button>
+                                <button id="audio-pause-play">▶</button>
+                                <button id="audio-play-next">></button>
                             </div>
                          </div>
                         <!-- OPTIONS -->
@@ -185,6 +192,6 @@
         <img src="./assets/miku2.png">
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
