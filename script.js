@@ -2,28 +2,34 @@
 let counter = 0;
 const songs = [
     {
-        "song": "0.mp3",
-        "title": "1",
-        "cover": "internet_overdose.jpg" 
+        "song": "Angel_boring.mp3",
+        "title": "Angel boring",
+        "cover": "internet_overdose.jpg", 
+        "author": "Aiobahn",
     },
     {
-        "song": "1.mp3",
-        "title": "2",
-        "cover": "internet_overdose.jpg" 
+        "song": "天使だって緊張する.mp3",
+        "title": "天使だって緊張する",
+        "cover": "internet_overdose.jpg", 
+        "author": "Aiobahn",
+    },
+    {
+        "song": "風～運命のダークサイド.mp3",
+        "title": "風～運命のダークサイド",
+        "cover": "風～運命のダークサイド.jpg", 
+        "author": "ZUN",
     },
 ]
 const musicPath = `./assets/music/`;
 const audio = document.getElementById("audio-player");
-const audioDuration = document.getElementById("audio-duration");
-const audioTotal = document.getElementById("audio-total");
 const line = document.getElementById("audio-progress-line");
 const audioProgress = document.getElementById("audio-progress-container");
 const audioPlay = document.getElementById("audio-pause-play");
-const audioNext = document.getElementById("audio-play-next");
 const audioCover = document.getElementById("audio-cover");
-const audioVolumeLine = document.getElementById("audio-volume-line");
 const audioVolume = document.getElementById("audio-volume");
+const audioMeta = document.getElementById("audio-meta");
 // end of audio player stuff
+
 
 function timer() {
     let res = document.getElementById("time");
@@ -37,7 +43,7 @@ function timer() {
 function disableOption(option) {
     switch (option) {
         case "scanline":
-            document.getElementById("page").classList.toggle("scanlines");
+            document.getElementById("container").classList.toggle("scanlines");
     } 
 }
 
@@ -55,7 +61,6 @@ function showPanel(option) {
     })
 }
 
-
 function playAudio() {
     if (audio.paused) {
         audio.play();
@@ -64,24 +69,21 @@ function playAudio() {
         audio.pause();
         audioPlay.innerText = "▶"
     }
-
-}
-
-function audioPlayNext() {
-    counter = (counter + 1) % songs.length;
-    audio.src = `${musicPath}${songs[counter].song}`;
     
-    console.log(songs)
-    console.log(musicPath, songs[counter].song)
-    playAudio();
-
-    console.log(counter)
 }
 
 function formatTime(sec) {
     const min = Math.floor(sec / 60);
     const s = Math.floor(sec % 60);
     return `${min}:${s.toString().padStart(2, '0')}`;
+}
+
+function audioPlayNext(option) {
+    counter = (counter + option + songs.length) % songs.length;
+    audio.src = `${musicPath}${songs[counter].song}`;
+    audioCover.innerHTML = `<img src="${musicPath}${songs[counter].cover}" style="width:128px;" class="center">`;
+    
+    playAudio();
 }
 
 function seekIntoMusic(e) {
@@ -91,32 +93,35 @@ function seekIntoMusic(e) {
 }
 
 function changeVolume(e) {
-    const percent = e.offsetX / audioVolume.offsetWidth;
+    let percent = e.offsetX / audioVolume.offsetWidth;
     audio.volume = percent;
-    audioVolumeLine.style.width = `${percent * 100}%`;
-    console.log(percent)
+    document.getElementById("audio-volume-line").style.width = `${percent * 100}%`;
 }
 
 audioVolume.addEventListener("click", changeVolume);
 
 audio.addEventListener("loadedmetadata", () => {
-    audioTotal.textContent = formatTime(audio.duration);
-    audioCover.innerHTML = `<img src=${musicPath}${songs[counter].cover} style="width: 128px;" class="center">`;
+    document.getElementById("audio-total").textContent = formatTime(audio.duration);
+    document.getElementById("audio-title").textContent = songs[counter].title;
+    document.getElementById("audio-author").textContent = songs[counter].author;
 });
 
 audio.addEventListener("timeupdate", () => {
-    audioDuration.textContent = formatTime(audio.currentTime);
+    document.getElementById("audio-duration").textContent = formatTime(audio.currentTime);
     const progress = (audio.currentTime / audio.duration) * 100;
     line.style.width = `${progress}%`;
 
     if (line.style.width == "100%") {
+        audioPlay.innerText = "▶";
         audio.pause();
     }
 });
 
+document.getElementById("audio-volume-line").style.width = "50%"
+audioCover.innerHTML = `<img src="${musicPath}${songs[counter].cover}" style="width: 128px;" class="center">`; // load the cover
 audioPlay.addEventListener("click", playAudio);
-audioNext.addEventListener("click", audioPlayNext);
+document.getElementById("audio-play-next").addEventListener("click", () => audioPlayNext(1));
+document.getElementById("audio-play-previous").addEventListener("click", () => audioPlayNext(-1));
 audioProgress.addEventListener("click", seekIntoMusic.bind(this));
-
 
 setInterval(timer, 1000);
