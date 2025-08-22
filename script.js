@@ -25,10 +25,10 @@ const audio = document.getElementById("audio-player");
 const line = document.getElementById("audio-progress-line");
 const audioProgress = document.getElementById("audio-progress-container");
 const audioPlay = document.getElementById("audio-pause-play");
-const audioCover = document.getElementById("audio-cover");
 const audioVolume = document.getElementById("audio-volume");
 const audioMeta = document.getElementById("audio-meta");
 // end of audio player stuff
+const navLinks = document.querySelectorAll(".navlink");
 
 
 function timer() {
@@ -59,6 +59,7 @@ function showPanel(option) {
             panel.classList.add("hidden");
         }
     })
+    console.log(option);
 }
 
 function playAudio() {
@@ -81,8 +82,8 @@ function formatTime(sec) {
 function audioPlayNext(option) {
     counter = (counter + option + songs.length) % songs.length;
     audio.src = `${musicPath}${songs[counter].song}`;
-    audioCover.innerHTML = `<img src="${musicPath}${songs[counter].cover}" style="width:128px;" class="center">`;
-    
+    document.querySelector("#audio-cover img").src = `${musicPath}${songs[counter].cover}`;
+
     playAudio();
 }
 
@@ -117,11 +118,13 @@ audio.addEventListener("timeupdate", () => {
     }
 });
 
-document.getElementById("audio-volume-line").style.width = "50%"
-audioCover.innerHTML = `<img src="${musicPath}${songs[counter].cover}" style="width: 128px;" class="center">`; // load the cover
 audioPlay.addEventListener("click", playAudio);
 document.getElementById("audio-play-next").addEventListener("click", () => audioPlayNext(1));
 document.getElementById("audio-play-previous").addEventListener("click", () => audioPlayNext(-1));
 audioProgress.addEventListener("click", seekIntoMusic.bind(this));
+
+navLinks.forEach((link) => {
+    link.addEventListener("click", () => showPanel(link.dataset.id));
+});
 
 setInterval(timer, 1000);
