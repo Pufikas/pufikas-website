@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'">
     <title>pufikas.dev</title>
 </head>
 <body id="page">
@@ -20,23 +21,25 @@
                             <span id="time" class="center">00:00:00</span>
                         </div>
                         <div class="box">
-                            <img src="./assets/ballin.gif" style="width: 100%; height: 100%;">
+                            <img src="./assets/ballin.gif" class="width100">
                             <p class="small center">game winning shot</p>
                         </div>
                         <div class="box">
-                            <img src="./assets/mikuconcert.jpg" style="width: 100%; height: 100%;">
+                            <img src="./assets/mikuconcert.jpg" class="width100">
                         </div>
                         <div class="box">
-                            <img src="./assets/mikuconcert.jpg" style="width: 100%; height: 100%;">
+                            <img src="./assets/mikuconcert.jpg" class="width100">
                         </div>
                         <!-- MUSIC PLAYER -->
                         <div class="box">
                             <div id="audio-meta">
-                                <div id="audio-cover"></div>
+                                <div id="audio-cover">
+                                    <img src="./assets/music/internet_overdose.jpg" class="center audio-cover">
+                                </div>
                                 <div id="audio-info" class="center">
-                                    <span id="audio-title">Song Title</span>
+                                    <span id="audio-title">Angel boring</span>
                                     <br>
-                                    <span id="audio-author" style="font-size: 12px;">Author Name</span>
+                                    <span id="audio-author" class="audio-author">Aiobahn</span>
                                 </div>
                                 <div id="audio-progress-container">
                                     <div id="audio-progress-line"></div>
@@ -49,7 +52,7 @@
                                 <div id="audio-volume">
                                     <div id="audio-volume-line"></div>
                                 </div>
-                                <span id="audio-total">0:00</span>
+                                <span id="audio-total">1:45</span>
                             </div>
 
                             <div class="music-player" id="music-player">
@@ -86,7 +89,7 @@
 
                             <span>About me: <br></span>
 
-                            <ul style="margin-block-start: 5px">
+                            <ul class="main-panel-short">
                                 <li>I'm from Lithuania</li>
                                 <li>My most used programming language is JavaScript</li>
                                 <li>I like anime and cute stuff!</li>
@@ -95,12 +98,12 @@
                             </ul>
                         </div>
 
-                        <div class="box" style="border: none;">
+                        <div class="box noborder">
                             <img src="https://maschinensturmer.neocities.org/button/mikum.gif">
                             <img src="https://maschinensturmer.neocities.org/button/tetom.gif">
                         </div>
 
-                        <div class="box" style="margin-top: 10px">
+                        <div class="box">
                             <h2>HIGHLIGHTED PROJECTS</h2>
                             <br>
                             <p>for all projects see my <a target="_blank" rel="nofollow" href="https://github.com/Pufikas">GitHub</a></p>
@@ -150,7 +153,7 @@
                     <!-- SIDE PANEL (MENU) RIGHT -->
                     <td id="menu-panel">
 
-                        <div style="position: absolute; margin-top: -24px; font-size: 10px; opacity: 40%; margin-left: 50px;">
+                        <div class="mikus-nav">
                             <img src="./assets/miku_hello.png" class="emoji">
                             <img src="./assets/miku_love.png" class="emoji">
                             <img src="./assets/miku_smirk.png" class="emoji">
@@ -158,29 +161,43 @@
                         </div>
                          
                          <div id="nav-panel" class="box">
-                            <h2>NAV</h2>
-                            
-                            <br>
-                            <a id="home-link" class="navlink">about me</a>
-                            <br>
-                            <a id="home-link" class="navlink"></a>
-                            <br>
-                            <a id="home-link" class="navlink" onclick="showPanel('home')">HOME</a>
-                            <br>
-                            <a id="home-link" class="navlink" onclick="showPanel('credits')">credits</a>
-                            <br>
+                            <h2 class="center">NAVIGATION</h2>
+                            <ul class="center">
+                                <li>
+                                    <a class="navlink" data-id="aboutme">about me</a>
+                                </li>
+
+                                <li>
+                                    <a class="navlink">test</a>
+                                </li>
+
+                                <li>
+                                    <a class="navlink" data-id="home">home</a>
+                                </li>
+
+                                <li>
+                                    <a class="navlink" data-id="credits">credits</a>
+                                </li>
+                            </ul>
+                
                         
                         </div>
 
                         <div class="box">
-                            <img src="./assets/hatsune-miku.gif" style="width: 180px; height: 100px;">
+                            <img src="./assets/hatsune-miku.gif" class="width100">
                         </div>
 
                         <div id="cool-sites-panel" class="box">
                             <h2>Cool sites!</h2>
-                            <a target="_blank" rel="nofollow" href="https://maschinensturmer.neocities.org/"><img src="https://maschinensturmer.neocities.org/ningenshikkakubotan.png"/></a>
-                            <a target="_blank" rel="nofollow" href="https://lilithdev.neocities.org/"><img src="https://lilithdev.neocities.org/buttons/lilithdevbtn.gif"></a>
-                            <a target="_blank" rel="nofollow" href="https://specifix.dev"><img src="https://specifix.dev/images/88x31.png" width="88" height="31" loading="lazy" alt="specifix.dev :3" /></a>
+                            <a target="_blank" rel="nofollow" href="https://maschinensturmer.neocities.org/">
+                                <img src="./assets/buttons/ningenshikkakubotan.png"/>
+                            </a>
+                            <a target="_blank" rel="nofollow" href="https://lilithdev.neocities.org/">
+                                <img src="./assets/buttons/lilithdevbtn.gif">
+                            </a>
+                            <a target="_blank" rel="nofollow" href="https://specifix.dev">
+                                <img src="./assets/buttons/88x31.png" width="88" height="31" loading="lazy" alt="specifix.dev :3" />
+                            </a>
                         </div>
 
                         <!-- WEBRINGS -->

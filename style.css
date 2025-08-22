@@ -178,3 +178,42 @@ ul {
     background-size: 100% 4px;
     animation: scanlines 5s steps(30) infinite;
 }
+
+.width100 {
+    width: 100%;
+    height: 100%;
+}
+
+.width50 {
+    width: 50%;
+    height: 100%;
+}
+
+.audio-cover {
+    width: 128px;
+}
+
+.audio-author {
+    font-size: 12px;
+}
+
+.mikus-nav {
+    position: absolute; 
+    margin-top: -24px; 
+    font-size: 10px; 
+    opacity: 40%; 
+    margin-left: 50px;
+}
+
+ul {
+    padding-left: 0px;
+}
+
+.main-panel-short {
+    margin-block-start: 5px;
+    padding-left: 20px;
+}
+
+.noborder {
+    border: none;
+}
