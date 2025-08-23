@@ -29,7 +29,7 @@ const audioVolume = document.getElementById("audio-volume");
 const audioMeta = document.getElementById("audio-meta");
 // end of audio player stuff
 const navLinks = document.querySelectorAll(".navlink");
-
+const options = document.querySelectorAll(".option-check");
 
 function timer() {
     let res = document.getElementById("time");
@@ -125,6 +125,10 @@ audioProgress.addEventListener("click", seekIntoMusic.bind(this));
 
 navLinks.forEach((link) => {
     link.addEventListener("click", () => showPanel(link.dataset.id));
+});
+
+options.forEach((option) => {
+    option.addEventListener("click", () => disableOption(option.dataset.option));
 });
 
 setInterval(timer, 1000);
