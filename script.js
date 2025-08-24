@@ -51,7 +51,7 @@ function showPanel(option) {
     const panels = document.querySelectorAll("[data-panel]");
 
     panels.forEach(panel => {
-        if (panel.dataset.panel === option) {
+        if (panel.dataset.panel === option.dataset.id) {
             panel.classList.remove("hidden");
             panel.classList.add("active");
         } else {
@@ -59,7 +59,14 @@ function showPanel(option) {
             panel.classList.add("hidden");
         }
     })
-    console.log(option);
+
+    navLinks.forEach(link => {
+        if (link === option) {
+            link.classList.add("highlight");
+        } else {
+            link.classList.remove("highlight");
+        }
+    });
 }
 
 function playAudio() {
@@ -124,7 +131,7 @@ document.getElementById("audio-play-previous").addEventListener("click", () => a
 audioProgress.addEventListener("click", seekIntoMusic.bind(this));
 
 navLinks.forEach((link) => {
-    link.addEventListener("click", () => showPanel(link.dataset.id));
+    link.addEventListener("click", () => showPanel(link));
 });
 
 options.forEach((option) => {
