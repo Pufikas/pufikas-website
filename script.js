@@ -29,7 +29,7 @@ const audioVolume = document.getElementById("audio-volume");
 const audioMeta = document.getElementById("audio-meta");
 // end of audio player stuff
 const navLinks = document.querySelectorAll(".navlink");
-
+const options = document.querySelectorAll(".option-check");
 
 function timer() {
     let res = document.getElementById("time");
@@ -51,7 +51,7 @@ function showPanel(option) {
     const panels = document.querySelectorAll("[data-panel]");
 
     panels.forEach(panel => {
-        if (panel.dataset.panel === option) {
+        if (panel.dataset.panel === option.dataset.id) {
             panel.classList.remove("hidden");
             panel.classList.add("active");
         } else {
@@ -59,7 +59,14 @@ function showPanel(option) {
             panel.classList.add("hidden");
         }
     })
-    console.log(option);
+
+    navLinks.forEach(link => {
+        if (link === option) {
+            link.classList.add("highlight");
+        } else {
+            link.classList.remove("highlight");
+        }
+    });
 }
 
 function playAudio() {
@@ -124,7 +131,11 @@ document.getElementById("audio-play-previous").addEventListener("click", () => a
 audioProgress.addEventListener("click", seekIntoMusic.bind(this));
 
 navLinks.forEach((link) => {
-    link.addEventListener("click", () => showPanel(link.dataset.id));
+    link.addEventListener("click", () => showPanel(link));
+});
+
+options.forEach((option) => {
+    option.addEventListener("click", () => disableOption(option.dataset.option));
 });
 
 setInterval(timer, 1000);

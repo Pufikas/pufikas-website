@@ -217,3 +217,7 @@ ul {
 .noborder {
     border: none;
 }
+
+.highlight {
+    color: var(--m-pink);
+}
