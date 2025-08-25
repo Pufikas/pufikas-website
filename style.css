@@ -221,3 +221,11 @@ ul {
 .highlight {
     color: var(--m-pink);
 }
+
+.highlight-blue {
+    color: var(--link-color);
+}
+
+.flex {
+    display: flex;
+}
