@@ -23,6 +23,7 @@ const songs = [
 const musicPath = `./assets/music/`;
 const audio = document.getElementById("audio-player");
 const line = document.getElementById("audio-progress-line");
+const volumeLine = document.getElementById("audio-volume-line")
 const audioProgress = document.getElementById("audio-progress-container");
 const audioPlay = document.getElementById("audio-pause-play");
 const audioVolume = document.getElementById("audio-volume");
@@ -40,9 +41,14 @@ function timer() {
     res.textContent = ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2);
 }
 
+function initLoad() {
+    audio.volume = 0.2;
+    volumeLine.style.width = "20%";
+}
+
 function disableOption(option) {
     switch (option) {
-        case "scanline":
+        case "scanlines":
             document.getElementById("container").classList.toggle("scanlines");
     } 
 }
@@ -103,10 +109,8 @@ function seekIntoMusic(e) {
 function changeVolume(e) {
     let percent = e.offsetX / audioVolume.offsetWidth;
     audio.volume = percent;
-    document.getElementById("audio-volume-line").style.width = `${percent * 100}%`;
+    volumeLine.style.width = `${percent * 100}%`;
 }
-
-audioVolume.addEventListener("click", changeVolume);
 
 audio.addEventListener("loadedmetadata", () => {
     document.getElementById("audio-total").textContent = formatTime(audio.duration);
@@ -125,10 +129,13 @@ audio.addEventListener("timeupdate", () => {
     }
 });
 
+audioVolume.addEventListener("click", changeVolume);
 audioPlay.addEventListener("click", playAudio);
+audioProgress.addEventListener("click", seekIntoMusic.bind(this));
 document.getElementById("audio-play-next").addEventListener("click", () => audioPlayNext(1));
 document.getElementById("audio-play-previous").addEventListener("click", () => audioPlayNext(-1));
-audioProgress.addEventListener("click", seekIntoMusic.bind(this));
+
+initLoad();
 
 navLinks.forEach((link) => {
     link.addEventListener("click", () => showPanel(link));

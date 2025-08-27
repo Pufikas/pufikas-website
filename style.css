@@ -14,14 +14,12 @@ body {
     padding-top: 5px;
     margin-right: 50px;
     font-size: 50px;
-    
 }
 
 #main-panel {
     width: 675px;
     min-width: 675px;
     vertical-align: baseline;
-    
 }
 
 .emoji {
@@ -48,7 +46,7 @@ h2 {
 a {
     text-decoration: none;
     color: var(--link-color);
-    transition: 0.75;
+    transition: all 0.75s;
     cursor: url(./assets/cursor/select.cur), auto;
 }
 
@@ -60,12 +58,13 @@ ul {
 #audio-progress-container, #audio-volume {
     flex: 1;
     position: relative;
-    height: 4px;
+    height: 6px;
     background: #e0e0e0;
     border-radius: 2px;
     cursor: pointer;
     overflow: hidden;
     margin-top: 4px;
+    cursor: url(./assets/cursor/select.cur), auto;
 }
   
 #audio-progress-line, #audio-volume-line {
@@ -86,7 +85,6 @@ ul {
     gap: 8px;
     width: 180px;
 }
-
 
 #footer {
     position: fixed;
@@ -113,8 +111,6 @@ ul {
     max-width: 225px;
 }
 
-
-
 .center {
     text-align: center !important;
     display: block;
@@ -131,7 +127,7 @@ ul {
 }
 
 .active {
-    animation: ease-in 2s;
+    
 }
 
 @keyframes scanline {
@@ -219,13 +215,35 @@ ul {
 }
 
 .highlight {
-    color: var(--m-pink);
+    color: var(--m-pink) !important;
 }
 
 .highlight-blue {
-    color: var(--link-color);
+    color: var(--link-color) !important;
 }
 
 .flex {
     display: flex;
+}
+
+.navlink {
+    color: var(--link-color);
+}
+
+.navlink:hover {
+    padding-bottom: 12px;
+    font-size: 14px;
+    transition: all 0.2s;
+    color: var(--m-secondary);
+}
+
+a:hover {
+    transition: all 0.5s;
+    color: var(--m-secondary);
+    letter-spacing: 5px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 450px 1fr;
 }
