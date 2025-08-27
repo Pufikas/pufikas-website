@@ -243,3 +243,7 @@ a:hover {
     letter-spacing: 5px;
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+}
