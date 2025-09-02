@@ -126,10 +126,6 @@ ul {
     display: none;
 }
 
-.active {
-    
-}
-
 @keyframes scanline {
     0% {
         transform: translate3d(0, 200000%, 0);
