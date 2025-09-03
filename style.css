@@ -247,3 +247,8 @@ a:hover {
 .column2 {
     columns: 80px 2;
 }
+
+.right {
+    text-align: right !important;
+    display: block;
+}
