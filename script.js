@@ -32,13 +32,38 @@ const audioMeta = document.getElementById("audio-meta");
 const navLinks = document.querySelectorAll(".navlink");
 const options = document.querySelectorAll(".option-check");
 
+let timeRes = document.getElementById("time");
+let timeBeen = document.getElementById("timeBeen");
+let hh = mm = ss = 0;
+
 function timer() {
-    let res = document.getElementById("time");
     let d = new Date();
     let h = d.getHours();
     let m = d.getMinutes();
     let s = d.getSeconds();
-    res.textContent = ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2);
+
+    ss += 1;
+
+    if (ss >= 60) {
+        mm += Math.floor(ss / 60);
+        ss %= 60;
+    }
+
+    if (mm >= 60) {
+        hh += Math.floor(mm / 60);
+        mm %= 60;
+    }
+
+    return { h, m, s, ss, mm, hh };
+}
+
+function update() {
+    const { h, m, s, ss, mm, hh } = timer();
+
+    timeRes.innerHTML = ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2);
+    timeBeen.innerHTML = "running for " + ("0" + mm).slice(-2) + ":" + ("0" + ss).slice(-2);
+
+    console.log(h);
 }
 
 function initLoad() {
@@ -145,4 +170,4 @@ options.forEach((option) => {
     option.addEventListener("click", () => disableOption(option.dataset.option));
 });
 
-setInterval(timer, 1000);
+setInterval(update, 1000);
