@@ -38,7 +38,8 @@ body {
 
 h2 {
     color: var(--link-color);
-    font-family: "Pixel NES" !important;
+    /* font-family: "Pixel NES" !important; */
+    font-family: Japanese !important;
     margin: 0;
     display: inline;
 }
@@ -48,6 +49,17 @@ a {
     color: var(--link-color);
     transition: all 0.75s;
     cursor: url(./assets/cursor/select.cur), auto;
+}
+
+a:hover {
+    transition: all 0.5s;
+    color: var(--m-secondary);
+    letter-spacing: 2px;
+}
+
+.column2 img:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
 }
 
 ul {
@@ -104,11 +116,6 @@ ul {
     width: 225px;
     max-width: 225px;
     vertical-align: top;
-}
-
-#left-panel {
-    width: 225px;
-    max-width: 225px;
 }
 
 .center {
@@ -233,11 +240,7 @@ ul {
     color: var(--m-secondary);
 }
 
-a:hover {
-    transition: all 0.5s;
-    color: var(--m-secondary);
-    letter-spacing: 5px;
-}
+
 
 .grid {
     display: grid;
