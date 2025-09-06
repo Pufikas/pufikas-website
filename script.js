@@ -31,8 +31,6 @@ function update() {
 
     timeRes.innerHTML = ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2);
     timeBeen.innerHTML = "running for " + ("0" + mm).slice(-2) + ":" + ("0" + ss).slice(-2);
-
-    console.log(h);
 }
 
 function disableOption(option) {
