@@ -240,8 +240,6 @@ ul {
     color: var(--m-secondary);
 }
 
-
-
 .grid {
     display: grid;
     grid-template-columns: 450px 1fr;
@@ -254,4 +252,40 @@ ul {
 .right {
     text-align: right !important;
     display: block;
+}
+
+.contact {
+    align-items: center;
+    padding: 4px;
+    border-left: solid 6px var(--m-pink);
+    color: white;
+    border-radius: 5px;
+}
+
+.pl10 {
+    padding-inline-start: 10px;
+    line-height: 1.2;
+}
+
+.block {
+    display: block;
+}
+
+.contactHandle {
+    font-style: italic;
+    font-size: 14px;
+    color: var(--m-darkblue);
+    opacity: 0.75;
+}
+
+.contactName {
+    font-size: 18px;
+    color: var(--link-color);
+}
+
+.grid-cols-2 {
+    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    padding-bottom: 20px;
 }
