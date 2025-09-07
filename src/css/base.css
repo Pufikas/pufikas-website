@@ -1,6 +1,6 @@
 
 body {
-  cursor: url("./assets/cursor/normal.cur"), auto !important;
+  cursor: url("/assets/cursor/normal.cur"), auto !important;
 }
 
 /* html {

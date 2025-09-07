@@ -23,7 +23,7 @@ body {
 }
 
 .emoji {
-    cursor: url("./assets/cursor/help.cur"), auto;
+    cursor: url("/assets/cursor/help.cur"), auto;
     width: 24px; 
     height: 24px;
 }
@@ -48,7 +48,7 @@ a {
     text-decoration: none;
     color: var(--link-color);
     transition: all 0.75s;
-    cursor: url(./assets/cursor/select.cur), auto;
+    cursor: url("/assets/cursor/select.cur"), auto;
 }
 
 a:hover {
@@ -76,7 +76,7 @@ ul {
     cursor: pointer;
     overflow: hidden;
     margin-top: 4px;
-    cursor: url(./assets/cursor/select.cur), auto;
+    cursor: url("/assets/cursor/select.cur"), auto;
 }
   
 #audio-progress-line, #audio-volume-line {
