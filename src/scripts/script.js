@@ -62,6 +62,14 @@ function showPanel(option) {
     });
 }
 
+function copyMyButton() {
+    const code = `<a target="_blank" rel="nofollow" href="https://pufikas.github.io/"><img src="pufikas88x31.png"/></a>`
+    
+    navigator.clipboard.writeText(code);
+
+    alert("html copied!")
+}
+
 navLinks.forEach((link) => {
     link.addEventListener("click", () => showPanel(link));
 });
@@ -69,5 +77,7 @@ navLinks.forEach((link) => {
 options.forEach((option) => {
     option.addEventListener("click", () => disableOption(option.dataset.option));
 });
+
+document.getElementById("copyButtonCode").addEventListener("click", () => copyMyButton());
 
 setInterval(update, 1000);
