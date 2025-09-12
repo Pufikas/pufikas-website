@@ -7,7 +7,7 @@
     <title>pufikas.dev</title>
 </head>
 <body id="page">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/css/style.css">
 
     <div id="container" class="scanlines">
         <div id="logo">PUFIKAS</div>
@@ -31,6 +31,16 @@
                         <div class="box">
                             <img src="./assets/misc/mikuconcert.jpg" class="width100">
                         </div>
+
+                        <div class="box">
+                            <img src="./assets/buttons/pufikas88x31.png" class="center">
+                            <div class="center">
+                                <a id="copyButtonCode">copy</a>
+                                <a download="pufikas88x31" href="./assets/buttons/pufikas88x31.png">download</a>
+                            </div>
+                        </div>
+                        <!-- <a target="_blank" rel="nofollow" href="https://pufikas.github.io/"><img src="pufikas88x31.png"/></a> -->
+
                         <!-- MUSIC PLAYER -->
                         <div class="box">
                             <div id="audio-meta">
@@ -147,6 +157,10 @@
                                     <span class="highlight-blue">You</span> 
                                     for visiting
                                 </li>
+                                <li>
+                                    <a target="_blank" rel="nofollow" href="https://tenor.com/view/techno-sooper-hatsune-miku-miku-vocaloid-gif-27368625">Techno25</a>
+                                    for a silly minecraft miku fumo plush spinning
+                                </li>
                             </ul>
                         </div>
                     </td>
@@ -158,6 +172,8 @@
                             <section id="social"><h2>SOCIALS</h2></section>
 
                             <section id="gaming"><h2>GAMING</h2></section>
+
+                            <section id="misc"><h2>MISCELLANEOUS</h2></section>
 
                             <!-- example of a section
                              <section id="social">
@@ -179,18 +195,21 @@
                     <!-- MAIN ABOUTME -->
                     <td data-panel="aboutme" id="main-panel" class="hidden">
                         <div id="main" class="box">
+                            <img src="./assets/misc/yuki.png" class="leftImg">
+                            
                             <p>Just a guy that likes coding, anime and gaming</p>
-                            <p>I program every day and I'm constantly learning something new</p>
+                            <p class="main-panel-short">I program every day and I'm constantly learning something new</p>
                             <br>
+
                             <p>Usually I play games like
                                 <a href="https://www.warframe.com/">Warframe</a>,
                                 <a href="https://osu.ppy.sh/">osu!</a>
                                 or some other random games <span class="small">(mostly steam games)</span>
                             </p>
+                            
                             <br>
-                            <img class="width50" src="./assets/misc/bash_frieren.jpg">
-                            <img class="width50" src="./assets/misc/tosaka_js.png">
-                            <img class="width50" src="./assets/misc/renge_vuejs.png">
+                            <p>Linux is best!</p>
+                            <br>
                         </div>
                     </td>
 
@@ -215,7 +234,7 @@
                         </div>
 
                         <div class="box">
-                            <img src="./assets/misc/hatsune-miku.gif" class="width100">
+                            <img src="./assets/misc/techno-sooper.gif" class="width80">
                         </div>
 
                         <!-- COOL SITES LIST -->
@@ -240,8 +259,8 @@
         <img src="./assets/misc/miku2.png">
     </div>
 
-    <script src="./script.js" defer></script>
-    <script src="./onload.js" defer></script>
-    <script src="./songs.js" defer></script>
+    <script src="src/scripts/onload.js" defer></script>
+    <script src="src/scripts/script.js" defer></script>
+    <script src="src/scripts/songs.js" defer></script>
 </body>
 </html>
