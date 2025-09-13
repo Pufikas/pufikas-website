@@ -6,10 +6,12 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'">
     <title>pufikas.dev</title>
 </head>
-<body id="page">
+<body id="page" class="scanlines">
     <link rel="stylesheet" href="src/css/style.css">
 
-    <div id="container" class="scanlines">
+    <canvas id="background"></canvas>
+    
+    <div id="container">
         <div id="logo">PUFIKAS</div>
         
         <table>
@@ -33,7 +35,7 @@
                         </div>
 
                         <div class="box">
-                            <img src="./assets/buttons/pufikas88x31.png" class="center">
+                            <img src="./assets/buttons/pufikas88x31.png" class="center auto-margin">
                             <div class="center">
                                 <a id="copyButtonCode">copy</a>
                                 <a download="pufikas88x31" href="./assets/buttons/pufikas88x31.png">download</a>
@@ -45,7 +47,7 @@
                         <div class="box">
                             <div id="audio-meta">
                                 <div id="audio-cover">
-                                    <img src="./assets/music/internet_overdose.jpg" class="center audio-cover">
+                                    <img src="./assets/music/internet_overdose.jpg" class="center auto-margin audio-cover">
                                 </div>
                                 <div id="audio-info" class="center">
                                     <span id="audio-title">Angel boring</span>
@@ -84,7 +86,7 @@
                     </td>
 
                     <!-- MAIN HOME -->
-                    <td data-panel="home" id="main-panel" class="">
+                    <td data-panel="home" id="main-panel" class="active">
                         <div id="main" class="box">
                             <!-- maybe? -->
                             <!-- <h4>[void@pufikas]$ cat home.md</h4>  -->

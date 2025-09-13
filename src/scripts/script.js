@@ -36,7 +36,7 @@ function update() {
 function disableOption(option) {
     switch (option) {
         case "scanlines":
-            document.getElementById("container").classList.toggle("scanlines");
+            document.getElementById("page").classList.toggle("scanlines");
     } 
 }
 
