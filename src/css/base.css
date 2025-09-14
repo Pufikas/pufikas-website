@@ -3,9 +3,9 @@ body {
   cursor: url("/assets/cursor/normal.cur"), auto !important;
 }
 
-/* html {
-  
-} */
+html {
+  overflow: auto;  
+}
 
 :root {
     --link-color: cyan;

@@ -6,15 +6,15 @@ const songs = [
         "author": "Aiobahn",
     },
     {
-        "song": "天使だって緊張する.mp3",
+        "song": "tenshi.mp3",
         "title": "天使だって緊張する",
         "cover": "internet_overdose.jpg", 
         "author": "Aiobahn",
     },
     {
-        "song": "風～運命のダークサイド.mp3",
+        "song": "ummei.mp3",
         "title": "風～運命のダークサイド",
-        "cover": "風～運命のダークサイド.jpg", 
+        "cover": "ummei.jpg", 
         "author": "ZUN",
     },
 ];

@@ -1,8 +1,15 @@
 @import url(base.css);
 
 body {
-    background-color: rgb(7, 15, 27);
+    /* background-color: rgb(7, 15, 27); */
+    background-image: url("/assets/89616320_p2.jpg");
+    background-color: rgba(7, 15, 27, 0.6);
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: cover;
+    /* opacity: 0.2; */
 }
+
 
 #container {
     width: 1200px;
@@ -16,12 +23,6 @@ body {
     font-size: 50px;
 }
 
-#main-panel {
-    width: 675px;
-    min-width: 675px;
-    vertical-align: baseline;
-}
-
 .emoji {
     cursor: url("/assets/cursor/help.cur"), auto;
     width: 24px; 
@@ -29,11 +30,12 @@ body {
 }
 
 .box {
-    border: 2px solid #383838;
+    border: 2px solid var(--m-primary);
     border-radius: 4px;
-    color: white;
     padding: 10px 15px;
     margin: 5px;
+    color: #e0e0e0;
+    background-color: rgba(7, 15, 27, 0.5);
 }
 
 h2 {
@@ -106,16 +108,29 @@ a:hover {
     height: 94px;
 }
 
+/* side panels */
 #menu-panel {
     width: 225px;
     max-width: 225px;
     vertical-align: top;
 }
 
+/* middle panel */
+#main-panel {
+    width: 675px;
+    min-width: 675px;
+    vertical-align: baseline;
+    display: flex;
+    flex-direction: column;
+}
+
 .center {
     text-align: center !important;
     display: block;
-    margin: auto;
+}
+
+.auto-margin {
+    margin: auto !important;
 }
 
 .small {
@@ -123,8 +138,26 @@ a:hover {
     font-style: italic;
 }
 
-.hidden {
+/* .hidden {
     display: none;
+} */
+
+[data-panel] {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+[data-panel].active {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 @keyframes scanline {
@@ -215,7 +248,8 @@ ul {
 }
 
 .noborder {
-    border: none;
+    border: none !important;
+    background-color: rgba(255, 255, 254, 0.001);
 }
 
 .highlight {
@@ -296,4 +330,15 @@ ul {
     max-height: 15%;
     float: left;
     padding: 6px;
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  /* background-color: rgb(7, 15, 27); */
+  opacity: 0.8;
 }

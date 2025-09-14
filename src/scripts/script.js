@@ -36,7 +36,7 @@ function update() {
 function disableOption(option) {
     switch (option) {
         case "scanlines":
-            document.getElementById("container").classList.toggle("scanlines");
+            document.getElementById("page").classList.toggle("scanlines");
     } 
 }
 
@@ -63,7 +63,7 @@ function showPanel(option) {
 }
 
 function copyMyButton() {
-    const code = `<a target="_blank" rel="nofollow" href="https://pufikas.github.io/"><img src="pufikas88x31.png"/></a>`
+    const code = `<a target="_blank" rel="nofollow" href="https://pufikas.nekoweb.org/"><img src="https://pufikas.nekoweb.org/assets/buttons/pufikas88x31.png" alt="Pufikas Personal Site (REAL!!)/></a>`
     
     navigator.clipboard.writeText(code);
 
