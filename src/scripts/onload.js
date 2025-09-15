@@ -19,7 +19,12 @@ const buttons = [
         "href" : "dinpixels.neocities.org",
         "img" : "dinbtn0.gif"
     },
+    {
+        "href" : "electric-tenshi.nekoweb.org",
+        "img" : "wvdtkw.gif"
+    },
 ];
+
 const contacts = {
     social: [
         {
@@ -138,7 +143,7 @@ function initButtons() {
 
     buttons.forEach(e => {
         html += ` 
-        <a target="_blank" rel="nofollow" href="https://${e.href}">
+        <a target="_blank" rel="nofollow noopener noreferrer" href="https://${e.href}">
             <img src="./assets/buttons/${e.img}"/>
         </a>`;
     });
