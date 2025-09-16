@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'">
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               img-src 'self' https://electric-tenshi.nekoweb.org https://files.catbox.moe/d27rub.png;
+               script-src 'self' https://electric-tenshi.nekoweb.org 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE=';
+               style-src 'self' https://electric-tenshi.nekoweb.org/vocaring/vocaring.css;
+               font-src 'self' https://file.garden/Z3nf4eZzZUtRPfhK/itc-legacy-sans-std-book.ttf;">
+
     <title>pufikas site</title>
 </head>
 <body id="page" class="scanlines">
@@ -172,7 +178,9 @@
                             <section id="social"><h2>SOCIALS</h2></section>
                             <section id="gaming"><h2>GAMING</h2></section>
                             <section id="misc"><h2>MISCELLANEOUS</h2></section>
-                       
+                        </div>
+                    </td>
+                    
                     <!-- MAIN ABOUTME -->
                     <td data-panel="aboutme" id="main-panel" class="hidden">
                         <div id="main" class="box">
@@ -202,6 +210,7 @@
                             <br>
                             <!-- webring list -->
                             <div class="center">
+                                <!-- no ai ring -->
                                 <map name="noaicode">
                                     <area href="https://baccyflap.com/noai" target="_blank" shape="poly" coords="55,0,255,0,255,13,294,13,294,51,55,51" alt="no ai webring" title="no ai webring">
                                     <area href="https://baccyflap.com/noai/?prv&s=puf" target="_top" shape="poly" coords="1,25,52,0,52,51" alt="previous" title="previous">
@@ -209,8 +218,14 @@
                                     <area href="https://baccyflap.com/noai/?nxt&s=puf" target="_top" shape="poly" coords="349,25,297,0,297,51" alt="next" title="next">
                                 </map>
                                 <img usemap="#noaicode" src="./assets/webring/codewidget-d.gif" alt="a long dark bar with a background of blurry Python code, with the text AI? AIN'T INTERESTED! / THE NO AI WEBRING over it. In the top right corner is a button labeled RANDOM and to either side of the bar are rectangles labeled PREV and NEXT">
+                                <!-- vocaring -->
+                                <div id="vocaring" class="medium"></div>
+                                    <link rel="stylesheet" href="https://electric-tenshi.nekoweb.org/vocaring/vocaring.css">
+                                    <script src="https://electric-tenshi.nekoweb.org/vocaring/vocaring-variables.js"></script>
+                                    <script src="https://electric-tenshi.nekoweb.org/vocaring/vocaring-widget.js"></script>
+                            
+                                <!--  -->
                             </div>
-
                         </div>
                     </td>
 
