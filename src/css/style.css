@@ -1,5 +1,10 @@
 @import url(base.css);
 
+@font-face {
+    font-family: "unifont";
+    src: url("/assets/fonts/unifont-16.0.04.ttf") format("truetype");
+}
+
 body {
     /* background-color: rgb(7, 15, 27); */
     background-image: url("/assets/89616320_p2.jpg");
@@ -10,6 +15,25 @@ body {
     /* opacity: 0.2; */
 }
 
+
+.splash {
+    font-family: "unifont", monospace;
+    position: fixed;
+    z-index: 909090;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    white-space: pre;
+}
+
+.ok {
+    font-family: "unifont", monospace;
+    color: #00ff00;
+    font-weight: bold;
+}
 
 #container {
     width: 1200px;

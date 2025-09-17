@@ -132,6 +132,7 @@ let templates = [
 let buttonList = document.getElementById("buttonList");
 
 function loadStuff() {
+    initLoadEffect();
     initButtons();
     Object.entries(contacts).forEach(([section, sectionContacts]) => {
         initContacts(section, sectionContacts);
@@ -200,6 +201,36 @@ function initContacts(sectionId, data) {
     );
 
     section.appendChild(container);
+}
+
+let bootText = [
+    "[  OK  ] Finished Load Kernel Modules",
+    "[    1.963865] systemd[1]: Reached target Swap",
+    "       Starting Apply Kernel Variables...",
+];
+
+function initLoadEffect() {
+    const splash = document.querySelector(".splash");
+
+    console.log(bootText);
+    
+    bootText.forEach((line, i) => {
+        setTimeout(() => {
+            const p = document.createElement("p");
+
+            if (line.includes("[  OK  ]")) {
+                p.innerHTML = line.replace("  OK  ", `<span class="ok">  OK  </span>`);
+            } else {
+                p.textContent = line;
+            }
+
+            splash.append(p);
+        }, i * 500)
+    });;
+    
+    setTimeout(() => {
+        splash.style.opacity = 0;
+    }, bootText.length * 727);
 }
 
 loadStuff();
