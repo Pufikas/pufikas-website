@@ -162,9 +162,9 @@ a:hover {
     font-style: italic;
 }
 
-/* .hidden {
+.hidden {
     display: none;
-} */
+}
 
 [data-panel] {
   position: absolute;

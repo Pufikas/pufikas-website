@@ -1,24 +1,4 @@
-const songs = [
-    {
-        "song": "Angel_boring.mp3",
-        "title": "Angel boring",
-        "cover": "internet_overdose.jpg", 
-        "author": "Aiobahn",
-    },
-    {
-        "song": "tenshi.mp3",
-        "title": "天使だって緊張する",
-        "cover": "internet_overdose.jpg", 
-        "author": "Aiobahn",
-    },
-    {
-        "song": "ummei.mp3",
-        "title": "風～運命のダークサイド",
-        "cover": "ummei.jpg", 
-        "author": "ZUN",
-    },
-];
-
+let songs = [];
 let counter = 0;
 const musicPath = `./assets/music/`;
 const audio = document.getElementById("audio-player");
@@ -29,7 +9,16 @@ const audioPlay = document.getElementById("audio-pause-play");
 const audioVolume = document.getElementById("audio-volume");
 const audioMeta = document.getElementById("audio-meta");
 
-function initLoad() {
+fetch("src/data/data.json")
+    .then(res => res.json())
+    .then(data => {
+        songs = data.songs;
+        initLoad();
+        loadEventListeners();
+    })
+    .catch(err => console.error("no songs loaded", err));
+
+async function initLoad() {
     audio.volume = 0.2;
     volumeLine.style.width = "20%";
 }
@@ -52,6 +41,7 @@ function playAudio() {
 
 function audioPlayNext(option) {
     counter = (counter + option + songs.length) % songs.length;
+    console.log(counter)
     audio.src = `${musicPath}${songs[counter].song}`;
     document.querySelector("#audio-cover img").src = `${musicPath}${songs[counter].cover}`;
 
@@ -70,27 +60,29 @@ function changeVolume(e) {
     volumeLine.style.width = `${percent * 100}%`;
 }
 
-audio.addEventListener("loadedmetadata", () => {
-    document.getElementById("audio-total").textContent = formatTime(audio.duration);
-    document.getElementById("audio-title").textContent = songs[counter].title;
-    document.getElementById("audio-author").textContent = songs[counter].author;
-});
+function loadEventListeners() {
 
-audio.addEventListener("timeupdate", () => {
-    document.getElementById("audio-duration").textContent = formatTime(audio.currentTime);
-    const progress = (audio.currentTime / audio.duration) * 100;
-    line.style.width = `${progress}%`;
+    audio.addEventListener("loadedmetadata", () => {
+        document.getElementById("audio-total").textContent = formatTime(audio.duration);
+        document.getElementById("audio-title").textContent = songs[counter].title;
+        document.getElementById("audio-author").textContent = songs[counter].author;
+    });
+    
+    audio.addEventListener("timeupdate", () => {
+        document.getElementById("audio-duration").textContent = formatTime(audio.currentTime);
+        const progress = (audio.currentTime / audio.duration) * 100;
+        line.style.width = `${progress}%`;
+    
+        if (line.style.width == "100%") {
+            audioPlay.innerText = "▶";
+            audio.pause();
+        }
+    });
+    
+    audioVolume.addEventListener("click", changeVolume);
+    audioPlay.addEventListener("click", playAudio);
+    audioProgress.addEventListener("click", seekIntoMusic.bind(this));
+    document.getElementById("audio-play-next").addEventListener("click", () => audioPlayNext(1));
+    document.getElementById("audio-play-previous").addEventListener("click", () => audioPlayNext(-1));
+}
 
-    if (line.style.width == "100%") {
-        audioPlay.innerText = "▶";
-        audio.pause();
-    }
-});
-
-audioVolume.addEventListener("click", changeVolume);
-audioPlay.addEventListener("click", playAudio);
-audioProgress.addEventListener("click", seekIntoMusic.bind(this));
-document.getElementById("audio-play-next").addEventListener("click", () => audioPlayNext(1));
-document.getElementById("audio-play-previous").addEventListener("click", () => audioPlayNext(-1));
-
-initLoad();
