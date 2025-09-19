@@ -100,10 +100,26 @@ function initContacts(sectionId, data) {
 }
 
 let bootText = [
+    "[  II  ] == CLICK ANYWHERE TO SKIP THIS ==",
+    "[  II  ] Current Operating System: Linux void 6.12.41_1",
+    "[  II  ] Mounting pseudo-filesystems...",
+    "         Loading kernel modules...",
+    "[  WW  ] Before reporting problems, check https://github.com/Pufikas/pufikas-website",        
+    "       to make sure that you have the latest version",
+    "[  II  ] Checking filesystems...",
     "[  OK  ] Finished Load Kernel Modules",
-    "[    1.963865] systemd[1]: Reached target Swap",
-    "       Starting Apply Kernel Variables...",
-    
+    "         Initializing swap...",
+    "         Initializing random seed...",
+    "[  II  ] LoadModule: 'nv'",
+    "[  WW  ] Warning, couldn't open module nv",
+    "[  EE  ] Failed to load module 'nv' (module does not exist, 0)",
+    "         Starting Apply Kernel Variables...",
+    "[  OK  ] Finished Load Kernel Variables",
+    "         pufikas login",
+    "         Password: *******",
+    "[  EE  ] Incorrect password, booting as guest",
+    "         ",
+    "         Starting Display Manager..."
 ];
 
 function initLoadEffect() {
@@ -115,18 +131,37 @@ function initLoadEffect() {
         setTimeout(() => {
             const p = document.createElement("p");
 
-            if (line.includes("[  OK  ]")) {
-                p.innerHTML = line.replace("  OK  ", `<span class="ok">  OK  </span>`);
-            } else {
+            const markers = {
+                "  OK  ": "ok",
+                "  WW  ": "ww",
+                "  EE  ": "fail"
+            };
+
+            for (const marker in markers) {
+                if (line.includes(marker)) {
+                    p.innerHTML = line.replace(marker, `<span class="${markers[marker]}">${marker}</span>`);
+                    break;
+                }
+            }
+            
+            if (!p.innerHTML) {
                 p.textContent = line;
             }
-
             splash.append(p);
-        }, i * 500)
+        }, i * 400 + Math.random() * 100 + (line.includes("Incorrect") ? 666 : 0))
     });;
     
     setTimeout(() => {
         splash.style.opacity = 0;
         splash.classList.add("hidden");
-    }, bootText.length * 727);
+    }, bootText.length * 450);
+
+    splash.addEventListener("click", () => {
+        splash.style.opacity = 0.2;
+        splash.textContent = "User input detected Quitting"
+
+        setTimeout(() => {
+            splash.classList.add("hidden");
+        }, 600)
+    })
 }

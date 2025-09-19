@@ -35,6 +35,16 @@ body {
     font-weight: bold;
 }
 
+.ww {
+    color: #d0ff00;
+    font-weight: bold;
+}
+
+.fail {
+    color: #ff0000;
+    font-weight: bold;
+}
+
 #container {
     width: 1200px;
     margin: 0 auto;
