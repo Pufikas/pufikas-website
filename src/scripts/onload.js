@@ -17,6 +17,35 @@
 let buttonList = document.getElementById("buttonList");
 let buttons = [];
 let contacts = [];
+let bootText = [
+    `[  !!  ] == CLICK ANYWHERE TO SKIP THIS ==
+[  II  ] Current Operating System: Linux void 6.12.41_1`,
+    `         Markers: (!!) notice, (II) informational,
+         (WW) warning, (EE) error, (??) unknown.`,
+    "[  II  ] Mounting pseudo-filesystems...",
+    "         Loading kernel modules...",
+    `[  !!  ] Before reporting problems, check https://github.com/Pufikas/pufikas-website       
+         to make sure that you have the latest version`,
+    "[  II  ] Checking filesystems...",
+    "[  OK  ] Finished Load Kernel Modules",
+    `         Initializing swap...
+         Initializing random seed...`,
+    `[  II  ] Starting udev daemon...
+[  OK  ] Udev daemon running`,
+    "[  II  ] Bringing up loopback interface...",
+    `[  OK  ] lo interface up
+[  II  ] Bringing up network interface eth0...`,
+    "[  OK  ] eth0 connected at 195.142.1.45",
+    "[  II  ] LoadModule: 'nv'",
+    "[  WW  ] Warning, couldn't open module nv",
+    "[  EE  ] Failed to load module 'nv' (module does not exist, 0)",
+    "         Starting Apply Kernel Variables...",
+    "[  OK  ] Finished Load Kernel Variables",
+    "[  II  ] Starting Display Manager...",
+    "         pufikas login",
+    "         Password: *******",
+    "[  EE  ] Incorrect password, booting as guest",
+];
 
 fetch("src/data/data.json")
     .then(res => res.json())
@@ -99,42 +128,18 @@ function initContacts(sectionId, data) {
     section.appendChild(container);
 }
 
-let bootText = [
-    "[  II  ] == CLICK ANYWHERE TO SKIP THIS ==",
-    "[  II  ] Current Operating System: Linux void 6.12.41_1",
-    "[  II  ] Mounting pseudo-filesystems...",
-    "         Loading kernel modules...",
-    "[  WW  ] Before reporting problems, check https://github.com/Pufikas/pufikas-website",        
-    "       to make sure that you have the latest version",
-    "[  II  ] Checking filesystems...",
-    "[  OK  ] Finished Load Kernel Modules",
-    "         Initializing swap...",
-    "         Initializing random seed...",
-    "[  II  ] LoadModule: 'nv'",
-    "[  WW  ] Warning, couldn't open module nv",
-    "[  EE  ] Failed to load module 'nv' (module does not exist, 0)",
-    "         Starting Apply Kernel Variables...",
-    "[  OK  ] Finished Load Kernel Variables",
-    "         pufikas login",
-    "         Password: *******",
-    "[  EE  ] Incorrect password, booting as guest",
-    "         ",
-    "         Starting Display Manager..."
-];
-
 function initLoadEffect() {
     const splash = document.querySelector(".splash");
 
-    console.log(bootText);
-    
     bootText.forEach((line, i) => {
         setTimeout(() => {
             const p = document.createElement("p");
 
             const markers = {
-                "  OK  ": "ok",
-                "  WW  ": "ww",
-                "  EE  ": "fail"
+                "  OK  " : "ok",
+                "  WW  " : "ww",
+                "  EE  " : "fail",
+                "  !!  " : "fail"
             };
 
             for (const marker in markers) {
@@ -148,13 +153,13 @@ function initLoadEffect() {
                 p.textContent = line;
             }
             splash.append(p);
-        }, i * 400 + Math.random() * 100 + (line.includes("Incorrect") ? 666 : 0))
+        }, i * 100 + Math.random() * 100 + (line.includes("Incorrect") ? 300 : 0))
     });;
     
     setTimeout(() => {
         splash.style.opacity = 0;
         splash.classList.add("hidden");
-    }, bootText.length * 450);
+    }, bootText.length * 190);
 
     splash.addEventListener("click", () => {
         splash.style.opacity = 0.2;
@@ -162,6 +167,6 @@ function initLoadEffect() {
 
         setTimeout(() => {
             splash.classList.add("hidden");
-        }, 600)
+        }, 620)
     })
 }
