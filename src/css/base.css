@@ -1,11 +1,4 @@
 
-body {
-  cursor: url("/assets/cursor/normal.cur"), auto !important;
-}
-
-html {
-  overflow: auto;  
-}
 
 :root {
     --link-color: #0ef0f0;
@@ -25,6 +18,8 @@ html {
 }
 
 body {
+  cursor: url("/assets/cursor/normal.cur"), auto !important;
+  overflow: auto !important; 
   color: var(--color-text);
   background: var(--color-background);
   transition:
@@ -50,7 +45,11 @@ body {
     display: none;
   }
 
-  .container {
-    max-width: 800px;
+  .mikus-nav {
+    display: none;
+  }
+
+  .column2 { 
+     column-gap: 40px;
   }
 }
