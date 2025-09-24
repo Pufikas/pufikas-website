@@ -1,5 +1,4 @@
 
-
 :root {
     --link-color: #0ef0f0;
     --m-grey: #373b3e;
@@ -19,7 +18,6 @@
 
 body {
   cursor: url("/assets/cursor/normal.cur"), auto !important;
-  overflow: auto !important; 
   color: var(--color-text);
   background: var(--color-background);
   transition:

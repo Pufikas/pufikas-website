@@ -5,17 +5,14 @@
     src: url("/assets/fonts/unifont-16.0.04.ttf") format("truetype");
 }
 
-
 body {
     background-image: url("/assets/89616320_p2.jpg");
-    background-color: rgba(7, 15, 27, 0.6);
+    background-color: #09111e;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     position: relative;
-    /* padding-bottom: 400px; */
 }
-
 
 .splash {
     font-family: "unifont", monospace;
@@ -53,9 +50,14 @@ body {
 
 #logo {
     text-align: center;
-    padding-top: 5px;
-    margin-right: 50px;
-    font-size: 50px;
+    padding-top: 2px;
+    font-weight: bold;
+    font-size: 70px;
+    font-family: unifont;
+    background: linear-gradient(var(--link-color), var(--m-primary), var(--m-darkblue), var(--m-darkblue));
+    color: transparent;
+    background-clip: text;
+    letter-spacing: 25px;
 }
 
 .emoji {
@@ -104,7 +106,7 @@ a:hover {
     background: #e0e0e0;
     border-radius: 2px;
     cursor: pointer;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-top: 4px;
     cursor: url("/assets/cursor/select.cur"), auto;
 }
@@ -206,7 +208,7 @@ a:hover {
 }
 
 .scanlines {
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
 }
 .scanlines:before,
