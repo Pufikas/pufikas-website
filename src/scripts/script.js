@@ -1,5 +1,7 @@
 const navLinks = document.querySelectorAll(".navlink");
 const options = document.querySelectorAll(".option-check");
+const cursor = document.querySelector(".cursor");
+let timeout;
 
 let timeRes = document.getElementById("time");
 let timeBeen = document.getElementById("timeBeen");
@@ -69,6 +71,23 @@ function copyMyButton() {
 
     alert("html copied!")
 }
+
+document.addEventListener("mousemove", (e) => {
+    let x = e.pageX;
+    let y = e.pageY;
+
+    cursor.style.top = y + "px";
+    cursor.style.left = x + "px";
+    cursor.style.display = "block";
+
+    function mouseStopped() {
+        cursor.style.display = "none";
+    }
+
+    clearTimeout(timeout);
+    timeout = setTimeout(mouseStopped, 5000);
+
+})
 
 navLinks.forEach((link) => {
     link.addEventListener("click", () => showPanel(link));
