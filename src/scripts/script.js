@@ -40,8 +40,10 @@ function disableOption(option) {
     switch (option) {
         case "scanlines":
             document.getElementById("html").classList.toggle("scanlines");
+            break;
         case "cursor-particles":
-            cursorParticles != cursorParticles;
+            cursorParticles = !cursorParticles;
+            break;
         } 
 }
 
