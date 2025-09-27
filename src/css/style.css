@@ -399,6 +399,31 @@ ul {
         filter: hue-rotate(360deg);
     }
 }
+
+.particle {
+    position: fixed;
+    background: #2696E8;
+    border-radius: 50%;
+    pointer-events: none; 
+    animation: fall 3s forwards;
+    aspect-ratio: 1.07;
+    /* heart */
+    clip-path: polygon(50% 15%, 61% 6%, 75% 6%, 85% 15%, 85% 30%, 50% 60%, 15% 30%, 15% 15%, 25% 6%, 39% 6%); 
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) scale(1);
+        filter: hue-rotate(0deg);
+        opacity: 1;
+    }   
+    100% {
+        transform: translateY(200px) scale(0.3);
+        filter: hue-rotate(360deg);
+        opacity: 0;
+    }
+}
+
 .cursor:before {
     content: ”;
     position: absolute;

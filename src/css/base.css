@@ -16,6 +16,15 @@
   font-weight: normal;
 }
 
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
 body {
   cursor: url("/assets/cursor/normal.cur"), auto !important;
   color: var(--color-text);

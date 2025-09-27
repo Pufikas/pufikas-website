@@ -6,6 +6,7 @@ let timeout;
 let timeRes = document.getElementById("time");
 let timeBeen = document.getElementById("timeBeen");
 let hh = mm = ss = 0;
+let cursorParticles = true;
 
 function timer() {
     let d = new Date();
@@ -39,7 +40,9 @@ function disableOption(option) {
     switch (option) {
         case "scanlines":
             document.getElementById("html").classList.toggle("scanlines");
-    } 
+        case "cursor-particles":
+            cursorParticles != cursorParticles;
+        } 
 }
 
 function showPanel(option) {
@@ -73,21 +76,33 @@ function copyMyButton() {
 }
 
 document.addEventListener("mousemove", (e) => {
-    let x = e.pageX;
-    let y = e.pageY;
-
-    cursor.style.top = y + "px";
-    cursor.style.left = x + "px";
-    cursor.style.display = "block";
-
-    function mouseStopped() {
-        cursor.style.display = "none";
+    if (Math.random() < 0.2 && cursorParticles) {
+        spawnParticle(e.pageX, e.pageY);
     }
-
-    clearTimeout(timeout);
-    timeout = setTimeout(mouseStopped, 5000);
-
 })
+
+function spawnParticle(x, y) {
+    let part = document.createElement("div"); 
+    const drift = (Math.random() * 98 - 50) + "px";
+    const size = Math.random() * 4 + 16;
+    const dur = Math.random() * 1 + 3;
+
+    part.style.setProperty("--drift", drift);
+    part.style.width = size + "px";
+    part.style.height = size + "px";
+    part.style.animationDuration = dur + "s";
+    
+    part.style.left = x + "px";
+    part.style.top = y + "px";
+    
+    console.log(part.style.top)
+    part.classList.add("particle");
+    document.body.appendChild(part);
+
+    part.addEventListener("animationend", () => {
+        part.remove();
+    })
+}
 
 navLinks.forEach((link) => {
     link.addEventListener("click", () => showPanel(link));
