@@ -434,3 +434,9 @@ ul {
     transform: translate(-30%, -30%);
     border-radius: 50%;
 }
+
+.footer {
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
