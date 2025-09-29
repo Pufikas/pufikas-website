@@ -435,8 +435,13 @@ ul {
     border-radius: 50%;
 }
 
+.smaller {
+    font-size: 10px;
+}
+
 .footer {
-    width: 1200px;
+    width: 1125px;
+    flex: 1;
     margin: 0 auto;
     text-align: center;
 }
