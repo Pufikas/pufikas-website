@@ -56,6 +56,14 @@ fetch("src/data/data.json")
     })
     .catch(err => console.error("no songs loaded", err));
 
+fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/main")
+    .then(res => res.json())
+    .then(data => {
+        const date = new Date(data.commit.committer.date);
+        document.getElementById("lastupdate").textContent = date.toISOString().split("T")[0];
+        document.getElementById("lastupdate-message").textContent = data.commit.message;
+    });
+
 async function loadStuff() {
     initLoadEffect();
     initButtons();

@@ -43,23 +43,6 @@ body {
     font-weight: bold;
 }
 
-#container {
-    width: 1200px;
-    margin: 0 auto;
-}
-
-#logo {
-    text-align: center;
-    padding-top: 2px;
-    font-weight: bold;
-    font-size: 70px;
-    font-family: unifont;
-    background: linear-gradient(var(--link-color), var(--m-primary), var(--m-darkblue), var(--m-darkblue));
-    color: transparent;
-    background-clip: text;
-    letter-spacing: 25px;
-}
-
 .emoji {
     cursor: url("/assets/cursor/help.cur"), auto;
     width: 24px; 
@@ -106,7 +89,6 @@ a:hover {
     background: #e0e0e0;
     border-radius: 2px;
     cursor: pointer;
-    /* overflow: hidden; */
     margin-top: 4px;
     cursor: url("/assets/cursor/select.cur"), auto;
 }
@@ -127,7 +109,6 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 8px;
-    width: 180px;
 }
 
 #footer {
@@ -139,25 +120,61 @@ a:hover {
 
 #avatar {
     float: left;
-    margin: 10px 10px 5px 5px;
+    margin: 10px 5px;
     width: 100px;
-    height: 94px;
+    height: 100px;
+}
+
+/* parent */
+#container {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    justify-content: center;
+    width: 1200px;
+    margin: 0 auto;
 }
 
 /* side panels */
 #menu-panel {
-    width: 225px;
-    max-width: 225px;
-    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 250px;
 }
 
 /* middle panel */
 #main-panel {
-    width: 675px;
-    min-width: 675px;
-    vertical-align: baseline;
     display: flex;
     flex-direction: column;
+    flex: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.footer a {
+    transition: none !important;
+    letter-spacing: 0px !important;
+}
+
+.footer .fleft, .footer .fright {
+    display: flex;
+    flex-direction: column;
+}
+
+#logo {
+    text-align: center;
+    padding-top: 2px;
+    font-weight: bold;
+    font-size: 70px;
+    font-family: unifont;
+    background: linear-gradient(var(--link-color), var(--m-primary), var(--m-darkblue), var(--m-darkblue));
+    color: transparent;
+    background-clip: text;
+    letter-spacing: 25px;
 }
 
 .center {
@@ -439,9 +456,3 @@ ul {
     font-size: 10px;
 }
 
-.footer {
-    width: 1125px;
-    flex: 1;
-    margin: 0 auto;
-    text-align: center;
-}

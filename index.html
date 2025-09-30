@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy"
       content="default-src 'self';
-               img-src 'self' https://electric-tenshi.nekoweb.org https://files.catbox.moe/d27rub.png;
-               script-src 'self' https://electric-tenshi.nekoweb.org 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE=';
-               style-src 'self' https://electric-tenshi.nekoweb.org/vocaring/vocaring.css;
-               font-src 'self' https://file.garden/Z3nf4eZzZUtRPfhK/itc-legacy-sans-std-book.ttf;">
+                connect-src 'self' https://api.github.com/repos/Pufikas/pufikas-website/commits/main;
+                img-src 'self' https://electric-tenshi.nekoweb.org https://files.catbox.moe/d27rub.png;
+                script-src 'self' https://electric-tenshi.nekoweb.org 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE=';
+                style-src 'self' https://electric-tenshi.nekoweb.org/vocaring/vocaring.css;
+                font-src 'self' https://file.garden/Z3nf4eZzZUtRPfhK/itc-legacy-sans-std-book.ttf;">
 
     <title>pufikas site</title>
 </head>
@@ -23,273 +24,273 @@
         <h1>    WELCOME TO <span class="ww">pufikas.</span><span class="ok">nekoweb.</span><span class="fail">org</span></h1>
     </div>
     <div class="cursor"></div>
+    <div id="logo">PUFIKAS</div>
+
     <div id="container">
-        <div id="logo">PUFIKAS</div>
-        <table>
-            <tbody>
-                <tr>
-                    <!-- SIDE PANEL LEFT -->
-                    <td id="menu-panel">
-                        <div id="timer" class="box">
-                            <span id="timeBeen" class="small right highlight">running for 00:00</span>
-                            <span id="time" class="center highlight-blue">00:00:00</span>
-                        </div>
-                        <div class="box">
-                            <img src="./assets/misc/ballin.gif" class="width100">
-                            <p class="small center">game winning shot</p>
-                        </div>
-                        <div class="box">
-                            <img src="./assets/misc/mikuplsinteract.gif" class="width100">
-                        </div>
-                        <div class="box">
-                            <img src="./assets/misc/mikuconcert.jpg" class="width100">
-                        </div>
+            <!-- SIDE PANEL LEFT -->
+            <div id="menu-panel">
+                <div id="timer" class="box">
+                    <span id="timeBeen" class="small right highlight">running for 00:00</span>
+                    <span id="time" class="center highlight-blue">00:00:00</span>
+                </div>
+                <div class="box">
+                    <img src="./assets/misc/ballin.gif" class="width100">
+                </div>
+                <div class="box">
+                    <img src="./assets/misc/mikuplsinteract.gif" class="width100">
+                </div>
+                <div class="box">
+                    <img src="./assets/misc/mikuconcert.jpg" class="width100">
+                </div>
 
-                        <div class="box">
-                            <img src="./assets/buttons/pufikas88x31.png" class="center auto-margin">
-                            <div class="center">
-                                <a id="copyButtonCode">copy</a>
-                                <a download="pufikas88x31" href="./assets/buttons/pufikas88x31.png">download</a>
-                            </div>
+                <div class="box">
+                    <img src="./assets/buttons/pufikas88x31.png" class="center auto-margin">
+                    <div class="center">
+                        <a id="copyButtonCode">copy</a>
+                        <a download="pufikas88x31" href="./assets/buttons/pufikas88x31.png">download</a>
+                    </div>
+                </div>
+                <!-- <a target="_blank" rel="nofollow" href="https://pufikas.nekoweb.org/"><img src="pufikas88x31.png"/></a> -->
+
+                <!-- MUSIC PLAYER -->
+                <div class="box">
+                    <div id="audio-meta">
+                        <div id="audio-cover">
+                            <img src="./assets/music/internet_overdose.jpg" class="center auto-margin audio-cover">
                         </div>
-                        <!-- <a target="_blank" rel="nofollow" href="https://pufikas.nekoweb.org/"><img src="pufikas88x31.png"/></a> -->
-
-                        <!-- MUSIC PLAYER -->
-                        <div class="box">
-                            <div id="audio-meta">
-                                <div id="audio-cover">
-                                    <img src="./assets/music/internet_overdose.jpg" class="center auto-margin audio-cover">
-                                </div>
-                                <div id="audio-info" class="center">
-                                    <span id="audio-title">Angel boring</span>
-                                    <br>
-                                    <span id="audio-author" class="audio-author">Aiobahn</span>
-                                </div>
-                                <div id="audio-progress-container">
-                                    <div id="audio-progress-line"></div>
-                                </div>      
-                                
-                            </div>
-
-                            <div id="audio-timeline">
-                                <span id="audio-duration">0:00</span>
-                                <div id="audio-volume">
-                                    <div id="audio-volume-line"></div>
-                                </div>
-                                <span id="audio-total">1:45</span>
-                            </div>
-
-                            <div class="music-player" id="music-player">
-                                <audio id="audio-player" src="./assets/music/Angel_boring.mp3"></audio>
-                            </div>
-
-                            <div class="music-controls center">
-                                <button id="audio-play-previous"><</button>
-                                <button id="audio-pause-play">▶</button>
-                                <button id="audio-play-next">></button>
-                            </div>
-                         </div>
-                        <!-- OPTIONS -->
-                        <div class="box">
-                            <input class="option-check" type="checkbox" data-option="scanlines">
-                            <label for="scanlinesCheck">disable scanlines</label>
-                            <input class="option-check" type="checkbox" data-option="cursor-particles" checked>
-                            <label for="scanlinesCheck">cursor particles</label>
-                        </div>
-                    </td>
-
-                    <!-- MAIN HOME -->
-                    <td data-panel="home" id="main-panel" class="active">
-                        <div id="main" class="box">
-                            <h2>WELCOME</h2>
+                        <div id="audio-info" class="center">
+                            <span id="audio-title">Angel boring</span>
                             <br>
-                            
-                            <img id="avatar" src="./assets/misc/rabbit-hole-hatsune-miku.gif">
-                            <br>
-                            <p>This is my small and silly website, inspired by other cool sites!!</p>
-                            <br><br>
-
-                            <span>About me: <br></span>
-
-                            <ul class="main-panel-short">
-                                <li>I'm from Lithuania</li>
-                                <li>My most used programming language is JavaScript</li>
-                                <li>I like to watch anime and read manga <span class="small">(usually with furigana)</span></li>
-                                <li>I love technology and code!</li>
-                                <li>I like RPG games <span class="small">(like path of exile)</span></li>
-                                <li>I'm with linux gang</li>
-                            </ul>
-
-                            <br>
-                            <p>write me something <a href="https://pufikas.atabook.org/">guestbook</a></p>
-                            <p>you can find this website source code <a href="https://github.com/Pufikas/pufikas-website" target="_blank" rel="nofollow">here!</a></p>
+                            <span id="audio-author" class="audio-author">Aiobahn</span>
                         </div>
+                        <div id="audio-progress-container">
+                            <div id="audio-progress-line"></div>
+                        </div>      
+                        
+                    </div>
 
-                        <div class="box noborder">
-                            <img src="./assets/misc/mikum.gif">
-                            <img src="./assets/misc/mes.gif">
-                            <img src="./assets/misc/tetom.gif">
+                    <div id="audio-timeline">
+                        <span id="audio-duration">0:00</span>
+                        <div id="audio-volume">
+                            <div id="audio-volume-line"></div>
                         </div>
+                        <span id="audio-total">1:45</span>
+                    </div>
 
-                        <!-- HIGHLIGHTED PROJECTS -->
-                        <div class="box">
-                            <h2>HIGHLIGHTED PROJECTS</h2>
-                            <p>for all projects see my <a target="_blank" rel="nofollow" href="https://github.com/Pufikas">GitHub</a></p><br>
+                    <div class="music-player" id="music-player">
+                        <audio id="audio-player" src="./assets/music/Angel_boring.mp3"></audio>
+                    </div>
 
-                            <div>
-                                <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/Weather">
-                                    * Weather
-                                </a><br>
-                                A simple app using weather api
-                            </div>
-                            <br>
-                            <div>
-                                <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/pokedex">
-                                    * pokedex
-                                </a><br>
-                                Pokemon pokedex using vuejs framework
-                            <div>
-                        </div>                    
-                    </td>
+                    <div class="music-controls center">
+                        <button id="audio-play-previous"><</button>
+                        <button id="audio-pause-play">▶</button>
+                        <button id="audio-play-next">></button>
+                    </div>
+                    </div>
+                <!-- OPTIONS -->
+                <div class="box">
+                    <input class="option-check" type="checkbox" data-option="scanlines">
+                    <label for="scanlinesCheck">disable scanlines</label>
+                    <input class="option-check" type="checkbox" data-option="cursor-particles" checked>
+                    <label for="scanlinesCheck">cursor particles</label>
+                </div>
+            </div>
+
+            <!-- MAIN HOME -->
+            <div data-panel="home" id="main-panel" class="active">
+                <div id="main" class="box">
+                    <h2>WELCOME</h2>
+                    <br>
                     
-                    <!-- MAIN CREDITS -->
-                    <td data-panel="credits" id="main-panel" class="hidden">
-                        <div id="main" class="box">
-                            <h2>CREDITS</h2>
-                            <ul>
-                                <li>
-                                    <a target="_blank" rel="nofollow" href="https://ka3l.tumblr.com/post/661014493592240128/happy-birthday-miku">kael</a>
-                                    for miku emojis
-                                <li>
-                                    <a target="_blank" rel="nofollow" href="https://iconify.design/">iconify</a>
-                                    for icons
-                                </li>
-                                <li>
-                                    <a target="_blank" rel="nofollow" href="http://www.rw-designer.com/cursor-set/hatsune-miku-pack">Darunic2A</a>
-                                    for Hatsune Miku Cursor
-                                </li>
-                                <li>
-                                    <a target="_blank" rel="nofollow" href="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books">Anime Girls Holding Programming Books</a>
-                                </li>
-                                <li>
-                                    <span class="highlight-blue">You</span> 
-                                    for visiting
-                                </li>
-                                <li>
-                                    <a target="_blank" rel="nofollow" href="https://tenor.com/view/techno-sooper-hatsune-miku-miku-vocaloid-gif-27368625">Techno25</a>
-                                    for a silly minecraft miku fumo plush spinning
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
+                    <img id="avatar" src="./assets/misc/rabbit-hole-hatsune-miku.gif">
+                    <br>
+                    <p>This is my small and silly website, inspired by other cool sites!!</p>
+                    <br><br>
 
-                    <!-- MAIN CONTACTS -->
-                    <td data-panel="contacts" id="main-panel" class="hidden">
-                        <div id="main" class="box">
-                            <section id="social"><h2>SOCIALS</h2></section>
-                            <section id="gaming"><h2>GAMING</h2></section>
-                            <section id="misc"><h2>MISCELLANEOUS</h2></section>
-                        </div>
-                    </td>
+                    <span>About me: <br></span>
+
+                    <ul class="main-panel-short">
+                        <li>I'm from Lithuania</li>
+                        <li>My most used programming language is JavaScript</li>
+                        <li>I like to watch anime and read manga <span class="small">(usually with furigana)</span></li>
+                        <li>I love technology and code!</li>
+                        <li>I like RPG games <span class="small">(like path of exile)</span></li>
+                        <li>I'm with linux gang</li>
+                    </ul>
+
+                    <br>
+                    <p>write me something <a href="https://pufikas.atabook.org/">guestbook</a></p>
+                    <p>you can find this website source code <a href="https://github.com/Pufikas/pufikas-website" target="_blank" rel="nofollow">here!</a></p>
+                </div>
+
+                <div class="box noborder">
+                    <img src="./assets/misc/mikum.gif">
+                    <img src="./assets/misc/mes.gif">
+                    <img src="./assets/misc/tetom.gif">
+                </div>
+
+                <!-- HIGHLIGHTED PROJECTS -->
+                <div class="box">
+                    <h2>HIGHLIGHTED PROJECTS</h2>
+                    <p>for all projects see my <a target="_blank" rel="nofollow" href="https://github.com/Pufikas">GitHub</a></p><br>
+
+                    <div>
+                        <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/Weather">
+                            * Weather
+                        </a><br>
+                        A simple app using weather api
+                    </div>
+                    <br>
+                    <div>
+                        <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/pokedex">
+                            * pokedex
+                        </a><br>
+                        Pokemon pokedex using vuejs framework
+                    </div>
+                </div>               
+            </div>
+            
+            <!-- MAIN CREDITS -->
+            <div data-panel="credits" id="main-panel" class="hidden">
+                <div id="main" class="box">
+                    <h2>CREDITS</h2>
+                    <ul>
+                        <li>
+                            <a target="_blank" rel="nofollow" href="https://ka3l.tumblr.com/post/661014493592240128/happy-birthday-miku">kael</a>
+                            for miku emojis
+                        <li>
+                            <a target="_blank" rel="nofollow" href="https://iconify.design/">iconify</a>
+                            for icons
+                        </li>
+                        <li>
+                            <a target="_blank" rel="nofollow" href="http://www.rw-designer.com/cursor-set/hatsune-miku-pack">Darunic2A</a>
+                            for Hatsune Miku Cursor
+                        </li>
+                        <li>
+                            <a target="_blank" rel="nofollow" href="https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books">Anime Girls Holding Programming Books</a>
+                        </li>
+                        <li>
+                            <span class="highlight-blue">You</span> 
+                            for visiting
+                        </li>
+                        <li>
+                            <a target="_blank" rel="nofollow" href="https://tenor.com/view/techno-sooper-hatsune-miku-miku-vocaloid-gif-27368625">Techno25</a>
+                            for a silly minecraft miku fumo plush spinning
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- MAIN CONTACTS -->
+            <div data-panel="contacts" id="main-panel" class="hidden">
+                <div id="main" class="box">
+                    <section id="social"><h2>SOCIALS</h2></section>
+                    <section id="gaming"><h2>GAMING</h2></section>
+                    <section id="misc"><h2>MISCELLANEOUS</h2></section>
+                </div>
+            </div>
+            
+            <!-- MAIN ABOUTME -->
+            <div data-panel="aboutme" id="main-panel" class="hidden">
+                <div id="main" class="box">
+                    <img src="./assets/misc/yuki.png" class="leftImg">
                     
-                    <!-- MAIN ABOUTME -->
-                    <td data-panel="aboutme" id="main-panel" class="hidden">
-                        <div id="main" class="box">
-                            <img src="./assets/misc/yuki.png" class="leftImg">
-                            
-                            <p>Just a guy that likes coding, anime and gaming</p>
-                            <p class="main-panel-short">I program every day and I'm constantly learning something new</p>
-                            <br>
+                    <p>Just a guy that likes coding, anime and gaming</p>
+                    <p class="main-panel-short">I program every day and I'm constantly learning something new</p>
+                    <br>
 
-                            <p>Usually I play games like
-                                <a href="https://www.warframe.com/">Warframe</a>,
-                                <a href="https://osu.ppy.sh/">osu!</a>
-                                or some other random games <span class="small">(mostly steam games)</span>
-                            </p>
-                            
-                            <br>
-                            <p>Linux is best!</p>
-                            <br>
-                        </div>
-                    </td>
+                    <p>Usually I play games like
+                        <a href="https://www.warframe.com/">Warframe</a>,
+                        <a href="https://osu.ppy.sh/">osu!</a>
+                        or some other random games <span class="small">(mostly steam games)</span>
+                    </p>
+                    
+                    <br>
+                    <p>Linux is best!</p>
+                    <br>
+                </div>
+            </div>
 
-                    <!-- MAIN WEBRINGS -->
-                    <td data-panel="webrings" id="main-panel" class="hidden">
-                        <div id="main" class="box">
-                            <p>had your fun already?</p>
-                            <p>check out other websites!</p>
-                            <br>
-                            <!-- webring list -->
-                            <div class="center">
-                                <!-- no ai ring -->
-                                <map name="noaicode">
-                                    <area href="https://baccyflap.com/noai" target="_blank" shape="poly" coords="55,0,255,0,255,13,294,13,294,51,55,51" alt="no ai webring" title="no ai webring">
-                                    <area href="https://baccyflap.com/noai/?prv&s=puf" target="_top" shape="poly" coords="1,25,52,0,52,51" alt="previous" title="previous">
-                                    <area href="https://baccyflap.com/noai/?rnd" target="_top" shape="rect" coords="258,1,294,10" alt="random" title="random">
-                                    <area href="https://baccyflap.com/noai/?nxt&s=puf" target="_top" shape="poly" coords="349,25,297,0,297,51" alt="next" title="next">
-                                </map>
-                                <img usemap="#noaicode" src="./assets/webring/codewidget-d.gif" alt="a long dark bar with a background of blurry Python code, with the text AI? AIN'T INTERESTED! / THE NO AI WEBRING over it. In the top right corner is a button labeled RANDOM and to either side of the bar are rectangles labeled PREV and NEXT">
-                                <!-- vocaring -->
-                                <div id="vocaring" class="medium"></div>
-                                    <link rel="stylesheet" href="https://electric-tenshi.nekoweb.org/vocaring/vocaring.css">
-                                    <script src="https://electric-tenshi.nekoweb.org/vocaring/vocaring-variables.js"></script>
-                                    <script src="https://electric-tenshi.nekoweb.org/vocaring/vocaring-widget.js"></script>
-                            
-                                <!--  -->
-                            </div>
-                        </div>
-                    </td>
+            <!-- MAIN WEBRINGS -->
+            <div data-panel="webrings" id="main-panel" class="hidden">
+                <div id="main" class="box">
+                    <p>had your fun already?</p>
+                    <p>check out other websites!</p>
+                    <br>
+                    <!-- webring list -->
+                    <div class="center">
+                        <!-- no ai ring -->
+                        <map name="noaicode">
+                            <area href="https://baccyflap.com/noai" target="_blank" shape="poly" coords="55,0,255,0,255,13,294,13,294,51,55,51" alt="no ai webring" title="no ai webring">
+                            <area href="https://baccyflap.com/noai/?prv&s=puf" target="_top" shape="poly" coords="1,25,52,0,52,51" alt="previous" title="previous">
+                            <area href="https://baccyflap.com/noai/?rnd" target="_top" shape="rect" coords="258,1,294,10" alt="random" title="random">
+                            <area href="https://baccyflap.com/noai/?nxt&s=puf" target="_top" shape="poly" coords="349,25,297,0,297,51" alt="next" title="next">
+                        </map>
+                        <img usemap="#noaicode" src="./assets/webring/codewidget-d.gif" alt="a long dark bar with a background of blurry Python code, with the text AI? AIN'T INTERESTED! / THE NO AI WEBRING over it. In the top right corner is a button labeled RANDOM and to either side of the bar are rectangles labeled PREV and NEXT">
+                        <!-- vocaring -->
+                        <div id="vocaring" class="medium"></div>
+                            <link rel="stylesheet" href="https://electric-tenshi.nekoweb.org/vocaring/vocaring.css">
+                            <script src="https://electric-tenshi.nekoweb.org/vocaring/vocaring-variables.js"></script>
+                            <script src="https://electric-tenshi.nekoweb.org/vocaring/vocaring-widget.js"></script>
+                    
+                        <!--  -->
+                    </div>
+                </div>
+            </div>
 
-                    <!-- SIDE PANEL RIGHT -->
-                    <td id="menu-panel">
-                        <div class="mikus-nav">
-                            <img src="./assets/misc/miku_hello.png" class="emoji">
-                            <img src="./assets/misc/miku_love.png" class="emoji">
-                            <img src="./assets/misc/miku_smirk.png" class="emoji">
-                            <img src="./assets/misc/miku_comfy.png" class="emoji">
-                        </div>
-                         
-                        <!-- NAVIGATION -->
-                         <div id="nav-panel" class="box">
-                            <h2 class="center">NAVIGATION</h2>
-                            <ul class="center">
-                                <li><span class="navlink highlight" data-id="home">home</span></li>
-                                <li><span class="navlink" data-id="aboutme">about me</span></li>
-                                <li><span class="navlink" data-id="contacts">contacts</span></li>
-                                <li><span class="navlink" data-id="credits">credits</span></li>
-                                <li><span class="navlink" data-id="webrings">webrings</span></li>
-                            </ul>    
-                        </div>
+            <!-- SIDE PANEL RIGHT -->
+            <div id="menu-panel">
+                <div class="mikus-nav">
+                    <img src="./assets/misc/miku_hello.png" class="emoji">
+                    <img src="./assets/misc/miku_love.png" class="emoji">
+                    <img src="./assets/misc/miku_smirk.png" class="emoji">
+                    <img src="./assets/misc/miku_comfy.png" class="emoji">
+                </div>
+                    
+                <!-- NAVIGATION -->
+                    <div id="nav-panel" class="box">
+                    <h2 class="center">NAVIGATION</h2>
+                    <ul class="center">
+                        <li><span class="navlink highlight" data-id="home">home</span></li>
+                        <li><span class="navlink" data-id="aboutme">about me</span></li>
+                        <li><span class="navlink" data-id="contacts">contacts</span></li>
+                        <li><span class="navlink" data-id="credits">credits</span></li>
+                        <li><span class="navlink" data-id="webrings">webrings</span></li>
+                    </ul>    
+                </div>
 
-                        <div class="box">
-                            <img src="./assets/misc/techno-sooper.gif" class="width80">
-                        </div>
+                <div class="box">
+                    <img src="./assets/misc/techno-sooper.gif" class="width80">
+                </div>
 
-                        <!-- COOL SITES LIST -->
-                        <div id="cool-sites-panel" class="box center">
-                            <h2>COOL SITES</h2>
-                            
-                            <!-- list of buttons -->
-                            <div class="column2" id="buttonList"></div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="footer">
-        <div class="box">
-            <p class="smaller">built by <a href="https://github.com/Pufikas" target="_blank">pufikas</a>, powered by <a href="https://nekoweb.org/" target="_blank">nekoweb</a></p>
-            <div class="smaller">
-                <p>created <span class="highlight">2025-08-14</span> 
-                    updated <span class="highlight-blue">2025-09-29</span></p>
+                <!-- COOL SITES LIST -->
+                <div id="cool-sites-panel" class="box center">
+                    <h2>COOL SITES</h2>
+                    
+                    <!-- list of buttons -->
+                    <div class="column2" id="buttonList"></div>
+                </div>
+                
+                <!-- "FOOTER" WEBSITE DETAILS -->
+                <div class="footer box smaller">
+                    <div class="fleft">
+                        <p>website built by <a class="highlight-blue" href="https://github.com/Pufikas" target="_blank">pufikas</a></p>
+                        <p>powered by real <a class="highlight-blue" href="https://nekoweb.org/" target="_blank">nekoweb</a></p>
+                    </div>
+                        
+                    <div class="fright">
+                        <p>created <a class="highlight-blue" href="https://github.com/Pufikas/pufikas-website/tree/17e962afa4ce485f8749157909b061ddca8724e8">2025-08-14</a></p>
+                        <p>updated <a class="highlight" id="lastupdate" href="https://github.com/Pufikas/pufikas-website"></a></p>
+                        <p id="lastupdate-message"></p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        
+        
 
     <div id="footer">
-        <img src="./assets/misc/miku2.png">
+         <img src="./assets/misc/miku2.png" class="footer-img">
     </div>
 
     <script src="src/scripts/onload.js" defer></script>
