@@ -282,11 +282,12 @@ a:hover {
 }
 
 .mikus-nav {
-    position: absolute; 
-    margin-top: -24px; 
+    display: flex;
+    justify-content: center;
+    margin-top: -24px;
+    gap: 4px;
     font-size: 10px; 
-    opacity: 40%; 
-    margin-left: 50px;
+    opacity: 40%;
 }
 
 ul {
