@@ -3,6 +3,8 @@ const options = document.querySelectorAll(".option-check");
 const cursor = document.querySelector(".cursor");
 let timeout;
 
+let particleChance = 0.2;
+let particleSize = 16;
 let timeRes = document.getElementById("time");
 let timeBeen = document.getElementById("timeBeen");
 let hh = mm = ss = 0;
@@ -77,18 +79,12 @@ function copyMyButton() {
     alert("html copied!")
 }
 
-document.addEventListener("mousemove", (e) => {
-    if (Math.random() < 0.2 && cursorParticles) {
-        spawnParticle(e.pageX, e.pageY);
-    }
-})
-
 function spawnParticle(x, y) {
     let part = document.createElement("div"); 
     const drift = (Math.random() * 98 - 50) + "px";
-    const size = Math.random() * 4 + 16;
+    const size = Math.random() * 4 + particleSize;
     const dur = Math.random() * 1 + 3;
-
+    
     part.style.setProperty("--drift", drift);
     part.style.width = size + "px";
     part.style.height = size + "px";
@@ -100,11 +96,17 @@ function spawnParticle(x, y) {
     console.log(part.style.top)
     part.classList.add("particle");
     document.body.appendChild(part);
-
+    
     part.addEventListener("animationend", () => {
         part.remove();
     })
 }
+
+document.addEventListener("mousemove", (e) => {
+    if (Math.random() < particleChance && cursorParticles) {
+        spawnParticle(e.pageX, e.pageY);
+    }
+});
 
 navLinks.forEach((link) => {
     link.addEventListener("click", () => showPanel(link));
@@ -115,5 +117,6 @@ options.forEach((option) => {
 });
 
 document.getElementById("copyButtonCode").addEventListener("click", () => copyMyButton());
+document.getElementById("love").addEventListener("click", () => { particleChance += 0.1; particleSize += 2; });
 
 setInterval(update, 1000);

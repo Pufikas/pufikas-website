@@ -380,8 +380,7 @@ ul {
 }
 
 .leftImg {
-    max-width: 25%;
-    max-height: 15%;
+    width: 100px;
     float: left;
     padding: 6px;
 }
