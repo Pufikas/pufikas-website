@@ -1,0 +1,19 @@
+body {
+    background-color: #09111e;
+    color: #bec8d1;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #86cecb;
+}
+
+img {
+    padding-top: 20px;
+    width: 400px;
+    height: 600px;
+}
