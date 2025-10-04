@@ -2,6 +2,7 @@ const navLinks = document.querySelectorAll(".navlink");
 const options = document.querySelectorAll(".option-check");
 const cursor = document.querySelector(".cursor");
 let timeout;
+let mouseOverBtns = false;
 
 let particleChance = 0.2;
 let particleSize = 16;
@@ -93,7 +94,6 @@ function spawnParticle(x, y) {
     part.style.left = x + "px";
     part.style.top = y + "px";
     
-    console.log(part.style.top)
     part.classList.add("particle");
     document.body.appendChild(part);
     
@@ -101,6 +101,18 @@ function spawnParticle(x, y) {
         part.remove();
     })
 }
+
+function autoPageLoop() {
+    if (!mouseOverBtns) {
+        currPage = currPage < totalPages ? currPage + 1 : 1;
+        renderPageButtons();
+    }
+
+    setTimeout(autoPageLoop, 3000);
+}
+
+document.getElementById('cool-sites-panel').addEventListener("mouseenter", () => { mouseOverBtns = true; })
+document.getElementById('cool-sites-panel').addEventListener("mouseleave", () => { mouseOverBtns = false; })
 
 document.addEventListener("mousemove", (e) => {
     if (Math.random() < particleChance && cursorParticles) {
@@ -119,4 +131,23 @@ options.forEach((option) => {
 document.getElementById("copyButtonCode").addEventListener("click", () => copyMyButton());
 document.getElementById("love").addEventListener("click", () => { particleChance += 0.1; particleSize += 2; });
 
+document.getElementById('prevBtn').onclick = () => {
+    if (currPage > 1) {
+        currPage--;
+    } else {
+        currPage = totalPages;
+    }
+    renderPageButtons();
+};
+
+document.getElementById('nextBtn').onclick = () => {
+    if (currPage < totalPages) {
+        currPage++;
+    } else {
+        currPage = 1;
+    }
+    renderPageButtons();
+};
+
 setInterval(update, 1000);
+autoPageLoop();

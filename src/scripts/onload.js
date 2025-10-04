@@ -16,6 +16,7 @@
 
 let buttonList = document.getElementById("buttonList");
 let buttons = [];
+const pageCache = {};
 let contacts = [];
 let bootText = [
     `[  !!  ] == CLICK ANYWHERE TO SKIP THIS ==
@@ -47,6 +48,10 @@ let bootText = [
     "[  EE  ] Incorrect password, booting as guest",
 ];
 
+let currPage = 1;
+let totalPages = 0;
+const itemsPerPage = 6; // 2 cols and 3 each col
+
 fetch("src/data/data.json")
     .then(res => res.json())
     .then(data => {
@@ -66,24 +71,57 @@ fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/main")
 
 async function loadStuff() {
     initLoadEffect();
-    initButtons();
+    // initButtons();
+    renderPageButtons()
     Object.entries(contacts).forEach(([section, sectionContacts]) => {
         initContacts(section, sectionContacts);
     });
 };
 
-function initButtons() {
-    let html = '';
+// function initButtons() {
+//     let html = '';
 
-    buttons.forEach(e => {
-        html += ` 
-        <a target="_blank" rel="nofollow noopener noreferrer" href="https://${e.href}">
-            <img src="./assets/buttons/${e.img}"/>
-        </a>`;
-    });
+//     buttons.forEach(e => {
+//         html += ` 
+//         <a target="_blank" rel="nofollow noopener noreferrer" href="https://${e.href}">
+//             <img src="./assets/buttons/${e.img}"/>
+//         </a>`;
+//     });
+//     buttonList.innerHTML = html;
+//     renderPage();
+// };
+
+function renderPageButtons() {
+    const start = (currPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const btns = buttons.slice(start, end);
+    totalPages = Math.ceil(buttons.length / itemsPerPage);
+
+    // cache buttons
+    if (!pageCache[currPage]) {
+        const html = btns.map(e => `
+            <a target="_blank" rel="nofollow noopener noreferrer" href="https://${e.href}">
+                <img src="./assets/buttons/${e.img}" />
+            </a>`
+        ).join('');
+
+        pageCache[currPage] = html;
+    }
+
+    buttonList.classList.add('slide-out-left');
+
+    // animations when changing button page
+    setTimeout(() => {
+        buttonList.innerHTML = pageCache[currPage];
+
+        buttonList.classList.remove('slide-out-left');
+        buttonList.classList.add('slide-in-right');
+
+        setTimeout(() => buttonList.classList.remove('slide-in-right'), 300);
+    }, 400)
     
-    buttonList.innerHTML = html;
-};
+    document.getElementById('pageIndicator').textContent = `${currPage} / ${totalPages}`;
+}
 
 function createContact(e) {
     const a = document.createElement("a");
@@ -178,3 +216,4 @@ function initLoadEffect() {
         }, 620)
     })
 }
+
