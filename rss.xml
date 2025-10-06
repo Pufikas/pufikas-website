@@ -1,0 +1,15 @@
+<rss version="2.0">
+    <channel>
+        <title>posts from pufikas</title>
+        <description>my real posts</description>
+        <link>https://pufikas.nekoweb.org/</link>
+        
+        <item>
+            <title>First Post and Follow!</title>
+            <description>Yes that's right, first follow and post? Wow that's wild! Thank you for the follow vanillamilkshake!</description>
+            <link>https://pufikas.nekoweb.org/</link>
+            <guid>post-1</guid>
+            <pubDate>Sun, 05 Oct 2025 09:58:10 +0300</pubDate>
+        </item>
+    </channel>
+</rss>
