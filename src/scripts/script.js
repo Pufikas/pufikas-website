@@ -108,7 +108,7 @@ function autoPageLoop() {
         renderPageButtons();
     }
 
-    setTimeout(autoPageLoop, 3000);
+    setTimeout(autoPageLoop, 5000);
 }
 
 document.getElementById('cool-sites-panel').addEventListener("mouseenter", () => { mouseOverBtns = true; })

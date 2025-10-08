@@ -15,6 +15,7 @@
 */
 
 let buttonList = document.getElementById("buttonList");
+let songs = [];
 let buttons = [];
 const pageCache = {};
 let contacts = [];
@@ -57,9 +58,10 @@ fetch("src/data/data.json")
     .then(data => {
         buttons = data.buttons;
         contacts = data.contacts;
+        songs = data.songs;
         loadStuff();
     })
-    .catch(err => console.error("no songs loaded", err));
+    .catch(err => console.error("fetch failed: ", err));
 
 fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/main")
     .then(res => res.json())
@@ -71,25 +73,46 @@ fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/main")
 
 async function loadStuff() {
     initLoadEffect();
-    // initButtons();
-    renderPageButtons()
+    renderPageButtons();
+    loadSongEventListeners();
+
     Object.entries(contacts).forEach(([section, sectionContacts]) => {
         initContacts(section, sectionContacts);
     });
 };
 
-// function initButtons() {
-//     let html = '';
+function loadSongEventListeners() {
+    audio.volume = 0.2;
+    volumeLine.style.width = "20%";
 
-//     buttons.forEach(e => {
-//         html += ` 
-//         <a target="_blank" rel="nofollow noopener noreferrer" href="https://${e.href}">
-//             <img src="./assets/buttons/${e.img}"/>
-//         </a>`;
-//     });
-//     buttonList.innerHTML = html;
-//     renderPage();
-// };
+    audio.src = `${musicPath}${songs[0].song}`;
+    audioCover.src = `${musicPath}${songs[0].cover}`;
+    audioTitle.textContent = `${musicPath}${songs[0].title}`;
+    audioAuthor.textContent = `${musicPath}${songs[0].author}`;
+    
+    audio.addEventListener("loadedmetadata", () => {
+        document.getElementById("audio-total").textContent = formatTime(audio.duration);
+        document.getElementById("audio-title").textContent = songs[counter].title;
+        document.getElementById("audio-author").textContent = songs[counter].author;
+    });
+    
+    audio.addEventListener("timeupdate", () => {
+        document.getElementById("audio-duration").textContent = formatTime(audio.currentTime);
+        const progress = (audio.currentTime / audio.duration) * 100;
+        line.style.width = `${progress}%`;
+    
+        if (line.style.width == "100%") {
+            audioPlay.innerText = "▶";
+            audio.pause();
+        }
+    });
+    
+    audioVolume.addEventListener("click", changeVolume);
+    audioPlay.addEventListener("click", playAudio);
+    audioProgress.addEventListener("click", seekIntoMusic.bind(this));
+    document.getElementById("audio-play-next").addEventListener("click", () => audioPlayNext(1));
+    document.getElementById("audio-play-previous").addEventListener("click", () => audioPlayNext(-1));
+}
 
 function renderPageButtons() {
     const start = (currPage - 1) * itemsPerPage;
