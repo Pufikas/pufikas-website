@@ -106,6 +106,12 @@
     },
     "songs": [
         {
+            "author": "かいりき ベア feat. 初音ミク",
+            "cover": "saiai_runner.jpg",
+            "song": "saiai_runner.mp3",
+            "title": " 最愛 人生 ランナー"
+        },
+        {
             "author": "Aiobahn",
             "cover": "internet_overdose.jpg",
             "song": "Angel_boring.mp3",
