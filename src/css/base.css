@@ -43,7 +43,7 @@ body {
 }
   
 /* mobile support */
-@media screen and (max-width: 600px), screen and (max-height: 600px) {
+@media screen and (max-width: 500px) {
   .splash {
     font-size: 8px;
   }
@@ -52,11 +52,20 @@ body {
     display: none;
   }
 
-  .mikus-nav {
-    display: none;
+  #menu-panel {
+    flex: 1 1 100% !important;
+    display: flex;
+    flex-direction: column;
   }
 
-  .column2 { 
-     column-gap: 40px;
+  #main-panel {
+    flex: 1 1 100% !important;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+
+  .box:has(.width100) {
+    display: none;
   }
 }

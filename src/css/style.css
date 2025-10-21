@@ -162,7 +162,6 @@ button:hover {
     flex-flow: row wrap;
     flex-direction: row;
     justify-content: center;
-    width: 1200px;
     margin: 0 auto;
 }
 
@@ -170,7 +169,7 @@ button:hover {
 #menu-panel {
     display: flex;
     flex-direction: column;
-    flex: 0 0 250px;
+    flex: 0 0 13%;
 }
 
 /* middle panel */
@@ -178,6 +177,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     flex: 1;
+    flex: 0 1 40%;
 }
 
 .footer {
