@@ -17,6 +17,7 @@
 let buttonList = document.getElementById("buttonList");
 let songs = [];
 let buttons = [];
+let blogs = [];
 const pageCache = {};
 let contacts = [];
 let bootText = [
@@ -53,6 +54,22 @@ let currPage = 1;
 let totalPages = 0;
 const itemsPerPage = 6; // 2 cols and 3 each col
 
+fetch("./rss.xml")
+    .then(res => res.text())
+    .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+    .then(data => {
+        const items = data.querySelectorAll("item");
+        const blogs = Array.from(items).map(item => ({
+            title: item.querySelector("title")?.textContent,
+            description: item.querySelector("description")?.textContent,
+            guid: item.querySelector("guid")?.textContent,
+            pubDate: item.querySelector("pubDate")?.textContent,
+        }));
+        loadBlogs(blogs)
+    })
+    .catch(err => console.error("fetch failed for blogs (rss)", err));
+
+
 fetch("src/data/data.json")
     .then(res => res.json())
     .then(data => {
@@ -75,11 +92,12 @@ async function loadStuff() {
     initLoadEffect();
     renderPageButtons();
     loadSongEventListeners();
-
+    
     Object.entries(contacts).forEach(([section, sectionContacts]) => {
         initContacts(section, sectionContacts);
     });
 };
+
 
 function loadSongEventListeners() {
     audio.volume = 0.2;
@@ -112,6 +130,34 @@ function loadSongEventListeners() {
     audioProgress.addEventListener("click", seekIntoMusic.bind(this));
     document.getElementById("audio-play-next").addEventListener("click", () => audioPlayNext(1));
     document.getElementById("audio-play-previous").addEventListener("click", () => audioPlayNext(-1));
+}
+
+function loadBlogs(blogs) {
+    let container = document.getElementById("blog-main");
+    document.getElementById("blogCount").innerText = blogs.length;
+
+    for (let i = 0; i < blogs.length; i++) {
+        const blogDetails = document.createElement("div");
+            blogDetails.className = "bDate blogDetails";
+
+        const h2 = document.createElement("h2");
+            h2.innerText = blogs[i].title;
+        
+        const desc = document.createElement("p");
+            desc.innerText = blogs[i].description
+
+        const bDate = document.createElement("span");
+            bDate.innerText = new Date(blogs[i].pubDate).toLocaleString();
+        
+        const bId = document.createElement("span");
+            bId.innerText = blogs[i].guid;
+
+        blogDetails.appendChild(bDate);
+        blogDetails.appendChild(bId);
+        container.appendChild(h2);
+        container.appendChild(desc);
+        container.appendChild(blogDetails);
+    }
 }
 
 function renderPageButtons() {
