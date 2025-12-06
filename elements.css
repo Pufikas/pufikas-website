@@ -20,7 +20,8 @@
 
 /* Style for your 'Follow on Nekoweb' button (<iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28"></iframe>) */
 .follow {
-  color: #0ef0f0;
+  background: linear-gradient(#ffffff, #1c6e72);
+  color: #e12885;
 }
 
 /* Style for your post box (must start with ".post-box") */
