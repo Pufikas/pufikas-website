@@ -1,6 +1,7 @@
 const navLinks = document.querySelectorAll(".navlink");
 const options = document.querySelectorAll(".option-check");
 const cursor = document.querySelector(".cursor");
+const blogs = document.querySelectorAll(".blog-container")
 let timeout;
 let mouseOverBtns = false;
 
@@ -127,6 +128,11 @@ navLinks.forEach((link) => {
 options.forEach((option) => {
     option.addEventListener("click", () => disableOption(option.dataset.option));
 });
+
+// to implement
+// blogs.forEach((blog) => {
+//     blog.addEventListener("click", () => expandBlog)
+// })
 
 document.getElementById("copyButtonCode").addEventListener("click", () => copyMyButton());
 document.getElementById("love").addEventListener("click", () => { particleChance += 0.1; particleSize += 2; });

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "post-1",
+    "file": "1.html",
+    "tags": "fun",
+    "title": "Creating Blogs",
+    "intro": "Find out how I created this simple blog posting method",
+    "date": "2025-10-05T09:58:10"
+  },
+  {
+    "id": "post-2",
+    "file": "2.html",
+    "tags": "dev, code",
+    "title": "Do you use VIM as your daily IDE?",
+    "intro": "Recently I tried nvim which is just nicer vim",
+    "date": "2025-10-12T5:58:42"
+  }
+]

@@ -54,20 +54,12 @@ let currPage = 1;
 let totalPages = 0;
 const itemsPerPage = 6; // 2 cols and 3 each col
 
-fetch("./rss.xml")
-    .then(res => res.text())
-    .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+fetch("src/blogs/list.json")
+    .then(res => res.json())
     .then(data => {
-        const items = data.querySelectorAll("item");
-        const blogs = Array.from(items).map(item => ({
-            title: item.querySelector("title")?.textContent,
-            description: item.querySelector("description")?.textContent,
-            guid: item.querySelector("guid")?.textContent,
-            pubDate: item.querySelector("pubDate")?.textContent,
-        }));
-        loadBlogs(blogs)
-    })
-    .catch(err => console.error("fetch failed for blogs (rss)", err));
+        loadBlogs(data);
+       
+    }).catch(err => console.error("fetch failed for blogs", err));
 
 
 fetch("src/data/data.json")
@@ -133,30 +125,55 @@ function loadSongEventListeners() {
 }
 
 function loadBlogs(blogs) {
-    let container = document.getElementById("blog-main");
-    document.getElementById("blogCount").innerText = blogs.length;
+    let container = document.getElementById("blog-container");
+    //document.getElementById("blogCount").innerText = blogs.length;
 
     for (let i = 0; i < blogs.length; i++) {
-        const blogDetails = document.createElement("div");
-            blogDetails.className = "bDate blogDetails";
+        const bCard = document.createElement("div");
+            bCard.className = "box blogCard";
 
-        const h2 = document.createElement("h2");
-            h2.innerText = blogs[i].title;
+        const bDetails = document.createElement("div");
+            bDetails.className = "bDate blogDetails";
+
+        const bTitle = document.createElement("h2");
+            bTitle.innerText = blogs[i].title;
+            bTitle.className = "blogTitle"
         
-        const desc = document.createElement("p");
-            desc.innerText = blogs[i].description
+        const bTags = document.createElement("span");
+            bTags.className = "blogTags"
+
+        const bIntro = document.createElement("p");
+            bIntro.innerText = blogs[i].intro
+
+        const bArticle = document.createElement("div");
 
         const bDate = document.createElement("span");
-            bDate.innerText = new Date(blogs[i].pubDate).toLocaleString();
+            bDate.innerText = new Date(blogs[i].date).toLocaleString();
         
         const bId = document.createElement("span");
-            bId.innerText = blogs[i].guid;
+            bId.innerText = blogs[i].id;
 
-        blogDetails.appendChild(bDate);
-        blogDetails.appendChild(bId);
-        container.appendChild(h2);
-        container.appendChild(desc);
-        container.appendChild(blogDetails);
+        bCard.appendChild(bDetails);
+        bCard.appendChild(bTitle);
+        bCard.appendChild(bTags);
+        bCard.appendChild(bIntro);
+        bCard.appendChild(bArticle);
+
+        bDetails.appendChild(bDate);
+        bDetails.appendChild(bId);
+        
+        bCard.appendChild(bDetails)
+        // bCard.addEventListener("click", () => {
+        //     fetch("/src/blogs/" + blogs[i].file)
+        //         .then(res => res.text())
+        //         .then(res => bArticle.innerHTML = res)
+
+                
+        //     bArticle.classList.toggle("hidden");
+        //     bIntro.classList.toggle("visible");
+        // })
+        container.append(bCard);
+        console.log("container", container)
     }
 }
 

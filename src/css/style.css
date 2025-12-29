@@ -508,3 +508,15 @@ ul {
     justify-content: space-between;
     margin: 2px;
 }
+
+.blogMeta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    opacity: 0.6;
+    color: var(--m-pink);
+    font-style: italic;
+    gap: 0.8rem;
+    font-size: 0.85em;
+    opacity: 0.7;
+}
