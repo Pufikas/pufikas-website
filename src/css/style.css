@@ -520,3 +520,33 @@ ul {
     font-size: 0.85em;
     opacity: 0.7;
 }
+
+.blogToggle {
+    width: 100%;
+}
+
+.blogArticle {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.6s ease,
+        opacity 0.4s ease 0.1s;
+}
+
+.blogIntro {
+    opacity: 1;
+    font-style: italic;
+    transition: opacity 0.2s ease;
+}
+
+.blogCard.expanded .blogArticle {
+    max-height: 2000px;
+    opacity: 1;
+}
+
+.blogCard.expanded .blogIntro {
+    opacity: 0.3;
+    pointer-events: none;
+}
+

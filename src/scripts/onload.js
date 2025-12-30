@@ -144,8 +144,10 @@ function loadBlogs(blogs) {
 
         const bIntro = document.createElement("p");
             bIntro.innerText = blogs[i].intro
+            bIntro.className = "blogIntro"
 
         const bArticle = document.createElement("div");
+            bArticle.className = "blogArticle"
 
         const bDate = document.createElement("span");
             bDate.innerText = new Date(blogs[i].date).toLocaleString();
@@ -153,28 +155,31 @@ function loadBlogs(blogs) {
         const bId = document.createElement("span");
             bId.innerText = blogs[i].id;
 
+        const bArrow = document.createElement("button");
+            bArrow.innerText = "▶ ▶ ▶"
+            bArrow.className = "blogToggle center"
+        
         bCard.appendChild(bDetails);
         bCard.appendChild(bTitle);
         bCard.appendChild(bTags);
         bCard.appendChild(bIntro);
         bCard.appendChild(bArticle);
+        bCard.appendChild(bArrow);
+
+        bCard.dataset.blogId = blogs[i].id;
+        bCard.dataset.blogFile = blogs[i].file;
+
 
         bDetails.appendChild(bDate);
         bDetails.appendChild(bId);
-        
-        bCard.appendChild(bDetails)
-        // bCard.addEventListener("click", () => {
-        //     fetch("/src/blogs/" + blogs[i].file)
-        //         .then(res => res.text())
-        //         .then(res => bArticle.innerHTML = res)
 
-                
-        //     bArticle.classList.toggle("hidden");
-        //     bIntro.classList.toggle("visible");
-        // })
+
+        bArrow.addEventListener("click", expandBlog);
+
         container.append(bCard);
         console.log("container", container)
     }
+    console.log(blogs)
 }
 
 function renderPageButtons() {

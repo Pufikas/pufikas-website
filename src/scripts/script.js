@@ -1,7 +1,7 @@
 const navLinks = document.querySelectorAll(".navlink");
 const options = document.querySelectorAll(".option-check");
 const cursor = document.querySelector(".cursor");
-const blogs = document.querySelectorAll(".blog-container")
+let blogCard = document.querySelectorAll("div.box.blogCard")
 let timeout;
 let mouseOverBtns = false;
 
@@ -112,6 +112,36 @@ function autoPageLoop() {
     setTimeout(autoPageLoop, 5000);
 }
 
+function expandBlog(e) {
+    // console.log("e", e)
+    e.stopPropagation();
+
+    const card = e.currentTarget.closest(".blogCard");
+    const article = card.querySelector(".blogArticle");
+    const arrow = e.currentTarget;
+    const expanded = card.classList.toggle("expanded");
+
+    document.querySelectorAll(".blogCard.expanded")
+    .forEach(c => {
+        if (c !== card) {
+            c.classList.remove("expanded");
+            c.querySelector(".blogToggle").textContent = "▶ ▶ ▶";
+        }
+    });
+
+    arrow.textContent = expanded ? "▼ ▼ ▼" : "▶ ▶ ▶";
+
+    if (expanded && !article.dataset.loaded) {
+        fetch("/src/blogs/" + card.dataset.blogFile)
+            .then(res => res.text())
+            .then(html => {
+                article.innerHTML = html;
+                article.dataset.loaded = "true";
+                card.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+    }
+}
+
 document.getElementById('cool-sites-panel').addEventListener("mouseenter", () => { mouseOverBtns = true; })
 document.getElementById('cool-sites-panel').addEventListener("mouseleave", () => { mouseOverBtns = false; })
 
@@ -128,11 +158,6 @@ navLinks.forEach((link) => {
 options.forEach((option) => {
     option.addEventListener("click", () => disableOption(option.dataset.option));
 });
-
-// to implement
-// blogs.forEach((blog) => {
-//     blog.addEventListener("click", () => expandBlog)
-// })
 
 document.getElementById("copyButtonCode").addEventListener("click", () => copyMyButton());
 document.getElementById("love").addEventListener("click", () => { particleChance += 0.1; particleSize += 2; });
