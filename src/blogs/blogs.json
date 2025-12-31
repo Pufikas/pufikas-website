@@ -6,5 +6,13 @@
     "title": "First Post and Follow!",
     "intro": "The Beginning",
     "date": "2025-10-05T09:58:10"
+  },
+  {
+    "id": "post-2",
+    "file": "2.html",
+    "tags": "fun",
+    "title": "Happy new year!",
+    "intro": "Celebrating new year! And some website stats!",
+    "date": "2025-12-31T23:55:55"
   }
 ]
