@@ -1,23 +1,17 @@
-<rss version="2.0">
-    <channel>
-        <title>posts from pufikas</title>
-        <description>my real posts</description>
-        <link>https://pufikas.nekoweb.org/</link>
-        
+<?xml version="1.0" encoding="UTF-8"?>
+    <rss version="2.0">
+        <channel>
+            <title>posts from pufikas</title>
+            <description>my real posts</description>
+            <link>https://pufikas.nekoweb.org</link>
+            
         <item>
-            <title>Do you use vim/nvim as your main IDE?</title>
-            <description>Added blog section, so you can view all my posts! And recently I picked up learning nvim and I aim to use it as my main IDE (leaving from vscodium). Shortcuts are very powerful in vim, but pretty hard to remember or get used to it.</description>
-            <link>https://pufikas.nekoweb.org/</link>
-            <guid>post-2</guid>
-            <pubDate>Sat, 25 Oct 2025 00:10:59 +0300</pubDate>
+            <title><![CDATA[First Post and Follow!]]></title>
+            <description><![CDATA[The Beginning]]></description>
+            <link>https://pufikas.nekoweb.org/#post-1</link>
+            <guid>post-1</guid>
+            <pubDate>Sun, 05 Oct 2025 06:58:10 GMT</pubDate>
         </item>
 
-        <item>
-            <title>First Post and Follow!</title>
-            <description>Yes that's right, first follow and post? Wow that's wild! Thank you for the follow vanillamilkshake!</description>
-            <link>https://pufikas.nekoweb.org/</link>
-            <guid>post-1</guid>
-            <pubDate>Sun, 05 Oct 2025 09:58:10 +0300</pubDate>
-        </item>
-    </channel>
-</rss>
+        </channel>
+    </rss>

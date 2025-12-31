@@ -53,7 +53,6 @@ function disableOption(option) {
 
 function showPanel(option) {
     const panels = document.querySelectorAll("[data-panel]");
-
     panels.forEach(panel => {
         if (panel.dataset.panel === option.dataset.id) {
             panel.classList.remove("hidden");
@@ -112,34 +111,75 @@ function autoPageLoop() {
     setTimeout(autoPageLoop, 5000);
 }
 
+function parseHash() {
+    // gets url params
+    const [panel, query] = location.hash.slice(1).split("?");
+    const params = new URLSearchParams(query || "");
+    
+    return { panel, params }; 
+}
+
+function loadPageFromUrl() {
+    // loads the panel from url params
+    const { panel, params } = parseHash();
+    if (!panel) return;
+
+    const nav = document.querySelector(`.navlink[data-id="${panel}"]`);
+    if (!nav) return;
+
+    showPanel(nav);
+
+     if (panel === "blogs") {
+        const postId = params.get("post");
+        if (!postId) return;
+
+        // small delay for blogs to be rendered
+        setTimeout(() => {
+            const card = document.getElementById(postId);
+            if (card) {
+                card.querySelector(".blogToggle")?.click();
+            }
+        }, 100);
+    }
+}
+
+function closeAllBlogs() {
+    document.querySelectorAll(".blogCard")
+        .forEach(c => {
+            c.classList.remove("expanded");
+            c.querySelector(".blogToggle").textContent = "▶ ▶ ▶"; 
+        });
+}
+
 function expandBlog(e) {
-    // console.log("e", e)
     e.stopPropagation();
 
     const card = e.currentTarget.closest(".blogCard");
     const article = card.querySelector(".blogArticle");
     const arrow = e.currentTarget;
     const expanded = card.classList.toggle("expanded");
-
+    
+    // this keeps only single blog loaded
     document.querySelectorAll(".blogCard.expanded")
-    .forEach(c => {
-        if (c !== card) {
-            c.classList.remove("expanded");
-            c.querySelector(".blogToggle").textContent = "▶ ▶ ▶";
-        }
-    });
-
+        .forEach(c => {
+            if (c !== card) {
+                c.classList.remove("expanded");
+                c.querySelector(".blogToggle").textContent = "▶ ▶ ▶";
+            }
+        });
+    
     arrow.textContent = expanded ? "▼ ▼ ▼" : "▶ ▶ ▶";
-
+    
     if (expanded && !article.dataset.loaded) {
         fetch("/src/blogs/" + card.dataset.blogFile)
-            .then(res => res.text())
-            .then(html => {
-                article.innerHTML = html;
-                article.dataset.loaded = "true";
-                card.scrollIntoView({ behavior: "smooth", block: "start" });
-            });
+        .then(res => res.text())
+        .then(html => {
+            article.innerHTML = html;
+            article.dataset.loaded = "true";
+            card.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
     }
+    location.hash = `blogs?post=${card.dataset.blogId}`;
 }
 
 document.getElementById('cool-sites-panel').addEventListener("mouseenter", () => { mouseOverBtns = true; })
@@ -152,11 +192,21 @@ document.addEventListener("mousemove", (e) => {
 });
 
 navLinks.forEach((link) => {
-    link.addEventListener("click", () => showPanel(link));
+    link.addEventListener("click", () => {
+        location.hash = link.dataset.id;
+        // temp fix for closing all blogs when navigating out of blogs
+        if (!location.hash.startsWith("#blogs")) closeAllBlogs();
+        showPanel(link);
+    });
 });
 
 options.forEach((option) => {
     option.addEventListener("click", () => disableOption(option.dataset.option));
+});
+
+window.addEventListener("hashchange", () => {
+    if (location.hash.startsWith("#blogs")) return;
+    loadPageFromUrl();
 });
 
 document.getElementById("copyButtonCode").addEventListener("click", () => copyMyButton());

@@ -54,7 +54,7 @@ let currPage = 1;
 let totalPages = 0;
 const itemsPerPage = 6; // 2 cols and 3 each col
 
-fetch("src/blogs/list.json")
+fetch("src/blogs/blogs.json")
     .then(res => res.json())
     .then(data => {
         loadBlogs(data);
@@ -84,12 +84,13 @@ async function loadStuff() {
     initLoadEffect();
     renderPageButtons();
     loadSongEventListeners();
-    
+    loadPageFromUrl();
+
+
     Object.entries(contacts).forEach(([section, sectionContacts]) => {
         initContacts(section, sectionContacts);
     });
 };
-
 
 function loadSongEventListeners() {
     audio.volume = 0.2;
@@ -126,14 +127,14 @@ function loadSongEventListeners() {
 
 function loadBlogs(blogs) {
     let container = document.getElementById("blog-container");
-    //document.getElementById("blogCount").innerText = blogs.length;
 
     for (let i = 0; i < blogs.length; i++) {
         const bCard = document.createElement("div");
             bCard.className = "box blogCard";
+            bCard.id = blogs[i].id;
 
         const bDetails = document.createElement("div");
-            bDetails.className = "bDate blogDetails";
+            bDetails.className = "blogDetails";
 
         const bTitle = document.createElement("h2");
             bTitle.innerText = blogs[i].title;
@@ -169,17 +170,13 @@ function loadBlogs(blogs) {
         bCard.dataset.blogId = blogs[i].id;
         bCard.dataset.blogFile = blogs[i].file;
 
-
         bDetails.appendChild(bDate);
         bDetails.appendChild(bId);
-
-
+        document.getElementById("blogCount").innerText = blogs.length;
         bArrow.addEventListener("click", expandBlog);
 
         container.append(bCard);
-        console.log("container", container)
     }
-    console.log(blogs)
 }
 
 function renderPageButtons() {
@@ -307,4 +304,3 @@ function initLoadEffect() {
         }, 620)
     })
 }
-
