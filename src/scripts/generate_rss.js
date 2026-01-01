@@ -1,6 +1,7 @@
 const fs = require("fs");
 
 const SITE_URL = "https://pufikas.nekoweb.org";
+const blogHash = "#blogs?post=";
 const blogs = JSON.parse(fs.readFileSync("../blogs/blogs.json", "utf8"));
 
 // sort newest first
@@ -15,7 +16,7 @@ let items = blogs.map(post => `
         <item>
             <title><![CDATA[${post.title}]]></title>
             <description><![CDATA[${post.intro}]]></description>
-            <link>${SITE_URL}/#${post.id}</link>
+            <link>${SITE_URL}/${blogHash}${post.id}</link>
             <guid>${post.id}</guid>
             <pubDate>${toRfc822(post.date)}</pubDate>
         </item>
