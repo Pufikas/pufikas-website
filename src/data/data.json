@@ -129,5 +129,10 @@
             "song": "ummei.mp3",
             "title": "風～運命のダークサイド"
         }
-    ]
+    ],
+    "settings": {
+        "cursor-particles": true,
+        "scanlines": true
+    }
+    
 }

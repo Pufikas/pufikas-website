@@ -18,6 +18,7 @@ let buttonList = document.getElementById("buttonList");
 let songs = [];
 let buttons = [];
 let blogs = [];
+let settings = {};
 const pageCache = {};
 let contacts = [];
 let bootText = [
@@ -68,6 +69,7 @@ fetch("src/data/data.json")
         buttons = data.buttons;
         contacts = data.contacts;
         songs = data.songs;
+        settings = data.settings;
         loadStuff();
     })
     .catch(err => console.error("fetch failed: ", err));
@@ -85,7 +87,7 @@ async function loadStuff() {
     renderPageButtons();
     loadSongEventListeners();
     loadPageFromUrl();
-
+    loadLocalStorage();
 
     Object.entries(contacts).forEach(([section, sectionContacts]) => {
         initContacts(section, sectionContacts);
@@ -303,4 +305,22 @@ function initLoadEffect() {
             splash.classList.add("hidden");
         }, 620)
     })
+}
+
+function loadLocalStorage() {
+    Object.keys(settings).forEach((key) => {
+        const stored = localStorage.getItem(key);
+        if (stored !== null) {
+            settings[key] = JSON.parse(stored);
+        } else {
+            updateLocalStorage(key);
+        }
+    });
+
+    options.forEach(opt => {
+        const key = opt.dataset.option;
+        opt.checked = settings[key];
+    });
+
+    applySettings();
 }

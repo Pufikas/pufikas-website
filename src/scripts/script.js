@@ -10,7 +10,10 @@ let particleSize = 16;
 let timeRes = document.getElementById("time");
 let timeBeen = document.getElementById("timeBeen");
 let hh = mm = ss = 0;
-let cursorParticles = true;
+
+// let cursorParticles = true;
+// let scanlines = true;
+
 
 function timer() {
     let d = new Date();
@@ -40,15 +43,12 @@ function update() {
     timeBeen.innerHTML = "running for " + ("0" + mm).slice(-2) + ":" + ("0" + ss).slice(-2);
 }
 
-function disableOption(option) {
-    switch (option) {
-        case "scanlines":
-            document.getElementById("html").classList.toggle("scanlines");
-            break;
-        case "cursor-particles":
-            cursorParticles = !cursorParticles;
-            break;
-        } 
+function updateLocalStorage(key) {
+    localStorage.setItem(key, JSON.stringify(settings[key]));
+}
+
+function applySettings() {
+    document.getElementById("html").classList.toggle("scanlines", settings["scanlines"]);
 }
 
 function showPanel(option) {
@@ -186,7 +186,7 @@ document.getElementById('cool-sites-panel').addEventListener("mouseenter", () =>
 document.getElementById('cool-sites-panel').addEventListener("mouseleave", () => { mouseOverBtns = false; })
 
 document.addEventListener("mousemove", (e) => {
-    if (Math.random() < particleChance && cursorParticles) {
+    if (Math.random() < particleChance && settings["cursor-particles"]) {
         spawnParticle(e.pageX, e.pageY);
     }
 });
@@ -200,9 +200,15 @@ navLinks.forEach((link) => {
     });
 });
 
-options.forEach((option) => {
-    option.addEventListener("click", () => disableOption(option.dataset.option));
+options.forEach((opt) => {
+    opt.addEventListener("change", () => {
+        const key = opt.dataset.option;
+        settings[key] = opt.checked;
+        updateLocalStorage(key);
+        applySettings();
+    });
 });
+
 
 window.addEventListener("hashchange", () => {
     if (location.hash.startsWith("#blogs")) return;
