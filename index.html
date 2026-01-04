@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Security-Policy"
       content="default-src 'self';
                 connect-src 'self' https://api.github.com/repos/Pufikas/pufikas-website/commits/main;
-                img-src 'self' https://electric-tenshi.nekoweb.org https://files.catbox.moe/d27rub.png;
+                img-src 'self' https://electric-tenshi.nekoweb.org https://files.catbox.moe/d27rub.png https://wakatime.com/badge/github/Pufikas/pufikas-website.svg;
                 script-src 'self' https://electric-tenshi.nekoweb.org 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE=';
                 style-src 'self' https://electric-tenshi.nekoweb.org/vocaring/vocaring.css;
                 font-src 'self' https://file.garden/Z3nf4eZzZUtRPfhK/itc-legacy-sans-std-book.ttf;
@@ -20,8 +20,7 @@
     <link rel="stylesheet" href="src/css/style.css">
 
     <canvas id="background"></canvas>
-    
-    
+
     <div class="splash">
         <h1>    WELCOME TO <span class="ww">pufikas.</span><span class="ok">nekoweb.</span><span class="fail">org</span></h1>
     </div>
@@ -59,15 +58,16 @@
                         <div id="audio-cover">
                             <img class="center auto-margin audio-cover">
                         </div>
+
                         <div id="audio-info" class="center">
                             <span id="audio-title"></span>
                             <br>
                             <span id="audio-author"></span>
                         </div>
+
                         <div id="audio-progress-container">
                             <div id="audio-progress-line"></div>
                         </div>      
-                        
                     </div>
 
                     <div id="audio-timeline">
@@ -87,7 +87,7 @@
                         <button id="audio-pause-play">▶</button>
                         <button id="audio-play-next">></button>
                     </div>
-                    </div>
+                </div>
                 <!-- OPTIONS -->
                 <div class="box">
                     <input class="option-check" type="checkbox" data-option="scanlines">
@@ -124,7 +124,7 @@
                     <p>write me something <a href="https://pufikas.atabook.org/">guestbook</a></p>
                     <p>you can find this website source code <a href="https://github.com/Pufikas/pufikas-website" target="_blank" rel="nofollow">here!</a></p>
                     <!-- todo -->
-                    <!-- <p>to stay up to date you can follow me on nekoweb if you wish so! <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="18"></iframe></p> -->
+                    <p>to stay up to date you can follow me on nekoweb if you wish so! <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="18"></iframe></p>
                 </div>
 
                 <div class="box noborder">
@@ -273,17 +273,33 @@
                 </div>
                     
                 <!-- NAVIGATION -->
-                <div id="nav-panel" class="box">
-                    <h2 class="center">NAVIGATION</h2>
-                    <ul class="center">
-                        <li><span class="navlink highlight" data-id="home">home</span></li>
-                        <li><span class="navlink" data-id="aboutme">about me</span></li>
-                        <li><span class="navlink" data-id="contacts">contacts</span></li>
-                        <li><span class="navlink" data-id="credits">credits</span></li>
-                        <li><span class="navlink" data-id="webrings">webrings</span></li>
-                        <li><span class="navlink" data-id="blogs">blogs</span></li>
-                    </ul>    
-                </div>
+                 <div id="menu-panel-2">
+                     <div id="nav-panel" class="box">
+                        <h2 class="center">NAVIGATION</h2>
+                        <ul class="center">
+                            <li><span class="navlink highlight" data-id="home">home</span></li>
+                            <li><span class="navlink" data-id="aboutme">about me</span></li>
+                            <li><span class="navlink" data-id="contacts">contacts</span></li>
+                            <li><span class="navlink" data-id="credits">credits</span></li>
+                            <li><span class="navlink" data-id="webrings">webrings</span></li>
+                            <li><span class="navlink" data-id="blogs">blogs</span></li>
+                        </ul>
+                    </div>
+
+                    <button id="theme-container-button">THEMES</button>
+                    <div id="theme-switch-container" class="box noborder">
+                        
+                        <div id="theme-inner" class="theme-inner hidden">
+                            <div class="theme-switches border">
+                                <div data-theme="miku" class="switch" id="switchMiku">H</div>
+                                <div data-theme="neru" class="switch" id="switchNeru">N</div>
+                                <div data-theme="teto" class="switch" id="switchTeto">T</div>
+                            </div>
+                        </div>
+                    </div>
+
+                 </div>
+
 
                 <div class="box">
                     <img src="./assets/misc/techno-sooper.gif" class="width80">
@@ -304,7 +320,14 @@
                 </div>
                 
                 <!-- "FOOTER" WEBSITE DETAILS -->
-                <div class="footer box smaller"> 
+                <div class="footer box smaller">
+                    <div class="footer-wakatime">
+                        <p>time spent</p>
+                        <a href="https://wakatime.com/badge/github/Pufikas/pufikas-website">
+                            <img src="https://wakatime.com/badge/github/Pufikas/pufikas-website.svg?style=social" alt="wakatime">
+                        </a>
+                    </div>
+
                     <div class="footer-top">
                         <div class="fleft">
                             <p>website built by <a class="highlight-blue" href="https://github.com/Pufikas" target="_blank">pufikas</a></p>
@@ -318,7 +341,11 @@
                     </div>
                     
                     <div class="last-update-message-container">
-                        <p id="lastupdate-message"></p>
+                        <p id="lastupdate-message" class="blogIntro"></p>
+                        <div id="lastupdate-stats">
+                            <p>additions: </span><span id="lastupdate-additions" class="ok"></p>
+                            <p>deletions: </span><span id="lastupdate-deletions" class="fail"></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -332,5 +359,6 @@
     <script src="src/scripts/onload.js" defer></script>
     <script src="src/scripts/script.js" defer></script>
     <script src="src/scripts/songs.js" defer></script>
+    <script src="src/scripts/themes.js" defer></script>
 </body>
 </html>

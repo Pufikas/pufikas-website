@@ -80,6 +80,8 @@ fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/main")
         const date = new Date(data.commit.committer.date);
         document.getElementById("lastupdate").textContent = date.toISOString().split("T")[0];
         document.getElementById("lastupdate-message").textContent = data.commit.message;
+        document.getElementById("lastupdate-additions").textContent = data.stats.additions;
+        document.getElementById("lastupdate-deletions").textContent = data.stats.deletions;
     });
 
 async function loadStuff() {

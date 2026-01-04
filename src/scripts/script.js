@@ -236,5 +236,46 @@ document.getElementById('nextBtn').onclick = () => {
     renderPageButtons();
 };
 
+// stars not used for now
+// const header = document.getElementById("star-container");
+// const rect = header.getBoundingClientRect();
+
+// const MAX_STAR_SIZE = 50;
+// const MAX_STAR_SPEED = 20;
+
+// const createStars = () => ({
+//     x: Math.random() * rect.width,
+//     y: Math.random() * rect.height,
+//     radius: Math.floor(Math.random() * MAX_STAR_SIZE),
+//     speed: Math.random() * MAX_STAR_SPEED +1
+// });
+
+// function spawnStar() {
+//     let { x, y, radius, speed } = createStars();
+//     let star = document.createElement("div"); 
+//     const drift = speed + "px";
+//     const dur = Math.random() * 1 + 3;
+
+//     star.style.setProperty("--drift", drift);
+//     star.style.width = radius + "px";
+//     star.style.height = radius + "px";
+//     star.style.animationDuration = dur + "s";
+    
+//     star.style.left = x + "px";
+//     star.style.top = y + "px";
+//     console.log(x, y)
+    
+//     star.classList.add("star");
+//     header.appendChild(star);
+    
+//     star.addEventListener("animationend", () => {
+//         star.remove();
+//     })
+
+//     console.log(star)
+// }
+
+// setInterval(spawnStar, 100);
+
 setInterval(update, 1000);
 autoPageLoop();

@@ -34,11 +34,13 @@ body {
 }
 
 .ww {
+    font-family: "unifont", monospace;
     color: #d0ff00;
     font-weight: bold;
 }
 
 .fail {
+    font-family: "unifont", monospace;
     color: #ff0000;
     font-weight: bold;
 }
@@ -184,6 +186,10 @@ button:hover {
     display: flex;
     text-align: center;
     flex-direction: column;
+}
+
+.footer-wakatime img {
+    width: 140px
 }
 
 .footer a {
@@ -535,3 +541,85 @@ ul {
     pointer-events: none;
 }
 
+.footer-wakatime {
+    margin-bottom: 6px;
+}
+
+#theme-container-button {
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: all 0.3s ease;
+}
+
+#menu-panel-2 {
+    position: relative;
+}
+
+#theme-switch-container {
+    position: absolute;
+    left: 100%;
+    top: 0%;
+    width: max-content;
+}
+
+.theme-inner {
+    transition: all 0.3s ease 0.1s;
+    transform-origin: center;
+}
+
+#theme-switch-container.slide-in-right, #theme-container-button.slide-in-right {
+    transform: translateX(20px);
+    opacity: 1;
+}
+
+.switch {
+    width: 64px;
+    height: 64px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.switch:hover {
+    transform: scale(1.1);
+}
+
+#switchMiku {
+    background-image: url("/assets/themes/222.png");
+}
+
+#switchTeto {
+    background-image: url("/assets/themes/111.png");
+}
+
+#switchNeru {
+    background-image: url("/assets/themes/333.png");
+}
+
+
+/* .star {
+    position: fixed;
+    background: #bbb015;
+    border-radius: 50%;
+    pointer-events: none; 
+    animation: starfall 3s forwards;
+    border: 2px none;
+    border-radius: 422px;
+    aspect-ratio: 1.07;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+@keyframes starfall {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--drift), 300px) scale(0.3) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+#star-container {
+    width: 1200px;
+    height: 600px;
+} */
