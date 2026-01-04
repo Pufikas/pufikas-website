@@ -27,6 +27,12 @@ body {
     white-space: pre;
 }
 
+.nn {
+    font-family: "unifont", monospace;
+    color: #ffffff;
+    font-weight: bold;
+}
+
 .ok {
     font-family: "unifont", monospace;
     color: #00ff00;
@@ -500,6 +506,10 @@ ul {
 
 .smaller {
     font-size: 10px;
+}
+
+.not-smaller {
+    font-size: 12px;
 }
 
 .blogDetails {

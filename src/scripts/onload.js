@@ -77,11 +77,21 @@ fetch("src/data/data.json")
 fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/main")
     .then(res => res.json())
     .then(data => {
+        const url = "https://github.com/Pufikas/pufikas-website/commit";
         const date = new Date(data.commit.committer.date);
+        const container = document.getElementById("lastupdate-message");
+        const link = document.createElement('a');
+            link.className = 'nn not-smaller';
+            link.href = `${url}/${data.sha}`;
+            link.target = '_blank';
+            link.rel = 'nofollow';
+            link.textContent = data.commit.message;
+
         document.getElementById("lastupdate").textContent = date.toISOString().split("T")[0];
-        document.getElementById("lastupdate-message").textContent = data.commit.message;
-        document.getElementById("lastupdate-additions").textContent = data.stats.additions;
-        document.getElementById("lastupdate-deletions").textContent = data.stats.deletions;
+        document.getElementById("lastupdate-additions").textContent = data.stats.additions || 0;
+        document.getElementById("lastupdate-deletions").textContent = data.stats.deletions || 0;
+        container.innerHTML = '';
+        container.appendChild(link);
     });
 
 async function loadStuff() {
