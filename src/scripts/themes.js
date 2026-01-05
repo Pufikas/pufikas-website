@@ -1,14 +1,21 @@
 let switches = document.querySelectorAll(".switch");
-let container = document.getElementById("theme-switch-container");
-let button = document.getElementById("theme-container-button");
+let container = document.getElementById("theme-container");
+let button = document.getElementById("theme-switch");
 let themeInner = document.getElementById("theme-inner");
+let currThemeText = document.getElementById("current-theme");
+const themes = ["miku", "teto", "neru"]
+let currTheme = "";
+let i = 0;
 
-// button.addEventListener("click", () => {
-//     console.log("Click")
-//     // slide in the theme box
-//     container.classList.toggle("slide-in-right");
-//     container.classList.toggle("noborder");
-//     themeInner.classList.toggle("hidden");
-//     button.classList.toggle("slide-in-right");
-// })
+button.addEventListener("click", () => {
+    currTheme = themes[i % themes.length];
+    currThemeText.innerText = currTheme;
+
+    document.documentElement.setAttribute(
+        "data-theme",
+        currTheme
+    );
+
+    i++;
+})
 

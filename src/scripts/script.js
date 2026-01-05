@@ -11,10 +11,6 @@ let timeRes = document.getElementById("time");
 let timeBeen = document.getElementById("timeBeen");
 let hh = mm = ss = 0;
 
-// let cursorParticles = true;
-// let scanlines = true;
-
-
 function timer() {
     let d = new Date();
     let h = d.getHours();

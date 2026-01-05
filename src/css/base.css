@@ -16,6 +16,50 @@
   font-weight: normal;
 }
 
+/* 
+#2a2433
+#d46a83
+#854462
+#f4dfde
+#a295a7
+#9e8ba4
+*/
+
+[data-theme="teto"] {
+    --link-color: #c98b88;
+    --m-grey: #787579;
+    --m-pink: #e76180;
+    --m-primary: #9d0b02;
+    --m-secondary: #7a3857;
+    --m-darkblue: #2a2433;
+}
+
+[data-theme="teto"] body {
+    background-image:
+    linear-gradient(
+          rgba(0, 0, 0, 0.5), 
+          rgba(0, 0, 0, 0.3)
+        ), url("/assets/themes/teto.png");
+}
+
+
+[data-theme="neru"] {
+    --link-color: #f4a462;
+    --m-grey: #3c0b47;
+    --m-pink:	#f76a55;
+    --m-primary: #fdd835;
+    --m-secondary: #f3e8a5;
+    --m-darkblue: #a3c2e1;
+}
+
+[data-theme="neru"] body {
+    background-image:
+    linear-gradient(
+          rgba(0, 0, 0, 0.5), 
+          rgba(0, 0, 0, 0.3)
+        ), url("/assets/themes/neru.png");
+}
+
 html, body {
   margin: 0 !important;
   padding: 0 !important;

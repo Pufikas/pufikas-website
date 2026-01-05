@@ -1,7 +1,6 @@
-/* Must start with ".site-box". Change how your website will appear on main nekoweb site: https://nekoweb.org/assets/siteboxes.png */
 .site-box {
     text-align: center;
-    background-image: none; /* Only your-username.nekoweb.org URLs allowed, use FULL url to your file like https://your-username.nekoweb.org/your-username.nekoweb.org/bg.png */
+    background-image: none;
     background-repeat: no-repeat;
     color: #86cecb;
     font-size: 12px;
@@ -18,13 +17,10 @@
   content: url(https://pufikas.nekoweb.org/pufikas.nekoweb.org/assets/bg/23.png);
 }
 
-/* Style for your 'Follow on Nekoweb' button (<iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28"></iframe>) */
 .follow {
-  background: linear-gradient(#ffffff, #1c6e72);
-  color: #e12885;
+  color: #0ef0f0;
 }
 
-/* Style for your post box (must start with ".post-box") */
 .post-box {
     cursor: url(https://pufikas.nekoweb.org/pufikas.nekoweb.org/assets/cursor/select.cur), auto;
     border: 2px solid #137a7f;

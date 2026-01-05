@@ -555,57 +555,6 @@ ul {
     margin-bottom: 6px;
 }
 
-#theme-container-button {
-    transform: rotate(90deg);
-    transform-origin: center;
-    transition: all 0.3s ease;
-}
-
-#menu-panel-2 {
-    position: relative;
-}
-
-#theme-switch-container {
-    position: absolute;
-    left: 100%;
-    top: 0%;
-    width: max-content;
-}
-
-.theme-inner {
-    transition: all 0.3s ease 0.1s;
-    transform-origin: center;
-}
-
-#theme-switch-container.slide-in-right, #theme-container-button.slide-in-right {
-    transform: translateX(20px);
-    opacity: 1;
-}
-
-.switch {
-    width: 64px;
-    height: 64px;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.switch:hover {
-    transform: scale(1.1);
-}
-
-#switchMiku {
-    background-image: url("/assets/themes/222.png");
-}
-
-#switchTeto {
-    background-image: url("/assets/themes/111.png");
-}
-
-#switchNeru {
-    background-image: url("/assets/themes/333.png");
-}
-
-
 /* .star {
     position: fixed;
     background: #bbb015;
