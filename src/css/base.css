@@ -3,7 +3,7 @@
     --link-color: #0ef0f0;
     --m-grey: #373b3e;
     --m-pink:	#e12885;
-    --m-primary: #137a7f;
+    --m-primary: #239fa5;
     --m-secondary: #86cecb;
     --m-darkblue: #bec8d1;
   }
@@ -16,15 +16,7 @@
   font-weight: normal;
 }
 
-/* 
-#2a2433
-#d46a83
-#854462
-#f4dfde
-#a295a7
-#9e8ba4
-*/
-
+/* teto */
 [data-theme="teto"] {
     --link-color: #c98b88;
     --m-grey: #787579;
@@ -37,12 +29,28 @@
 [data-theme="teto"] body {
     background-image:
     linear-gradient(
-          rgba(0, 0, 0, 0.5), 
-          rgba(0, 0, 0, 0.3)
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
         ), url("/assets/themes/teto.png");
 }
 
+[data-theme="teto"] .box.spin-img {
+    content: url("/assets/misc/teto-kasane.gif");
+}
 
+[data-theme="teto"] .box.mikuconcert {
+    content: url("/assets/misc/tt.png");
+}
+
+[data-theme="teto"] #footer {
+    content: url("/assets/misc/tetofooter.png");
+}
+
+[data-theme="teto"] #mikupls {
+    display: none;
+}
+
+/* neru */
 [data-theme="neru"] {
     --link-color: #f4a462;
     --m-grey: #3c0b47;
@@ -55,10 +63,28 @@
 [data-theme="neru"] body {
     background-image:
     linear-gradient(
-          rgba(0, 0, 0, 0.5), 
-          rgba(0, 0, 0, 0.3)
+          rgba(0, 0, 0, 0.7), 
+          rgba(0, 0, 0, 0.7)
         ), url("/assets/themes/neru.png");
 }
+
+[data-theme="neru"] .box.spin-img {
+    content: url("/assets/misc/neruspin.gif");
+}
+
+[data-theme="neru"] .box.mikuconcert {
+    content: url("/assets/misc/akita-neru-vocaloid.gif");
+}
+
+[data-theme="neru"] #footer {
+    content: url("/assets/misc/neru222.png");
+}
+
+[data-theme="neru"] #mikupls {
+    display: none;
+}
+
+
 
 html, body {
   margin: 0 !important;

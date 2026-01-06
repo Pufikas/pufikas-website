@@ -11,10 +11,7 @@ button.addEventListener("click", () => {
     currTheme = themes[i % themes.length];
     currThemeText.innerText = currTheme;
 
-    document.documentElement.setAttribute(
-        "data-theme",
-        currTheme
-    );
+    document.documentElement.setAttribute("data-theme", currTheme);
 
     i++;
 })

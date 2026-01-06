@@ -555,6 +555,15 @@ ul {
     margin-bottom: 6px;
 }
 
+#theme-switch {
+    display: flex;
+    margin: auto;
+}
+
+#current-theme {
+    color: var(--m-primary);
+}
+
 /* .star {
     position: fixed;
     background: #bbb015;
