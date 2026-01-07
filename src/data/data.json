@@ -132,7 +132,8 @@
     ],
     "settings": {
         "cursor-particles": true,
-        "scanlines": true
+        "scanlines": true,
+        "theme": "miku"
     }
     
 }

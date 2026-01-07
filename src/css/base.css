@@ -35,7 +35,7 @@
 }
 
 [data-theme="teto"] .box.spin-img {
-    content: url("/assets/misc/teto-kasane.gif");
+    content: url("/assets/misc/tetospin.gif");
 }
 
 [data-theme="teto"] .box.mikuconcert {
@@ -47,6 +47,10 @@
 }
 
 [data-theme="teto"] #mikupls {
+    display: none;
+}
+
+[data-theme="teto"] div.mikus-nav {
     display: none;
 }
 
@@ -73,7 +77,7 @@
 }
 
 [data-theme="neru"] .box.mikuconcert {
-    content: url("/assets/misc/akita-neru-vocaloid.gif");
+    display: none;
 }
 
 [data-theme="neru"] #footer {
@@ -81,6 +85,10 @@
 }
 
 [data-theme="neru"] #mikupls {
+    display: none;
+}
+
+[data-theme="neru"] div.mikus-nav {
     display: none;
 }
 
