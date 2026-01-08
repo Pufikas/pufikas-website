@@ -133,7 +133,8 @@
     "settings": {
         "cursor-particles": true,
         "scanlines": true,
-        "theme": "miku"
+        "theme": "miku",
+        "simple-background": false
     }
     
 }

@@ -10,9 +10,17 @@
   {
     "id": "post-2",
     "file": "2.html",
-    "tags": "fun",
+    "tags": "dev",
     "title": "Happy new year!",
     "intro": "Celebrating new year! And some website stats!",
     "date": "2025-12-31T23:55:55"
+  },
+  {
+    "id": "post-3",
+    "file": "3.html",
+    "tags": "fun",
+    "title": "New Themes",
+    "intro": "Updated themes that you can use while on website, feat neru and teto!",
+    "date": "2026-01-08T17:09:17"
   }
 ]

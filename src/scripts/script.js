@@ -45,6 +45,12 @@ function updateLocalStorage(key) {
 
 function applySettings() {
     document.getElementById("html").classList.toggle("scanlines", settings["scanlines"]);
+    
+    if (settings["simple-background"]) {
+        document.body.style.backgroundImage = "none";
+    } else {
+        document.body.style.backgroundImage = "";
+    }  
 }
 
 function showPanel(option) {

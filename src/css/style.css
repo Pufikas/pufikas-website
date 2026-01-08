@@ -7,7 +7,7 @@
 
 body {
     background-image: url("/assets/bg/89616320_p2.jpg");
-    background-color: #09111e;
+    background-color: #11111b;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -52,7 +52,7 @@ body {
 }
 
 .emoji {
-    cursor: url("/assets/cursor/help.cur"), auto;
+    cursor: var(--cursor-busy);
     width: 24px; 
     height: 24px;
 }
@@ -77,7 +77,7 @@ a {
     text-decoration: none;
     color: var(--link-color);
     transition: all 0.75s;
-    cursor: url("/assets/cursor/select.cur"), auto;
+    cursor: var(--cursor-link-select);
 }
 
 a:hover {
@@ -88,6 +88,7 @@ a:hover {
 .column2 img:hover {
     transition: all .2s ease-in-out;
     transform: scale(1.1);
+    cursor: var(--cursor-person-select);
 }
 
 .column2 {
@@ -114,7 +115,7 @@ button {
     border: none;
     width: 20%;
     font-weight: bolder;
-    cursor: url("/assets/cursor/select.cur"), auto;
+    cursor: var(--cursor-link-select);
 }
 
 button:hover {
@@ -127,9 +128,8 @@ button:hover {
     height: 6px;
     background: #e0e0e0;
     border-radius: 2px;
-    cursor: pointer;
     margin-top: 4px;
-    cursor: url("/assets/cursor/select.cur"), auto;
+    cursor: var(--cursor-link-select);
 }
   
 #audio-progress-line, #audio-volume-line {
@@ -375,7 +375,7 @@ ul {
 
 .navlink {
     color: var(--link-color);
-    cursor: url("/assets/cursor/select.cur"), auto;
+    cursor: var(--cursor-link-select);
 }
 
 .navlink:hover {
@@ -563,6 +563,8 @@ ul {
 #current-theme {
     color: var(--m-primary);
 }
+
+
 
 /* .star {
     position: fixed;

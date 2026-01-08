@@ -5,6 +5,7 @@
 
 const themes = ["miku", "teto", "neru"];
 
+// maybe parsing and stringify isnt needed here, but this works soo..
 // syncs the rotation to next theme based on current theme, and also need to parse cuz I stringified it earlier...
 let i = themes.indexOf(JSON.parse(localStorage.getItem("theme"))); 
 if (i === -1) i = 0; // if something corrupts or smth

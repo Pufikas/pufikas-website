@@ -6,6 +6,12 @@
     --m-primary: #239fa5;
     --m-secondary: #86cecb;
     --m-darkblue: #bec8d1;
+    --cursor-default: auto;
+    --cursor-link-select: pointer;
+    --cursor-unavailable: not-allowed;
+    --cursor-help: auto;
+    --cursor-person-select: pointer;
+    --cursor-busy: wait;
   }
   
 *,
@@ -14,6 +20,34 @@
   box-sizing: border-box;
   margin: 0;
   font-weight: normal;
+}
+
+/* cursors */
+[data-theme="miku"] {
+  --cursor-default: url("/assets/cursors/miku/normal-select.cur"), auto;
+  --cursor-link-select: url("/assets/cursors/miku/link-select.cur"), pointer;
+  --cursor-unavailable: url("/assets/cursors/miku/unavailable.cur"), not-allowed;
+  --cursor-help: url("/assets/cursors/miku/help-select.cur"), auto;
+  --cursor-person-select: url("/assets/cursors/miku/person-select.cur"), pointer;
+  --curosr-busy: url("/assets/cursors/miku/working-in-background.cur"), wait;
+}
+
+[data-theme="teto"] {
+  --cursor-default: url("/assets/cursors/teto/normal-select.cur"), auto;
+  --cursor-link-select: url("/assets/cursors/teto/link-select.cur"), pointer;
+  --cursor-unavailable: url("/assets/cursors/teto/unavailable.cur"), not-allowed;
+  --cursor-help: url("/assets/cursors/teto/help-select.cur"), auto;
+  --cursor-person-select: url("/assets/cursors/teto/person-select.cur"), pointer;
+  --curosr-busy: url("/assets/cursors/teto/working-in-background.cur"), wait;
+}
+
+[data-theme="neru"] {
+  --cursor-default: url("/assets/cursors/neru/normal-select.cur"), auto;
+  --cursor-link-select: url("/assets/cursors/neru/link-select.cur"), pointer;
+  --cursor-unavailable: url("/assets/cursors/neru/unavailable.cur"), not-allowed;
+  --cursor-help: url("/assets/cursors/neru/help-select.cur"), auto;
+  --cursor-person-select: url("/assets/cursors/neru/person-select.cur"), pointer;
+  --curosr-busy: url("/assets/cursors/neru/working-in-background.cur"), wait;
 }
 
 /* teto */
@@ -104,7 +138,7 @@ html, body {
 }
 
 body {
-  cursor: url("/assets/cursor/normal.cur"), auto !important;
+  cursor: var(--cursor-default) !important;
   color: var(--color-text);
   background: var(--color-background);
   transition:
