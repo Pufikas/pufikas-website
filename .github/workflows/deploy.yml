@@ -1,0 +1,27 @@
+name: Build and Deploy to NekoWeb
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Generate RSS Feed
+        run: | 
+          cd ./src/scripts
+          node generate_rss.js
+
+      - name: Deploy
+        uses: Pufikas/deploytonekoweb@main
+        with:
+          nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
+          nekoweb-domain: "pufikas.nekoweb.org"
+          nekoweb-username: "pufikas"
+          directory: "test"
