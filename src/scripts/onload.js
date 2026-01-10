@@ -71,8 +71,7 @@ fetch("src/data/data.json")
         songs = data.songs;
         settings = data.settings;
         loadStuff();
-    })
-    .catch(err => console.error("fetch failed: ", err));
+    }).catch(err => console.error("fetch failed for data: ", err));
 
 fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/main")
     .then(res => res.json())
@@ -92,7 +91,15 @@ fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/main")
         document.getElementById("lastupdate-deletions").textContent = data.stats.deletions || 0;
         container.innerHTML = '';
         container.appendChild(link);
-    });
+    }).catch(err => console.error("fetch failed for github: ", err));;
+
+fetch("https://nekoweb.org/api/site/info/pufikas.nekoweb.org")
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("nekoweb-followers").textContent = "★" + data.followers;
+        document.getElementById("nekoweb-views").textContent = data.views;
+        document.getElementById("nekoweb-updates").textContent = "⟳" + data.updates;
+    }).catch(err => console.error("fetch failed for nekoweb: ", err));;
 
 async function loadStuff() {
     initLoadEffect();

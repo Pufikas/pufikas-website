@@ -1,0 +1,23 @@
+name: Update stats
+
+on:
+  push:
+    branches: [main] # refresh on push
+  schedule:
+    - cron: "0 0 * * *" # daily
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch APIs data and update JSON
+        run: |
+          node scripts/update-stats.js
+      - name: Commit updated stats.json
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add data/stats.json
+          git commit -m "Update stats.json"
+          git push
