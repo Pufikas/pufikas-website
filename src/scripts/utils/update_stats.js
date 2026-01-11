@@ -3,8 +3,8 @@ import path from "path";
 
 const statsPath = path.join(process.cwd(), "../../data", "stats.json");
 
-const github = await fetch('https://api.github.com/repos/Pufikas/pufikas-website/commits/dev');
-const nekoweb = await fetch('https://nekoweb.org/api/site/info/pufikas.nekoweb.org');
+const github = await fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/dev");
+const nekoweb = await fetch("https://nekoweb.org/api/site/info/pufikas.nekoweb.org");
 
 const ghData = await github.json();
 const nwData = await nekoweb.json();
@@ -25,6 +25,8 @@ const newHourlyCurrent = {
     views: nwData.views,
     code_additions: ghData.stats.additions,
     code_deletions: ghData.stats.deletions,
+    code_message: ghData.commit.message,
+    code_sha: ghData.sha,
     site_updated_at: Date.parse(ghData.commit.committer.date),
 };
 

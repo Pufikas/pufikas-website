@@ -214,12 +214,6 @@ button:hover {
     flex-direction: column;
 }
 
-.last-update-message-container {
-    margin-top: 10px;
-    width: 100%;
-    text-align: center;
-}
-
 #logo {
     text-align: center;
     padding-top: 2px;
@@ -504,12 +498,20 @@ ul {
     border-radius: 50%;
 }
 
+.very-small {
+    font-size: 8px;
+}
+
 .smaller {
     font-size: 10px;
 }
 
 .not-smaller {
     font-size: 12px;
+}
+
+.italic {
+    font-style: italic;
 }
 
 .blogDetails {
