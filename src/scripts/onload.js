@@ -14,6 +14,8 @@
 </section>
 */
 
+let hourly = {};
+let daily = {};
 let buttonList = document.getElementById("buttonList");
 let songs = [];
 let buttons = [];
@@ -58,10 +60,8 @@ const itemsPerPage = 6; // 2 cols and 3 each col
 fetch("src/blogs/blogs.json")
     .then(res => res.json())
     .then(data => {
-        loadBlogs(data);
-       
+        loadBlogs(data);       
     }).catch(err => console.error("fetch failed for blogs", err));
-
 
 fetch("src/data/data.json")
     .then(res => res.json())
@@ -73,33 +73,48 @@ fetch("src/data/data.json")
         loadStuff();
     }).catch(err => console.error("fetch failed for data: ", err));
 
-fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/main")
+fetch("src/data/stats.json")
     .then(res => res.json())
     .then(data => {
-        const url = "https://github.com/Pufikas/pufikas-website/commit";
-        const date = new Date(data.commit.committer.date);
-        const container = document.getElementById("lastupdate-message");
-        const link = document.createElement('a');
-            link.className = 'nn not-smaller';
-            link.href = `${url}/${data.sha}`;
-            link.target = '_blank';
-            link.rel = 'nofollow';
-            link.textContent = data.commit.message;
+        hourly = data.hourly;
+        daily = data.daily;
+        updateSiteStats();
+    }).catch(err => console.error("fetch failed for website stats: ", err));
 
-        document.getElementById("lastupdate").textContent = date.toISOString().split("T")[0];
-        document.getElementById("lastupdate-additions").textContent = data.stats.additions || 0;
-        document.getElementById("lastupdate-deletions").textContent = data.stats.deletions || 0;
-        container.innerHTML = '';
-        container.appendChild(link);
-    }).catch(err => console.error("fetch failed for github: ", err));;
+function updateSiteStats() {
+    const now = new Date().toISOString().split("T")[0];
+    const url = "https://api.github.com/repos/Pufikas/pufikas-website/commits/dev";
+    const container = document.getElementById("lastupdate-message");
+    const link = document.createElement('a');
+        link.className = 'nn not-smaller';
+        link.href = `${url}/${hourly.code_sha}`;
+        link.target = '_blank';
+        link.rel = 'nofollow';
+        link.textContent = "„" + hourly.code_message + "”";
 
-fetch("https://nekoweb.org/api/site/info/pufikas.nekoweb.org")
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById("nekoweb-followers").textContent = "★" + data.followers;
-        document.getElementById("nekoweb-views").textContent = data.views;
-        document.getElementById("nekoweb-updates").textContent = "⟳" + data.updates;
-    }).catch(err => console.error("fetch failed for nekoweb: ", err));;
+    document.getElementById("lastupdate").textContent = hourly.generated_at.split("T")[0];
+    document.getElementById("lastupdate-additions").textContent = hourly.code_additions + "+" || 0;
+    document.getElementById("lastupdate-deletions").textContent = hourly.code_deletions + "-" || 0;
+    container.innerHTML = '';
+    container.appendChild(link);
+
+    let upd = document.getElementById("nekoweb-updates")
+    let fol = document.getElementById("nekoweb-followers")
+    let vie = document.getElementById("nekoweb-views")
+    setStat(vie, "booted ", hourly.views, " times", "ok");
+    setStat(fol, "installed by ", hourly.followers, " users", "ok");
+    setStat(upd, "deployed ", hourly.site_updates, " times", "ww");
+
+}
+
+function setStat(el, before, value, after, name_class) {
+    el.textContent = before;
+    const span = document.createElement("span");
+    span.className = name_class;
+    span.textContent = value;
+    el.append(span, after);
+}
+
 
 async function loadStuff() {
     initLoadEffect();
