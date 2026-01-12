@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 
 const SITE_URL = "https://pufikas.nekoweb.org";
 const blogHash = "#blogs?post=";

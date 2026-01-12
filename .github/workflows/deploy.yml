@@ -15,8 +15,7 @@ jobs:
 
       - name: Generate RSS Feed
         run: | 
-          cd ./src/scripts
-          node generate_rss.js
+          node src/scripts/utils/generate_rss.js
 
       - name: Deploy
         uses: Pufikas/deploytonekoweb@main
