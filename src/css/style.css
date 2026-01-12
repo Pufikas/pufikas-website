@@ -431,6 +431,13 @@ ul {
     padding: 6px;
 }
 
+.rightImg {
+    width: 100px;
+    float: right;
+    padding: 6px;
+}
+
+
 #background {
     position: fixed;
     top: 0;
