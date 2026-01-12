@@ -1,8 +1,15 @@
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const SITE_URL = "https://pufikas.nekoweb.org";
 const blogHash = "#blogs?post=";
-const blogs = JSON.parse(fs.readFileSync("../blogs/blogs.json", "utf8"));
+
+const blogsPath = path.resolve(__dirname, "../../blogs/blogs.json");
+const blogs = JSON.parse(fs.readFileSync(blogsPath, "utf8"));
 
 // sort newest first
 blogs.sort((a, b) => new Date(b.date) - new Date(a.date));

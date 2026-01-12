@@ -1,7 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-const statsPath = path.join(process.cwd(), "../../data", "stats.json");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const statsPath = path.resolve(__dirname, "../../data/stats.json");
 
 const github = await fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits/dev");
 const nekoweb = await fetch("https://nekoweb.org/api/site/info/pufikas.nekoweb.org");
