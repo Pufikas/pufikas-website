@@ -1,5 +1,8 @@
 name: Update stats
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [main] # refresh on push
