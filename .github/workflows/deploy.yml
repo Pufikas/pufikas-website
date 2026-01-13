@@ -23,4 +23,3 @@ jobs:
           nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
           nekoweb-domain: "pufikas.nekoweb.org"
           nekoweb-username: "pufikas"
-          directory: "."
