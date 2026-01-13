@@ -7,7 +7,7 @@ on:
   push:
     branches: [main] # refresh on push
   schedule:
-    - cron: "0 * * * *" # hourly
+    - cron: "0 0 * * *" # daily
 
 jobs:
   update-stats:
