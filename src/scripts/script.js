@@ -32,11 +32,21 @@ function timer() {
     return { h, m, s, ss, mm, hh };
 }
 
+function getMyTime() {
+    return new Intl.DateTimeFormat("lt-LT", {
+        timeZone: "Europe/Vilnius",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    }).format(new Date());
+}
+
 function update() {
     const { h, m, s, ss, mm, hh } = timer();
 
-    timeRes.innerHTML = ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2);
-    timeBeen.innerHTML = "running for " + ("0" + mm).slice(-2) + ":" + ("0" + ss).slice(-2);
+    // timeRes.textContent = ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2);
+    timeRes.textContent = getMyTime();
+    timeBeen.textContent = "running for " + ("0" + mm).slice(-2) + ":" + ("0" + ss).slice(-2);
 }
 
 function updateLocalStorage(key) {

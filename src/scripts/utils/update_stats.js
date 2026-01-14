@@ -27,8 +27,8 @@ const newHourlyCurrent = {
     site_updates: nekoweb.updates,
     followers: nekoweb.followers,
     views: nekoweb.views,
-    code_additions: details.additions,
-    code_deletions: details.deletions,
+    code_additions: details.stats.additions,
+    code_deletions: details.stats.deletions,
     code_message: commits[0].commit.message,
     code_sha: details.sha,
     site_updated_at: Date.parse(details.commit.committer.date),
@@ -42,8 +42,9 @@ const newDailyCurrent = {
 
 stats.hourly = newHourlyCurrent;
 
-if (!stats.daily[dayNow]) {
-    stats.daily[dayNow] = newDailyCurrent;
-}
+stats.daily[dayNow] = {
+    ...stats.daily[dayNow],
+    ...newDailyCurrent
+};
 
 fs.writeFileSync(statsPath, JSON.stringify(stats, null, 2), "utf-8");

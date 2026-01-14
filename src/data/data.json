@@ -2,10 +2,6 @@
     "buttons": [
         {
             "href": "lilithdev.neocities.org",
-            "img": "ningenshikkakubotan.png"
-        },
-        {
-            "href": "lilithdev.neocities.org",
             "img": "lilithdevbtn.gif"
         },
         {
@@ -31,6 +27,14 @@
         {
             "href": "kafu.ovh",
             "img": "junko.png"
+        },
+        {
+            "href": "fuzzy.nekoweb.org",
+            "img": "fuzzy.png"
+        },
+        {
+            "href": "ceat.nekoweb.org",
+            "img": "ceat.png"
         }
     ],
     "contacts": {

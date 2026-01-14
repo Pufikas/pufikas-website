@@ -68,6 +68,14 @@
         ), url("/assets/themes/teto.png");
 }
 
+[data-theme="teto"] {
+    #mikupls,
+    .mikus-nav,
+    .customRightImg {
+        display: none;
+    }
+}
+
 [data-theme="teto"] .box.spin-img {
     content: url("/assets/misc/tetospin.gif");
 }
@@ -78,14 +86,6 @@
 
 [data-theme="teto"] #footer {
     content: url("/assets/misc/tetofooter.png");
-}
-
-[data-theme="teto"] #mikupls {
-    display: none;
-}
-
-[data-theme="teto"] div.mikus-nav {
-    display: none;
 }
 
 /* neru */
@@ -106,27 +106,22 @@
         ), url("/assets/themes/neru.png");
 }
 
-[data-theme="neru"] .box.spin-img {
-    content: url("/assets/misc/neruspin.gif");
+[data-theme="neru"] {
+    .box.mikuconcert,
+    #mikupls,
+    .mikus-nav,
+    .customRightImg {
+        display: none;
+    }
 }
 
-[data-theme="neru"] .box.mikuconcert {
-    display: none;
+[data-theme="neru"] .box.spin-img {
+    content: url("/assets/misc/neruspin.gif");
 }
 
 [data-theme="neru"] #footer {
     content: url("/assets/misc/neru222.png");
 }
-
-[data-theme="neru"] #mikupls {
-    display: none;
-}
-
-[data-theme="neru"] div.mikus-nav {
-    display: none;
-}
-
-
 
 html, body {
   margin: 0 !important;
@@ -154,6 +149,12 @@ body {
   image-rendering: crisp-edges;
 }
   
+@media screen and (max-width: 900px) {
+  .customRightImg {
+    display: none !important;
+  }
+}
+
 /* mobile support */
 @media screen and (max-width: 500px) {
   .splash {

@@ -29,25 +29,25 @@ body {
 
 .nn {
     font-family: "unifont", monospace;
-    color: #ffffff;
+    color: #ffffff !important;
     font-weight: bold;
 }
 
 .ok {
     font-family: "unifont", monospace;
-    color: #00ff00;
+    color: #00ff00 !important;
     font-weight: bold;
 }
 
 .ww {
     font-family: "unifont", monospace;
-    color: #d0ff00;
+    color: #d0ff00 !important;
     font-weight: bold;
 }
 
 .fail {
     font-family: "unifont", monospace;
-    color: #ff0000;
+    color: #ff0000 !important;
     font-weight: bold;
 }
 
@@ -64,6 +64,7 @@ body {
     margin: 5px;
     color: #e0e0e0;
     background-color: rgba(7, 15, 27, 0.5);
+    position: relative;
 }
 
 h2 {
@@ -514,7 +515,7 @@ ul {
 }
 
 .not-smaller {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .italic {
@@ -602,3 +603,54 @@ ul {
     width: 1200px;
     height: 600px;
 } */
+
+/* tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dashed var(--m-primary);
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: var(--m-grey);
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* tooltip arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--m-pink) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.customRightImg {
+    position: absolute;
+    top: -266%;
+    right: 0;
+    transform: translateX(20%) scale(0.7);
+    pointer-events: none;
+    z-index: 100;
+}
