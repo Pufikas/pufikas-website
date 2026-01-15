@@ -14,14 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Fetch APIs data and update JSON
-        run: |
-          node src/scripts/utils/update_stats.js
+        run: node src/scripts/utils/update_stats.js
+
+      - name: Generate RSS Feed
+        run: node src/scripts/utils/generate_rss.js
 
       - name: Commit updated stats.json
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add src/data/stats.json
-          git commit -m "update stats.json"
+          git add src/data/stats.json src/rss.xml
+          git diff --cached --quiet || git commit -m "update stats and rss"
           git push

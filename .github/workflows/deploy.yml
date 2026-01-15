@@ -1,21 +1,18 @@
 name: Build and Deploy to NekoWeb
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Update stats"]
+    types: [completed]
 
 jobs:
   build:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
-      - name: Generate RSS Feed
-        run: | 
-          node src/scripts/utils/generate_rss.js
 
       - name: Deploy
         uses: Pufikas/deploytonekoweb@main

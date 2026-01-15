@@ -87,7 +87,7 @@ fetch("src/data/stats.json")
     }).catch(err => console.error("fetch failed for website stats: ", err));
 
 function updateSiteStats() {
-    const url = "https://api.github.com/repos/Pufikas/pufikas-website/commits/dev";
+    const url = "https://api.github.com/repos/Pufikas/pufikas-website/commits/main";
     const container = document.getElementById("lastupdate-message");
     const link = document.createElement('a');
         link.className = 'nn not-smaller';
