@@ -87,7 +87,7 @@ fetch("src/data/stats.json")
     }).catch(err => console.error("fetch failed for website stats: ", err));
 
 function updateSiteStats() {
-    const url = "https://api.github.com/repos/Pufikas/pufikas-website/commits/main";
+    const url = "https://github.com/Pufikas/pufikas-website/commit/";
     const container = document.getElementById("lastupdate-message");
     const link = document.createElement('a');
         link.className = 'nn not-smaller';
@@ -187,13 +187,18 @@ function loadSongEventListeners() {
         document.getElementById("audio-duration").textContent = formatTime(audio.currentTime);
         const progress = (audio.currentTime / audio.duration) * 100;
         line.style.width = `${progress}%`;
-    
-        if (line.style.width == "100%") {
-            audioPlay.innerText = "▶";
-            audio.pause();
-        }
+        
+        // pauses completly on music end
+        // if (line.style.width == "100%") {
+        //     audioPlay.innerText = "▶";
+        //     audio.pause();
+        // }
     });
     
+    audio.addEventListener("ended", () => {
+        audioPlayNext(1); 
+    });
+
     audioVolume.addEventListener("click", changeVolume);
     audioPlay.addEventListener("click", playAudio);
     audioProgress.addEventListener("click", seekIntoMusic.bind(this));
@@ -293,7 +298,6 @@ function createContact(e) {
         a.target = "_blank";
         a.className = "flex contact";
 
-    
     const svg = document.createElementNS(e.svg.xmlns, "svg");
         svg.setAttribute("xmlns", e.svg.xmlns);
         svg.setAttribute("viewBox", "0 0 24 24");
@@ -307,7 +311,6 @@ function createContact(e) {
     svg.appendChild(path);
     a.appendChild(svg);
     
-
     const div = document.createElement("div");
         div.className = "pl10";
 
@@ -391,10 +394,27 @@ function loadLocalStorage() {
         }
     });
 
+    if (!localStorage.getItem("times-visited")) {
+        localStorage.setItem("times-visited", 0);
+    }
+
     options.forEach(opt => {
         const key = opt.dataset.option;
         opt.checked = settings[key];
     });
 
+    incrementVisitedCountAndText();
     applySettings();
+}
+
+function incrementVisitedCountAndText() {
+    let welcome = document.getElementById("welcome");
+    let count = parseInt(localStorage.getItem("times-visited")) + 1;
+    localStorage.setItem("times-visited", count);
+
+    if (count == 1) {
+        welcome.textContent = `, THIS IS YOUR FIRST VISIT`;
+    } else {
+        welcome.textContent = `BACK,  BOOT #${count}`;
+    }
 }

@@ -20,3 +20,4 @@ jobs:
           nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
           nekoweb-domain: "pufikas.nekoweb.org"
           nekoweb-username: "pufikas"
+          ignore-paths: "assets/bg, assets/cursors, assets/fonts, assets/misc, assets/themes, assets/webring"

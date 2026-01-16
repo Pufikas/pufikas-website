@@ -35,6 +35,10 @@
         {
             "href": "ceat.nekoweb.org",
             "img": "ceat.png"
+        },
+        {
+            "href": "frutigeraeroarchive.org",
+            "img": "frutigeraeroarchive_button_2.png"
         }
     ],
     "contacts": {
@@ -132,6 +136,12 @@
             "cover": "ummei.jpg",
             "song": "ummei.mp3",
             "title": "風～運命のダークサイド"
+        },
+        {
+            "author": "Maikel6311",
+            "cover": "godisgirl.jpg",
+            "song": "godisgirl.mp3",
+            "title": "Nightcore - God Is A Girl (W&W)"
         }
     ],
     "settings": {
@@ -140,5 +150,4 @@
         "theme": "miku",
         "simple-background": false
     }
-    
 }
