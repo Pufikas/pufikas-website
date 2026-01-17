@@ -11,7 +11,7 @@
                 script-src 'self' https://electric-tenshi.nekoweb.org 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE=';
                 style-src 'self' https://electric-tenshi.nekoweb.org/vocaring/vocaring.css;
                 font-src 'self' https://file.garden/Z3nf4eZzZUtRPfhK/itc-legacy-sans-std-book.ttf;
-                frame-src 'self' https://nekoweb.org/frame/follow">
+                frame-src 'self' https://nekoweb.org/frame/follow https://pufikas.atabook.org">
 
     <title>pufikas</title>
 </head>
@@ -135,9 +135,9 @@
                     </ul>
 
                     <br>
-                    <p>write me something <a href="https://pufikas.atabook.org/" target="_blank" rel="nofollow">guestbook</a></p>
                     <p>you can find this website source code <a href="https://github.com/Pufikas/pufikas-website" target="_blank" rel="nofollow">here!</a></p>
-                    <p>to stay up to date you can follow me on <a href="https://nekoweb.org/follow/pufikas.nekoweb.org" target="_blank" rel="nofollow">NekoWeb</a> if you wish so!</p>
+                    
+                    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28"></iframe>
                 </div>
 
                 <div class="box noborder">
@@ -174,20 +174,20 @@
                 <!-- HIGHLIGHTED PROJECTS -->
                 <div class="box">
                     <h2>HIGHLIGHTED PROJECTS</h2>
-                    <p>for all projects see my <a target="_blank" rel="nofollow" href="https://github.com/Pufikas">GitHub</a></p><br>
 
-                    <div>
-                        <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/Weather">
-                            * Weather
-                        </a><br>
-                        A simple app using weather api
+                    <div class="project">
+                        <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/pokedex" class="arrow">pokedex</a>
+                        <p>
+                            A Pokémon Pokédex built with <a target="_blank" rel="nofollow" href="https://vuejs.org/" class="mint">VueJS</a> framework
+                        </p>
                     </div>
-                    <br>
-                    <div>
-                        <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/pokedex">
-                            * pokedex
-                        </a><br>
-                        Pokemon pokedex using vuejs framework
+
+                    <div class="project">
+                        <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/UploadToNekoweb" class="arrow">UploadToNekoweb</a>
+                        <p>
+                            Simple zip and ship deployment action script for uploading to NekoWeb, supports ignoring specific files.
+                            Created with <span class="ww">JavaScript</span> try it out to simplify your deployment process if you are using GitHub as your main version control
+                        </p>
                     </div>
                 </div>               
             </div>
@@ -288,6 +288,14 @@
                 <div id="blog-container"></div>
             </div>
 
+            <!-- MAIN GUESTBOOK -->
+            <div data-panel="guestbook" id="main-panel" class="hidden">
+                <div class="box atabook">
+                    <a target="_blank" rel="nofollow" href="https://pufikas.atabook.org/">open in a new tab</a>
+                    <iframe src="https://pufikas.atabook.org/" title="pufikas guestbook" class="atabook noborder"></iframe>
+                </div>
+            </div>
+
             <!-- SIDE PANEL RIGHT -->
             <div id="menu-panel">
                 <div class="mikus-nav">
@@ -307,6 +315,7 @@
                         <li><span class="navlink" data-id="credits">credits</span></li>
                         <li><span class="navlink" data-id="webrings">webrings</span></li>
                         <li><span class="navlink" data-id="blogs">blogs</span></li>
+                        <li><span class="navlink" data-id="guestbook">guestbook</span></li>
                     </ul>
                 </div>
                  

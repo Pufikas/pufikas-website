@@ -45,6 +45,12 @@ body {
     font-weight: bold;
 }
 
+.mint {
+    font-family: "unifont", monospace;
+    color: var(--m-mint) !important;
+    font-weight: bold;
+}
+
 .fail {
     font-family: "unifont", monospace;
     color: #ff0000 !important;
@@ -653,4 +659,37 @@ ul {
     transform: translateX(20%) scale(0.7);
     pointer-events: none;
     z-index: 100;
+}
+
+.project {
+    padding-bottom: 10px;
+}
+
+.arrow::before {
+    content: "> ";
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 16px;
+    animation: jump 1.2s ease-in-out infinite alternate;
+    font-weight: bold;
+}
+
+
+@keyframes jump {
+    from {
+        transform: translateX(-6px);
+    }
+    to {
+        transform: translateX(6px);
+    }
+}
+
+/* .project:nth-child(odd) {
+    text-align: right !important;
+} */
+
+.atabook {
+    width: 98%;
+    height: 100%;
+    padding-bottom: 40px;
 }
