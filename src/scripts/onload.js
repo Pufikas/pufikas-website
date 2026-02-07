@@ -60,6 +60,7 @@ let dailyYesterday = {};
 const today = new Date();
 const yesterday = new Date(today);
 yesterday.setDate(today.getDate() - 1);
+let nowNormalized = new Date().toISOString().split("T")[0]; // 2026-02-08 format
 
 fetch("src/blogs/blogs.json")
     .then(res => res.json())
@@ -398,6 +399,11 @@ function loadLocalStorage() {
         localStorage.setItem("times-visited", 0);
     }
 
+    const refreshed = localStorage.getItem("data_refreshed");
+    if (refreshed !== nowNormalized) {
+        updateWebStats();
+    }
+
     options.forEach(opt => {
         const key = opt.dataset.option;
         opt.checked = settings[key];
@@ -410,11 +416,34 @@ function loadLocalStorage() {
 function incrementVisitedCountAndText() {
     let welcome = document.getElementById("welcome");
     let count = parseInt(localStorage.getItem("times-visited")) + 1;
+    let todayCount = parseInt(localStorage.getItem("times-visited-today")) + 1 || 0;
+
     localStorage.setItem("times-visited", count);
+    localStorage.setItem("times-visited-today", todayCount);
+    
+    console.log(localStorage.getItem("last-date-visit"), nowNormalized)
+
+    if (!localStorage.getItem("last-date-visit") == nowNormalized || !localStorage.getItem("data_refreshed") == nowNormalized) {
+        updateWebStats();
+    }
 
     if (count == 1) {
         welcome.textContent = `, THIS IS YOUR FIRST VISIT`;
     } else {
         welcome.textContent = `BACK,  BOOT #${count}`;
     }
+}
+
+async function updateWebStats() {
+    const nekoweb = await fetch("https://nekoweb.org/api/site/info/pufikas.nekoweb.org").then(r => r.json());
+
+    const cachedWebStats = {
+        data_refreshed: nowNormalized,
+        site_updates: nekoweb.site_updates,
+        followers: nekoweb.followers,
+        views: nekoweb.views
+    };
+
+
+    localStorage.setItem("web_stats", JSON.stringify(cachedWebStats));
 }
