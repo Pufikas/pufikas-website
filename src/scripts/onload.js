@@ -83,7 +83,7 @@ fetch("src/data/stats.json")
     .then(data => {
         hourly = data.hourly;
         daily = data.daily;
-        dailyYesterday = data.daily[yesterday.toISOString().split("T")[0]]
+        dailyYesterday = data.daily[yesterday.toISOString().split("T")[0]];
         updateSiteStats();
     }).catch(err => console.error("fetch failed for website stats: ", err));
 
@@ -113,14 +113,15 @@ function websiteStats() {
     let upd2 = document.getElementById("nekoweb-updates-before");
     let fol2 = document.getElementById("nekoweb-followers-before");
     let vie2 = document.getElementById("nekoweb-views-before");
+    let localCached = JSON.parse(localStorage.getItem("web_stats"));
 
-    setStat(vie, "booted ", hourly.views, " times", "ok");
-    setStat(fol, "installed by ", hourly.followers, " users", "ok");
-    setStat(upd, "deployed ", hourly.site_updates, " times", "ok");
+    setStat(vie, "booted ", localCached.views, " times", "ok");
+    setStat(fol, "installed by ", localCached.followers, " users", "ok");
+    setStat(upd, "deployed ", localCached.site_updates, " times", "ok");
 
-    applyDiff(fol2, hourly.followers, dailyYesterday.followers);
-    applyDiff(vie2, hourly.views, dailyYesterday.views);
-    applyDiff(upd2, hourly.site_updates, dailyYesterday.site_updates);
+    applyDiff(fol2, localCached.followers, dailyYesterday.followers);
+    applyDiff(vie2, localCached.views, dailyYesterday.views);
+    applyDiff(upd2, localCached.site_updates, dailyYesterday.site_updates);
 }
 
 
@@ -439,11 +440,12 @@ async function updateWebStats() {
 
     const cachedWebStats = {
         data_refreshed: nowNormalized,
-        site_updates: nekoweb.site_updates,
+        site_updates: nekoweb.updates,
         followers: nekoweb.followers,
         views: nekoweb.views
     };
 
 
     localStorage.setItem("web_stats", JSON.stringify(cachedWebStats));
+    websiteStats();
 }
