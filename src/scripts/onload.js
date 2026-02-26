@@ -87,6 +87,21 @@ fetch("src/data/stats.json")
         updateSiteStats();
     }).catch(err => console.error("fetch failed for website stats: ", err));
 
+fetch("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=pufikas727&api_key=TEST_API_KEY&format=json&limit=1")
+    .then(response => response.json())
+    .then(data => {
+        const track = data.recenttracks.track[0];
+
+        const artist = track.artist["#text"];
+        const name = track.name;
+        const nowPlaying = track["@attr"]?.nowplaying === "true";
+
+        document.getElementById("lastfm").textContent = nowPlaying ? `Now playing: ${artist} — ${name}` : `Last played: ${artist} — ${name}`;
+    }).catch(error => {
+        console.error("Error fetching Last.fm:", error);
+        document.getElementById("lastfm").textContent = "Could not load track.";
+    });
+
 function updateSiteStats() {
     const url = "https://github.com/Pufikas/pufikas-website/commit/";
     const container = document.getElementById("lastupdate-message");
