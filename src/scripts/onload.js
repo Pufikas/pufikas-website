@@ -97,12 +97,12 @@ async function fetchLastFM() {
         scheduleNextLastfmFetch(track.nowPlaying);
     } catch (err) {
         console.error("Error fetching Last.fm:", err);
-        setTimeout(fetchLastFM, 80000);
+        setTimeout(fetchLastFM, 60000);
     }
 }
 
 function scheduleNextLastfmFetch(isPlaying) {
-    const interval = isPlaying ? 20000 : 600000;
+    const interval = isPlaying ? 20000 : 120000;
     setTimeout(fetchLastFM, interval);
 }
 
