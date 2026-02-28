@@ -87,20 +87,46 @@ fetch("src/data/stats.json")
         updateSiteStats();
     }).catch(err => console.error("fetch failed for website stats: ", err));
 
-fetch("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=pufikas727&api_key=TEST_API_KEY&format=json&limit=1")
-    .then(response => response.json())
-    .then(data => {
-        const track = data.recenttracks.track[0];
+async function fetchLastFM() {
+    try {
+        const res = await fetch("https://pufikasapistuff.vercel.app/api/lastfm");
+        const track = await res.json();
 
-        const artist = track.artist["#text"];
-        const name = track.name;
-        const nowPlaying = track["@attr"]?.nowplaying === "true";
+        updateLastfmPanel(track);
 
-        document.getElementById("lastfm").textContent = nowPlaying ? `Now playing: ${artist} — ${name}` : `Last played: ${artist} — ${name}`;
-    }).catch(error => {
-        console.error("Error fetching Last.fm:", error);
-        document.getElementById("lastfm").textContent = "Could not load track.";
-    });
+        scheduleNextLastfmFetch(track.nowPlaying);
+    } catch (err) {
+        console.error("Error fetching Last.fm:", err);
+        setTimeout(fetchLastFM, 80000);
+    }
+}
+
+function scheduleNextLastfmFetch(isPlaying) {
+    const interval = isPlaying ? 20000 : 600000;
+    setTimeout(fetchLastFM, interval);
+}
+
+function updateLastfmPanel(track) {
+    const played = document.getElementById("lastfm-playingstatus");
+    const lastfmtrack = document.getElementById("lastfm-track");
+    const lastfmartist = document.getElementById("lastfm-artist")
+    const coverArt = document.querySelector("#lastfm-listening-cover img");
+
+    if (track.cover) {
+        coverArt.src = track.cover;
+    } else {
+        coverArt.src = "./assets/misc/mikudance.gif";
+    }
+
+    if (!track.nowPlaying && track.playedAt) {
+        played.textContent = formatTimeAgo(track.playedAt);
+    } else {
+        played.textContent = "Currently playing";
+    }
+
+    lastfmartist.textContent = track.artist;
+    lastfmtrack.textContent = track.name;
+}
 
 function updateSiteStats() {
     const url = "https://github.com/Pufikas/pufikas-website/commit/";
@@ -138,7 +164,6 @@ function websiteStats() {
     applyDiff(vie2, localCached.views, dailyYesterday.views);
     applyDiff(upd2, localCached.site_updates, dailyYesterday.site_updates);
 }
-
 
 function compareStat(today, yesterday) {
     if (yesterday == null) {
@@ -464,3 +489,5 @@ async function updateWebStats() {
     localStorage.setItem("web_stats", JSON.stringify(cachedWebStats));
     websiteStats();
 }
+
+fetchLastFM();

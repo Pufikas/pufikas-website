@@ -6,8 +6,8 @@
     <meta name="darkreader-lock" content="">
     <meta http-equiv="Content-Security-Policy"
       content="default-src 'self';
-                connect-src 'self' https://api.github.com/repos/Pufikas/pufikas-website/commits/main https://nekoweb.org/api/site/info/pufikas.nekoweb.org;
-                img-src 'self' https://electric-tenshi.nekoweb.org https://files.catbox.moe/d27rub.png;
+                connect-src 'self' https://api.github.com/repos/Pufikas/pufikas-website/commits/main https://nekoweb.org/api/site/info/pufikas.nekoweb.org https://pufikasapistuff.vercel.app;
+                img-src 'self' https://electric-tenshi.nekoweb.org https://files.catbox.moe/d27rub.png https://lastfm.freetls.fastly.net;
                 script-src 'self' https://electric-tenshi.nekoweb.org 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE=';
                 style-src 'self' https://electric-tenshi.nekoweb.org/vocaring/vocaring.css;
                 font-src 'self' https://file.garden/Z3nf4eZzZUtRPfhK/itc-legacy-sans-std-book.ttf;
@@ -37,9 +37,12 @@
                 <div class="box">
                     <img src="./assets/misc/ballin.gif" class="width100">
                 </div>
-                <div class="box">
-                    <p>current theme - <span id="current-theme"></span></p>
+                <div class="box center">
+                    <p>current theme</p>
+                    <span id="current-theme" class="gradient-text"></span>
+                    
                     <button id="theme-switch">switch!</button>
+                    
                 </div>
 
                 <div class="box" id="mikupls">
@@ -105,8 +108,27 @@
                     <label id="simpleBackground" for="simpleBackground">simple background</label>
                 </div>
 
-                <div class="box">
-                    <p id="lastfm"></p>
+                <div id="lastfm-panel" class="movable-window lastfm-movable">
+                    <div class="movable-window-header">
+                        <span class="window-title">Lastfm recently played</span>
+                    
+                        <div class="window-controls">
+                            <button class="win-btn minimize"></button>
+                            <button class="win-btn close"></button>
+                        </div>
+                    </div>
+                    
+                    <div id="lastfm">
+                        <div id="lastfm-listening-cover">
+                            <img class="lastfm-audio-cover" src="./assets/misc/mikudance.gif">
+                        </div>
+
+                        <div id="lastfm-trackinfo">
+                            <p id="lastfm-playingstatus"></p>
+                            <p id="lastfm-track" class="gradient-text"></p>
+                            <p id="lastfm-artist"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -177,7 +199,7 @@
 
                 <!-- HIGHLIGHTED PROJECTS -->
                 <div class="box">
-                    <h2>HIGHLIGHTED PROJECTS</h2>
+                    <h2 class="gradient-text">HIGHLIGHTED PROJECTS</h2>
 
                     <div class="project">
                         <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/pokedex" class="arrow">pokedex</a>
@@ -244,6 +266,9 @@
                         </li>
                         <li>
                             <a target="_blank" rel="nofollow" href="https://placeviolette.net/blog/void-button">void linux button</a>
+                        </li>
+                        <li>
+                            <a target="_blank" rel="nofollow" href="https://gifs.alphacoders.com/gifs/view/10724">dancing miku</a>
                         </li>
                     </ul>
                 </div>
@@ -325,7 +350,7 @@
                     
                 <!-- NAVIGATION -->
                 <div id="nav-panel" class="box">
-                    <h2 class="center">NAVIGATION</h2>
+                    <h2 class="center gradient-text">NAVIGATION</h2>
                     <ul class="center">
                         <li><span class="navlink highlight" data-id="home">home</span></li>
                         <li><span class="navlink" data-id="contacts">contacts</span></li>
@@ -342,7 +367,7 @@
 
                 <!-- COOL SITES LIST -->
                 <div id="cool-sites-panel" class="box center">
-                    <h2>COOL SITES</h2>
+                    <h2 class="gradient-text">COOL SITES</h2>
                     
                     <!-- list of buttons -->
                     <div class="column2" id="buttonList"></div>
