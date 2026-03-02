@@ -101,6 +101,18 @@ async function fetchLastFM() {
     }
 }
 
+setInterval(async () => {
+    const res = await fetch("/api/ping", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ clientId: localStorage.clientId })
+    });
+
+    const data = await res.json();
+
+    document.getElementById("onlineCount").textContent = `online: ${data.online}`;
+}, 30000);
+
 function scheduleNextLastfmFetch(isPlaying) {
     const interval = isPlaying ? 20000 : 120000;
     setTimeout(fetchLastFM, interval);
