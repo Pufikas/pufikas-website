@@ -176,8 +176,8 @@ body {
     font-size: 8px;
   }
 
-  #footer {
-    display: none;
+  #footer, #lastfm-panel {
+    display: none !important;
   }
 
   #menu-panel {
@@ -194,6 +194,6 @@ body {
   }
 
   .box:has(.width100) {
-    display: none;
+    display: none !important;
   }
 }

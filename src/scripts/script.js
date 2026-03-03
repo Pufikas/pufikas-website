@@ -1,12 +1,17 @@
 const navLinks = document.querySelectorAll(".navlink");
 const options = document.querySelectorAll(".option-check");
 const cursor = document.querySelector(".cursor");
+const windowEl = document.querySelector(".movable-window");
+const content = document.getElementById("lastfm");
+
 let blogCard = document.querySelectorAll("div.box.blogCard")
 let timeout;
 let mouseOverBtns = false;
 
 let particleChance = 0.2;
 let particleSize = 16;
+let particleCount = 30; // particle count only for explosion
+let maxParticleDistance = 100;
 let timeRes = document.getElementById("time");
 let timeBeen = document.getElementById("timeBeen");
 let hh = mm = ss = 0;
@@ -191,6 +196,7 @@ function expandBlog(e) {
             card.scrollIntoView({ behavior: "smooth", block: "start" });
         });
     }
+    pop(e);
     location.hash = `blogs?post=${card.dataset.blogId}`;
 }
 
@@ -221,8 +227,8 @@ function formatTimeAgo(unixSeconds) {
     }
 }
 
-document.getElementById('cool-sites-panel').addEventListener("mouseenter", () => { mouseOverBtns = true; })
-document.getElementById('cool-sites-panel').addEventListener("mouseleave", () => { mouseOverBtns = false; })
+document.getElementById("cool-sites-panel").addEventListener("mouseenter", () => { mouseOverBtns = true; })
+document.getElementById("cool-sites-panel").addEventListener("mouseleave", () => { mouseOverBtns = false; })
 
 document.addEventListener("mousemove", (e) => {
     if (Math.random() < particleChance && settings["cursor-particles"]) {
@@ -253,8 +259,7 @@ window.addEventListener("hashchange", () => {
     loadPageFromUrl();
 });
 
-document.getElementById("copyButtonCode").addEventListener("click", () => copyMyButton());
-document.getElementById("love").addEventListener("click", () => { particleChance += 0.1; particleSize += 2; });
+document.getElementById("copyButtonCode").addEventListener("click", (e) => { copyMyButton(); pop(e); });
 
 document.getElementById('prevBtn').onclick = () => {
     if (currPage > 1) {
@@ -359,8 +364,49 @@ function dragElement(elmnt) {
 
 // setInterval(spawnStar, 100);
 
-const windowEl = document.querySelector(".movable-window");
-const content = document.getElementById("lastfm");
+
+
+
+function pop(e) {
+    for (let i = 0; i < particleCount; i++) {
+        createExplosionParticle(e.clientX, e.clientY);
+    }
+}
+
+function createExplosionParticle(x, y) {
+  const particle = document.createElement("div");
+
+  const size = particleSize;
+  particle.style.width = size + "px";
+  particle.style.height = size + "px";
+  particle.classList.add("popParticle");
+  particle.style.background = `hsl(${Math.random() * 90 + 180}, 70%, 60%)`;
+
+  document.body.appendChild(particle);
+
+  // radial explosion
+  const angle = Math.random() * 2 * Math.PI;
+  const distance = Math.random() * maxParticleDistance;
+  const destinationX = x + Math.cos(angle) * distance;
+  const destinationY = y + Math.sin(angle) * distance;
+
+  const animation = particle.animate([
+    {
+      transform: `translate(${x}px, ${y}px)`,
+      opacity: 1
+    },
+    {
+      transform: `translate(${destinationX}px, ${destinationY}px)`,
+      opacity: 0
+    }
+  ], {
+    duration: Math.random() * 1000 + 500,
+    easing: 'cubic-bezier(0, .9, .57, 1)',
+    delay: Math.random() * 200
+  });
+
+  animation.finished.then(() => particle.remove());
+}
 
 document.querySelector(".minimize").onclick = () => {
     content.style.display = content.style.display === "none" ? "flex" : "none";
@@ -369,6 +415,11 @@ document.querySelector(".minimize").onclick = () => {
 document.querySelector(".close").onclick = () => {
     windowEl.style.display = "none";
 };
+
+document.getElementById("love").addEventListener('click', (e) => {
+    particleChance += 0.1; particleSize += 2; maxParticleDistance += 10; particleCount += 1;
+    pop(e);
+});
 
 setInterval(update, 1000);
 autoPageLoop();

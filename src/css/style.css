@@ -1,8 +1,15 @@
 @import url(base.css);
 
 @font-face {
-    font-family: "unifont";
-    src: url("/assets/fonts/unifont-16.0.04.ttf") format("truetype");
+    font-family: "Terminus500";
+    src: url("/assets/fonts/Terminus500-16.0.04.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Terminus500";
+    src: url("/assets/fonts/Terminus_500.ttf") format("truetype");
+    font-display: swap;
+    image-rendering: pixelated;
 }
 
 body {
@@ -15,7 +22,7 @@ body {
 }
 
 .splash {
-    font-family: "unifont", monospace;
+    font-family: "VT323", monospace;
     position: fixed;
     z-index: 909090;
     left: 0;
@@ -28,31 +35,31 @@ body {
 }
 
 .nn {
-    font-family: "unifont", monospace;
+    font-family: "Terminus500", monospace;
     color: #ffffff !important;
     font-weight: bold;
 }
 
 .ok {
-    font-family: "unifont", monospace;
+    font-family: "Terminus500", monospace;
     color: #00ff00 !important;
     font-weight: bold;
 }
 
 .ww {
-    font-family: "unifont", monospace;
+    font-family: "Terminus500", monospace;
     color: #d0ff00 !important;
     font-weight: bold;
 }
 
 .mint {
-    font-family: "unifont", monospace;
+    font-family: "Terminus500", monospace;
     color: var(--m-mint) !important;
     font-weight: bold;
 }
 
 .fail {
-    font-family: "unifont", monospace;
+    font-family: "Terminus500", monospace;
     color: #ff0000 !important;
     font-weight: bold;
 }
@@ -61,6 +68,8 @@ body {
     cursor: var(--cursor-busy);
     width: 24px; 
     height: 24px;
+    opacity: 40%;
+    transition: all 1s;
 }
 
 .box {
@@ -226,7 +235,7 @@ button:hover {
     padding-top: 2px;
     font-weight: bold;
     font-size: 70px;
-    font-family: unifont;
+    font-family: Terminus500;
     background: linear-gradient(var(--link-color), var(--m-primary), var(--m-darkblue), var(--m-darkblue));
     color: transparent;
     background-clip: text;
@@ -343,7 +352,6 @@ button:hover {
     margin-top: -24px;
     gap: 4px;
     font-size: 10px; 
-    opacity: 40%;
 }
 
 ul {
@@ -499,6 +507,17 @@ ul {
         filter: hue-rotate(360deg);
         opacity: 0;
     }
+}
+
+.popParticle {
+    position: fixed;
+    /* heart */
+    clip-path: polygon(50% 15%, 61% 6%, 75% 6%, 85% 15%, 85% 30%, 50% 60%, 15% 30%, 15% 15%, 25% 6%, 39% 6%); 
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
 }
 
 .cursor:before {
@@ -751,7 +770,7 @@ ul {
 }
 
 .movable-window {
-    font-family: "unifont", monospace;
+    font-family: "Terminus500", monospace;
     max-width: 400px;
     position: absolute;
     z-index: 4;
@@ -818,10 +837,14 @@ ul {
 
 .window-title {
     font-weight: bolder;
-    font-family: "unifont" !important;
+    font-family: "Terminus500" !important;
 }
 
 .lastfm-movable {
     left: 69px;
     top: 290px;
+}
+
+#love:hover {
+    opacity: 1;
 }

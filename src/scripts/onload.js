@@ -102,16 +102,15 @@ async function fetchLastFM() {
 }
 
 setInterval(async () => {
-    const res = await fetch("/api/ping", {
+    const res = await fetch("https://pufikasapistuff.vercel.app/api/ping", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ clientId: localStorage.clientId })
     });
 
     const data = await res.json();
-
-    document.getElementById("onlineCount").textContent = `online: ${data.online}`;
-}, 30000);
+    document.getElementById("onlineCount").textContent = data.online;
+}, 1000);
 
 function scheduleNextLastfmFetch(isPlaying) {
     const interval = isPlaying ? 20000 : 120000;
@@ -450,6 +449,10 @@ function loadLocalStorage() {
 
     if (!localStorage.getItem("times-visited")) {
         localStorage.setItem("times-visited", 0);
+    }
+
+    if (!localStorage.clientId) {
+        localStorage.clientId = crypto.randomUUID();
     }
 
     const refreshed = localStorage.getItem("data_refreshed");
