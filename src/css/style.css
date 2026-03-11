@@ -848,3 +848,34 @@ ul {
 #love:hover {
     opacity: 1;
 }
+
+.tags {
+    margin-top: -6px;
+    margin-left: 20px;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 4px;
+    margin-right: 2px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.tag.js {
+    border-bottom: solid 4px #f7df1e;
+}
+
+.tag.html {
+    border-bottom: solid 4px #e34c26;
+}
+
+.tag.css {
+    border-bottom: solid 4px #264de4;
+}
+
+.tag.vuejs {
+    border-bottom: solid 4px var(--m-mint);
+}

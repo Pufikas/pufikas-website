@@ -110,7 +110,7 @@ setInterval(async () => {
 
     const data = await res.json();
     document.getElementById("onlineCount").textContent = data.online;
-}, 1000);
+}, 30000);
 
 function scheduleNextLastfmFetch(isPlaying) {
     const interval = isPlaying ? 20000 : 120000;
@@ -162,43 +162,11 @@ function websiteStats() {
     let upd = document.getElementById("nekoweb-updates");
     let fol = document.getElementById("nekoweb-followers");
     let vie = document.getElementById("nekoweb-views");
-    let upd2 = document.getElementById("nekoweb-updates-before");
-    let fol2 = document.getElementById("nekoweb-followers-before");
-    let vie2 = document.getElementById("nekoweb-views-before");
     let localCached = JSON.parse(localStorage.getItem("web_stats"));
 
     setStat(vie, "booted ", localCached.views, " times", "ok");
     setStat(fol, "installed by ", localCached.followers, " users", "ok");
     setStat(upd, "deployed ", localCached.site_updates, " times", "ok");
-
-    applyDiff(fol2, localCached.followers, dailyYesterday.followers);
-    applyDiff(vie2, localCached.views, dailyYesterday.views);
-    applyDiff(upd2, localCached.site_updates, dailyYesterday.site_updates);
-}
-
-function compareStat(today, yesterday) {
-    if (yesterday == null) {
-        return { text: "no data", class: "nn" };
-    }
-
-    const diff = today - yesterday;
-
-    if (diff > 0) {
-        return { text: `+${diff} today`, class: "ok" };
-    }
-
-    if (diff < 0) {
-        return { text: `-${Math.abs(diff)} today.`, class: "ww" };
-    }
-
-    return { text: "no change", class: "nn" };
-}
-
-function applyDiff(el, today, yesterday) {
-    const diff = compareStat(today, yesterday);
-    el.textContent = diff.text;
-    el.classList.remove("ok", "ww", "nn");
-    el.classList.add(diff.class);
 }
 
 function setStat(el, before, value, after, name_class) {
