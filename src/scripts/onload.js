@@ -21,6 +21,7 @@ let songs = [];
 let buttons = [];
 let blogs = [];
 let settings = {};
+let achievements = {};
 const pageCache = {};
 let contacts = [];
 let bootText = [
@@ -75,6 +76,7 @@ fetch("src/data/data.json")
         contacts = data.contacts;
         songs = data.songs;
         settings = data.settings;
+        achievements = data.achievements;
         loadStuff();
     }).catch(err => console.error("fetch failed for data: ", err));
 
@@ -183,6 +185,7 @@ async function loadStuff() {
     loadSongEventListeners();
     loadPageFromUrl();
     loadLocalStorage();
+    loadAchievements();
 
     Object.entries(contacts).forEach(([section, sectionContacts]) => {
         initContacts(section, sectionContacts);
@@ -403,6 +406,21 @@ function initLoadEffect() {
             splash.classList.add("hidden");
         }, 620)
     })
+}
+
+function loadAchievements() {
+    const stored = localStorage.getItem("achievements");
+
+    if (stored) {
+        const saved = JSON.parse(stored);
+        Object.keys(achievements).forEach(key => {
+            if (saved[key] !== undefined) {
+                achievements[key].unlocked = saved[key].unlocked;
+            }
+        });
+    }
+
+    localStorage.setItem("achievements", JSON.stringify(achievements));
 }
 
 function loadLocalStorage() {

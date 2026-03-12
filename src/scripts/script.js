@@ -227,6 +227,35 @@ function formatTimeAgo(unixSeconds) {
     }
 }
 
+function showAchievement(name) {
+    const toast = document.getElementById("achievement-toast");
+    const imgPath = `/assets/achievements/${name}.png`;
+    const ach = achievements[name];
+
+    document.getElementById("achievement-title").innerText = ach.title;
+    document.getElementById("achievement-description").innerText = ach.desc;
+    document.getElementById("achievement-toast-icon").src = imgPath; 
+    
+    requestAnimationFrame(() => {
+        toast.classList.add("show");
+    });
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
+
+function getAchievement(name) {
+    if (!achievements[name].unlocked) {
+        achievements[name].unlocked = true;
+
+        localStorage.setItem("achievements", JSON.stringify(achievements));
+
+        console.log("unlock", name);
+        showAchievement(name);
+    }
+}
+
 document.getElementById("cool-sites-panel").addEventListener("mouseenter", () => { mouseOverBtns = true; })
 document.getElementById("cool-sites-panel").addEventListener("mouseleave", () => { mouseOverBtns = false; })
 
@@ -419,6 +448,10 @@ document.querySelector(".close").onclick = () => {
 document.getElementById("love").addEventListener('click', (e) => {
     particleChance += 0.1; particleSize += 2; maxParticleDistance += 10; particleCount += 1;
     pop(e);
+    getAchievement("miku-love");
+    if (particleSize >= 100) {
+        getAchievement("miku-huge-love");
+    }
 });
 
 setInterval(update, 1000);

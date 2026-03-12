@@ -149,5 +149,17 @@
         "scanlines": true,
         "theme": "miku",
         "simple-background": false
+    },
+    "achievements": {
+        "miku-love": {
+            "unlocked": false,
+            "title": "Miku Love",
+            "desc": "Clicked the miku love button"
+        },
+        "miku-huge-love": {
+            "unlocked": false,
+            "title": "Big Miku Love!",
+            "desc": "Miku love is out of control!!"
+        }
     }
 }

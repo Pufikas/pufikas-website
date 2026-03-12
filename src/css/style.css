@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Terminus500";
-    src: url("/assets/fonts/Terminus500-16.0.04.ttf") format("truetype");
+    src: url("/assets/fonts/Terminus_500.ttf") format("truetype");
 }
 
 @font-face {
@@ -539,6 +539,10 @@ ul {
     font-size: 10px;
 }
 
+.normal {
+    font-size: 12px;
+}
+
 .not-smaller {
     font-size: 14px;
 }
@@ -849,33 +853,49 @@ ul {
     opacity: 1;
 }
 
-.tags {
-    margin-top: -6px;
-    margin-left: 20px;
+/* achievement popup */
+
+#achievement-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
 }
 
-.tag {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 600;
-    padding: 1px 4px;
-    margin-right: 2px;
-    border-radius: 4px;
-    color: #fff;
+
+#achievement-toast {
+    display: flex;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transform: translateX(120%);
+    transition: transform 0.4s ease-out;
 }
 
-.tag.js {
-    border-bottom: solid 4px #f7df1e;
+#achievement-toast.show {
+    transform: translateX(0);
 }
 
-.tag.html {
-    border-bottom: solid 4px #e34c26;
+#achievement-toast-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
 }
 
-.tag.css {
-    border-bottom: solid 4px #264de4;
+#achievement-toast-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.tag.vuejs {
-    border-bottom: solid 4px var(--m-mint);
+#achievement-title {
+    color: var(--m-mint);
+    font-size: 20px;
+}
+
+#achievement-description {
+    color: var(--m-pink);
+    font-size: 14px;
 }
