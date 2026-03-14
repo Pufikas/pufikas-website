@@ -248,10 +248,14 @@ function showAchievement(name) {
 function getAchievement(name) {
     if (!achievements[name].unlocked) {
         achievements[name].unlocked = true;
+        foundAch++;
+
+        const el = document.querySelector(`[data-achievement="${name}"]`);
+        if (el) el.classList.remove("locked");
+        
+        document.getElementById("achievementsFound").innerText = foundAch;
 
         localStorage.setItem("achievements", JSON.stringify(achievements));
-
-        console.log("unlock", name);
         showAchievement(name);
     }
 }
@@ -453,6 +457,19 @@ document.getElementById("love").addEventListener('click', (e) => {
         getAchievement("miku-huge-love");
     }
 });
+
+const drawer = document.getElementById("drawer-panel");
+const toggle = document.getElementById("drawerToggle");
+
+document.getElementById("clearCache").addEventListener("click", () => {
+    localStorage.clear();
+    location.reload();
+});
+
+// remove?
+// document.getElementById("achievementCollectedContainerButton").addEventListener("click", () => {
+//     document.getElementById("achievementCollectedContainer").classList.toggle("open");
+// });
 
 setInterval(update, 1000);
 autoPageLoop();

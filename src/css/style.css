@@ -654,12 +654,12 @@ ul {
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dashed var(--m-primary);
+    /* border-bottom: 1px dashed var(--m-primary); */
 }
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: 150px;
     background-color: var(--m-grey);
     text-align: center;
     padding: 5px 0;
@@ -667,9 +667,9 @@ ul {
 
     position: absolute;
     z-index: 1;
-    bottom: 125%;
+    bottom: 180%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -75px;
 
     opacity: 0;
     transition: opacity 0.3s;
@@ -867,7 +867,7 @@ ul {
     display: flex;
     gap: 10px;
     padding: 10px 14px;
-    background: #1a1a1a;
+    background-image: linear-gradient(rgba(200, 20, 100, 0.4),rgba(200, 100, 10, 0.4));
     border-radius: 8px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     transform: translateX(120%);
@@ -893,9 +893,34 @@ ul {
 #achievement-title {
     color: var(--m-mint);
     font-size: 20px;
+    margin: auto;
 }
 
 #achievement-description {
     color: var(--m-pink);
     font-size: 14px;
 }
+
+#achievementCollectedContainer {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(3, 1fr);
+    /* max-height: 0; */
+    /* overflow: hidden; */
+    transition: max-height 0.3s ease;
+    max-height: 500px;
+}
+
+.achImg {
+    width: 32px;
+    height: 32px;
+}
+
+.locked .achImg {
+    filter: grayscale(1) brightness(0.3);
+}
+
+/* remove? */
+/* #achievementCollectedContainer.open {
+    max-height: 500px;
+} */

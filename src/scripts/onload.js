@@ -56,6 +56,8 @@ let bootText = [
 
 let currPage = 1;
 let totalPages = 0;
+let totalAch = 0;
+let foundAch = 0;
 const itemsPerPage = 6; // 2 cols and 3 each col
 let dailyYesterday = {};
 const today = new Date();
@@ -410,16 +412,48 @@ function initLoadEffect() {
 
 function loadAchievements() {
     const stored = localStorage.getItem("achievements");
-
+    const achContainer = document.getElementById("achievementCollectedContainer");
+    
     if (stored) {
         const saved = JSON.parse(stored);
-        Object.keys(achievements).forEach(key => {
-            if (saved[key] !== undefined) {
-                achievements[key].unlocked = saved[key].unlocked;
+
+        Object.entries(achievements).forEach(([key, ach]) => {
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("tooltip");
+            wrapper.dataset.achievement = key;
+
+            const img = document.createElement("img");
+            img.classList.add("achImg");
+            img.src = `/assets/achievements/${key}.png`;
+
+            const tooltip = document.createElement("div");
+            tooltip.classList.add("tooltiptext");
+
+            const title = document.createElement("p");
+            title.textContent = ach.title;
+
+            tooltip.appendChild(title);
+            wrapper.appendChild(img);
+            wrapper.appendChild(tooltip);
+
+            achContainer.appendChild(wrapper);
+
+            if (saved[key]?.unlocked) {
+                ach.unlocked = true;
+                foundAch++;
+            } else {
+                ach.unlocked = false;
+                wrapper.classList.add("locked");
             }
+            
+            totalAch++;
         });
+
     }
 
+    document.getElementById("totalAchievements").innerText = totalAch;
+    document.getElementById("achievementsFound").innerText = foundAch;
+    
     localStorage.setItem("achievements", JSON.stringify(achievements));
 }
 

@@ -106,6 +106,8 @@
                     <br>
                     <input class="option-check" type="checkbox" data-option="simple-background">
                     <label id="simpleBackground" for="simpleBackground">simple background</label>
+                
+                    <button id="clearCache">clear cache</button>
                 </div>
 
                 <div id="lastfm-panel" class="movable-window lastfm-movable">
@@ -384,10 +386,16 @@
                     </div>
                 </div>
                 
-                <!-- ACHIEVEMENTS -->
-                <div class="box normal">
-                    <p>Found achievements <span id="achievementsFound">0</span></p>
+                <!-- ACHIEVEMENT CONTAINER -->
+                <div class="box normal center">
+                    <p>Achievements</p>
+                    <span id="achievementsFound">0</span> / <span id="totalAchievements">1</span>
+                    <!-- remove? -->
+                    <!-- <button id="achievementCollectedContainerButton" class="achBtnToggle">▶ ▶ ▶</button> -->
+
+                    <div id="achievementCollectedContainer"></div>
                 </div>
+                <!-- ACIEVEMENT POPUP -->
                 <div id="achievement-container">
                     <div id="achievement-toast">
                         <img id="achievement-toast-icon" src="/assets/achievements/miku-love.png">
@@ -417,6 +425,8 @@
                     </div>
                 </div>
             </div>
+
+            
         </div>
         
         
