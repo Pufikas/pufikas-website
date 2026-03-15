@@ -151,15 +151,65 @@
         "simple-background": false
     },
     "achievements": {
+        "welcome": {
+            "unlocked": false,
+            "title": "First Boot",
+            "desc": "System initialized. Welcome!"
+        },
         "miku-love": {
             "unlocked": false,
-            "title": "Miku Love",
-            "desc": "Clicked the miku love button"
+            "title": "Miku Fan",
+            "desc": "Pressed the Miku love button"
         },
         "miku-huge-love": {
             "unlocked": false,
-            "title": "Big Miku Love!",
+            "title": "Miku Overload",
             "desc": "Miku love is out of control!!"
+        },
+        "baka-squad": {
+            "unlocked": false,
+            "title": "Triple Baka Squad",
+            "desc": "All bakas assembled"
+        },
+        "curious": {
+            "unlocked": false,
+            "title": "Explorer",
+            "desc": "Visited every navigation panel"
+        },
+        "dance-party": {
+            "unlocked": false,
+            "title": "Dance Party",
+            "desc": "The music cannot be stopped"
+        },
+        "share": {
+            "unlocked": false,
+            "title": "Sharing is Caring",
+            "desc": "Copied the share button"
+        },
+        "reading": {
+            "unlocked": false,
+            "title": "Deep Reading",
+            "desc": "Are you actually reading!?"
+        },
+        "sankyuu": {
+            "unlocked": false,
+            "title": "Sankyuu!",
+            "desc": "Stayed on the site for 39 seconds"
+        },
+        "popup": {
+            "unlocked": false,
+            "title": "Popup Slayer",
+            "desc": "Closed the popup"
+        },
+        "customizing": {
+            "unlocked": false,
+            "title": "Personal Touch",
+            "desc": "Customized the interface"
+        },
+        "reboot": {
+            "unlocked": false,
+            "title": "Oops!",
+            "desc": "You broke the bootloader"
         }
     }
 }

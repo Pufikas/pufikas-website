@@ -24,7 +24,7 @@ body {
 .splash {
     font-family: "VT323", monospace;
     position: fixed;
-    z-index: 909090;
+    z-index: 9000;
     left: 0;
     top: 0;
     width: 100%;
@@ -903,7 +903,7 @@ ul {
 
 #achievementCollectedContainer {
     display: grid;
-    gap: 1px;
+    gap: 2px;
     grid-template-columns: repeat(3, 1fr);
     /* max-height: 0; */
     /* overflow: hidden; */
@@ -914,13 +914,13 @@ ul {
 .achImg {
     width: 32px;
     height: 32px;
+    image-rendering: initial !important;
 }
 
 .locked .achImg {
-    filter: grayscale(1) brightness(0.3);
+    filter: grayscale(1) brightness(0.2);
 }
 
-/* remove? */
-/* #achievementCollectedContainer.open {
-    max-height: 500px;
-} */
+#clearAllCache {
+    width: 100% !important;
+}

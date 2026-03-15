@@ -53,6 +53,39 @@ let bootText = [
     "         Password: *******",
     "[  EE  ] Incorrect password, booting as guest",
 ];
+let rebootText = [
+    "[  II  ] Reboot requested by user",
+    "[  II  ] Syncing disks...",
+    "[  OK  ] Filesystems synced",
+    "[  II  ] Stopping services...",
+    "[  OK  ] Network service stopped",
+    "[  OK  ] Display manager stopped",
+    "[  II  ] Unmounting filesystems...",
+    "[  OK  ] /home unmounted",
+    "[  OK  ] /boot unmounted",
+    "[  II  ] System halted",
+    "",
+    "       Rebooting...",
+    "",
+    "       GNU GRUB version 2.12",
+    "",
+    "       Loading boot menu...",
+    "[  WW  ] Warning: default boot entry corrupted",
+    "",
+    "       error: file '/boot/vmlinuz-linux' not found.",
+    "       error: you need to load the kernel first.",
+    "",
+    "       Entering rescue mode...",
+    "       grub rescue>",
+    "",
+    "[  EE  ] Automatic recovery failed",
+    "[  II  ] Attempting fallback boot entry...",
+    "[  II  ] Loading backup kernel...",
+    "[  OK  ] Kernel loaded",
+    "[  OK  ] Initial ramdisk loaded",
+    "",
+    "       Booting Linux..."
+];
 
 let currPage = 1;
 let totalPages = 0;
@@ -226,7 +259,10 @@ function loadSongEventListeners() {
     });
 
     audioVolume.addEventListener("click", changeVolume);
-    audioPlay.addEventListener("click", playAudio);
+    audioPlay.addEventListener("click", () => {
+        playAudio(); 
+        getAchievement("dance-party");
+    });
     audioProgress.addEventListener("click", seekIntoMusic.bind(this));
     document.getElementById("audio-play-next").addEventListener("click", () => audioPlayNext(1));
     document.getElementById("audio-play-previous").addEventListener("click", () => audioPlayNext(-1));
@@ -368,52 +404,124 @@ function initContacts(sectionId, data) {
 }
 
 function initLoadEffect() {
-    const splash = document.querySelector(".splash");
+    const splash = document.querySelector(".splash-boot");
+    splash.style.opacity = 1;
+    splash.classList.remove("hidden");
+    // splash.textContent = "";
+
+    const markers = {
+        "  OK  ": "ok",
+        "  WW  ": "ww",
+        "  EE  ": "fail",
+        "  !!  ": "fail",
+        "  II  ": "info"
+    };
 
     bootText.forEach((line, i) => {
         setTimeout(() => {
             const p = document.createElement("p");
 
-            const markers = {
-                "  OK  " : "ok",
-                "  WW  " : "ww",
-                "  EE  " : "fail",
-                "  !!  " : "fail"
-            };
-
+            let foundMarker = false;
             for (const marker in markers) {
                 if (line.includes(marker)) {
-                    p.innerHTML = line.replace(marker, `<span class="${markers[marker]}">${marker}</span>`);
+                    p.innerHTML = line.replace(marker,`<span class="${markers[marker]}">${marker}</span>`);
+                    foundMarker = true;
                     break;
                 }
             }
-            
-            if (!p.innerHTML) {
-                p.textContent = line;
-            }
+
+            if (!foundMarker) p.textContent = line;
+
             splash.append(p);
-        }, i * 100 + Math.random() * 100 + (line.includes("Incorrect") ? 300 : 0))
-    });;
-    
+        }, i * 100 + Math.random() * 100 + (line.includes("Incorrect") ? 300 : 0));
+    });
+
+    // hide splash after all lines
     setTimeout(() => {
         splash.style.opacity = 0;
         splash.classList.add("hidden");
     }, bootText.length * 190);
 
-    splash.addEventListener("click", () => {
-        splash.style.opacity = 0.2;
-        splash.textContent = "User input detected Quitting"
+    if (!splash.dataset.listenerAdded) {
+        splash.addEventListener("click", () => {
+            splash.style.opacity = 0.2;
+            splash.textContent = "User input detected Quitting";
+
+            setTimeout(() => {
+                splash.classList.add("hidden");
+                splash.textContent = "";
+            }, 620);
+        });
+        splash.dataset.listenerAdded = "true";
+    }
+}
+
+function reboot() {
+    const splash = document.querySelector(".splash-reboot");
+    splash.style.opacity = 1;
+    splash.classList.remove("hidden");
+    splash.textContent = "";
+
+    const markers = {
+        "  OK  ": "ok",
+        "  WW  ": "ww",
+        "  EE  ": "fail",
+        "  !!  ": "fail",
+        "  II  ": "info"
+    };
+
+    let cumulativeDelay = 0;
+
+    rebootText.forEach((line) => {
+        let delay = 100 + Math.random() * 100;
+
+        if (line.includes("Rebooting") || line.includes("Booting")) delay += 1000;
+        if (line.toLowerCase().includes("error")) delay += 1400;
+        if (line.includes("Attempting")) delay += 4000;
+        if (line.includes("grub rescue>")) delay += 3000;
+
+        cumulativeDelay += delay;
 
         setTimeout(() => {
-            splash.classList.add("hidden");
-        }, 620)
-    })
+            const p = document.createElement("p");
+
+            let foundMarker = false;
+            for (const marker in markers) {
+                if (line.includes(marker)) {
+                    p.innerHTML = line.replace(marker, `<span class="${markers[marker]}">${marker}</span>`);
+                    foundMarker = true;
+                    break;
+                }
+            }
+
+            if (!foundMarker) p.textContent = line;
+
+            splash.append(p);
+
+            if (line.includes("grub rescue>")) {
+                getAchievement("reboot");
+            }
+
+            if (line.includes("Booting")) {
+                setTimeout(() => {
+                    splash.style.opacity = 0;
+                    splash.classList.add("hidden");
+                    splash.textContent = "";
+
+                    initLoadEffect();
+                }, 1400);
+            }
+        }, cumulativeDelay);
+    });
 }
 
 function loadAchievements() {
     const stored = localStorage.getItem("achievements");
     const achContainer = document.getElementById("achievementCollectedContainer");
     
+    foundAch = 0;
+    totalAch = 0;
+
     if (stored) {
         const saved = JSON.parse(stored);
 
@@ -505,6 +613,7 @@ function incrementVisitedCountAndText() {
 
     if (count == 1) {
         welcome.textContent = `, THIS IS YOUR FIRST VISIT`;
+        getAchievement("welcome");
     } else {
         welcome.textContent = `BACK,  BOOT #${count}`;
     }

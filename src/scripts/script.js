@@ -52,6 +52,7 @@ function update() {
     // timeRes.textContent = ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2);
     timeRes.textContent = getMyTime();
     timeBeen.textContent = "running for " + ("0" + mm).slice(-2) + ":" + ("0" + ss).slice(-2);
+    if (ss == 39) getAchievement("sankyuu");
 }
 
 function updateLocalStorage(key) {
@@ -65,11 +66,14 @@ function applySettings() {
         document.body.style.backgroundImage = "none";
     } else {
         document.body.style.backgroundImage = "";
-    }  
+    }
 }
+
+const visitedPanels = new Set();
 
 function showPanel(option) {
     const panels = document.querySelectorAll("[data-panel]");
+
     panels.forEach(panel => {
         if (panel.dataset.panel === option.dataset.id) {
             panel.classList.remove("hidden");
@@ -83,10 +87,15 @@ function showPanel(option) {
     navLinks.forEach(link => {
         if (link === option) {
             link.classList.add("highlight");
+            visitedPanels.add(link.dataset.id);
         } else {
             link.classList.remove("highlight");
         }
     });
+
+    if (visitedPanels.size === navLinks.length) {
+        getAchievement("curious");
+    }
 }
 
 function copyMyButton() {
@@ -198,6 +207,7 @@ function expandBlog(e) {
     }
     pop(e);
     location.hash = `blogs?post=${card.dataset.blogId}`;
+    getAchievement("reading");
 }
 
 function formatTimeAgo(unixSeconds) {
@@ -282,6 +292,7 @@ options.forEach((opt) => {
     opt.addEventListener("change", () => {
         const key = opt.dataset.option;
         settings[key] = opt.checked;
+        getAchievement("customizing");
         updateLocalStorage(key);
         applySettings();
     });
@@ -292,7 +303,7 @@ window.addEventListener("hashchange", () => {
     loadPageFromUrl();
 });
 
-document.getElementById("copyButtonCode").addEventListener("click", (e) => { copyMyButton(); pop(e); });
+document.getElementById("copyButtonCode").addEventListener("click", (e) => { copyMyButton(); pop(e); getAchievement("share"); });
 
 document.getElementById('prevBtn').onclick = () => {
     if (currPage > 1) {
@@ -447,23 +458,32 @@ document.querySelector(".minimize").onclick = () => {
 
 document.querySelector(".close").onclick = () => {
     windowEl.style.display = "none";
+    getAchievement("popup");
 };
 
-document.getElementById("love").addEventListener('click', (e) => {
+document.getElementById("love").addEventListener("click", (e) => {
     particleChance += 0.1; particleSize += 2; maxParticleDistance += 10; particleCount += 1;
     pop(e);
     getAchievement("miku-love");
-    if (particleSize >= 100) {
+    if (particleSize >= 39) {
         getAchievement("miku-huge-love");
     }
+});
+
+document.getElementById("clearAllCache").addEventListener("click", (e) => {
+    localStorage.clear();
+    location.reload();
 });
 
 const drawer = document.getElementById("drawer-panel");
 const toggle = document.getElementById("drawerToggle");
 
-document.getElementById("clearCache").addEventListener("click", () => {
-    localStorage.clear();
-    location.reload();
+document.getElementById("reboot-button").addEventListener("click", () => {
+    let text = "Are you sure you want to reboot?";
+
+    if (confirm(text) == true) {
+        reboot();
+    }
 });
 
 // remove?

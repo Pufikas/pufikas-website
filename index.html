@@ -20,9 +20,10 @@
     <link rel="stylesheet" href="src/css/style.css">
     <canvas id="background"></canvas>
 
-    <div class="splash">
+    <div class="splash splash-boot hidden">
         <h1>    WELCOME TO <span class="ww">pufikas.</span><span class="ok">nekoweb.</span><span class="fail">org</span></h1>
     </div>
+    <div class="splash splash-reboot hidden"></div>
     <div class="cursor"></div>
     <div id="logo">PUFIKAS</div>
 
@@ -106,8 +107,8 @@
                     <br>
                     <input class="option-check" type="checkbox" data-option="simple-background">
                     <label id="simpleBackground" for="simpleBackground">simple background</label>
-                
-                    <button id="clearCache">clear cache</button>
+                    <br>
+                    <button id="clearAllCache">clear cache</button>
                 </div>
 
                 <div id="lastfm-panel" class="movable-window lastfm-movable">
@@ -272,6 +273,10 @@
                         <li>
                             <a target="_blank" rel="nofollow" href="https://gifs.alphacoders.com/gifs/view/10724">dancing miku</a>
                         </li>
+                        <li>
+                            <a target="_blank" rel="nofollow" href="https://emoji.house/discord/miku">emoji.house</a> and
+                            <a target="_blank" rel="nofollow" href="https://emoji.gg/packs/miku">emoji.gg</a> for emojis
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -390,9 +395,6 @@
                 <div class="box normal center">
                     <p>Achievements</p>
                     <span id="achievementsFound">0</span> / <span id="totalAchievements">1</span>
-                    <!-- remove? -->
-                    <!-- <button id="achievementCollectedContainerButton" class="achBtnToggle">▶ ▶ ▶</button> -->
-
                     <div id="achievementCollectedContainer"></div>
                 </div>
                 <!-- ACIEVEMENT POPUP -->
@@ -400,8 +402,8 @@
                     <div id="achievement-toast">
                         <img id="achievement-toast-icon" src="/assets/achievements/miku-love.png">
                         <div id="achievement-toast-info">
-                            <div id="achievement-title">Test</div>
-                            <div id="achievement-description">desc test real facts</div>
+                            <div id="achievement-title"></div>
+                            <div id="achievement-description"></div>
                         </div>
                     </div>
                 </div>
@@ -422,6 +424,7 @@
                         </p>
 
                         <p class="italic very-small">last update <a class="highlight" id="lastupdate" href="https://github.com/Pufikas/pufikas-website"></a></p>
+                        <button id="reboot-button" class="auto-margin">⏻</button>
                     </div>
                 </div>
             </div>

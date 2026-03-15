@@ -21,6 +21,9 @@ function updateThemeStuff(index) {
 document.getElementById("theme-switch").addEventListener("click", () => {
     i = (i + 1) % themes.length;
     updateThemeStuff(i);
+    if (i === themes.length - 1) {
+        getAchievement("baka-squad");
+    }
 });
 
 updateThemeStuff(i);
