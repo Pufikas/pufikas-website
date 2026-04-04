@@ -324,7 +324,10 @@ document.getElementById('nextBtn').onclick = () => {
 };
 
 // code "inspired" by w3schools https://www.w3schools.com/howto/howto_js_draggable.asp
-dragElement(document.querySelector(".movable-window"));
+const movWin = document.querySelectorAll(".movable-window");
+movWin.forEach(e => {
+    dragElement(e);
+});
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
