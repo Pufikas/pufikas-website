@@ -1,8 +1,11 @@
 const navLinks = document.querySelectorAll(".navlink");
 const options = document.querySelectorAll(".option-check");
 const cursor = document.querySelector(".cursor");
-const windowEl = document.querySelector(".movable-window");
 const content = document.getElementById("lastfm");
+
+const movWin = document.querySelectorAll(".movable-window");
+const movMin = document.querySelectorAll(".minimize");
+const movClo = document.querySelectorAll(".close");
 
 let blogCard = document.querySelectorAll("div.box.blogCard")
 let timeout;
@@ -99,11 +102,11 @@ function showPanel(option) {
 }
 
 function copyMyButton() {
-    const code = `<a target="_blank" rel="nofollow" href="https://pufikas.nekoweb.org/"><img src="https://pufikas.nekoweb.org/assets/buttons/pufikas88x31.png" alt="Pufikas Personal Site (REAL!!)/></a>`
+    const code = `<a target="_blank" rel="nofollow" href="https://pufikas.nekoweb.org/"><img src="https://pufikas.nekoweb.org/assets/buttons/pufikas88x31.png" alt="Pufikas Personal Site (REAL!!)/></a>`;
     
     navigator.clipboard.writeText(code);
 
-    alert("html copied!")
+    alert("html copied!");
 }
 
 function spawnParticle(x, y) {
@@ -125,7 +128,7 @@ function spawnParticle(x, y) {
     
     part.addEventListener("animationend", () => {
         part.remove();
-    })
+    });
 }
 
 function autoPageLoop() {
@@ -324,9 +327,25 @@ document.getElementById('nextBtn').onclick = () => {
 };
 
 // code "inspired" by w3schools https://www.w3schools.com/howto/howto_js_draggable.asp
-const movWin = document.querySelectorAll(".movable-window");
+
 movWin.forEach(e => {
     dragElement(e);
+});
+
+document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".minimize");
+
+    if (e.target.classList.contains("close")) {
+        const win = e.target.closest(".movable-window");
+        win.style.display = "none";
+        getAchievement("popup");
+    }
+
+    if (btn) {
+        const content = btn.closest(".movable-window").querySelector(".window-content");
+
+        content.classList.toggle("hidden");
+    }
 });
 
 function dragElement(elmnt) {
@@ -412,8 +431,6 @@ function dragElement(elmnt) {
 // setInterval(spawnStar, 100);
 
 
-
-
 function pop(e) {
     for (let i = 0; i < particleCount; i++) {
         createExplosionParticle(e.clientX, e.clientY);
@@ -455,14 +472,7 @@ function createExplosionParticle(x, y) {
   animation.finished.then(() => particle.remove());
 }
 
-document.querySelector(".minimize").onclick = () => {
-    content.style.display = content.style.display === "none" ? "flex" : "none";
-};
 
-document.querySelector(".close").onclick = () => {
-    windowEl.style.display = "none";
-    getAchievement("popup");
-};
 
 document.getElementById("love").addEventListener("click", (e) => {
     particleChance += 0.1; particleSize += 2; maxParticleDistance += 10; particleCount += 1;

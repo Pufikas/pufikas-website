@@ -240,7 +240,11 @@ button:hover {
     color: transparent;
     background-clip: text;
     letter-spacing: 25px;
+    text-shadow:
+        0 0 10px var(--m-primary),
+        0 0 20px var(--m-secondary);
 }
+
 
 .center {
     text-align: center !important;
