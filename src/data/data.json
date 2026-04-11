@@ -1,6 +1,10 @@
 {
     "buttons": [
         {
+            "href": "tsune.nekoweb.org",
+            "img": "tsune.png"
+        },
+        {
             "href": "lilithdev.neocities.org",
             "img": "lilithdevbtn.gif"
         },
@@ -39,6 +43,10 @@
         {
             "href": "frutigeraeroarchive.org",
             "img": "frutigeraeroarchive_button_2.png"
+        },
+        {
+            "href": "haunting.rip",
+            "img": "haunting.webp"
         }
     ],
     "contacts": {
