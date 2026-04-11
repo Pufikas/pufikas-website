@@ -942,3 +942,104 @@ ul {
 #clearAllCache {
     width: 100% !important;
 }
+
+.favList {
+    display: flex;
+    gap: 8px;
+    padding: 0;
+    margin-bottom: 12px;
+}
+
+.fav {
+    list-style: none;
+    width: 70px;
+}
+
+.favLink {
+    display: block;
+    position: relative;
+    width: 70px;
+    height: 110px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.favImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: opacity .3s ease;
+}
+
+.favLink::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2) 50%, transparent);
+    opacity: 0.9;
+    transition: opacity .3s ease;
+}
+
+.favTitle {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+    z-index: 2;
+    line-height: 1.2em;
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+.favRelease {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 9px;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    z-index: 3;
+}
+
+.favTitle, .favRelease {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.favLink:hover .favTitle, .favLink:hover .favRelease {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.favLink:hover .favImage {
+    opacity: 0.75;
+}
+
+.favLink:hover::after {
+    opacity: 1;
+}
+
+li.fav > a {
+    transition: none !important;
+    letter-spacing: 0px !important;
+}
+
+#favoritesPanel {
+    max-height: 500px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.25s ease;
+}
+
+#favoritesPanel.collapsed {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}

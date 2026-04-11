@@ -20,6 +20,7 @@ let buttonList = document.getElementById("buttonList");
 let songs = [];
 let buttons = [];
 let blogs = [];
+let favorites = [];
 let settings = {};
 let achievements = {};
 const pageCache = {};
@@ -102,7 +103,7 @@ fetch("src/blogs/blogs.json")
     .then(res => res.json())
     .then(data => {
         loadBlogs(data);       
-    }).catch(err => console.error("fetch failed for blogs", err));
+    }).catch(err => console.error("fetch failed for blogs ", err));
 
 fetch("src/data/data.json")
     .then(res => res.json())
@@ -112,8 +113,9 @@ fetch("src/data/data.json")
         songs = data.songs;
         settings = data.settings;
         achievements = data.achievements;
+        favorites = data.favorites;
         loadStuff();
-    }).catch(err => console.error("fetch failed for data: ", err));
+    }).catch(err => console.error("fetch failed for data ", err));
 
 fetch("src/data/stats.json")
     .then(res => res.json())
@@ -122,7 +124,7 @@ fetch("src/data/stats.json")
         daily = data.daily;
         dailyYesterday = data.daily[yesterday.toISOString().split("T")[0]];
         updateSiteStats();
-    }).catch(err => console.error("fetch failed for website stats: ", err));
+    }).catch(err => console.error("fetch failed for website stats ", err));
 
 async function fetchLastFM() {
     try {
@@ -225,6 +227,10 @@ async function loadStuff() {
     Object.entries(contacts).forEach(([section, sectionContacts]) => {
         initContacts(section, sectionContacts);
     });
+
+    Object.entries(favorites).forEach(([section, fav]) => {
+        initFavorites(section, fav);
+    });
 };
 
 function loadSongEventListeners() {
@@ -266,6 +272,34 @@ function loadSongEventListeners() {
     audioProgress.addEventListener("click", seekIntoMusic.bind(this));
     document.getElementById("audio-play-next").addEventListener("click", () => audioPlayNext(1));
     document.getElementById("audio-play-previous").addEventListener("click", () => audioPlayNext(-1));
+}
+
+function createFavItem(item, sectionId) {
+    const li = document.createElement("li");
+        li.className = "fav";
+        li.title = item.title || item.from;
+
+    const a = document.createElement("a");
+        a.className = "favLink";
+
+    const img = document.createElement("img");
+        img.className = "favImage";
+        img.src = `/assets/favorites/${sectionId}/${item.image}`;
+
+    // "title" is bottom left
+    const title = document.createElement("span");
+        title.className = "favTitle";
+        title.textContent = item.title || item.name;
+    
+    // "release" is top right
+    const release = document.createElement("span");
+        release.className = "favRelease";
+        release.textContent = item.release || "";
+
+    a.append(img, title, release);
+    li.appendChild(a);
+
+    return li;
 }
 
 function loadBlogs(blogs) {
@@ -401,6 +435,25 @@ function initContacts(sectionId, data) {
     );
 
     section.appendChild(container);
+}
+
+function initFavorites(sectionId, fav) {
+    const fragment = document.createDocumentFragment(); // performance
+    const container = document.getElementById(`${sectionId}Fav`);
+        container.innerHTML = "";
+    const ul = document.createElement("ul");
+        ul.classList = "favList";
+    const h5 = document.createElement("h5");
+        h5.innerText = `${sectionId.toUpperCase()} (${fav.length})`;
+
+    fav.forEach(f => {
+        const li = createFavItem(f, sectionId);
+        fragment.appendChild(li);
+    });
+
+    container.appendChild(h5);
+    container.appendChild(ul);
+    ul.appendChild(fragment);
 }
 
 function initLoadEffect() {
@@ -605,8 +658,6 @@ function incrementVisitedCountAndText() {
     localStorage.setItem("times-visited", count);
     localStorage.setItem("times-visited-today", todayCount);
     
-    console.log(localStorage.getItem("last-date-visit"), nowNormalized)
-
     if (!localStorage.getItem("last-date-visit") == nowNormalized || !localStorage.getItem("data_refreshed") == nowNormalized) {
         updateWebStats();
     }

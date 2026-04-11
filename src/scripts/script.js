@@ -472,8 +472,6 @@ function createExplosionParticle(x, y) {
   animation.finished.then(() => particle.remove());
 }
 
-
-
 document.getElementById("love").addEventListener("click", (e) => {
     particleChance += 0.1; particleSize += 2; maxParticleDistance += 10; particleCount += 1;
     pop(e);
@@ -497,6 +495,17 @@ document.getElementById("reboot-button").addEventListener("click", () => {
     if (confirm(text) == true) {
         reboot();
     }
+});
+
+const favBtn = document.getElementById("favToggle");
+const favPanel = document.getElementById("favoritesPanel");
+let expandedFav = false;
+
+favBtn.addEventListener("click", () => {
+    expandedFav = !expandedFav;
+    favPanel.classList.toggle("collapsed", !expandedFav);
+    favBtn.classList.toggle("open", !expandedFav);
+    favBtn.textContent = expandedFav ? "▼ ▼ ▼" : "▶ ▶ ▶";
 });
 
 // remove?

@@ -211,5 +211,88 @@
             "title": "Oops!",
             "desc": "You broke the bootloader"
         }
+    },
+    "favorites": {
+        "anime": [
+            {
+                "title": "Sousou no Frieren",
+                "release": "TV-2023",
+                "image": "frieren.jpg"
+            },
+            {
+                "title": "The Melancholy of Haruhi Suzumiya",
+                "release": "TV-2006",
+                "image": "haruhi.jpg"
+            },
+            {
+                "title": "Fate/Apocrypha",
+                "release": "TV-2017",
+                "image": "fateapo.jpg"
+            },
+            {
+                "title": "Bocchi the Rock!",
+                "titleJP": "ぼっち・ざ・ろっく！",
+                "release": "TV-2022",
+                "image": "boochi.jpg"
+            },
+            {
+                "title": "Log Horizon",
+                "titleJP": " ログ・ホライズン ",
+                "release": "TV-2013",
+                "image": "log.jpg"
+            },
+            {
+                "title": "Ghost in the Shell",
+                "titleJP": " GHOST IN THE SHELL（攻殻機動隊） ",
+                "release": "MOVIE-1995",
+                "image": "ghost.jpg"
+            },
+            {
+                "title": "Okitsura",
+                "titleJP": "沖縄で好きになった子が方言すぎてツラすぎる ",
+                "release": "TV-2025",
+                "image": "okinawa.jpg"
+            },
+            {
+                "title": "Overlord",
+                "titleJP": "オーバーロード ",
+                "release": "TV-2015",
+                "image": "overlord.jpg"
+            }
+        ],
+        "character": [
+            {
+                "from": "Sousou no Frieren",
+                "name": "Frieren",
+                "image": "frieren.jpg"
+            },
+            {
+                "from": "The Melancholy of Haruhi Suzumiya",
+                "name": "Nagato Yuki",
+                "image": "yuki.jpg"
+            },
+            {
+                "from": "That Time I Got Reincarnated as a Slime",
+                "fromRomaji": "Tensei shitara Slime Datta Ken",
+                "fromJP": "転生したらスライムだった件",
+                "name": "Milim Nava",
+                "image": "nava.jpg"
+            },
+            {
+                "from": "Fate/Apocrypha",
+                "name": "Astolfo",
+                "image": "astolfo.jpg"
+            },
+            {
+                "from": "crypton, vocaloid",
+                "name": "Hatsune Miku",
+                "image": "miku.png"
+            },
+            {
+                "from": "Okitsura",
+                "name": "Hina Kyan",
+                "image": "hina.jpg"
+            }
+        ]
     }
 }
