@@ -1,9 +1,9 @@
 @import url(base.css);
 
-@font-face {
+/* @font-face {
     font-family: "Terminus500";
     src: url("/assets/fonts/Terminus_500.ttf") format("truetype");
-}
+} */
 
 @font-face {
     font-family: "Terminus500";
