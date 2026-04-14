@@ -306,5 +306,57 @@
                 "image": "hina.jpg"
             }
         ]
-    }
+    },
+    "quotes": [
+        {
+            "by": "Himmel",
+            "text": "Frieren."
+        },
+        {
+            "by": "Stark",
+            "text": "Frieren, if I said to you, 'Let's go on a date,' what would you think?"
+        },
+        {
+            "by": "Himmel",
+            "text": "Frieren."
+        },
+        {
+            "by": "Yuki Nagato",
+            "text": "When crisis approaches, you will be first."
+        },
+        {
+            "by": "Yuki Nagato",
+            "text": "You have been chosen by Suzumiya Haruhi."
+        },
+        {
+            "by": "Yuki Nagato",
+            "text": "Humans lack the means to transmit ideas without words."
+        },
+        {
+            "by": "Haruhi Suzumiya",
+            "text": "Come on. Bigger smile!"
+        },
+        {
+            "by": "Haruhi Suzumiya",
+            "text": "The first stage can be considered a huge success!"
+        },
+        {
+            "by": "Haruhi Suzumiya",
+            "text": "...and we even made a homepage."
+        },
+        {
+            "by": "Haruhi Suzumiya",
+            "text": "What laws!?"
+        },
+        {
+            "by": "Konata Izumi",
+            "text": "A flat chest is a status symbol!"
+        },
+        {
+            "by": "Konata Izumi",
+            "text": "Timotei!",
+            "audio": "timote",
+            "audioFiles": 5
+        }
+    ]
 }

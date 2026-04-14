@@ -45,15 +45,20 @@
                     <span id="current-theme" class="gradient-text"></span>
                     
                     <button id="theme-switch">switch!</button>
-                    
+                </div>
+
+                <div class="box center">
+                    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28"></iframe>
                 </div>
 
                 <div class="box" id="mikupls">
                     <img src="./assets/misc/mikuplsinteract.gif" class="width100">
                 </div>
+                
                 <div class="box mikuconcert">
                     <img src="./assets/misc/mikuconcert.jpg" class="width100">
                 </div>
+                <!-- MY BUTTON -->
                 <div class="box">
                     <img src="./assets/buttons/pufikas88x31.png" class="center auto-margin">
                     <div class="center">
@@ -61,7 +66,6 @@
                         <a download="pufikas88x31" href="./assets/buttons/pufikas88x31.png">download</a>
                     </div>
                 </div>
-                <!-- <a target="_blank" rel="nofollow" href="https://pufikas.nekoweb.org/"><img src="pufikas88x31.png"/></a> -->
 
                 <!-- MUSIC PLAYER -->    
                 <div class="box">
@@ -167,56 +171,64 @@
                     <br>
                     <p>This is my small and silly website, inspired by other cool sites!!</p>
                     <br>
-
-                    <span>About me: <br></span>
-
+                    
+                   
                     <ul class="main-panel-short">
                         <p>I'm from <span class="ww">Lit</span><span class="ok">hua</span><span class="fail">nia</span>
-                            I code frequently, mostly for fun and to learn new things, and of course I dwell into watching anime and reading manga.
-                            And I play a lot of games too!
+                            I like building things with code, mostly for fun and to learn. I spend a lot of time working with <span class="ww">JavaScript</span>, both on the frontend and backend.
                         </p>
                         <br>
                         <p>
-                            I started programming as a hobby and fell in love with it, especially <span class="ww">JavaScript</span>
-                            And using <a href="https://vscodium.com/" target="_blank" rel="nofollow">VSCodium</a> as my IDE
-                            I try to keep away from microsoft stuff
+                            Outside of programming, I enjoy anime, manga and all kinds of games like: RPGs, strategy, roguelikes, rhythm to name a few.
                         </p>
 
-                    </ul>
+                        <p>Lately, I've been tinkering with servers, cybersecurity and open-source tools!</p>
 
+                        <br>
+                        <p class="italic smaller">(psst! you can find this site's source code <a href="https://github.com/Pufikas/pufikas-website" target="_blank" rel="nofollow">here!</a>)</p>
+                    </ul>
                     <br>
-                    <p>you can find this website source code <a href="https://github.com/Pufikas/pufikas-website" target="_blank" rel="nofollow">here!</a></p>
-                    
-                    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28"></iframe>
                 </div>
 
+                <!-- MARQUEE -->
                 <div class="box noborder">
-                    <img src="./assets/misc/mikum.gif">
-                    <img src="./assets/misc/mes.gif">
-                    <img src="./assets/misc/tetom.gif">
-                    <img src="./assets/buttons/void-button.png">
+                    <div id="marqueeWrapper">
+                        <div class="track">
+                            <img src="./assets/marquee/mikum.gif">
+                            <img src="./assets/marquee/mes.gif">
+                            <img src="./assets/marquee/tetom.gif">
+                            <img src="./assets/marquee/5srvdSo.gif">
+                            <img src="./assets/marquee/adilene.png">
+                            <img src="./assets/marquee/cuteanimegirls.gif">
+                            <img src="./assets/marquee/popotan-dansen.gif">
+                            <img src="./assets/marquee/vocaloid.gif">
+                            <img src="./assets/buttons/void-button.png">
+                            <!-- need to have same track again for clean loop -->
+                            <img src="./assets/marquee/mikum.gif">
+                            <img src="./assets/marquee/mes.gif">
+                            <img src="./assets/marquee/tetom.gif">
+                            <img src="./assets/marquee/5srvdSo.gif">
+                            <img src="./assets/marquee/adilene.png">
+                            <img src="./assets/marquee/cuteanimegirls.gif">
+                            <img src="./assets/marquee/popotan-dansen.gif">
+                            <img src="./assets/marquee/vocaloid.gif">
+                            <img src="./assets/buttons/void-button.png">
+                        </div>
+                    </div>
 
                     <img src="./assets/misc/m3.png" class="customRightImg">   
                 </div>
 
                 <div id="main" class="box">
-                    
-                    <p>I mess around with computers and play video games</p>
-                    <p class="italic smaller">Errmh... what else??</p>
-
-                    <p>Right learning about hardware and code.. and japanese!</p>
+                    <div id="randomQuote">
+                        <p id="quoteText">Frieren, if I said to you, 'Let's go on a date,' what would you think?</p>
+                        <p id="quoteBy">― Stark</p>
+                        <button title="New quote" id="quoteNew">🗘</button>
+                        <button title="Play audio" id="quoteAudio">▶</button>
+                        <audio id="quotePlayer"></audio>
+                    </div>
                     <br>
-
-                    <p>I like these type of games
-                        <a href="https://www.warframe.com/">Warframe</a>,
-                        <a href="https://www.pathofexile.com/">Path of Exile</a>
-                        <a href="https://osu.ppy.sh/">osu!</a>,
-                        <a href="https://www.factorio.com/">Factorio</a>
-                        because they either involve building, music or thinking of builds
-                    </p>
-
-                    <br>
-                    <p>I love automating tasks, because who doesn't like saving time?</p>
+                    <ul class="main-panel-short"></ul>
                     <br>
                     <a class="italic center" href="https://pufikas.atabook.org/">What do you like?</a>
                 </div>
@@ -307,6 +319,9 @@
                         <li>
                             <a target="_blank" rel="nofollow" href="https://emoji.house/discord/miku">emoji.house</a> and
                             <a target="_blank" rel="nofollow" href="https://emoji.gg/packs/miku">emoji.gg</a> for emojis
+                        </li>
+                        <li>
+                            <a target="_blank" rel="nofollow" href="https://blinkie.wiki/">blinkie.wiki</a> for some buttons and assets
                         </li>
                     </ul>
                 </div>

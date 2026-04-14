@@ -472,13 +472,66 @@ function createExplosionParticle(x, y) {
   animation.finished.then(() => particle.remove());
 }
 
+function getRandomQuoteAudioPath(quote) {
+    // this gives random audio path and keeps it doesnt repeat previous audio
+    let lastAudioNum = null;
+    let num;
+
+    do {
+        num = Math.floor(Math.random() * quote.audioFiles);
+    } while (num === lastAudioNum && quote.audioFiles > 1);
+
+    lastAudioNum = num;
+
+    return `./assets/quoteaudio/${quote.audio}${num}.mp3`;
+}
+
+function playQuoteAudio(path) {
+    const player = document.getElementById("quotePlayer");
+
+    player.src = path;
+    player.currentTime = 0;
+    player.play();
+}
+
+function getNewQuoteNum() {
+    let qNum = Math.floor(Math.random() * quotes.length);
+    displayQuote(qNum);
+}
+
+function displayQuote(qNum) {
+    const audioBtn = document.getElementById("quoteAudio");
+    const quote = quotes[qNum];
+
+    document.getElementById("quoteText").innerText = quote.text;
+    document.getElementById("quoteBy").innerText = `― ${quote.by}`;
+
+    const hasAudio = quote.audio && quote.audioFiles > 0;
+
+    // UX sligtly dim the customImgRight for long quotes
+    let cR = document.querySelector(".customRightImg");
+    quote.text.length >= 40 ? cR.classList.add("lowerOpacity") : cR.classList.remove("lowerOpacity"); 
+
+    if (hasAudio) {
+        audioBtn.classList.remove("hidden");
+        audioBtn.disabled = false;
+
+        audioBtn.onclick = () => {
+            const path = getRandomQuoteAudioPath(quote);
+            playQuoteAudio(path);
+        };
+    } else {
+        audioBtn.classList.add("hidden");
+        audioBtn.disabled = true;
+        audioBtn.onclick = null;
+    }
+}
+
 document.getElementById("love").addEventListener("click", (e) => {
     particleChance += 0.1; particleSize += 2; maxParticleDistance += 10; particleCount += 1;
     pop(e);
     getAchievement("miku-love");
-    if (particleSize >= 39) {
-        getAchievement("miku-huge-love");
-    }
+    if (particleSize >= 39) getAchievement("miku-huge-love");
 });
 
 document.getElementById("clearAllCache").addEventListener("click", (e) => {
@@ -492,9 +545,7 @@ const toggle = document.getElementById("drawerToggle");
 document.getElementById("reboot-button").addEventListener("click", () => {
     let text = "Are you sure you want to reboot?";
 
-    if (confirm(text) == true) {
-        reboot();
-    }
+    if (confirm(text) == true) reboot();
 });
 
 const favBtn = document.getElementById("favToggle");

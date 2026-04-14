@@ -23,6 +23,7 @@ let blogs = [];
 let favorites = [];
 let settings = {};
 let achievements = {};
+let quotes = [];
 const pageCache = {};
 let contacts = [];
 let bootText = [
@@ -114,6 +115,7 @@ fetch("src/data/data.json")
         settings = data.settings;
         achievements = data.achievements;
         favorites = data.favorites;
+        quotes = data.quotes;
         loadStuff();
     }).catch(err => console.error("fetch failed for data ", err));
 
@@ -219,6 +221,7 @@ function setStat(el, before, value, after, name_class) {
 async function loadStuff() {
     initLoadEffect();
     renderPageButtons();
+    loadQuotes();
     loadSongEventListeners();
     loadPageFromUrl();
     loadLocalStorage();
@@ -683,6 +686,11 @@ async function updateWebStats() {
 
     localStorage.setItem("web_stats", JSON.stringify(cachedWebStats));
     websiteStats();
+}
+
+function loadQuotes() {
+    getNewQuoteNum();
+    document.getElementById("quoteNew").addEventListener("click", getNewQuoteNum);
 }
 
 fetchLastFM();

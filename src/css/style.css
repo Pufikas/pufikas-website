@@ -698,7 +698,7 @@ ul {
 
 .customRightImg {
     position: absolute;
-    top: -266%;
+    top: -317%;
     right: 0;
     transform: translateX(20%) scale(0.7);
     pointer-events: none;
@@ -1042,4 +1042,67 @@ li.fav > a {
     max-height: 0;
     opacity: 0;
     pointer-events: none;
+}
+
+#marqueeWrapper {
+    margin: 0 auto;
+    width: 600px;
+    height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.track {
+    width: max-content;
+    display: flex;
+    animation: marquee 10s linear infinite forwards;
+}
+
+.track img {
+    margin-right: 10px;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+#randomQuote {
+    padding: 5px 10px;
+    text-align: left;
+    border-left: 1px solid var(--m-primary);
+}
+
+#quoteBy {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+#quoteText {
+    font-size: 1.1em;
+    margin: 0;
+}
+
+#quoteText::before {
+    content: "“";
+    font-size: 1.2em;
+    margin-right: 4px;
+}
+
+#quoteText::after {
+    content: "”";
+    font-size: 1.2em;
+    margin-left: 4px;
+}
+
+.lowerOpacity {
+    opacity: 0.5 !important;
 }
