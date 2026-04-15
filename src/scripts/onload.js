@@ -74,19 +74,22 @@ let rebootText = [
     "       Loading boot menu...",
     "[  WW  ] Warning: default boot entry corrupted",
     "",
-    "       error: file '/boot/vmlinuz-linux' not found.",
-    "       error: you need to load the kernel first.",
-    "",
-    "       Entering rescue mode...",
-    "       grub rescue>",
-    "",
     "[  EE  ] Automatic recovery failed",
     "[  II  ] Attempting fallback boot entry...",
     "[  II  ] Loading backup kernel...",
-    "[  OK  ] Kernel loaded",
-    "[  OK  ] Initial ramdisk loaded",
     "",
-    "       Booting Linux..."
+    "       error: file '/boot/vmlinuz-linux' not found.",
+    "       error: you need to load the kernel first.",
+    "",
+    "       grub rescue>",
+    "       grub rescue> ls",
+    "   (hd0) (hd0,msdos1) (hd0,msdos2)",
+    "       grub rescue> ls (hd0,msdos1)/ ",
+    "   lost+found/ boot/ etc/ home/",
+    "       grub rescue> set root=(hd0,msdos1)",
+    "       grub rescue> set prefix=(hd0,msdos1)/boot/grub",
+    "       grub rescue> insmod normal",
+    "       grub rescue> normal"
 ];
 
 let currPage = 1;
@@ -124,7 +127,7 @@ fetch("src/data/stats.json")
     .then(data => {
         hourly = data.hourly;
         daily = data.daily;
-        dailyYesterday = data.daily[yesterday.toISOString().split("T")[0]];
+        // dailyYesterday = data.daily[yesterday.toISOString().split("T")[0]];
         updateSiteStats();
     }).catch(err => console.error("fetch failed for website stats ", err));
 
@@ -203,7 +206,7 @@ function websiteStats() {
     let upd = document.getElementById("nekoweb-updates");
     let fol = document.getElementById("nekoweb-followers");
     let vie = document.getElementById("nekoweb-views");
-    let localCached = JSON.parse(localStorage.getItem("web_stats"));
+    let localCached = JSON.parse(localStorage.getItem("web_stats")) || 0;
 
     setStat(vie, "booted ", localCached.views, " times", "ok");
     setStat(fol, "installed by ", localCached.followers, " users", "ok");
@@ -534,7 +537,7 @@ function reboot() {
         if (line.includes("Rebooting") || line.includes("Booting")) delay += 1000;
         if (line.toLowerCase().includes("error")) delay += 1400;
         if (line.includes("Attempting")) delay += 4000;
-        if (line.includes("grub rescue>")) delay += 3000;
+        if (line.includes("grub rescue>")) delay += 1600;
 
         cumulativeDelay += delay;
 
@@ -553,19 +556,17 @@ function reboot() {
             if (!foundMarker) p.textContent = line;
 
             splash.append(p);
+            if (line.includes("grub rescue>")) getAchievement("reboot");
+            
+            if (line.endsWith("normal")) {
 
-            if (line.includes("grub rescue>")) {
-                getAchievement("reboot");
-            }
-
-            if (line.includes("Booting")) {
                 setTimeout(() => {
                     splash.style.opacity = 0;
                     splash.classList.add("hidden");
                     splash.textContent = "";
 
                     initLoadEffect();
-                }, 1400);
+                }, 2400);
             }
         }, cumulativeDelay);
     });

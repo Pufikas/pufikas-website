@@ -116,6 +116,7 @@
                     <br>
                     <button id="clearAllCache">clear cache</button>
                 </div>
+                <img class="mikuPeek" src="/assets/misc/2m266.png">
 
                 <div id="procon" class="movable-window procon-movable">
                     <div class="movable-window-header">
@@ -203,6 +204,10 @@
                             <img src="./assets/marquee/popotan-dansen.gif">
                             <img src="./assets/marquee/vocaloid.gif">
                             <img src="./assets/buttons/void-button.png">
+                            <img src="./assets/marquee/linux-4-eva.gif">
+                            <img src="./assets/marquee/miku3.gif">
+                            <img src="./assets/marquee/oh-my-gah-button.gif">
+                            <img src="./assets/marquee/stackoverflow.png">
                             <!-- need to have same track again for clean loop -->
                             <img src="./assets/marquee/mikum.gif">
                             <img src="./assets/marquee/mes.gif">
@@ -213,6 +218,10 @@
                             <img src="./assets/marquee/popotan-dansen.gif">
                             <img src="./assets/marquee/vocaloid.gif">
                             <img src="./assets/buttons/void-button.png">
+                            <img src="./assets/marquee/linux-4-eva.gif">
+                            <img src="./assets/marquee/miku3.gif">
+                            <img src="./assets/marquee/oh-my-gah-button.gif">
+                            <img src="./assets/marquee/stackoverflow.png">
                         </div>
                     </div>
 
@@ -220,13 +229,17 @@
                 </div>
 
                 <div id="main" class="box">
+
                     <div id="randomQuote">
-                        <p id="quoteText">Frieren, if I said to you, 'Let's go on a date,' what would you think?</p>
-                        <p id="quoteBy">― Stark</p>
-                        <button title="New quote" id="quoteNew">🗘</button>
-                        <button title="Play audio" id="quoteAudio">▶</button>
+                        <button title="Play audio" id="quoteAudio" class="zeroWidth">▶</button>
+                        <div class="qBox">
+                            <p id="quoteText">Frieren, if I said to you, 'Let's go on a date,' what would you think?</p>
+                            <p id="quoteBy">― Stark</p>
+                        </div>
                         <audio id="quotePlayer"></audio>
                     </div>
+
+                    <button title="New quote" id="quoteNew" class="zeroWidth">🗘</button>
                     <br>
                     <ul class="main-panel-short"></ul>
                     <br>
@@ -257,15 +270,14 @@
                     <div class="project">
                         <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/UploadToNekoweb" class="arrow">UploadToNekoweb</a>
                         <p>
-                            Simple zip and ship deployment action script for uploading to NekoWeb, supports ignoring specific files.
-                            Created with <span class="ww">JavaScript</span> try it out to simplify your deployment process if you are using GitHub as your main version control
+                            Deployment yaml script that supports ignoring specific files and folders and has custom compression level
                         </p>
                     </div>
 
                     <div class="project">
                         <a target="_blank" rel="nofollow" href="https://github.com/Pufikas/cs50_final_project" class="arrow">CS50 Final Project</a>
                         <p>
-                            Expense tracker website built with <a class="mint">VueJS</a> framework, local server with <a class="ww">SQLite</a>
+                            Expense tracker website built with <a target="_blank" rel="nofollow" href="https://vuejs.org/" class="mint">VueJS</a> framework, local server with <a class="ww">SQLite</a>
                         </p>
                     </div>
 
@@ -478,8 +490,6 @@
                     </div>
                 </div>
             </div>
-
-            
         </div>
         
         

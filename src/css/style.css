@@ -880,14 +880,13 @@ ul {
     z-index: 9999;
 }
 
-
 #achievement-toast {
     display: flex;
     gap: 10px;
     padding: 10px 14px;
     background-image: linear-gradient(rgba(200, 20, 100, 0.4),rgba(200, 100, 10, 0.4));
     border-radius: 8px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     transform: translateX(120%);
     transition: transform 0.4s ease-out;
 }
@@ -1077,6 +1076,9 @@ li.fav > a {
     padding: 5px 10px;
     text-align: left;
     border-left: 1px solid var(--m-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 #quoteBy {
@@ -1087,6 +1089,7 @@ li.fav > a {
 }
 
 #quoteText {
+    max-width: 440px;
     font-size: 1.1em;
     margin: 0;
 }
@@ -1105,4 +1108,17 @@ li.fav > a {
 
 .lowerOpacity {
     opacity: 0.5 !important;
+}
+
+.qBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.zeroWidth {
+    width: 0% !important;
+}
+
+.mikuPeek {
+    transform: translateY(-20%) scale(0.7);
 }

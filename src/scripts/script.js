@@ -473,7 +473,7 @@ function createExplosionParticle(x, y) {
 }
 
 function getRandomQuoteAudioPath(quote) {
-    // this gives random audio path and keeps it doesnt repeat previous audio
+    // this gives random audio path and makes sure it's always unique
     let lastAudioNum = null;
     let num;
 
@@ -507,10 +507,6 @@ function displayQuote(qNum) {
     document.getElementById("quoteBy").innerText = `― ${quote.by}`;
 
     const hasAudio = quote.audio && quote.audioFiles > 0;
-
-    // UX sligtly dim the customImgRight for long quotes
-    let cR = document.querySelector(".customRightImg");
-    quote.text.length >= 40 ? cR.classList.add("lowerOpacity") : cR.classList.remove("lowerOpacity"); 
 
     if (hasAudio) {
         audioBtn.classList.remove("hidden");

@@ -82,7 +82,7 @@
 [data-theme="teto"] {
     #mikupls,
     .mikus-nav,
-    .customRightImg {
+    .customRightImg, .mikuPeek {
         display: none;
     }
 }
@@ -125,7 +125,7 @@
     .box.mikuconcert,
     #mikupls,
     .mikus-nav,
-    .customRightImg {
+    .customRightImg, .mikuPeek {
         display: none;
     }
 }
@@ -165,7 +165,7 @@ body {
 }
   
 @media screen and (max-width: 900px) {
-  .customRightImg {
+  .customRightImg, .mikuPeek {
     display: none !important;
   }
 }
