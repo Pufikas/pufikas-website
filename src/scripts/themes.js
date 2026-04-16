@@ -3,7 +3,8 @@
 // let themeInner = document.getElementById("theme-inner");
 
 
-const themes = ["miku", "teto", "neru"];
+const themes = ["miku", "teto", "neru", "triplebaka"];
+const currThemeName = document.getElementById("current-theme");
 
 // maybe parsing and stringify isnt needed here, but this works soo..
 // syncs the rotation to next theme based on current theme, and also need to parse cuz I stringified it earlier...
@@ -12,7 +13,7 @@ if (i === -1) i = 0; // if something corrupts or smth
 
 function updateThemeStuff(index) {
     const theme = themes[index];
-    document.getElementById("current-theme").innerText = theme;
+    currThemeName.innerText = theme;
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("theme", JSON.stringify(theme)); // need to stringify (even though it's already a string) so it becomes a valid json
     settings.theme = theme;
@@ -21,9 +22,7 @@ function updateThemeStuff(index) {
 document.getElementById("theme-switch").addEventListener("click", () => {
     i = (i + 1) % themes.length;
     updateThemeStuff(i);
-    if (i === themes.length - 1) {
-        getAchievement("baka-squad");
-    }
+    if (currThemeName.innerText == "triplebaka") getAchievement("baka-squad");
 });
 
 updateThemeStuff(i);

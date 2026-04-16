@@ -102,7 +102,10 @@ function showPanel(option) {
 }
 
 function copyMyButton() {
-    const code = `<a target="_blank" rel="nofollow" href="https://pufikas.nekoweb.org/"><img src="https://pufikas.nekoweb.org/assets/buttons/pufikas88x31.png" alt="Pufikas Personal Site (REAL!!)/></a>`;
+    const code = `
+        <a target="_blank" rel="nofollow" href="https://pufikas.nekoweb.org/">
+            <img src="https://pufikas.nekoweb.org/assets/buttons/pufikas88x31.png" title="pufikas 39" alt="puf"/>
+        </a>`;
     
     navigator.clipboard.writeText(code);
 

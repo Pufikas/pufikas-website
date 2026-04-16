@@ -1,29 +1,26 @@
-
 :root {
-    --link-color: #0ef0f0;
-    --m-grey: #373b3e;
-    --m-pink:	#e12885;
-    --m-primary: #239fa5;
-    --m-secondary: #86cecb;
-    --m-darkblue: #bec8d1;
-    --m-mint: #41B883; 
+  --link-color: #0ef0f0;
+  --m-grey: #373b3e;
+  --m-pink: #e12885;
+  --m-primary: #239fa5;
+  --m-secondary: #86cecb;
+  --m-darkblue: #bec8d1;
+  --m-mint: #41b883;
 
-    --window-surface: var(--m-secondary);
-    --window-highlight: #cfeeee;
-    --window-shadow: #3b6f72;
-    --window-text: #1c1f20;
+  --window-surface: var(--m-secondary);
+  --window-highlight: #cfeeee;
+  --window-shadow: #3b6f72;
+  --window-text: #1c1f20;
 
-    --cursor-default: auto;
-    --cursor-link-select: pointer;
-    --cursor-unavailable: not-allowed;
-    --cursor-help: auto;
-    --cursor-person-select: pointer;
-    --cursor-busy: wait;
-  }
-  
-*,
-*::before,
-*::after {
+  --cursor-default: auto;
+  --cursor-link-select: pointer;
+  --cursor-unavailable: not-allowed;
+  --cursor-help: auto;
+  --cursor-person-select: pointer;
+  --cursor-busy: wait;
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   font-weight: normal;
@@ -33,109 +30,202 @@
 [data-theme="miku"] {
   --cursor-default: url("/assets/cursors/miku/normal-select.cur"), auto;
   --cursor-link-select: url("/assets/cursors/miku/link-select.cur"), pointer;
-  --cursor-unavailable: url("/assets/cursors/miku/unavailable.cur"), not-allowed;
+  --cursor-unavailable:
+    url("/assets/cursors/miku/unavailable.cur"), not-allowed;
   --cursor-help: url("/assets/cursors/miku/help-select.cur"), auto;
-  --cursor-person-select: url("/assets/cursors/miku/person-select.cur"), pointer;
-  --curosr-busy: url("/assets/cursors/miku/working-in-background.cur"), wait;
+  --cursor-person-select:
+    url("/assets/cursors/miku/person-select.cur"), pointer;
+  --cursor-busy: url("/assets/cursors/miku/working-in-background.cur"), wait;
 }
 
 [data-theme="teto"] {
   --cursor-default: url("/assets/cursors/teto/normal-select.cur"), auto;
   --cursor-link-select: url("/assets/cursors/teto/link-select.cur"), pointer;
-  --cursor-unavailable: url("/assets/cursors/teto/unavailable.cur"), not-allowed;
+  --cursor-unavailable:
+    url("/assets/cursors/teto/unavailable.cur"), not-allowed;
   --cursor-help: url("/assets/cursors/teto/help-select.cur"), auto;
-  --cursor-person-select: url("/assets/cursors/teto/person-select.cur"), pointer;
-  --curosr-busy: url("/assets/cursors/teto/working-in-background.cur"), wait;
+  --cursor-person-select:
+    url("/assets/cursors/teto/person-select.cur"), pointer;
+  --cursor-busy: url("/assets/cursors/teto/working-in-background.cur"), wait;
 }
 
 [data-theme="neru"] {
   --cursor-default: url("/assets/cursors/neru/normal-select.cur"), auto;
   --cursor-link-select: url("/assets/cursors/neru/link-select.cur"), pointer;
-  --cursor-unavailable: url("/assets/cursors/neru/unavailable.cur"), not-allowed;
+  --cursor-unavailable:
+    url("/assets/cursors/neru/unavailable.cur"), not-allowed;
   --cursor-help: url("/assets/cursors/neru/help-select.cur"), auto;
-  --cursor-person-select: url("/assets/cursors/neru/person-select.cur"), pointer;
-  --curosr-busy: url("/assets/cursors/neru/working-in-background.cur"), wait;
+  --cursor-person-select:
+    url("/assets/cursors/neru/person-select.cur"), pointer;
+  --cursor-busy: url("/assets/cursors/neru/working-in-background.cur"), wait;
+}
+
+[data-theme="triplebaka"] {
+  --cursor-default: url("/assets/cursors/miku/normal-select.cur"), auto;
+  --cursor-link-select: url("/assets/cursors/teto/link-select.cur"), pointer;
+  --cursor-unavailable:
+    url("/assets/cursors/neru/unavailable.cur"), not-allowed;
+  --cursor-help: url("/assets/cursors/neru/help-select.cur"), auto;
+  --cursor-person-select:
+    url("/assets/cursors/neru/person-select.cur"), pointer;
+  --cursor-busy: url("/assets/cursors/neru/working-in-background.cur"), wait;
 }
 
 /* teto */
 [data-theme="teto"] {
-    --link-color: #c98b88;
-    --m-grey: #787579;
-    --m-pink: #e76180;
-    --m-primary: #9d0b02;
-    --m-secondary: #7a3857;
-    --m-darkblue: #2a2433;
-    --window-surface: var(--m-secondary);
-    --window-highlight: #a05574;
-    --window-shadow: #3f1c2c;
-    --window-text: #ffffff;
-}
+  --link-color: #c98b88;
+  --m-grey: #787579;
+  --m-pink: #e76180;
+  --m-primary: #9d0b02;
+  --m-secondary: #7a3857;
+  --m-darkblue: #2a2433;
+  --window-surface: var(--m-secondary);
+  --window-highlight: #a05574;
+  --window-shadow: #3f1c2c;
+  --window-text: #ffffff;
 
-[data-theme="teto"] body {
+  body {
     background-image:
-    linear-gradient(
-          rgba(0, 0, 0, 0.7), 
-          rgba(0, 0, 0, 0.7)
-        ), url("/assets/themes/teto.png");
-}
+      linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url("/assets/themes/teto.png");
+  }
 
-[data-theme="teto"] {
-    #mikupls,
-    .mikus-nav,
-    .customRightImg, .mikuPeek {
-        display: none;
-    }
-}
-
-[data-theme="teto"] .box.spin-img {
+  .box.spin-img {
     content: url("/assets/misc/tetospin.gif");
-}
+  }
 
-[data-theme="teto"] .box.mikuconcert {
+  .box.mikuconcert {
     content: url("/assets/misc/tt.png");
-}
+  }
 
-[data-theme="teto"] #footer {
+  #footer {
     content: url("/assets/misc/tetofooter.png");
+  }
+
+  /* remove list */
+  #mikupls,
+  .mikus-nav,
+  .customRightImg,
+  .mikuPeek,
+  .customNeruSleep {
+    display: none;
+  }
 }
 
 /* neru */
 [data-theme="neru"] {
-    --link-color: #f4a462;
-    --m-grey: #3c0b47;
-    --m-pink:	#f76a55;
-    --m-primary: #fdd835;
-    --m-secondary: #f3e8a5;
-    --m-darkblue: #a3c2e1;
-    --window-surface: var(--m-secondary);
-    --window-highlight: #fff7cc;
-    --window-shadow: #cdbb66;
-    --window-text: #3c0b47;
-}
+  --link-color: #f4a462;
+  --m-grey: #3c0b47;
+  --m-pink: #f76a55;
+  --m-primary: #fdd835;
+  --m-secondary: #f3e8a5;
+  --m-darkblue: #a3c2e1;
+  --window-surface: var(--m-secondary);
+  --window-highlight: #fff7cc;
+  --window-shadow: #cdbb66;
+  --window-text: #3c0b47;
 
-[data-theme="neru"] body {
+  body {
     background-image:
-    linear-gradient(
-          rgba(0, 0, 0, 0.7), 
-          rgba(0, 0, 0, 0.7)
-        ), url("/assets/themes/neru.png");
-}
+      linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url("/assets/themes/neru.png");
+  }
 
-[data-theme="neru"] {
-    .box.mikuconcert,
-    #mikupls,
-    .mikus-nav,
-    .customRightImg, .mikuPeek {
-        display: none;
-    }
-}
-
-[data-theme="neru"] .box.spin-img {
+  .box.spin-img {
     content: url("/assets/misc/neruspin.gif");
+  }
+
+  #footer {
+    content: url("/assets/misc/neru222.png");
+  }
+
+  .customNeruSleep {
+    content: url("/assets/misc/nerusleep2.png");
+  }
+
+  /* remove list */
+  .box.mikuconcert, #mikupls, .mikus-nav, .customRightImg, .mikuPeek {
+    display: none;
+  }
 }
 
-[data-theme="neru"] #footer {
-    content: url("/assets/misc/neru222.png");
+/* triple baka */
+[data-theme="triplebaka"] {
+  --link-color: #239fa5;
+  --m-grey: #3c0b47;
+  --m-pink: #9d0b02;
+  --m-triplebaka: linear-gradient(to right,
+      #239fa5 0%,
+      #239fa5 33.33%,
+      #9d0b02 33.33%,
+      #9d0b02 66.66%,
+      #fdd835 66.66%,
+      #fdd835 100%);
+  --m-primary: #9d0b02;
+  --m-secondary: #fdd835;
+  --m-darkblue: #a3c2e1;
+  --window-surface: var(--m-secondary);
+  --window-highlight: #fff7cc;
+  --window-shadow: #cdbb66;
+  --window-text: #3c0b47;
+
+  body {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url("/assets/themes/triplebaka.png");
+  }
+
+  .box,
+  .movable-window {
+    border: 2px solid #239fa5;
+    animation: borderColorCycle 12s steps(1) infinite;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg,
+        #239fa5 0%,
+        #239fa5 33.33%,
+        #9d0b02 33.33%,
+        #9d0b02 66.66%,
+        #fdd835 66.66%,
+        #fdd835 100%);
+
+    animation: gradientMove 7s alternate infinite !important;
+    background-size: 300% 300%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  #logo {
+    text-shadow:
+      0 0 10px var(--m-primary),
+      0 0 20px var(--m-secondary);
+  }
+
+  .customNeruSleep {
+    content: url("/assets/misc/nerusleep2.png");
+  }
+
+  #footer {
+    content: url("/assets/misc/tetofooter.png");
+  }
+}
+
+@keyframes borderColorCycle {
+  0%, 33% {
+    border-color: #239fa5;
+  }
+
+  33.01%, 66% {
+    border-color: #9d0b02;
+  }
+
+  66.01%, 100% {
+    border-color: #fdd835;
+  }
 }
 
 html, body {
@@ -151,21 +241,18 @@ body {
   cursor: var(--cursor-default) !important;
   color: var(--color-text);
   background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
+  transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family:
-    monospace;
+  font-family: monospace;
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   image-rendering: crisp-edges;
 }
-  
+
 @media screen and (max-width: 900px) {
-  .customRightImg, .mikuPeek {
+  .customRightImg, .mikuPeek, .customNeruSleep {
     display: none !important;
   }
 }

@@ -1,10 +1,5 @@
 @import url(base.css);
 
-/* @font-face {
-    font-family: "Terminus500";
-    src: url("/assets/fonts/Terminus_500.ttf") format("truetype");
-} */
-
 @font-face {
     font-family: "Terminus500";
     src: url("/assets/fonts/Terminus_500.ttf") format("truetype");
@@ -240,9 +235,7 @@ button:hover {
     color: transparent;
     background-clip: text;
     letter-spacing: 25px;
-    text-shadow:
-        0 0 10px var(--m-primary),
-        0 0 20px var(--m-secondary);
+    text-shadow: 0 0 10px var(--m-primary), 0 0 20px var(--m-secondary);
 }
 
 
@@ -611,7 +604,7 @@ ul {
         var(--m-secondary),
         var(--m-primary)
     );
-    background-size: 200% auto;
+    background-size: 300% 300%;
     animation: gradientMove 3s linear infinite;
 
     -webkit-background-clip: text;
@@ -622,7 +615,7 @@ ul {
 
 @keyframes gradientMove {
     to {
-        background-position: 200% center;
+        background-position: 100% 100%;
     }
 }
 
@@ -1121,4 +1114,11 @@ li.fav > a {
 
 .mikuPeek {
     transform: translateY(-20%) scale(0.7);
+}
+
+.customNeruSleep {
+    transform: translateY(-63%) translateX(-18%) scale(0.8);
+    position: absolute;
+    z-index: 1;
+    rotate: 5deg;
 }
