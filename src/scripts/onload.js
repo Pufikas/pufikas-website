@@ -103,7 +103,7 @@ const yesterday = new Date(today);
 yesterday.setDate(today.getDate() - 1);
 let nowNormalized = new Date().toISOString().split("T")[0]; // 2026-02-08 format
 
-fetch("src/blogs/blogs.json")
+fetch("_site/blogs.json")
     .then(res => res.json())
     .then(data => {
         loadBlogs(data);       
@@ -310,7 +310,6 @@ function createFavItem(item, sectionId) {
 
 function loadBlogs(blogs) {
     let container = document.getElementById("blog-container");
-
     for (let i = 0; i < blogs.length; i++) {
         const bCard = document.createElement("div");
             bCard.className = "box blogCard";

@@ -254,7 +254,7 @@ button:hover {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 [data-panel] {
@@ -1121,4 +1121,9 @@ li.fav > a {
     position: absolute;
     z-index: 1;
     rotate: 5deg;
+}
+
+.blogOptions {
+    display: flex;
+    justify-content: space-between;
 }

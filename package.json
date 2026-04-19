@@ -1,0 +1,28 @@
+{
+  "name": "pufikas-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pufikas/pufikas-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Pufikas/pufikas-website/issues"
+  },
+  "homepage": "https://github.com/Pufikas/pufikas-website#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-attrs": "^4.3.1"
+  }
+}

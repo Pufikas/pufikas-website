@@ -19,6 +19,10 @@ let timeRes = document.getElementById("time");
 let timeBeen = document.getElementById("timeBeen");
 let hh = mm = ss = 0;
 
+let lPanel = document.querySelector(".menu-left");
+let rPanel = document.querySelector(".menu-right");
+const blogPanel = document.querySelector('[data-panel="blogs"]');
+
 function timer() {
     let d = new Date();
     let h = d.getHours();
@@ -85,6 +89,9 @@ function showPanel(option) {
             panel.classList.remove("active");
             panel.classList.add("hidden");
         }
+        // temp?
+        panel.classList.remove("mainBigger")
+        lPanel.classList.remove("hidden");
     })
 
     navLinks.forEach(link => {
@@ -203,7 +210,7 @@ function expandBlog(e) {
     arrow.textContent = expanded ? "▼ ▼ ▼" : "▶ ▶ ▶";
     
     if (expanded && !article.dataset.loaded) {
-        fetch("/src/blogs/" + card.dataset.blogFile)
+        fetch("_site/blogs/" + card.dataset.blogFile)
         .then(res => res.text())
         .then(html => {
             article.innerHTML = html;
@@ -562,6 +569,27 @@ favBtn.addEventListener("click", () => {
 // document.getElementById("achievementCollectedContainerButton").addEventListener("click", () => {
 //     document.getElementById("achievementCollectedContainer").classList.toggle("open");
 // });
+
+function updateBlogMainPanel() {
+    if (!blogPanel) return;
+
+    let size = 35;
+
+    if (lPanel.classList.contains("hidden")) size += 12;
+    if (rPanel.classList.contains("hidden")) size += 12;
+
+    blogPanel.style.flex = `0 0 ${size}%`;
+}
+
+document.getElementById("hideLeftPanel").addEventListener("click", () => {
+    lPanel.classList.toggle("hidden");
+    updateBlogMainPanel();
+});
+
+document.getElementById("hideRightPanel").addEventListener("click", () => {
+    rPanel.classList.toggle("hidden");
+    updateBlogMainPanel();
+});
 
 setInterval(update, 1000);
 autoPageLoop();

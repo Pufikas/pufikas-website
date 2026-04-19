@@ -19,6 +19,7 @@
 
 <body id="page">
     <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/prism-atom-dark.css">
     <canvas id="background"></canvas>
 
     <div class="splash splash-boot hidden">
@@ -393,6 +394,11 @@
                         </p>
 
                         <p>Thank you for reading!</p>
+
+                        <div class="blogOptions">
+                            <button id="hideLeftPanel">hide left panel</button>
+                            <button id="hideRightPanel">hide right panel</button>
+                        </div>
                     </div>
 
                 </div>
@@ -410,7 +416,7 @@
             </div>
 
             <!-- SIDE PANEL RIGHT -->
-            <div id="menu-panel">
+            <div id="menu-panel" class="menu-right">
                 <div class="mikus-nav">
                     <img src="./assets/misc/miku_hello.png" class="emoji">
                     <img id="love" src="./assets/misc/miku_love.png" class="emoji">
