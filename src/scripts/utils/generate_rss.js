@@ -1,14 +1,18 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+// import fs from "fs";
+// import path from "path";
+// import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const fs = require("fs");
+const path = require("path");
+const { fileURLToPath } = require("url");
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 const SITE_URL = "https://pufikas.nekoweb.org";
 const blogHash = "#blogs?post=";
 
-const blogsPath = path.resolve(__dirname, "../../blogs/blogs.json");
+const blogsPath = path.resolve(__dirname, "../../../_site/blogs.json");
 const blogs = JSON.parse(fs.readFileSync(blogsPath, "utf8"));
 
 // sort newest first
@@ -41,5 +45,5 @@ const rss = `
     </rss>
 `;
 
-fs.writeFileSync("../../rss.xml", rss.trim());
+fs.writeFileSync("rss.xml", rss.trim());
 console.log("rss.xml generated");

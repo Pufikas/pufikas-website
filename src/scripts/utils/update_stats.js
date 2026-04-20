@@ -1,15 +1,15 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+const fs = require("fs");
+const path = require("path");
+// import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 const statsPath = path.resolve(__dirname, "../../data/stats.json");
 
-const nekoweb = await fetch("https://nekoweb.org/api/site/info/pufikas.nekoweb.org").then(r => r.json());
-const commits = await fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits?sha=main&author=Pufikas&per_page=1").then(r => r.json());
-const details = await fetch(`https://api.github.com/repos/Pufikas/pufikas-website/commits/${commits[0].sha}`).then(r => r.json());
+const nekoweb = fetch("https://nekoweb.org/api/site/info/pufikas.nekoweb.org").then(r => r.json());
+const commits = fetch("https://api.github.com/repos/Pufikas/pufikas-website/commits?sha=main&author=Pufikas&per_page=1").then(r => r.json());
+const details = fetch(`https://api.github.com/repos/Pufikas/pufikas-website/commits/${commits[0].sha}`).then(r => r.json());
 
 // need to fetch github api twice, one time for commit message and second time for line deletion and addition, because one endpoint doesnt include both
 

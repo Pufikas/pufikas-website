@@ -11,9 +11,11 @@ module.exports = function (eleventyConfig) {
         breaks: true,
         linkify: false,
         typographer: true
-    })
-    .use(markdownItAttrs)
+    }).use(markdownItAttrs)
     .use(markdownItAnchor);
     
+    eleventyConfig.ignores.add("index.html");
+    eleventyConfig.ignores.add("not_found.html");
+
     eleventyConfig.setLibrary("md", md);
 };

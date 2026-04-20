@@ -22,6 +22,7 @@ let hh = mm = ss = 0;
 let lPanel = document.querySelector(".menu-left");
 let rPanel = document.querySelector(".menu-right");
 const blogPanel = document.querySelector('[data-panel="blogs"]');
+const blogContainer = document.getElementById("blog-container");
 
 function timer() {
     let d = new Date();
@@ -450,9 +451,8 @@ function pop(e) {
 function createExplosionParticle(x, y) {
   const particle = document.createElement("div");
 
-  const size = particleSize;
-  particle.style.width = size + "px";
-  particle.style.height = size + "px";
+  particle.style.width = particleSize + "px";
+  particle.style.height = particleSize + "px";
   particle.classList.add("popParticle");
   particle.style.background = `hsl(${Math.random() * 90 + 180}, 70%, 60%)`;
 

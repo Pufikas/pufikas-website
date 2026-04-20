@@ -310,6 +310,7 @@ function createFavItem(item, sectionId) {
 
 function loadBlogs(blogs) {
     let container = document.getElementById("blog-container");
+    
     for (let i = 0; i < blogs.length; i++) {
         const bCard = document.createElement("div");
             bCard.className = "box blogCard";
@@ -322,7 +323,8 @@ function loadBlogs(blogs) {
             bTitle.innerText = blogs[i].title;
             bTitle.className = "blogTitle"
         
-        const bTags = document.createElement("span");
+        const bTags = document.createElement("div");
+            bTags.innerText = `[${blogs[i].tags}]`;
             bTags.className = "blogTags"
 
         const bIntro = document.createElement("p");

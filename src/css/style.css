@@ -562,6 +562,11 @@ ul {
     width: 100%;
 }
 
+.blogTags {
+    font-size: 14px;
+    color: var(--m-grey);
+}
+
 .blogArticle {
     max-height: 0;
     opacity: 0;

@@ -26,6 +26,6 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git pull
-          git add src/data/stats.json rss.xml
-          git diff --cached --quiet || git commit -m "update stats and rss"
+          git add src/data/stats.json
+          git diff --cached --quiet || git commit -m "update stats"
           git push

@@ -3,7 +3,7 @@ layout: blog.njk
 id: post-3
 title: New Themes
 date: 2026-01-08T17:09:17
-tags: fun
+tags: upd,fun
 intro: Updated themes that you can use while on website, feat neru and teto!
 permalink: /blogs/post-3.html
 ---

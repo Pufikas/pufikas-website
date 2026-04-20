@@ -6,11 +6,19 @@
             <link>https://pufikas.nekoweb.org</link>
             
         <item>
+            <title><![CDATA[New Themes]]></title>
+            <description><![CDATA[Updated themes that you can use while on website, feat neru and teto!]]></description>
+            <link>https://pufikas.nekoweb.org/#blogs?post=post-3</link>
+            <guid>post-3</guid>
+            <pubDate>Thu, 08 Jan 2026 17:09:17 GMT</pubDate>
+        </item>
+
+        <item>
             <title><![CDATA[Happy new year!]]></title>
             <description><![CDATA[Celebrating new year! And some website stats!]]></description>
             <link>https://pufikas.nekoweb.org/#blogs?post=post-2</link>
             <guid>post-2</guid>
-            <pubDate>Wed, 31 Dec 2025 21:55:55 GMT</pubDate>
+            <pubDate>Wed, 31 Dec 2025 23:55:55 GMT</pubDate>
         </item>
 
         <item>
@@ -18,23 +26,7 @@
             <description><![CDATA[The Beginning]]></description>
             <link>https://pufikas.nekoweb.org/#blogs?post=post-1</link>
             <guid>post-1</guid>
-            <pubDate>Sun, 05 Oct 2025 06:58:10 GMT</pubDate>
-        </item>
-
-        <item>
-            <title><![CDATA[New Site Themes]]></title>
-            <description><![CDATA[Updated themes that you can use while on website, feat neru and teto!]]></description>
-            <link>https://pufikas.nekoweb.org/#blogs?post=post-3</link>
-            <guid>post-3</guid>
-            <pubDate>Thu, 08 Jan 2026 18:22:11 GMT</pubDate>
-        </item>
-
-        <item>
-            <title><![CDATA[Special Theme]]></title>
-            <description><![CDATA[Thank you for 1000 views! For this occasion I added the triplebaka squad theme! Now you can enjoy every character theme while browsing!]]></description>
-            <link>https://pufikas.nekoweb.org/</link>
-            <guid>post-4</guid>
-            <pubDate>Thu, 16 Apr 2026 13:33:20 GMT</pubDate>
+            <pubDate>Sun, 05 Oct 2025 09:58:10 GMT</pubDate>
         </item>
 
         </channel>

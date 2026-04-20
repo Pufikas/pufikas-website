@@ -11,12 +11,4 @@ permalink: /blogs/post-1.html
 # First Post
 
 Thank you for the first follow on my website vanillamilkshake!
-Find them at vanillamilkshake.neocities.org vanillamilkshake.nekoweb.org!
-
-```js
-function test() {
-    console.log("Hello World!");
-}
-
-return true;
-```
+Find them at [neocites](https://vanillamilkshake.neocities.org/) or [nekoweb](https://vanillamilkshake.nekoweb.org)!

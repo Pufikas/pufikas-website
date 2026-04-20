@@ -1,0 +1,37 @@
+name: Update RSS and build BLOGS
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build blogs
+        run: node run build
+
+      - name: Generate RSS Feed
+        run: node src/scripts/utils/generate_rss.js
+
+      - name: Commit updated blogs and rss
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git pull
+          git add .
+          git diff --cached --quiet || git commit -m "build blogs and update rss"
+          git push
