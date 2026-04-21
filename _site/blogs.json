@@ -1,0 +1,45 @@
+[
+  {
+    "id": "post-1",
+    "file": "post-1.html",
+    "tags": [
+      "fun"
+    ],
+    "title": "First Post and Follow!",
+    "intro": "The Beginning",
+    "date": "2025-10-05T09:58:10.000Z"
+  },
+  {
+    "id": "post-2",
+    "file": "post-2.html",
+    "tags": [
+      "fun",
+      "dev"
+    ],
+    "title": "Happy new year!",
+    "intro": "Celebrating new year! And some website stats!",
+    "date": "2025-12-31T23:55:55.000Z"
+  },
+  {
+    "id": "post-3",
+    "file": "post-3.html",
+    "tags": [
+      "upd",
+      "fun"
+    ],
+    "title": "New Themes",
+    "intro": "Updated themes that you can use while on website, feat neru and teto!",
+    "date": "2026-01-08T17:09:17.000Z"
+  },
+  {
+    "id": "post-4",
+    "file": "post-4.html",
+    "tags": [
+      "upd",
+      "dev"
+    ],
+    "title": "Blog Rework",
+    "intro": "Blogs are now beautified!",
+    "date": "2026-04-20T19:00:36.000Z"
+  }
+]
