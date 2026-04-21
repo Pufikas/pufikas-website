@@ -23,4 +23,4 @@ jobs:
           nekoweb-domain: "pufikas.nekoweb.org"
           nekoweb-username: "pufikas"
           compression-level: 9
-          ignore-paths: "package-lock.json, package.json, eleventy.config.js, _includes/"
+          ignore-paths: "package-lock.json, package.json, eleventy.config.js, _includes, src/scripts/utils"

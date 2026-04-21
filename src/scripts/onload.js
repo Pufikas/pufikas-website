@@ -361,6 +361,7 @@ function loadBlogs(blogs) {
 
         container.append(bCard);
     }
+    updateBlogMainPanel(); // updates the sizing, probably there is a better way of this
 }
 
 function renderPageButtons() {

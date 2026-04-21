@@ -1,2 +1,0 @@
-alias isoDate=date --iso-8601='seconds'
-alias isoDate=date --iso-8601='seconds'

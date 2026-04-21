@@ -1,6 +1,14 @@
-# personal website
-
-feel free to use anything you find useful, but make sure to credit me by linking my github or adding my button (by hotlinking or adding it manually thanks!)
-
 can be found at nekoweb
 https://pufikas.nekoweb.org/
+
+# pufikas personal website
+
+The source code of this project is licensed under the MIT License. (see LICENSE)
+You are free to use, modify, provided that you include proper attribution.
+
+> [!IMPORTANT]
+Files inside `assets` directory are **not owned by me** and are **not covered by the MIT LICENSE** 
+These assets are used under their respective licenses and remain the property of their original creators.
+
+
+

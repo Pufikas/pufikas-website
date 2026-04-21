@@ -579,6 +579,7 @@ function updateBlogMainPanel() {
     if (rPanel.classList.contains("hidden")) size += 12;
 
     blogPanel.style.flex = `0 0 ${size}%`;
+    blogPanel.style.maxWidth = `${size}%`;
 }
 
 document.getElementById("hideLeftPanel").addEventListener("click", () => {

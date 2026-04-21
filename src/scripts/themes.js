@@ -19,7 +19,7 @@ function updateThemeStuff(index) {
     settings.theme = theme;
 }
 
-document.getElementById("theme-switch").addEventListener("click", () => {
+document.getElementById("theme-switch").addEventListener("click", (e) => {
     i = (i + 1) % themes.length;
     updateThemeStuff(i);
     if (currThemeName.innerText == "triplebaka") getAchievement("baka-squad");

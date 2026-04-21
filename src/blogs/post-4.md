@@ -9,6 +9,7 @@ permalink: /blogs/post-4.html
 ---
 
 Completly revamped how blogs are proccesed
+
 Now I can use md markdown and code syntax styling!
 For example check out this `pop` function
 
@@ -20,20 +21,24 @@ function pop(e) {
     }
 }
 ```
-it calls a createExplosioNparticle with current client mouse position the function first creates a div element to house a particle with
+it calls `createExplosioNparticle` function with current client mouse (x, y) position the function first creates a div element to house a particle with
 ```js
 const particle = document.createElement("div");
 ```
-then we set the styles for the particles
+After that, set the styles for the particles and keep in mind this is different for every particle because we loop through `particleCount` which is at default set to 30.
 ```js
-  particle.style.width = particleSize + "px";
-  particle.style.height = particleSize + "px";
-  particle.classList.add("popParticle");
-  particle.style.background = `hsl(${Math.random() * 90 + 180}, 70%, 60%)`;
+particle.style.width = particleSize + "px";
+particle.style.height = particleSize + "px";
+particle.classList.add("popParticle");
+particle.style.background = `hsl(${Math.random() * 90 + 180}, 70%, 60%)`;
 ```
-keep in mind this is different for every particle as we loop through `particleCount`
 
-the popParticle is quite simple
+this line makes sure the HSL hue range is being restricted to a blue-cyan spectrum (180-270 degree range)
+```js
+particle.style.background = `hsl(${Math.random() * 90 + 180}, 70%, 60%)`;
+```
+
+the class for `popParticle` is quite simple, using a clip path for heart like shape and next is setting the necessary styles like `pointe-events` and making sure it's position is fixed 
 ```css
 .popParticle {
     position: fixed;
@@ -46,8 +51,7 @@ the popParticle is quite simple
     opacity: 0;
 }
 ```
-the particle shape is created by clip-path, I simply found a clip path for heart and used it
-
+I use this effect for expanding a blog, clicking on some buttons.. you've already seen this effect by expanding this blog post!
 ```js
 function expandBlog(e) {
     ...code ommited...
@@ -56,4 +60,4 @@ function expandBlog(e) {
 }
 ```
 
-it's used for expanding a blog! just like you did for this one!
+That concludes my fun explosion particle effect and this test of my new blog posts! Thank you for reading!
