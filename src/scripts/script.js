@@ -168,8 +168,9 @@ function loadPageFromUrl() {
     if (!nav) return;
 
     showPanel(nav);
-
-     if (panel === "blogs") {
+    updateBlogMainPanel();
+    
+    if (panel === "blogs") {
         const postId = params.get("post");
         if (!postId) return;
 
@@ -221,6 +222,7 @@ function expandBlog(e) {
     }
     pop(e);
     location.hash = `blogs?post=${card.dataset.blogId}`;
+    updateBlogMainPanel();
     getAchievement("reading");
 }
 

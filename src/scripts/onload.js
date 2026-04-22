@@ -133,7 +133,7 @@ fetch("src/data/stats.json")
 
 async function fetchLastFM() {
     try {
-        const res = await fetch("https://pufikasapistuff.vercel.app/api/lastfm");
+        const res = await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/lastfm");
         const track = await res.json();
 
         updateLastfmPanel(track);
@@ -146,7 +146,7 @@ async function fetchLastFM() {
 }
 
 setInterval(async () => {
-    const res = await fetch("https://pufikasapistuff.vercel.app/api/ping", {
+    const res = await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/ping", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ clientId: localStorage.clientId })
@@ -311,6 +311,13 @@ function createFavItem(item, sectionId) {
 function loadBlogs(blogs) {
     let container = document.getElementById("blog-container");
     
+    // sort the blogs to be newest on the top
+    blogs.sort((a, b) => {
+        const numA = parseInt(a.id.split('-')[1]);
+        const numB = parseInt(b.id.split('-')[1]);
+        return numB - numA;
+    });
+
     for (let i = 0; i < blogs.length; i++) {
         const bCard = document.createElement("div");
             bCard.className = "box blogCard";
