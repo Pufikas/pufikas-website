@@ -41,5 +41,15 @@
     "title": "Blog Rework",
     "intro": "Blogs are now beautified!",
     "date": "2026-04-20T19:00:36.000Z"
+  },
+  {
+    "id": "post-5",
+    "file": "post-5.html",
+    "tags": [
+      "dev"
+    ],
+    "title": "Creating your own LastFm last played widget",
+    "intro": "A guide on how to build a small serverless API using Netlify that fetches your most recently played track from Lastfm and displays it on your website",
+    "date": "2026-04-22T18:14:52.000Z"
   }
 ]

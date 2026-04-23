@@ -585,7 +585,7 @@ ul {
 }
 
 .blogCard.expanded .blogArticle {
-    max-height: 2000px;
+    max-height: 100%;
     opacity: 1;
 }
 
