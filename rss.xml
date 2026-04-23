@@ -6,6 +6,14 @@
             <link>https://pufikas.nekoweb.org</link>
             
         <item>
+            <title><![CDATA[Creating your own LastFm last played widget]]></title>
+            <description><![CDATA[A guide on how to build a small serverless API using Netlify that fetches your most recently played track from Lastfm and displays it on your website]]></description>
+            <link>https://pufikas.nekoweb.org/#blogs?post=post-5</link>
+            <guid>post-5</guid>
+            <pubDate>Wed, 22 Apr 2026 18:14:52 GMT</pubDate>
+        </item>
+
+        <item>
             <title><![CDATA[Blog Rework]]></title>
             <description><![CDATA[Blogs are now beautified!]]></description>
             <link>https://pufikas.nekoweb.org/#blogs?post=post-4</link>
