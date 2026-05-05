@@ -172,7 +172,8 @@
         "cursor-particles": true,
         "scanlines": true,
         "theme": "miku",
-        "simple-background": false
+        "simple-background": false,
+        "crisp-render": true
     },
     "achievements": {
         "welcome": {

@@ -1,5 +1,5 @@
 <article>
-  <p><img src="src/blogs/img/currplaying.png" alt="currently playing" class="center auto-margin"></p>
+  <p><img src="src/blogs/img/currplaying.png" alt="currently playing" class="center auto-margin enlargeOnClick"></p>
 <p>It is important to note that I will be covering how I made this and how I use it.</p>
 <p>I will cover steps in this order:</p>
 <ol>
@@ -9,18 +9,18 @@
 <li>Using the data on your site.</li>
 </ol>
 <p>Let’s start with the easiest step: getting a Last.fm API key. Go over to <a href="https://www.last.fm/api/account/create">Last.fm</a> to obtain your API key and save it somewhere for now. Then install a web extension for your browser. In my case, I used <a href="https://addons.mozilla.org/en-US/firefox/addon/web-scrobbler/">Web Scrobbler</a> for Firefox open the extension’s settings and login with your last.fm account. After you’ve done that, try listening to some music from your choice of audio service provider (spotify, soundcloud or anything else that your scrobbler supports!) remember the scrobbler will show after x% of song has passed.<br>
-<img src="src/blogs/img/scrob.png" alt="scrobbler" class="width100"><br>
+<img src="src/blogs/img/scrob.png" alt="scrobbler" class="width100 enlargeOnClick"><br>
 the end result should look like this<br>
-<img src="src/blogs/img/scrob2.png" alt="scrobbres" class="width50"><br>
+<img src="src/blogs/img/scrob2.png" alt="scrobbres" class="width50 enlargeOnClick"><br>
 <em>you need to click on the extension to see the popup.</em></p>
 <p>We are using <a href="https://www.netlify.com/">Netlify</a> and its functions because it lets us run backend code without having a server and we don’t want to expose our Last.fm API key in the frontend.</p>
 <p>So lets move to setting your api repository, create a repository whatever you use (github, gitlab, codeberd etc…) in this example we will use <a href="https://www.netlify.com/">netlify</a> so go ahead and create an account (or use your existing one) once you are logged click on a <code>Create Project</code> button<br>
 then import from a repository<br>
-<img src="src/blogs/img/createproj.png" alt="netlify create project" class="width100"></p>
+<img src="src/blogs/img/createproj.png" alt="netlify create project" class="width100 enlargeOnClick"></p>
 <p>if you made your repository private (like i did) you will see no git repositories listed, so you will need to configure the netlify app<br>
-<img src="src/blogs/img/selectrepo.png" alt="netlify select repo" class="width100"><br>
+<img src="src/blogs/img/selectrepo.png" alt="netlify select repo" class="width100 enlargeOnClick"><br>
 if everything went well you should add your <code>Last.fm</code> API key we got earlier! Select your project and navigate to <code>Environment variables</code><br>
-<img src="src/blogs/img/envvar.png" alt="Netlify environment variables" class="width100"><br>
+<img src="src/blogs/img/envvar.png" alt="Netlify environment variables" class="width100 enlargeOnClick"><br>
 add a key with name <code>LASTFM_API_KEY</code> make sure to toggle the <code>Contains secret values</code> to true! In the values field input your actual API key and you are done!</p>
 <p>Next step is to create a <code>netlify/functions</code> folder on our repository and inside <code>functions</code> folder create a <code>lastfm.js</code> file with following code</p>
 <details open>
@@ -154,10 +154,10 @@ add a key with name <code>LASTFM_API_KEY</code> make sure to toggle the <code>Co
         <span class="token operator">/</span><span class="token operator">^</span>https<span class="token operator">:</span>\<span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\/pufikas\.nekoweb\.org$</span><span class="token regex-delimiter">/</span></span> <span class="token comment">// production</span>
     <span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
 <p>is basically a whitelist of what origins can call our API’s functions, so in this case we only want to accept local development and our main website origins, we do this regex to match the origin here’s <a href="https://regex101.com/">regex101.com</a> example and you can read more about the various expressions used<br>
-<img src="src/blogs/img/regexpression.png" alt="regex expression" class="width100"><br>
+<img src="src/blogs/img/regexpression.png" alt="regex expression" class="width100, enlargeOnClick"><br>
 make sure to change your regex to your own website and check if the regex matches the string, to see your own origin go to your deployed website <a href="https://firefox-source-docs.mozilla.org/devtools-user/web_console/index.html">web console</a> <em>(keybind Ctrl + Shift + K)</em><br>
 and console log your origin<br>
-<img src="src/blogs/img/originweb.png" alt="origin" class="width100"></p>
+<img src="src/blogs/img/originweb.png" alt="origin" class="width100, enlargeOnClick"></p>
 <p>before sending certain requests, the browser sends a “preflight” request using the <code>OPTIONS</code> method to check what is allowed. We simply respond with <code>200</code> (success) so the browser knows it’s safe to continue (assuming the request passed the <code>allowed</code> filter)</p>
 <pre class="language-js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>httpMethod <span class="token operator">===</span> <span class="token string">"OPTIONS"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">statusCode</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span> headers <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -165,11 +165,11 @@ and console log your origin<br>
 <p>In this example, the request is simple enough that preflight may not always occur, but it’s still good practice to handle <code>OPTIONS</code> requests.</p>
 </details>
 <p>Our final file structure should look like this.<br>
-<img src="src/blogs/img/filestruct.png" alt="file structure" class="width100"><br>
+<img src="src/blogs/img/filestruct.png" alt="file structure" class="width100, enlargeOnClick"><br>
 so go ahead and push to your repository and go back to Netlify and navigate to <code>Functions</code> tab<br>
-<img src="src/blogs/img/netfunc.png" alt="netlify functions" class="width100"><br>
+<img src="src/blogs/img/netfunc.png" alt="netlify functions" class="width100, enlargeOnClick"><br>
 open up your lastfm function and copy the endpoint, this will be used in our frontend to fetch the data from lastfm, you can test it yourself to see if there is any data if you play music<br>
-<img src="src/blogs/img/resnetlifylastfm.png" alt="endpoint netlify" class="width100"></p>
+<img src="src/blogs/img/resnetlifylastfm.png" alt="endpoint netlify" class="width100, enlargeOnClick"></p>
 <blockquote>
 <p>Note that Netlify automatically exposes your function at<br>
 /.netlify/functions/<filename></p>
@@ -256,6 +256,7 @@ somewhere inside your website JavaScript create a function to fetch our Netlify 
         duration <span class="token operator">/=</span> division<span class="token punctuation">.</span>amount<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
+<p>And that is it for this guide/blog, if you managed to build this write to my guestbook I will gladly check your website!</p>
 <p>Reference list:</p>
 <ul>
 <li><a href="https://www.netlify.com/">Netlify</a></li>

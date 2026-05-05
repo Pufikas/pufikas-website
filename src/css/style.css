@@ -938,8 +938,9 @@ ul {
     filter: grayscale(1) brightness(0.2);
 }
 
-#clearAllCache {
+.clearAllCache {
     width: 100% !important;
+    font-size: 10px;
 }
 
 .favList {
@@ -1053,6 +1054,10 @@ li.fav > a {
     position: relative;
 }
 
+#marqueeWrapper:hover .track {
+    animation-play-state: paused;
+}
+
 .track {
     width: max-content;
     display: flex;
@@ -1133,4 +1138,36 @@ li.fav > a {
 .blogOptions {
     display: flex;
     justify-content: space-between;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.overlayContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.overlayImg {
+    max-width: 90%;
+    max-height: 90%;
+    cursor: zoom-out;
+    image-rendering: auto !important;
+}
+
+.enlargeOnClick:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.05);
 }

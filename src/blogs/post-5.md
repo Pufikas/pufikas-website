@@ -8,7 +8,7 @@ intro: A guide on how to build a small serverless API using Netlify that fetches
 permalink: /blogs/post-5.html
 ---
 
-![currently playing](src/blogs/img/currplaying.png){.center .auto-margin}
+![currently playing](src/blogs/img/currplaying.png){.center .auto-margin .enlargeOnClick}
 
 It is important to note that I will be covering how I made this and how I use it.
 
@@ -20,21 +20,21 @@ I will cover steps in this order:
 
 
 Let's start with the easiest step: getting a Last.fm API key. Go over to [Last.fm](https://www.last.fm/api/account/create) to obtain your API key and save it somewhere for now. Then install a web extension for your browser. In my case, I used [Web Scrobbler](https://addons.mozilla.org/en-US/firefox/addon/web-scrobbler/) for Firefox open the extension's settings and login with your last.fm account. After you’ve done that, try listening to some music from your choice of audio service provider (spotify, soundcloud or anything else that your scrobbler supports!) remember the scrobbler will show after x% of song has passed.
-![scrobbler](src/blogs/img/scrob.png){.width100}
+![scrobbler](src/blogs/img/scrob.png){.width100 .enlargeOnClick}
 the end result should look like this 
-![scrobbres](src/blogs/img/scrob2.png){.width50}
+![scrobbres](src/blogs/img/scrob2.png){.width50 .enlargeOnClick}
 _you need to click on the extension to see the popup._
 
 We are using [Netlify](https://www.netlify.com/) and its functions because it lets us run backend code without having a server and we don't want to expose our Last.fm API key in the frontend.
 
 So lets move to setting your api repository, create a repository whatever you use (github, gitlab, codeberd etc..) in this example we will use [netlify](https://www.netlify.com/) so go ahead and create an account (or use your existing one) once you are logged click on a `Create Project` button
 then import from a repository
-![netlify create project](src/blogs/img/createproj.png){.width100}
+![netlify create project](src/blogs/img/createproj.png){.width100 .enlargeOnClick}
 
 if you made your repository private (like i did) you will see no git repositories listed, so you will need to configure the netlify app
-![netlify select repo](src/blogs/img/selectrepo.png){.width100}
+![netlify select repo](src/blogs/img/selectrepo.png){.width100 .enlargeOnClick}
 if everything went well you should add your `Last.fm` API key we got earlier! Select your project and navigate to `Environment variables`
-![Netlify environment variables](src/blogs/img/envvar.png){.width100}
+![Netlify environment variables](src/blogs/img/envvar.png){.width100 .enlargeOnClick}
 add a key with name `LASTFM_API_KEY` make sure to toggle the `Contains secret values` to true! In the values field input your actual API key and you are done!
 
 Next step is to create a `netlify/functions` folder on our repository and inside `functions` folder create a `lastfm.js` file with following code
@@ -187,10 +187,10 @@ but let's understand why do we need this and how it works
     ];
 ```
 is basically a whitelist of what origins can call our API's functions, so in this case we only want to accept local development and our main website origins, we do this regex to match the origin here's [regex101.com](https://regex101.com/) example and you can read more about the various expressions used
-![regex expression](src/blogs/img/regexpression.png){.width100}
+![regex expression](src/blogs/img/regexpression.png){.width100, .enlargeOnClick}
 make sure to change your regex to your own website and check if the regex matches the string, to see your own origin go to your deployed website [web console](https://firefox-source-docs.mozilla.org/devtools-user/web_console/index.html) _(keybind Ctrl + Shift + K)_
 and console log your origin
-![origin](src/blogs/img/originweb.png){.width100}
+![origin](src/blogs/img/originweb.png){.width100, .enlargeOnClick}
 
 before sending certain requests, the browser sends a "preflight" request using the `OPTIONS` method to check what is allowed. We simply respond with `200` (success) so the browser knows it's safe to continue (assuming the request passed the `allowed` filter)
 ```js
@@ -202,11 +202,11 @@ In this example, the request is simple enough that preflight may not always occu
 </details>
 
 Our final file structure should look like this.
-![file structure](src/blogs/img/filestruct.png){.width100}
+![file structure](src/blogs/img/filestruct.png){.width100, .enlargeOnClick}
 so go ahead and push to your repository and go back to Netlify and navigate to `Functions` tab
-![netlify functions](src/blogs/img/netfunc.png){.width100}
+![netlify functions](src/blogs/img/netfunc.png){.width100, .enlargeOnClick}
 open up your lastfm function and copy the endpoint, this will be used in our frontend to fetch the data from lastfm, you can test it yourself to see if there is any data if you play music
-![endpoint netlify](src/blogs/img/resnetlifylastfm.png){.width100}
+![endpoint netlify](src/blogs/img/resnetlifylastfm.png){.width100, .enlargeOnClick}
 > Note that Netlify automatically exposes your function at
 > /.netlify/functions/<filename>
 

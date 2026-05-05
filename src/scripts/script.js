@@ -75,6 +75,12 @@ function applySettings() {
     } else {
         document.body.style.backgroundImage = "";
     }
+
+    if (settings["crisp-render"]) {
+        document.body.style.imageRendering = "crisp-edges";
+    } else {
+        document.body.style.imageRendering = "auto";
+    }
 }
 
 const visitedPanels = new Set();
@@ -274,14 +280,13 @@ function showAchievement(name) {
 function getAchievement(name) {
     if (!achievements[name].unlocked) {
         achievements[name].unlocked = true;
-        foundAch++;
 
         const el = document.querySelector(`[data-achievement="${name}"]`);
         if (el) el.classList.remove("locked");
         
-        document.getElementById("achievementsFound").innerText = foundAch;
+        document.getElementById("achievementsFound").innerText = Object.values(achievements).filter(a => a.unlocked).length;
 
-        localStorage.setItem("achievements", JSON.stringify(achievements));
+        saveAchievements();
         showAchievement(name);
     }
 }
@@ -592,6 +597,66 @@ document.getElementById("hideLeftPanel").addEventListener("click", () => {
 document.getElementById("hideRightPanel").addEventListener("click", () => {
     rPanel.classList.toggle("hidden");
     updateBlogMainPanel();
+});
+
+function openOverlay(e) {
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+
+    const container = document.createElement("div");
+    container.classList.add("overlayContainer");
+
+    const enlarged = document.createElement("img");
+    enlarged.classList.add("overlayImg");
+    enlarged.src = e.src;
+
+    const imgSrc = document.createElement("a");
+    imgSrc.classList.add("mint");
+    imgSrc.href = e.src;
+    imgSrc.innerText = e.src;
+    imgSrc.target = "_blank";
+
+    container.appendChild(enlarged);
+    container.appendChild(imgSrc);
+    overlay.appendChild(container);
+    
+    document.body.appendChild(overlay);
+
+    // close the overlay when clicked outside the overlay zone
+    overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+            overlay.remove();
+        }
+    })
+}
+
+// open an overlay when clicked on element with specific class
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("enlargeOnClick")) {
+        openOverlay(e.target);
+    }
+});
+
+// remove overlay if user cannot click out of the img with esc
+document.addEventListener("keydown", function escHandler(e) {
+    let overlay = document.querySelector(".overlay");
+
+    if (e.key === "Escape" && overlay) {
+        overlay.remove();
+    }
+});
+
+document.getElementById("clearAchievements").addEventListener("click", (e) => {
+    if (!confirm("Are you sure you want to RESET all your achievements?")) return;
+
+    Object.keys(achievements).forEach(key => {
+        achievements[key].unlocked = false;
+    });
+
+    achievements["welcome"].unlocked = true;
+    saveAchievements(); // overwrite all achievements to "unlocked = false" keys
+
+    loadAchievements();
 });
 
 setInterval(update, 1000);

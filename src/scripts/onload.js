@@ -583,51 +583,50 @@ function reboot() {
 
 function loadAchievements() {
     const stored = localStorage.getItem("achievements");
+    const saved = stored ? JSON.parse(stored) : {};
     const achContainer = document.getElementById("achievementCollectedContainer");
+    achContainer.innerHTML = ""
     
     foundAch = 0;
     totalAch = 0;
 
-    if (stored) {
-        const saved = JSON.parse(stored);
+    Object.keys(achievements).forEach((key) => {
+        const ach = achievements[key];
+        ach.unlocked = saved[key]?.unlocked ?? false; // sync state based on localstorage
 
-        Object.entries(achievements).forEach(([key, ach]) => {
-            const wrapper = document.createElement("div");
-            wrapper.classList.add("tooltip");
-            wrapper.dataset.achievement = key;
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("tooltip");
+        wrapper.dataset.achievement = key;
 
-            const img = document.createElement("img");
-            img.classList.add("achImg");
-            img.src = `/assets/achievements/${key}.png`;
+        const img = document.createElement("img");
+        img.classList.add("achImg");
+        img.src = `/assets/achievements/${key}.png`;
 
-            const tooltip = document.createElement("div");
-            tooltip.classList.add("tooltiptext");
+        const tooltip = document.createElement("div");
+        tooltip.classList.add("tooltiptext");
 
-            const title = document.createElement("p");
-            title.textContent = ach.title;
+        const title = document.createElement("p");
+        title.textContent = ach.title;
 
-            tooltip.appendChild(title);
-            wrapper.appendChild(img);
-            wrapper.appendChild(tooltip);
+        tooltip.appendChild(title);
+        wrapper.appendChild(img);
+        wrapper.appendChild(tooltip);
 
-            achContainer.appendChild(wrapper);
-
-            if (saved[key]?.unlocked) {
-                ach.unlocked = true;
-                foundAch++;
-            } else {
-                ach.unlocked = false;
-                wrapper.classList.add("locked");
-            }
-            
-            totalAch++;
-        });
-
-    }
+        if (!ach.unlocked) {
+            wrapper.classList.add("locked");
+        } else {
+            foundAch++;
+        }
+        
+        achContainer.appendChild(wrapper);
+        totalAch++;
+    });
 
     document.getElementById("totalAchievements").innerText = totalAch;
     document.getElementById("achievementsFound").innerText = foundAch;
-    
+}
+
+function saveAchievements() {
     localStorage.setItem("achievements", JSON.stringify(achievements));
 }
 
