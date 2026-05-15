@@ -131,6 +131,35 @@ fetch("src/data/stats.json")
         updateSiteStats();
     }).catch(err => console.error("fetch failed for website stats ", err));
 
+setInterval(async () => {
+    const res = await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/ping", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ clientId: localStorage.clientId })
+    });
+
+    const data = await res.json();
+    document.getElementById("onlineCount").textContent = data.online;
+}, 30000);
+
+async function loadStuff() {
+    initLoadEffect();
+    renderPageButtons();
+    loadQuotes();
+    loadSongEventListeners();
+    loadPageFromUrl();
+    loadLocalStorage();
+    loadAchievements();
+
+    Object.entries(contacts).forEach(([section, sectionContacts]) => {
+        initContacts(section, sectionContacts);
+    });
+
+    Object.entries(favorites).forEach(([section, fav]) => {
+        initFavorites(section, fav);
+    });
+};
+
 async function fetchLastFM() {
     try {
         const res = await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/lastfm");
@@ -144,17 +173,6 @@ async function fetchLastFM() {
         setTimeout(fetchLastFM, 60000);
     }
 }
-
-setInterval(async () => {
-    const res = await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/ping", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ clientId: localStorage.clientId })
-    });
-
-    const data = await res.json();
-    document.getElementById("onlineCount").textContent = data.online;
-}, 30000);
 
 function scheduleNextLastfmFetch(isPlaying) {
     const interval = isPlaying ? 20000 : 120000;
@@ -220,24 +238,6 @@ function setStat(el, before, value, after, name_class) {
     span.textContent = value;
     el.append(span, after);
 }
-
-async function loadStuff() {
-    initLoadEffect();
-    renderPageButtons();
-    loadQuotes();
-    loadSongEventListeners();
-    loadPageFromUrl();
-    loadLocalStorage();
-    loadAchievements();
-
-    Object.entries(contacts).forEach(([section, sectionContacts]) => {
-        initContacts(section, sectionContacts);
-    });
-
-    Object.entries(favorites).forEach(([section, fav]) => {
-        initFavorites(section, fav);
-    });
-};
 
 function loadSongEventListeners() {
     audio.volume = 0.2;
@@ -675,10 +675,10 @@ function incrementVisitedCountAndText() {
     }
 
     if (count == 1) {
-        welcome.textContent = `, THIS IS YOUR FIRST VISIT`;
+        welcome.textContent = `WELCOME, THIS IS YOUR FIRST VISIT`;
         getAchievement("welcome");
     } else {
-        welcome.textContent = `BACK,  BOOT #${count}`;
+        welcome.textContent = `WELCOME BACK,  BOOT #${count}`;
     }
 }
 

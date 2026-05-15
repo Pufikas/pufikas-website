@@ -77,13 +77,22 @@ body {
     position: relative;
 }
 
-h2 {
-    color: var(--link-color);
-    font-family: "Japanese" !important;
-    margin: 0;
-    display: inline;
+.box h2 {
+    position: relative;
+    text-shadow: 0 0 5px var(--m-primary), 0 0 10px var(--m-secondary);
+    letter-spacing: 2px;
 }
 
+
+@keyframes scanline {
+    from {
+        background-position: -100px;
+    }
+
+    to {
+        background-position: 100px;
+    }
+}
 a {
     text-decoration: none;
     color: var(--link-color);

@@ -49,10 +49,6 @@
                     <button id="theme-switch">switch!</button>
                 </div>
 
-                <div class="box center">
-                    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28"></iframe>
-                </div>
-
                 <div class="box" id="mikupls">
                     <img src="./assets/misc/mikuplsinteract.gif" class="width100 enlargeOnClick">
                 </div>
@@ -60,14 +56,7 @@
                 <div class="box mikuconcert">
                     <img src="./assets/misc/mikuconcert.jpg" class="width100 enlargeOnClick">
                 </div>
-                <!-- MY BUTTON -->
-                <div class="box">
-                    <img src="./assets/buttons/pufikas88x31.png" class="center auto-margin enlargeOnClick">
-                    <div class="center">
-                        <a id="copyButtonCode">copy</a>
-                        <a download="pufikas88x31" href="./assets/buttons/pufikas88x31.png">download</a>
-                    </div>
-                </div>
+                
 
                 <!-- MUSIC PLAYER -->    
                 <div class="box">
@@ -168,16 +157,13 @@
             <!-- MAIN HOME -->
             <div data-panel="home" id="main-panel" class="active">
                 <div id="main" class="box">
-                    <h2>WELCOME</h2>
-                    <h2 id="welcome"></h2>
-                    <br>
+                    <h2 id="welcome" class="center"></h2>
                     
                     <img id="avatar" src="./assets/misc/rabbit-hole-hatsune-miku.gif" class="enlargeOnClick">
                     <br>
                     <p>This is my small and silly website, inspired by other cool sites!!</p>
                     <br>
                     
-                   
                     <ul class="main-panel-short">
                         <p>I'm from <span class="ww">Lit</span><span class="ok">hua</span><span class="fail">nia</span>
                             I like building things with code, mostly for fun and to learn. I spend a lot of time working with <span class="ww">JavaScript</span>, both on the frontend and backend.
@@ -189,6 +175,9 @@
 
                         <p>Lately, I've been tinkering with servers, cybersecurity and open-source tools!</p>
 
+                        
+                        <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="24"></iframe>
+                        
                         <br>
                         <p class="italic smaller">(psst! you can find this site's source code <a href="https://github.com/Pufikas/pufikas-website" target="_blank" rel="nofollow">here!</a>)</p>
                     </ul>
@@ -450,6 +439,13 @@
 
                 <!-- COOL SITES LIST -->
                 <div id="cool-sites-panel" class="box center">
+                    <!-- MY BUTTON -->
+                    <div class="center">
+                        <a id="copyButtonCode">copy</a>
+                        <a download="pufikas88x31" href="./assets/buttons/pufikas88x31.png">download</a>
+                    </div>
+                    <img src="./assets/buttons/pufikas88x31.png" class="center auto-margin enlargeOnClick">
+                
                     <h2 class="gradient-text">COOL SITES</h2>
                     
                     <!-- list of buttons -->
@@ -464,7 +460,7 @@
                 
                 <!-- ACHIEVEMENT CONTAINER -->
                 <div class="box normal center">
-                    <p>Achievements</p>
+                    <h2 class="gradient-text">ACHIEVEMENTS</h2>
                     <span id="achievementsFound">0</span> / <span id="totalAchievements">1</span>
                     <div id="achievementCollectedContainer"></div>
                     <button class="clearAllCache" id="clearAchievements">reset achievements</button>

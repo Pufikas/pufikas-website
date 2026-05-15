@@ -56,8 +56,6 @@ function getMyTime() {
 
 function update() {
     const { h, m, s, ss, mm, hh } = timer();
-
-    // timeRes.textContent = ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2);
     timeRes.textContent = getMyTime();
     timeBeen.textContent = "running for " + ("0" + mm).slice(-2) + ":" + ("0" + ss).slice(-2);
     if (ss == 39) getAchievement("sankyuu");
@@ -289,6 +287,10 @@ function getAchievement(name) {
         saveAchievements();
         showAchievement(name);
     }
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 document.getElementById("cool-sites-panel").addEventListener("mouseenter", () => { mouseOverBtns = true; })
@@ -555,10 +557,16 @@ document.getElementById("clearAllCache").addEventListener("click", (e) => {
 const drawer = document.getElementById("drawer-panel");
 const toggle = document.getElementById("drawerToggle");
 
-document.getElementById("reboot-button").addEventListener("click", () => {
+document.getElementById("reboot-button").addEventListener("click", async () => {
     let text = "Are you sure you want to reboot?";
 
-    if (confirm(text) == true) reboot();
+    if (confirm(text) == true) {
+        document.body.scrollTop = 0;
+        audio.pause();
+        audioPlay.innerText = "▶";
+        await sleep(1000);
+        reboot();
+    }
 });
 
 const favBtn = document.getElementById("favToggle");
