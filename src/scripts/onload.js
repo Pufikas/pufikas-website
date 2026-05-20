@@ -321,25 +321,25 @@ function loadBlogs(blogs) {
     for (let i = 0; i < blogs.length; i++) {
         const bCard = document.createElement("div");
             bCard.className = "box blogCard";
-            bCard.id = blogs[i].id;
 
         const bDetails = document.createElement("div");
             bDetails.className = "blogDetails";
 
         const bTitle = document.createElement("h2");
             bTitle.innerText = blogs[i].title;
-            bTitle.className = "blogTitle"
+            bTitle.className = "blogTitle";
+            bTitle.id = blogs[i].id;
         
         const bTags = document.createElement("div");
             bTags.innerText = `[${blogs[i].tags}]`;
-            bTags.className = "blogTags"
+            bTags.className = "blogTags";
 
         const bIntro = document.createElement("p");
-            bIntro.innerText = blogs[i].intro
-            bIntro.className = "blogIntro"
+            bIntro.innerText = blogs[i].intro;
+            bIntro.className = "blogIntro";
 
         const bArticle = document.createElement("div");
-            bArticle.className = "blogArticle"
+            bArticle.className = "blogArticle";
 
         const bDate = document.createElement("span");
             bDate.innerText = new Date(blogs[i].date).toLocaleString();
@@ -347,10 +347,15 @@ function loadBlogs(blogs) {
         const bId = document.createElement("span");
             bId.innerText = blogs[i].id;
 
+        const blogArrowUpper = document.createElement("button");
+            blogArrowUpper.innerText = "CLOSE";
+            blogArrowUpper.className = "blogStickyClose center btnSticky";
+
         const bArrow = document.createElement("button");
-            bArrow.innerText = "▶ ▶ ▶"
-            bArrow.className = "blogToggle center"
+            bArrow.innerText = "▶ ▶ ▶";
+            bArrow.className = "blogToggle center";
         
+        bCard.appendChild(blogArrowUpper);
         bCard.appendChild(bDetails);
         bCard.appendChild(bTitle);
         bCard.appendChild(bTags);
@@ -365,8 +370,12 @@ function loadBlogs(blogs) {
         bDetails.appendChild(bId);
         document.getElementById("blogCount").innerText = blogs.length;
         bArrow.addEventListener("click", expandBlog);
-
+        
         container.append(bCard);
+        blogArrowUpper.addEventListener("click", (e) => {
+            scrollToElementId(blogs[i].id);
+            closeAllBlogs()
+        });
     }
     updateBlogMainPanel(); // updates the sizing, probably there is a better way of this
 }

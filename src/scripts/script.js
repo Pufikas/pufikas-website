@@ -542,6 +542,13 @@ function displayQuote(qNum) {
     }
 }
 
+function scrollToElementId(element) {
+    if (!element) element = "logo";
+    console.log(element)
+    document.getElementById(element).scrollIntoView({ behavior: "smooth" });
+    console.log(document.getElementById(element))
+}
+
 document.getElementById("love").addEventListener("click", (e) => {
     particleChance += 0.1; particleSize += 2; maxParticleDistance += 10; particleCount += 1;
     pop(e);
