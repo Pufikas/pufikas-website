@@ -313,10 +313,10 @@ function loadBlogs(blogs) {
     
     // sort the blogs to be newest on the top
     blogs.sort((a, b) => {
-        const numA = parseInt(a.id.split('-')[1]);
-        const numB = parseInt(b.id.split('-')[1]);
-        return numB - numA;
+        return parseInt(b.id.split('-')[1] - parseInt(a.id.split('-')[1]));
     });
+
+    document.getElementById("blogCount").innerText = blogs.length;
 
     for (let i = 0; i < blogs.length; i++) {
         const bCard = document.createElement("div");
@@ -349,7 +349,7 @@ function loadBlogs(blogs) {
 
         const blogArrowUpper = document.createElement("button");
             blogArrowUpper.innerText = "CLOSE";
-            blogArrowUpper.className = "blogStickyClose center btnSticky";
+            blogArrowUpper.className = "blogStickyClose center btnSticky hidden";
 
         const bArrow = document.createElement("button");
             bArrow.innerText = "▶ ▶ ▶";
@@ -368,16 +368,32 @@ function loadBlogs(blogs) {
 
         bDetails.appendChild(bDate);
         bDetails.appendChild(bId);
-        document.getElementById("blogCount").innerText = blogs.length;
-        bArrow.addEventListener("click", expandBlog);
         
-        container.append(bCard);
-        blogArrowUpper.addEventListener("click", (e) => {
+        bArrow.addEventListener("click", (e) => {
+            expandBlog(e)
             scrollToElementId(blogs[i].id);
-            closeAllBlogs()
+            blogArrowUpper.classList.toggle("hidden");
         });
+        
+        blogArrowUpper.addEventListener("click", (e) => {
+            closeAllBlogs()
+            scrollToElementId(blogs[i].id);
+            blogArrowUpper.classList.add("hidden");
+        });
+
+        container.append(bCard);
+        observerElement(blogArrowUpper);
     }
     updateBlogMainPanel(); // updates the sizing, probably there is a better way of this
+}
+
+function observerElement(element) {
+    // src https://stackoverflow.com/questions/38122751/positionsticky-adding-style-when-the-element-detaches-from-normal-flow
+    const observer = new IntersectionObserver(
+        ([e]) => e.target.classList.toggle("isPinned", e.intersectionRatio < 1),
+        { threshold: [1] }
+    )
+    observer.observe(element);
 }
 
 function renderPageButtons() {

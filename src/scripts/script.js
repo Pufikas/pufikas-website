@@ -544,9 +544,7 @@ function displayQuote(qNum) {
 
 function scrollToElementId(element) {
     if (!element) element = "logo";
-    console.log(element)
     document.getElementById(element).scrollIntoView({ behavior: "smooth" });
-    console.log(document.getElementById(element))
 }
 
 document.getElementById("love").addEventListener("click", (e) => {

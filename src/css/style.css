@@ -1191,5 +1191,10 @@ li.fav > a {
 .btnSticky {
     position: sticky;
     z-index: 20;
-    top: 0;
+    top: -1px;
+}
+
+.btnSticky.isPinned {
+    background-color: rgba(7, 15, 27, 0.5);
+    backdrop-filter: blur(10px);
 }
