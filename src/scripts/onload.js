@@ -26,6 +26,7 @@ let achievements = {};
 let quotes = [];
 const pageCache = {};
 let contacts = [];
+let credits = [];
 let bootText = [
     `[  !!  ] == CLICK ANYWHERE TO SKIP THIS ==
 [  II  ] Current Operating System: Linux void 6.12.41_1`,
@@ -119,6 +120,7 @@ fetch("src/data/data.json")
         achievements = data.achievements;
         favorites = data.favorites;
         quotes = data.quotes;
+        credits = data.credits;
         loadStuff();
     }).catch(err => console.error("fetch failed for data ", err));
 
@@ -157,6 +159,10 @@ async function loadStuff() {
 
     Object.entries(favorites).forEach(([section, fav]) => {
         initFavorites(section, fav);
+    });
+
+    Object.entries(credits).forEach(([section, sectionCredits]) => {
+        initCredits(section, sectionCredits);
     });
 };
 
@@ -349,7 +355,7 @@ function loadBlogs(blogs) {
 
         const blogArrowUpper = document.createElement("button");
             blogArrowUpper.innerText = "CLOSE";
-            blogArrowUpper.className = "blogStickyClose center btnSticky hidden";
+            blogArrowUpper.className = "blogStickyClose center btnSticky big hidden";
 
         const bArrow = document.createElement("button");
             bArrow.innerText = "▶ ▶ ▶";
@@ -465,6 +471,24 @@ function createContact(e) {
     return a;
 };
 
+function createCredit(e) {
+    const li = document.createElement("li");
+
+    const a = document.createElement("a");
+        a.href = e.href;
+        a.target = "_blank noopener noreferrer";
+        a.className = "block contactName";
+        a.textContent = e.user;
+
+    const p = document.createElement("p");
+        p.className = "block contactHandle";
+        p.textContent = e.desc;
+    
+    a.append(p);
+    li.appendChild(a);
+    return li;
+}
+
 function initContacts(sectionId, data) {
     const section = document.getElementById(sectionId);
     const container = document.createElement("div");
@@ -494,6 +518,19 @@ function initFavorites(sectionId, fav) {
     container.appendChild(h5);
     container.appendChild(ul);
     ul.appendChild(fragment);
+}
+
+function initCredits(sectionId, sectionCredits) {
+    const section = document.getElementById(sectionId);
+    
+    const container = document.createElement("div");
+        container.className = "grid-cols-2";
+    
+    sectionCredits.forEach(c =>
+        container.appendChild(createCredit(c))
+    );
+    
+    section.appendChild(container);
 }
 
 function initLoadEffect() {
@@ -703,7 +740,7 @@ function incrementVisitedCountAndText() {
         welcome.textContent = `WELCOME, THIS IS YOUR FIRST VISIT`;
         getAchievement("welcome");
     } else {
-        welcome.textContent = `WELCOME BACK,  BOOT #${count}`;
+        welcome.textContent = `WELCOME BACK - BOOT #${count}`;
     }
 }
 

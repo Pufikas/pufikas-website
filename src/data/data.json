@@ -63,6 +63,10 @@
         {
             "href": "ashi.nekoweb.org",
             "img": "ashi.png"
+        },
+        {
+            "href": "pencilchewing.nekoweb.org",
+            "img": "pencilchewing.png"
         }
     ],
     "contacts": {
@@ -371,5 +375,64 @@
             "audio": "timote",
             "audioFiles": 5
         }
-    ]
+    ],
+    "credits": {
+        "assets": [
+            {
+                "user": "kael",
+                "desc": "for miku emojis",
+                "href": "https://ka3l.tumblr.com/post/661014493592240128/happy-birthday-miku"
+            },
+            {
+                "user": "iconify",
+                "desc": "for icons",
+                "href": "https://iconify.design/"
+            },
+            {
+                "user": "wobbuu",
+                "desc": "for mouse cursors",
+                "href": "https://ko-fi.com/wobbuu"
+            },
+            {
+                "user": "Techno25",
+                "desc": "for a silly minecraft miku fumo plush spinning",
+                "href": "https://tenor.com/view/techno-sooper-hatsune-miku-miku-vocaloid-gif-27368625"
+            },
+            {
+                "user": "glinkie",
+                "desc": "for some funny stickers",
+                "href": "https://tenor.com/users/glinkle"
+            },
+            {
+                "user": "icoza",
+                "desc": "for some funny stickers",
+                "href": "https://tenor.com/users/icoza"
+            },
+            {
+                "user": "placeviolette",
+                "desc": "void linux button",
+                "href": "https://placeviolette.net/blog/void-button"
+            },
+            {
+                "user": "ARTIST UNKNOWN",
+                "desc": "dancing miku",
+                "href": "https://gifs.alphacoders.com/gifs/view/10724"
+            },
+            {
+                "user": "emoji.house",
+                "desc": "miku emojis",
+                "href": "https://emoji.house/discord/miku"
+            },
+            {
+                "user": "emoji.gg",
+                "desc": "miku emojis",
+                "href": "https://emoji.gg/packs/miku"
+            },
+            {
+                "user": "blinkie.wiki",
+                "desc": "for some buttons and assets",
+                "href": "https://blinkie.wiki/"
+            }
+        ]
+    }
 }

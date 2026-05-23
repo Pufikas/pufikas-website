@@ -545,7 +545,10 @@ function displayQuote(qNum) {
 function scrollToElementId(element) {
     if (!element) element = "logo";
     document.getElementById(element).scrollIntoView({ behavior: "smooth" });
+    console.log(element)
 }
+
+document.getElementById("scrollToTop").addEventListener("click", (e) => { scrollToElementId() })
 
 document.getElementById("love").addEventListener("click", (e) => {
     particleChance += 0.1; particleSize += 2; maxParticleDistance += 10; particleCount += 1;
@@ -555,8 +558,12 @@ document.getElementById("love").addEventListener("click", (e) => {
 });
 
 document.getElementById("clearAllCache").addEventListener("click", (e) => {
-    localStorage.clear();
-    location.reload();
+    let text = "Are you sure you want to clear ALL your cache? (including achievements)";
+
+    if (confirm(text) == true) {
+        localStorage.clear();
+        location.reload();
+    }
 });
 
 const drawer = document.getElementById("drawer-panel");
@@ -566,7 +573,6 @@ document.getElementById("reboot-button").addEventListener("click", async () => {
     let text = "Are you sure you want to reboot?";
 
     if (confirm(text) == true) {
-        document.body.scrollTop = 0;
         audio.pause();
         audioPlay.innerText = "▶";
         await sleep(1000);
@@ -593,7 +599,7 @@ favBtn.addEventListener("click", () => {
 function updateBlogMainPanel() {
     if (!blogPanel) return;
 
-    let size = 35;
+    let size = 40;
 
     if (lPanel.classList.contains("hidden")) size += 12;
     if (rPanel.classList.contains("hidden")) size += 12;
