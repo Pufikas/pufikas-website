@@ -326,6 +326,11 @@
                 "from": "Log Horizon",
                 "name": "Akatsuki",
                 "image": "akatsuki.jpg"
+            },
+            {
+                "from": "Log Horizon",
+                "name": "Tetora 'Tetra'",
+                "image": "tetra.jpg"
             }
         ]
     },
