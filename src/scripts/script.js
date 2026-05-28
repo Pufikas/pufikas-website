@@ -599,7 +599,7 @@ favBtn.addEventListener("click", () => {
 function updateBlogMainPanel() {
     if (!blogPanel) return;
 
-    let size = 40;
+    let size = 43;
 
     if (lPanel.classList.contains("hidden")) size += 12;
     if (rPanel.classList.contains("hidden")) size += 12;

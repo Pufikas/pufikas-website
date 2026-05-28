@@ -211,7 +211,15 @@ button:hover {
     display: flex;
     flex-direction: column;
     flex: 1;
-    flex: 0 1 40%;
+    flex: 0 1 43%;
+    animation: fadeEffect 0.3s;
+}
+
+@keyframes fadeEffect {
+    from {
+        transform: translateY(-33px);
+        opacity: 0;
+    }
 }
 
 .footer {
@@ -879,14 +887,13 @@ ul {
 }
 
 .lastfm-movable {
-    left: 69px;
-    top: 290px;
+    top: 179px;
+    left: 125px;
 }
 
 .procon-movable {
-    top: 15px;
-    left: 1575px;
-    image-rendering: initial !important;
+    top: 308px;
+    left: 1642px;
 }
 
 #love:hover {
@@ -1068,7 +1075,7 @@ li.fav > a {
  
 #marqueeWrapper {
     margin: 0 auto;
-    width: 666px;
+    width: 700px;
     height: 30px;
     white-space: nowrap;
     overflow: hidden;
