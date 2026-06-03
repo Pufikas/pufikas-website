@@ -98,7 +98,7 @@
     content: url("/assets/misc/tt.png");
   }
 
-  #footer {
+  .footer-img {
     content: url("/assets/misc/tetofooter.png");
   }
 
@@ -135,7 +135,7 @@
     content: url("/assets/misc/neruspin.gif");
   }
 
-  #footer {
+  .footer-img {
     content: url("/assets/misc/neru222.png");
   }
 
@@ -209,7 +209,7 @@
     content: url("/assets/misc/nerusleep2.png");
   }
 
-  #footer {
+  .footer-img {
     content: url("/assets/misc/tetofooter.png");
   }
 }
@@ -263,7 +263,7 @@ body {
     font-size: 8px;
   }
 
-  #footer, #lastfm-panel {
+  .footer-img, #lastfm-panel {
     display: none !important;
   }
 

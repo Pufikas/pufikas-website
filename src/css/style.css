@@ -176,7 +176,7 @@ button:hover {
     gap: 8px;
 }
 
-#footer {
+.footer-img {
     position: fixed;
     right: 0;
     bottom: 0;
@@ -200,14 +200,14 @@ button:hover {
 }
 
 /* side panels */
-#menu-panel {
+.menu-panel {
     display: flex;
     flex-direction: column;
     flex: 0 0 12%;
 }
 
 /* middle panel */
-#main-panel {
+.main-panel {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -1227,4 +1227,28 @@ li.fav > a {
 
 #animeFav, #characterFav {
     overflow: auto;
+}
+
+#main-footer {
+    position: relative;
+    overflow: hidden;
+}
+
+#main-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, 
+        transparent,
+        var(--m-primary),
+        transparent 
+    );
+    transform: translateX(-100%);
+    animation: sweep 4s infinite;
+}
+
+@keyframes sweep {
+    to {
+        transform: translateX(100%);
+    }
 }

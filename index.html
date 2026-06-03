@@ -30,9 +30,9 @@
     
     <h1 id="logo">pufikas</h1>
 
-    <div id="container">
+        <div id="container">
         <!-- SIDE PANEL LEFT -->
-        <div id="menu-panel" class="menu-left">
+            <div class="menu-panel menu-left">
                 <img class="customNeruSleep">
                 <div id="timer" class="box">
                     <span id="timeBeen" class="very-small italic right highlight">running for 00:00</span>
@@ -57,7 +57,6 @@
                     <img src="./assets/misc/mikuconcert.jpg" class="width100 enlargeOnClick">
                 </div>
                 
-
                 <!-- MUSIC PLAYER -->    
                 <div class="box">
                     <div id="audio-meta">
@@ -155,7 +154,7 @@
             </div>
             
             <!-- MAIN HOME -->
-            <div data-panel="home" id="main-panel" class="active">
+            <div data-panel="home" class="main-panel active">
                 <div id="main" class="box">
                     <h2 id="welcome" class="center"></h2>
                     
@@ -280,11 +279,11 @@
                             Self learning driving car with visual indicators of how neurons work
                         </p>
                     </div>
-                </div>               
+                </div>
             </div>
             
             <!-- MAIN CREDITS -->
-            <div data-panel="credits" id="main-panel" class="hidden">
+            <div data-panel="credits" class="main-panel hidden">
                 <div id="main" class="box">
                     <h2>CREDITS LIST</h2>
                     <p class="center gradient-text">Thank you for all these awesome people!</p><br>
@@ -303,7 +302,7 @@
             </div>
 
             <!-- MAIN CONTACTS -->
-            <div data-panel="contacts" id="main-panel" class="hidden">
+            <div data-panel="contacts" class="main-panel hidden">
                 <div id="main" class="box">
                     <section id="social"><h2>SOCIALS</h2></section>
                     <section id="gaming"><h2>GAMING</h2></section>
@@ -312,7 +311,7 @@
             </div>
             
             <!-- MAIN WEBRINGS -->
-            <div data-panel="webrings" id="main-panel" class="hidden">
+            <div data-panel="webrings" class="main-panel hidden">
                 <div id="main" class="box">
                     <p>The net is vast and infinite, so be sure to have fun with it</p>
                     <br>
@@ -342,7 +341,7 @@
             </div>
 
             <!-- MAIN BLOGS -->
-            <div data-panel="blogs" id="main-panel" class="hidden">
+            <div data-panel="blogs" class="main-panel hidden">
                 <!-- BLOG TOP INTRO -->
                 <div id="blog-main" class="box">
                     <div>
@@ -369,7 +368,7 @@
             </div>
 
             <!-- MAIN GUESTBOOK -->
-            <div data-panel="guestbook" id="main-panel" class="hidden">
+            <div data-panel="guestbook" class="main-panel hidden">
                 <div class="box height100only">
                     <a target="_blank" rel="nofollow" href="https://pufikas.atabook.org/">open in a new tab</a>
                     <iframe src="https://pufikas.atabook.org/" title="pufikas guestbook" class="atabook noborder"></iframe>
@@ -377,7 +376,7 @@
             </div>
 
             <!-- SIDE PANEL RIGHT -->
-            <div id="menu-panel" class="menu-right">
+            <div class="menu-panel menu-right">
                 <div class="mikus-nav">
                     <img src="./assets/misc/miku_hello.png" class="emoji">
                     <img id="love" src="./assets/misc/miku_love.png" class="emoji">
@@ -467,14 +466,19 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="center">
             <button id="scrollToTop">TO TOP</button>
         </div>
+        
+        <!-- MAIN FOOTER -->
+        <div id="main-footer" class="box center main-panel">
+            <img src="./assets/misc/miku2.png" class="footer-img enlargeOnClick">
+            <p class="nn">hosted on <a href="https://nekoweb.org/" target="_blank" rel="nofollow noopener noreferrer">nekoweb</a></p>
+            <p class="nn">up since 2025</p>
+        </div>
 
-    <div id="footer">
-         <img src="./assets/misc/miku2.png" class="footer-img enlargeOnClick">
-    </div>
+
 
     <script src="src/scripts/onload.js" defer></script>
     <script src="src/scripts/script.js" defer></script>
