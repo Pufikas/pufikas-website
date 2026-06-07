@@ -1252,3 +1252,12 @@ li.fav > a {
         transform: translateX(100%);
     }
 }
+
+.footerBox {
+    border: none;
+    border-top: 4px double var(--m-primary);
+    border-radius: 2px;
+    color: #e0e0e0;
+    background-color: rgba(7, 15, 27, 0.5);
+    padding: 1rem;
+}
