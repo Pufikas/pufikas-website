@@ -202,6 +202,7 @@ function expandBlog(e) {
     const card = e.currentTarget.closest(".blogCard");
     const article = card.querySelector(".blogArticle");
     const arrow = e.currentTarget;
+    const blogStickyBtn = card.querySelector(".blogStickyClose");
     const expanded = card.classList.toggle("expanded");
     
     // this keeps only single blog loaded
@@ -209,7 +210,9 @@ function expandBlog(e) {
         .forEach(c => {
             if (c !== card) {
                 c.classList.remove("expanded");
+                c.classList.remove("blogStickyClose");
                 c.querySelector(".blogToggle").textContent = "▶ ▶ ▶";
+                c.querySelector(".blogStickyClose").classList.add("hidden"); // closes the sticky close btn from other blogs
             }
         });
     

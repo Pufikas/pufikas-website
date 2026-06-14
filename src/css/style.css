@@ -28,6 +28,7 @@ body {
     background-color: black;
     color: white;
     white-space: pre;
+    padding-left: 6rem;
 }
 
 .nn {
@@ -260,7 +261,6 @@ button:hover {
     letter-spacing: 25px;
     text-shadow: 0 0 10px var(--m-primary), 0 0 20px var(--m-secondary);
 }
-
 
 .center {
     text-align: center !important;
