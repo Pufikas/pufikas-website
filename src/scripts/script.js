@@ -121,7 +121,7 @@ function copyMyButton() {
     
     navigator.clipboard.writeText(code);
 
-    alert("html copied!");
+    alert(`html copied! \n ${code}`);
 }
 
 function spawnParticle(x, y) {

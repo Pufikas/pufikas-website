@@ -295,8 +295,14 @@ function loadBlogs(blogs) {
             bArrow.innerText = "▶ ▶ ▶";
             bArrow.className = "blogToggle center";
         
+        const newTabBlog = document.createElement("a");
+            newTabBlog.innerText = "open in a new tab";
+            newTabBlog.classList = "smaller italic";
+            newTabBlog.href = `https://pufikas.nekoweb.org/_site/blogs/${blogs[i].id}.html`;
+
         bCard.appendChild(blogArrowUpper);
         bCard.appendChild(bDetails);
+        bCard.appendChild(newTabBlog);
         bCard.appendChild(bTitle);
         bCard.appendChild(bTags);
         bCard.appendChild(bIntro);

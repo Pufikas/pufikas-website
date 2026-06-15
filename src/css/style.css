@@ -575,50 +575,6 @@ ul {
     font-style: italic;
 }
 
-.blogDetails {
-    display: flex;
-    justify-content: space-between;
-    margin: 2px;
-    font-size: 12px;
-    opacity: 0.6;
-    color: var(--m-pink);
-    font-style: italic;
-}
-
-.blogToggle, .blogStickyClose {
-    width: 100%;
-}
-
-.blogTags {
-    font-size: 14px;
-    color: var(--m-grey);
-}
-
-.blogArticle {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition:
-        max-height 0.5s ease,
-        opacity 0.4s ease 0.1s;
-}
-
-.blogIntro {
-    opacity: 1;
-    font-style: italic;
-    transition: opacity 1.2s ease;
-}
-
-.blogCard.expanded .blogArticle {
-    max-height: 100%;
-    opacity: 1;
-}
-
-.blogCard.expanded .blogIntro {
-    opacity: 0.3;
-    pointer-events: none;
-}
-
 .footer-wakatime {
     margin-bottom: 6px;
 }
@@ -1162,11 +1118,6 @@ li.fav > a {
     position: absolute;
     z-index: 1;
     rotate: 5deg;
-}
-
-.blogOptions {
-    display: flex;
-    justify-content: space-between;
 }
 
 .overlay {
