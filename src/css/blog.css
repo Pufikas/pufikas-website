@@ -1,3 +1,12 @@
+@import url(base.css);
+
+@font-face {
+    font-family: "Terminus500";
+    src: url("/assets/fonts/Terminus_500.ttf") format("truetype");
+    font-display: swap;
+    image-rendering: pixelated;
+}
+
 body {
     background-color: #11111b;
     background-repeat: no-repeat;
@@ -68,4 +77,29 @@ button:hover {
 .blogOptions {
     display: flex;
     justify-content: space-between;
+}
+
+.center {
+    text-align: center !important;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-color);
+    transition: all 0.75s;
+    cursor: var(--cursor-link-select);
+}
+
+a:hover {
+    color: var(--m-secondary);
+    letter-spacing: 2px;
+}
+
+.highlight {
+    color: var(--m-pink) !important;
+}
+
+.highlight-blue {
+    color: var(--link-color) !important;
 }
