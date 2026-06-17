@@ -15,5 +15,16 @@ credits can be found in json file `src/data/data.json` under `credits`
 
 Contact me if you wish your asset to be removed from my website.
 
+generate_rss.js
+    this script generates rss.xml from blogs.json
+
+data.json
+    manually added stuff, like button paths and images, contacts, songs, settings, achievements, and other stuff that I will add later on.
+    use case for this is to easily get data and generate html for it.
+
+stats.json
+    generated from update_stats.js appends daily stats from nekoweb, also adds most recent github commit message with all other data (lines changed etc..).
+
+blogs are written to .md file and then generated to .html file with proper markdown and css styling with 11ty
 
 
