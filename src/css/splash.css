@@ -1,0 +1,121 @@
+
+@import url(base.css);
+
+
+.splash {
+    font-family: "VT323", monospace;
+    position: fixed;
+    z-index: 9000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1200px;
+    background-color: black;
+    color: white;
+    white-space: pre;
+    padding: 2rem 0 0 6rem;
+}
+
+.nn {
+    font-family: "Terminus500", monospace;
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+.ok {
+    font-family: "Terminus500", monospace;
+    color: #00ff00 !important;
+    font-weight: bold;
+}
+
+.ww {
+    font-family: "Terminus500", monospace;
+    color: #d0ff00 !important;
+    font-weight: bold;
+}
+
+.fail {
+    font-family: "Terminus500", monospace;
+    color: #ff0000 !important;
+    font-weight: bold;
+}
+
+.mint {
+    font-family: "Terminus500", monospace;
+    color: var(--m-mint) !important;
+    font-weight: bold;
+}
+
+.splashScreen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .7s ease, visibility .7s ease;
+    z-index: 999999;
+}
+
+.splashScreen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.splashScreenContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.splashScreenLogo {
+    object-fit: contain;
+    animation: spin 1.5s linear infinite;
+    transform-origin: center;
+    animation: plasmaFloat 3s ease-in-out infinite;
+    margin-bottom: 6rem;
+}
+
+.splashScreenContent h1 {
+    margin: 0;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.splashScreenLoader {
+    display: flex;
+}
+
+.splashScreenLoader img {
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes plasmaFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+.splashScreen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}

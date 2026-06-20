@@ -20,6 +20,13 @@
   --cursor-busy: wait;
 }
 
+@font-face {
+    font-family: "Terminus500";
+    src: url("/assets/fonts/Terminus_500.ttf") format("truetype");
+    font-display: swap;
+    image-rendering: pixelated;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;

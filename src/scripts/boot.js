@@ -22,10 +22,8 @@ let bootText = [
     "[  EE  ] Failed to load module 'nv' (module does not exist, 0)",
     "         Starting Apply Kernel Variables...",
     "[  OK  ] Finished Load Kernel Variables",
+    "[  II  ] Signed as guest",
     "[  II  ] Starting Display Manager...",
-    "         pufikas login",
-    "         Password: *******",
-    "[  EE  ] Incorrect password, booting as guest",
 ];
 let rebootText = [
     "[  II  ] Reboot requested by user",
@@ -64,6 +62,8 @@ let rebootText = [
     "       grub rescue> normal"
 ];
 
+let skippedIntro = false;
+
 function reboot() {
     const splash = document.querySelector(".splash-reboot");
     splash.style.opacity = 1;
@@ -87,7 +87,7 @@ function reboot() {
         if (line.toLowerCase().includes("error")) delay += 1400;
         if (line.includes("Attempting")) delay += 4000;
         if (line.includes("grub rescue>")) delay += 1600;
-
+        
         cumulativeDelay += delay;
 
         setTimeout(() => {
@@ -105,10 +105,9 @@ function reboot() {
             if (!foundMarker) p.textContent = line;
 
             splash.append(p);
-            if (line.includes("grub rescue>")) getAchievement("reboot");
             
+            if (line.includes("grub rescue>")) getAchievement("reboot");
             if (line.endsWith("normal")) {
-
                 setTimeout(() => {
                     splash.style.opacity = 0;
                     splash.classList.add("hidden");
@@ -121,11 +120,48 @@ function reboot() {
     });
 }
 
+function skipIntro() {
+    const splash = document.querySelector(".splash-boot");
+    const bootScreen = document.querySelector(".splashScreen");
+    skippedIntro = true;
+    
+    splash.style.opacity = 0.2;
+    splash.textContent = "User input detected Quitting";
+
+    setTimeout(() => {
+        splash.classList.add("hidden");
+        splash.textContent = "";
+    }, 620);
+
+    bootScreen.remove();
+}
+
+function splashScreen() {
+    const bootScreen = document.querySelector(".splashScreen");
+
+    if (skippedIntro) return;
+
+    bootScreen.classList.remove("hidden");
+
+    requestAnimationFrame(() => {
+        bootScreen.classList.add("active");
+    });
+
+    setTimeout(() => {
+        bootScreen.classList.remove("active");
+
+        setTimeout(() => {
+            bootScreen.classList.add("hidden");
+        }, 700);
+    }, 2500);
+}
+
 function initLoadEffect() {
     const splash = document.querySelector(".splash-boot");
+    const bootScreen = document.querySelector(".splashScreen");
+
     splash.style.opacity = 1;
-    splash.classList.remove("hidden");
-    // splash.textContent = "";
+    splash.style.transition = "opacity .6s ease";
 
     const markers = {
         "  OK  ": "ok",
@@ -149,27 +185,24 @@ function initLoadEffect() {
             }
 
             if (!foundMarker) p.textContent = line;
-
+            
             splash.append(p);
         }, i * 100 + Math.random() * 100 + (line.includes("Incorrect") ? 300 : 0));
     });
 
-    // hide splash after all lines
+    // show the boot splash after all boot text
     setTimeout(() => {
-        splash.style.opacity = 0;
-        splash.classList.add("hidden");
-    }, bootText.length * 190);
+        splash.style.display = "none";
+        splashScreen();
+    }, bootText.length * 120);
 
     if (!splash.dataset.listenerAdded) {
         splash.addEventListener("click", () => {
-            splash.style.opacity = 0.2;
-            splash.textContent = "User input detected Quitting";
-
-            setTimeout(() => {
-                splash.classList.add("hidden");
-                splash.textContent = "";
-            }, 620);
+            skipIntro();
         });
+
         splash.dataset.listenerAdded = "true";
     }
 }
+
+document.addEventListener("DOMContentLoaded", initLoadEffect);

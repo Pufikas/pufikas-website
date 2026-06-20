@@ -13,22 +13,39 @@
                 font-src 'self' https://file.garden;
                 frame-src 'self' https://nekoweb.org https://pufikas.atabook.org;
             ">
+    
+    <link rel="stylesheet" href="src/css/splash.css">
+    <link rel="stylesheet" href="src/css/blog.css">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/prism-atom-dark.css">
+
+    <script src="src/scripts/boot.js"></script>
 
     <title>pufikas</title>
 </head>
 
 <body id="page">
-    <link rel="stylesheet" href="src/css/blog.css">
-    <link rel="stylesheet" href="src/css/style.css">
-    <link rel="stylesheet" href="src/css/prism-atom-dark.css">
+
     <canvas id="background"></canvas>
 
-    <div class="splash splash-boot hidden">
+    <!-- boot text -->
+    <div class="splash splash-boot">
         <h1>    WELCOME TO <span class="ww">pufikas.</span><span class="ok">nekoweb.</span><span class="fail">org</span></h1>
     </div>
-    <div class="splash splash-reboot hidden" eager></div>
-    <div class="cursor"></div>
+    <div class="splash splash-reboot hidden"></div>
     
+    <!-- the splash screen with logo -->
+    <div class="splashScreen hidden">
+        <div class="splashScreenContent">
+            <img src="/assets/misc/plasma-logo-colorful-128x128.png" alt="logo" class="splashScreenLogo">
+
+            <div class="splashScreenLoader">
+                <img src="/assets/misc/busy-gear.svg">
+            </div>
+        </div>
+    </div>
+
+    <div class="cursor"></div>
     <h1 id="logo">pufikas</h1>
 
         <div id="container">
@@ -145,8 +162,8 @@
                             </div>
     
                             <div id="lastfm-trackinfo">
-                                <p id="lastfm-playingstatus"></p>
-                                <p id="lastfm-track" class="gradient-text"></p>
+                                <p id="lastfm-playingstatus">updating..</p>
+                                <a id="lastfm-track" class="gradient-text" target="_blank" rel="nofollow noopener noreferrer" href="">click me to go to source</a>
                                 <p id="lastfm-artist"></p>
                             </div>
                         </div>
@@ -312,7 +329,7 @@
             </div>
             
             <!-- MAIN WEBRINGS -->
-            <div data-panel="webrings" class="main-panel hidden" loading="lazy">
+            <div data-panel="webrings" class="main-panel hidden">
                 <div id="main" class="box">
                     <p>The net is vast and infinite, so be sure to have fun with it</p>
                     <br>
@@ -342,7 +359,7 @@
             </div>
 
             <!-- MAIN BLOGS -->
-            <div data-panel="blogs" class="main-panel hidden" loading="lazy">
+            <div data-panel="blogs" class="main-panel hidden">
                 <!-- BLOG TOP INTRO -->
                 <div id="blog-main" class="box">
                     <div>
@@ -482,9 +499,6 @@
             <p class="nn"><a class="highlight-blue" href="https://github.com/Pufikas/pufikas-website/blob/main/LICENSE" target="_blank" rel="nofollow noopener noreferrer">Copyright © 2026 Pufikas</a></p>
             <p class="nn">up since <span class="gradient-text">2025</span></p>
         </div>
-
-
-    <script src="src/scripts/boot.js" defer></script>
     <script src="src/scripts/onload.js" defer></script>
     <script src="src/scripts/script.js" defer></script>
     <script src="src/scripts/songs.js" defer></script>

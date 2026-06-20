@@ -548,7 +548,6 @@ function displayQuote(qNum) {
 function scrollToElementId(element) {
     if (!element) element = "logo";
     document.getElementById(element).scrollIntoView({ behavior: "smooth" });
-    console.log(element)
 }
 
 document.getElementById("scrollToTop").addEventListener("click", (e) => { scrollToElementId() })
@@ -576,6 +575,7 @@ document.getElementById("reboot-button").addEventListener("click", async () => {
     let text = "Are you sure you want to reboot?";
 
     if (confirm(text) == true) {
+        scrollToElementId();
         audio.pause();
         audioPlay.innerText = "▶";
         await sleep(1000);

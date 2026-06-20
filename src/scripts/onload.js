@@ -79,7 +79,6 @@ setInterval(async () => {
 }, 30000);
 
 async function loadStuff() {
-    initLoadEffect();
     renderPageButtons();
     loadQuotes();
     loadSongEventListeners();
@@ -139,6 +138,7 @@ function updateLastfmPanel(track) {
 
     lastfmartist.textContent = track.artist;
     lastfmtrack.textContent = track.name;
+    lastfmtrack.href = track.srcUrl;
 }
 
 function updateSiteStats() {
@@ -149,7 +149,7 @@ function updateSiteStats() {
         link.href = `${url}/${hourly.code_sha}`;
         link.target = '_blank';
         link.rel = 'nofollow';
-        link.textContent = "„" + hourly.code_message + "”";
+        link.textContent = `„${hourly.code_message}”`;
 
     document.getElementById("lastupdate").textContent = hourly.generated_at.split("T")[0];
     document.getElementById("lastupdate-additions").textContent = hourly.code_additions + "+" || 0;
@@ -472,10 +472,6 @@ function initCredits(sectionId, sectionCredits) {
     
     section.appendChild(container);
 }
-
-
-
-
 
 function loadAchievements() {
     const stored = localStorage.getItem("achievements");

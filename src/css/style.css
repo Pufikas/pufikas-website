@@ -1,11 +1,11 @@
 @import url(base.css);
 
-@font-face {
+/* @font-face {
     font-family: "Terminus500";
     src: url("/assets/fonts/Terminus_500.ttf") format("truetype");
     font-display: swap;
     image-rendering: pixelated;
-}
+} */
 
 body {
     background-image: url("/assets/bg/89616320_p2.jpg");
@@ -17,7 +17,7 @@ body {
     height: 3000px;
 }
 
-.splash {
+/* .splash {
     font-family: "VT323", monospace;
     position: fixed;
     z-index: 9000;
@@ -29,9 +29,9 @@ body {
     color: white;
     white-space: pre;
     padding-left: 6rem;
-}
+} */
 
-.nn {
+/* .nn {
     font-family: "Terminus500", monospace;
     color: #ffffff !important;
     font-weight: bold;
@@ -47,19 +47,19 @@ body {
     font-family: "Terminus500", monospace;
     color: #d0ff00 !important;
     font-weight: bold;
-}
+} */
 
-.mint {
+/* .mint {
     font-family: "Terminus500", monospace;
     color: var(--m-mint) !important;
     font-weight: bold;
-}
+} */
 
-.fail {
+/* .fail {
     font-family: "Terminus500", monospace;
     color: #ff0000 !important;
     font-weight: bold;
-}
+} */
 
 .emoji {
     cursor: var(--cursor-busy);
@@ -745,6 +745,7 @@ ul {
     font-size: 1rem;
     color: var(--m-primary);
     font-weight: bolder;
+    letter-spacing: 0px !important;
 }
 
 #lastfm-artist {
