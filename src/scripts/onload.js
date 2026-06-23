@@ -584,7 +584,6 @@ async function updateWebStats() {
         views: nekoweb.views
     };
 
-
     localStorage.setItem("web_stats", JSON.stringify(cachedWebStats));
     websiteStats();
 }

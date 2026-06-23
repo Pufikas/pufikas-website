@@ -3,6 +3,7 @@ let bootText = [
 [  II  ] Current Operating System: Linux void 6.12.41_1`,
     `         Markers: (!!) notice, (II) informational,
          (WW) warning, (EE) error, (??) unknown.`,
+    "[  !!  ] Mobile support is partial",
     "[  II  ] Mounting pseudo-filesystems...",
     "         Loading kernel modules...",
     `[  !!  ] Before reporting problems, check https://github.com/Pufikas/pufikas-website       
@@ -64,19 +65,19 @@ let rebootText = [
 
 let skippedIntro = false;
 
+const markers = {
+    "  OK  ": "ok",
+    "  WW  ": "ww",
+    "  EE  ": "fail",
+    "  !!  ": "fail",
+    "  II  ": "info"
+};
+
 function reboot() {
     const splash = document.querySelector(".splash-reboot");
     splash.style.opacity = 1;
     splash.classList.remove("hidden");
     splash.textContent = "";
-
-    const markers = {
-        "  OK  ": "ok",
-        "  WW  ": "ww",
-        "  EE  ": "fail",
-        "  !!  ": "fail",
-        "  II  ": "info"
-    };
 
     let cumulativeDelay = 0;
 
@@ -114,7 +115,7 @@ function reboot() {
                     splash.textContent = "";
 
                     initLoadEffect();
-                }, 2400);
+                }, 1200);
             }
         }, cumulativeDelay);
     });
@@ -126,12 +127,12 @@ function skipIntro() {
     skippedIntro = true;
     
     splash.style.opacity = 0.2;
-    splash.textContent = "User input detected Quitting";
+    splash.textContent = "User requested skip";
 
     setTimeout(() => {
         splash.classList.add("hidden");
         splash.textContent = "";
-    }, 620);
+    }, 820);
 
     bootScreen.remove();
 }
@@ -162,14 +163,6 @@ function initLoadEffect() {
 
     splash.style.opacity = 1;
     splash.style.transition = "opacity .6s ease";
-
-    const markers = {
-        "  OK  ": "ok",
-        "  WW  ": "ww",
-        "  EE  ": "fail",
-        "  !!  ": "fail",
-        "  II  ": "info"
-    };
 
     bootText.forEach((line, i) => {
         setTimeout(() => {

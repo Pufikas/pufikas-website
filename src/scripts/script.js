@@ -58,7 +58,8 @@ function update() {
     const { h, m, s, ss, mm, hh } = timer();
     timeRes.textContent = getMyTime();
     timeBeen.textContent = "running for " + ("0" + mm).slice(-2) + ":" + ("0" + ss).slice(-2);
-    if (ss == 39) getAchievement("sankyuu");
+    if (ss == 39) 
+        getAchievement("sankyuu");
 }
 
 function updateLocalStorage(key) {
@@ -174,6 +175,7 @@ function loadPageFromUrl() {
     showPanel(nav);
     updateBlogMainPanel();
     
+    // opens up the blog from paramaters (if that post exists)
     if (panel === "blogs") {
         const postId = params.get("post");
         if (!postId) return;
@@ -182,9 +184,10 @@ function loadPageFromUrl() {
         setTimeout(() => {
             const card = document.getElementById(postId);
             if (card) {
-                card.querySelector(".blogToggle")?.click();
+                const closestCard = card.closest(".blogCard");
+                closestCard?.querySelector(".blogToggle")?.click();
             }
-        }, 100);
+        }, 200);
     }
 }
 
@@ -192,7 +195,8 @@ function closeAllBlogs() {
     document.querySelectorAll(".blogCard")
         .forEach(c => {
             c.classList.remove("expanded");
-            c.querySelector(".blogToggle").textContent = "▶ ▶ ▶"; 
+            c.querySelector(".blogToggle").textContent = "▶ ▶ ▶";
+            c.querySelector(".blogStickyClose").classList.add("hidden");
         });
 }
 
@@ -308,8 +312,9 @@ document.addEventListener("mousemove", (e) => {
 navLinks.forEach((link) => {
     link.addEventListener("click", () => {
         location.hash = link.dataset.id;
-        // temp fix for closing all blogs when navigating out of blogs
-        if (!location.hash.startsWith("#blogs")) closeAllBlogs();
+        // closes all blogs when outside of the blogs panel
+        if (!location.hash.startsWith("#blogs")) 
+            closeAllBlogs();
         showPanel(link);
     });
 });
@@ -325,11 +330,16 @@ options.forEach((opt) => {
 });
 
 window.addEventListener("hashchange", () => {
-    if (location.hash.startsWith("#blogs")) return;
+    if (location.hash.startsWith("#blogs")) 
+        return;
     loadPageFromUrl();
 });
 
-document.getElementById("copyButtonCode").addEventListener("click", (e) => { copyMyButton(); pop(e); getAchievement("share"); });
+document.getElementById("copyButtonCode").addEventListener("click", (e) => { 
+    copyMyButton(); 
+    pop(e); 
+    getAchievement("share");
+});
 
 document.getElementById('prevBtn').onclick = () => {
     if (currPage > 1) {
@@ -676,6 +686,7 @@ document.getElementById("clearAchievements").addEventListener("click", (e) => {
     });
 
     achievements["welcome"].unlocked = true;
+
     saveAchievements(); // overwrite all achievements to "unlocked = false" keys
 
     loadAchievements();

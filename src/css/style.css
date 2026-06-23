@@ -1,12 +1,5 @@
 @import url(base.css);
 
-/* @font-face {
-    font-family: "Terminus500";
-    src: url("/assets/fonts/Terminus_500.ttf") format("truetype");
-    font-display: swap;
-    image-rendering: pixelated;
-} */
-
 body {
     background-image: url("/assets/bg/89616320_p2.jpg");
     background-color: #11111b;
@@ -16,50 +9,6 @@ body {
     position: relative;
     height: 3000px;
 }
-
-/* .splash {
-    font-family: "VT323", monospace;
-    position: fixed;
-    z-index: 9000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 1200px;
-    background-color: black;
-    color: white;
-    white-space: pre;
-    padding-left: 6rem;
-} */
-
-/* .nn {
-    font-family: "Terminus500", monospace;
-    color: #ffffff !important;
-    font-weight: bold;
-}
-
-.ok {
-    font-family: "Terminus500", monospace;
-    color: #00ff00 !important;
-    font-weight: bold;
-}
-
-.ww {
-    font-family: "Terminus500", monospace;
-    color: #d0ff00 !important;
-    font-weight: bold;
-} */
-
-/* .mint {
-    font-family: "Terminus500", monospace;
-    color: var(--m-mint) !important;
-    font-weight: bold;
-} */
-
-/* .fail {
-    font-family: "Terminus500", monospace;
-    color: #ff0000 !important;
-    font-weight: bold;
-} */
 
 .emoji {
     cursor: var(--cursor-busy);
