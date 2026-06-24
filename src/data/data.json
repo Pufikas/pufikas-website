@@ -71,6 +71,10 @@
         {
             "href": "mashumaro.nekoweb.org",
             "img": "mashumaro.png"
+        },
+        {
+            "href": "vrelle.neocities.org",
+            "img": "vrelle.png"
         }
     ],
     "contacts": {
@@ -242,7 +246,7 @@
         "reboot": {
             "unlocked": false,
             "title": "Oops!",
-            "desc": "You broke the bootloader"
+            "desc": "Bootloader broke!"
         }
     },
     "favorites": {
