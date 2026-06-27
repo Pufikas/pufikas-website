@@ -1,0 +1,47 @@
+{
+  "sites": [
+    {
+        "id": "Pufikas",
+        "name": "Pufikas",
+        "url": "https://pufikas.nekoweb.org/",
+        "img": "/assets/buttons/pufikas88x31.png",
+        "tags": ["vocaloid", "linux"],
+        "parent": null
+    },
+    {
+        "id": "Lilith",
+        "name": "Lilith",
+        "url": "https://lilithdev.neocities.org/",
+        "img": "/assets/buttons/lilithdevbtn.gif",
+        "tags": ["cute", "frutiger_aero"]
+    },
+    {
+        "id": "MoonLightSword",
+        "name": "MoonLightSword",
+        "url": "https://sword-of-moonlight.moe/",
+        "img": "/assets/buttons/moonlightsword.gif",
+        "tags": ["touhou_project", "frutiger_aero"]
+    },
+    {
+      "id": "specifix",
+      "name": "specifix",
+      "url": "https://specifix.dev/",
+      "img": "/assets/buttons/specifix.png",
+      "tags": ["vocaloid"]
+    },
+    {
+      "id": "whirrfox",
+      "name": "whirrfox",
+      "url": "https://whirrfox.moe/",
+      "img": "/assets/buttons/whirrfox.gif",
+      "tags": ["vocaloid", "design", "light"]
+    },
+    {
+      "id": "ashi",
+      "name": "ashi",
+      "url": "https://ashi.nekoweb.org/",
+      "img": "/assets/buttons/ashi.png",
+      "tags": ["blogs", "frutiger_aero"]
+    }
+  ]
+}

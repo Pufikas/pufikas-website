@@ -287,6 +287,11 @@ button:hover {
     animation: scanlines 5s steps(30) infinite;
 }
 
+.neighorbood {
+    width: 100%;
+    height: 40%;
+}
+
 .width100 {
     width: 100%;
     height: 100%;

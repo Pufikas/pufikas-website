@@ -1,0 +1,8 @@
+body {
+    background-color: rgb(47, 46, 46);
+}
+
+#graph {
+    width: 100vw;
+    height: 100vh;
+}
