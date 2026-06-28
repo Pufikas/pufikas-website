@@ -16,6 +16,7 @@ module.exports = function (eleventyConfig) {
     
     eleventyConfig.ignores.add("index.html");
     eleventyConfig.ignores.add("not_found.html");
+    eleventyConfig.ignores.add("neighborhood.html");
 
     eleventyConfig.setLibrary("md", md);
 };

@@ -1,0 +1,13 @@
+name: Validate Neighborhood
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate sites.json
+        run: node src/scripts/utils/similarity.js

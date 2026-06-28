@@ -13,7 +13,7 @@
         "name": "Lilith",
         "url": "https://lilithdev.neocities.org/",
         "img": "/assets/buttons/lilithdevbtn.gif",
-        "tags": ["cute", "frutiger_aero"]
+        "tags": ["frutiger_aero"]
     },
     {
         "id": "MoonLightSword",
@@ -41,7 +41,7 @@
       "name": "ashi",
       "url": "https://ashi.nekoweb.org/",
       "img": "/assets/buttons/ashi.png",
-      "tags": ["blogs", "frutiger_aero"]
+      "tags": ["blog", "frutiger_aero"]
     }
   ]
 }
