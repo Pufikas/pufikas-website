@@ -1,0 +1,55 @@
+<h1 id="adding-your-own-site" tabindex="-1">Adding your own site</h1>
+<p>To add your own you will need to clone this repository and submit a pull request.</p>
+<ol>
+<li>
+<p>Navigate to <code>sites.json</code> and at the end of the sites array add your own website details.</p>
+</li>
+<li>
+<p>Upload your website’s button must be 88x31 in size, add it to <code>buttons</code> folder.</p>
+</li>
+</ol>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+        <span class="token comment">// used for getting the parent node must be unique</span>
+        <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"Pufikas"</span><span class="token punctuation">,</span> 
+        
+        <span class="token comment">// name that appears on your node hover</span>
+        <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Pufikas"</span><span class="token punctuation">,</span>
+
+        <span class="token comment">// link to your website</span>
+        <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https://pufikas.nekoweb.org/"</span><span class="token punctuation">,</span> 
+
+        <span class="token comment">// your img source, which you need to place at /src/buttons/, must be exactly 88x31 of size</span>
+        <span class="token property">"img"</span><span class="token operator">:</span> <span class="token string">"/src/buttons/pufikas88x31.png"</span><span class="token punctuation">,</span> 
+
+        <span class="token comment">// your website tags maximum of 5, select tags only defined from tags.md file</span>
+        <span class="token property">"tags"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"vocaloid"</span><span class="token punctuation">,</span> <span class="token string">"linux"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
+<ol start="3">
+<li>If everything is fine submit a pull request and I will review it!</li>
+</ol>
+<h3 id="final-example-should-look-like-this" tabindex="-1">Final example should look like this</h3>
+<pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
+  <span class="token string-property property">"sites"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">...</span>
+    <span class="token punctuation">{</span>
+      <span class="token operator">...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token operator">...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token string">"me"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"me"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"url"</span><span class="token operator">:</span> <span class="token string">"https://somewhere"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"img"</span><span class="token operator">:</span> <span class="token string">"/src/neighborhood/buttons/me.png"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"tags"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"blogs"</span><span class="token punctuation">,</span> <span class="token string">"touhou"</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Make sure that your json is valid! Atleast one tag is required.</p>
+<p>There are 2 folders where I store buttons.<br>
+<code>/src/neighborhood/buttons/</code><br>
+<code>/assets/buttons/</code></p>
+<p>If you can’t find the button in <code>/assets/buttons/</code><br>
+use the <code>/src/neighborhood/buttons/</code> folder.</p>
