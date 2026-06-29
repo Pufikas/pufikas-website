@@ -12,58 +12,60 @@
       "parent": null
     },
     {
-      "id": "Lilith",
-      "name": "Lilith",
-      "url": "https://lilithdev.neocities.org/",
-      "img": "/assets/buttons/lilithdevbtn.gif",
-      "tags": [
-        "frutiger_aero"
-      ],
-      "parent": "Pufikas"
-    },
-    {
-      "id": "MoonLightSword",
-      "name": "MoonLightSword",
-      "url": "https://sword-of-moonlight.moe/",
-      "img": "/assets/buttons/moonlightsword.gif",
-      "tags": [
-        "touhou_project",
-        "frutiger_aero"
-      ],
-      "parent": "Lilith"
-    },
-    {
-      "id": "specifix",
-      "name": "specifix",
-      "url": "https://specifix.dev/",
-      "img": "/assets/buttons/specifix.png",
+      "id": "electric-tenshi",
+      "name": "electric-tenshi",
+      "url": "https://electric-tenshi.nekoweb.org/",
+      "img": "/assets/buttons/wvdtkw.gif",
       "tags": [
         "vocaloid"
       ],
       "parent": "Pufikas"
     },
     {
-      "id": "whirrfox",
-      "name": "whirrfox",
-      "url": "https://whirrfox.moe/",
-      "img": "/assets/buttons/whirrfox.gif",
+      "id": "ribbonated",
+      "name": "ribbonated",
+      "url": "https://ribbonated.nekoweb.org/",
+      "img": "/src/neighborhood/buttons/ribbonatedbutton.gif",
       "tags": [
-        "vocaloid",
-        "design",
-        "light"
+        "dark",
+        "gaming",
+        "design"
       ],
-      "parent": "specifix"
+      "parent": "Pufikas"
     },
     {
-      "id": "ashi",
-      "name": "ashi",
-      "url": "https://ashi.nekoweb.org/",
-      "img": "/assets/buttons/ashi.png",
+      "id": "kafu",
+      "name": "ribbonated",
+      "url": "https://kafu.nekoweb.org/",
+      "img": "/assets/buttons/junko.png",
       "tags": [
-        "blog",
-        "frutiger_aero"
+        "vocaloid",
+        "light",
+        "blog"
       ],
-      "parent": "Lilith"
+      "parent": "electric-tenshi"
+    },
+    {
+      "id": "pockethollow",
+      "name": "pockethollow",
+      "url": "https://pockethollow.nekoweb.org/",
+      "img": "/src/neighborhood/buttons/pockethollow.png",
+      "tags": [
+        "animation",
+        "photography",
+        "touhou_project"
+      ],
+      "parent": "Pufikas"
+    },
+    {
+      "id": "crimsondew",
+      "name": "crimsondew",
+      "url": "https://crimsondew.nekoweb.org/",
+      "img": "/src/neighborhood/buttons/crimsondew.png",
+      "tags": [
+        "vocaloid"
+      ],
+      "parent": "electric-tenshi"
     }
   ]
 }

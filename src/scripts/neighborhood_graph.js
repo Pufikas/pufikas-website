@@ -15,8 +15,9 @@ function createWebsites(sites) {
                 id: String(site.id),
                 name: site.name,
                 img: site.img,
-                url: site.url
-            }
+                url: site.url,
+            },
+            grabbable: false,
         });
 
         if (site.parent !== null) {
@@ -28,12 +29,11 @@ function createWebsites(sites) {
             });
         }
     }
-    console.log(`Website data: ${websites}`);
+    
     return websites;
 }
 
 function createCytoscape(elements) {
-    
     function highlightPath(node) {
         cy.elements().addClass("dim");
         let current = node;

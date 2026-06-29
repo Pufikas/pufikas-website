@@ -14,9 +14,17 @@ module.exports = function (eleventyConfig) {
     }).use(markdownItAttrs)
     .use(markdownItAnchor);
     
-    eleventyConfig.ignores.add("index.html");
-    eleventyConfig.ignores.add("not_found.html");
-    eleventyConfig.ignores.add("neighborhood.html");
+    // eleventyConfig.ignores.add("index.html");
+    // eleventyConfig.ignores.add("not_found.html");
+    // eleventyConfig.ignores.add("neighborhood.html");
+    // eleventyConfig.ignores.add("tags.md");
+    // eleventyConfig.ignores.add("how_to_add.md");
 
     eleventyConfig.setLibrary("md", md);
+    return {
+        dir: {
+            input: "src/blogs",
+            output: "_site/blogs"
+        }
+    };
 };

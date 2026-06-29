@@ -67,6 +67,7 @@ function jaccard(a, b) {
     return union === 0 ? 0 : intersection / union;
 }
 
+// check if the json file is valid
 async function validateSites(sites, validTags) {
     const ids = new Set();
     const urls = new Set();
@@ -131,5 +132,3 @@ async function validateSites(sites, validTags) {
 main().catch(err => {
     console.error("failed in similiary.js", err);
 });
-
-// main().catch(console.error);
