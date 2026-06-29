@@ -1,14 +1,14 @@
 {
   "hourly": {
-    "generated_at": "2026-06-29T20:31:38.145Z",
+    "generated_at": "2026-06-29T20:36:48.236Z",
     "site_updates": 101,
     "followers": 48,
     "views": 1475,
-    "code_additions": 103,
-    "code_deletions": 208,
-    "code_message": "fixing 11ty, and adding neighborhood data",
-    "code_sha": "249b78babbc7aec7a34966202ff5f772caff2617",
-    "site_updated_at": 1782765078000
+    "code_additions": 2,
+    "code_deletions": 1,
+    "code_message": "fix 11ty includes",
+    "code_sha": "3457365b5fa414222e0a3568ef5bc7dac672db9c",
+    "site_updated_at": 1782765396000
   },
   "daily": {
     "2026-01-11": {
