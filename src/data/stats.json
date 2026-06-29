@@ -1,14 +1,14 @@
 {
   "hourly": {
-    "generated_at": "2026-06-29T02:01:35.685Z",
+    "generated_at": "2026-06-29T20:31:38.145Z",
     "site_updates": 101,
     "followers": 48,
-    "views": 1473,
-    "code_additions": 240,
-    "code_deletions": 94,
-    "code_message": "yml scripts and neighborhood",
-    "code_sha": "6cd12f3350d4d88197f9e6d0d4a4133f826474c5",
-    "site_updated_at": 1782678670000
+    "views": 1475,
+    "code_additions": 103,
+    "code_deletions": 208,
+    "code_message": "fixing 11ty, and adding neighborhood data",
+    "code_sha": "249b78babbc7aec7a34966202ff5f772caff2617",
+    "site_updated_at": 1782765078000
   },
   "daily": {
     "2026-01-11": {
@@ -844,7 +844,7 @@
     "2026-06-29": {
       "site_updates": 101,
       "followers": 48,
-      "views": 1473
+      "views": 1475
     }
   }
 }
