@@ -50,18 +50,12 @@ To add your own you will need to clone this repository (or edit via browser) and
       "name": "me",
       "url": "https://somewhere",
       "img": "/src/neighborhood/buttons/me.png",
-      "tags": ["blogs", "touhou"]
+      "tags": ["blog", "touhou"]
     }
   ]
 }
 ```
 
-
 Make sure that your json is valid! Atleast one tag is required.
 
-There are 2 folders where I store buttons.
-`/src/neighborhood/buttons/`
-`/assets/buttons/`
-
-If you can't find the button in `/assets/buttons/`
-use the `/src/neighborhood/buttons/` folder.
+Feel free to add more tags! (Add your tag in `tag_list.json` and `tags.md`)
