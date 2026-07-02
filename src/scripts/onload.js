@@ -85,7 +85,7 @@ async function loadStuff() {
     loadPageFromUrl();
     loadLocalStorage();
     loadAchievements();
-
+    
     Object.entries(contacts).forEach(([section, sectionContacts]) => {
         initContacts(section, sectionContacts);
     });

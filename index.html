@@ -46,10 +46,13 @@
     </div>
 
     <div class="cursor"></div>
+    <div id="buttonMatterContainer"></div>
+    
     <h1 id="logo">pufikas</h1>
 
         <div id="container">
-        <!-- SIDE PANEL LEFT -->
+            
+            <!-- SIDE PANEL LEFT -->
             <div class="menu-panel menu-left">
                 <img class="customNeruSleep">
                 <div id="timer" class="box">
@@ -429,10 +432,10 @@
                     <h2 class="center gradient-text">NAVIGATION</h2>
                     <ul class="center">
                         <li><span class="navlink highlight" data-id="home">home</span></li>
-                        <li><span class="navlink" data-id="contacts">contacts</span></li>
-                        <li><span class="navlink" data-id="credits">credits</span></li>
-                        <li><span class="navlink" data-id="webrings">webrings</span></li>
                         <li><span class="navlink" data-id="blogs">blogs</span></li>
+                        <li><span class="navlink" data-id="credits">credits</span></li>
+                        <li><span class="navlink" data-id="contacts">contacts</span></li>
+                        <li><span class="navlink" data-id="webrings">webrings</span></li>
                         <li><span class="navlink" data-id="guestbook">guestbook</span></li>
                         <li><span class="navlink" data-id="neighborhood">neighborhood</span></li>
                     </ul>
@@ -466,6 +469,7 @@
                         <span id="pageIndicator"></span>
                         <button id="nextBtn">></button>
                     </div>
+                    <button id="buttonMatterBtn">See All</button>
                 </div>
                 
                 <!-- ACHIEVEMENT CONTAINER -->
@@ -522,9 +526,12 @@
             <p class="nn"><a class="highlight-blue" href="https://github.com/Pufikas/pufikas-website/blob/main/LICENSE" target="_blank" rel="nofollow noopener noreferrer">Copyright © 2026 Pufikas</a></p>
             <p class="nn">up since <span class="gradient-text">2025</span></p>
         </div>
+
     <script src="src/scripts/onload.js" defer></script>
     <script src="src/scripts/script.js" defer></script>
     <script src="src/scripts/songs.js" defer></script>
     <script src="src/scripts/themes.js" defer></script>
+    <script src="src/libs/matter.min.js" defer></script>
+    <script src="src/scripts/button_matter.js" defer></script>
 </body>
 </html>
