@@ -72,6 +72,38 @@ a > p {
     min-height: 160px;
     max-height: 160px;
     height: 100%;
+    transition: all 0.6s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes explodeCharge {
+    0% {
+        transform: scale(1);
+    }
+
+    20% {
+        transform: translate(-4px, 16px) scale(0.99);
+    }
+
+    40% {
+        transform: translate(8px, -4px) scale(0.95);
+    }
+
+    60% {
+        transform: translate(-4px, 8px) scale(0.92);
+    }
+
+    80% {
+        transform: translate(16px, -4px) scale(2);
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+.column2.explode {
+    animation: explodeCharge 500ms ease-in forwards;
 }
 
 .slide-out-left {
@@ -1169,15 +1201,25 @@ li.fav > a {
     padding: 1rem;
 }
 
-#buttonMatterContainer {
-    position: fixed;
-    inset: 0;
-}
-
 #buttonMatterContainer canvas {
     background: none !important;
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
+}
+
+.floatingButton {
+    position: fixed;
+
+    width: 88px;
+    height: 31px;
+
+    transform-origin: center;
+
+    user-select: none;
+
+    cursor: grab;
+
+    z-index: 99999000;
 }
