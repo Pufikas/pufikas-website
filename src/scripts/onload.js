@@ -33,6 +33,7 @@ let totalAch = 0;
 let foundAch = 0;
 let itemsPerPage = 8; // 2 cols
 let dailyYesterday = {};
+const WEB_STATS_CACHE_TIME = 2 * 60 * 60 * 1000; // 2 hours
 const today = new Date();
 const yesterday = new Date(today);
 yesterday.setDate(today.getDate() - 1);
@@ -58,15 +59,6 @@ fetch("src/data/data.json")
         loadStuff();
     }).catch(err => console.error("fetch failed for data ", err));
 
-fetch("src/data/stats.json")
-    .then(res => res.json())
-    .then(data => {
-        hourly = data.hourly;
-        daily = data.daily;
-        // dailyYesterday = data.daily[yesterday.toISOString().split("T")[0]];
-        updateSiteStats();
-    }).catch(err => console.error("fetch failed for website stats ", err));
-
 setInterval(async () => {
     const res = await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/ping", {
         method: "POST",
@@ -76,10 +68,42 @@ setInterval(async () => {
 
     const data = await res.json();
     document.getElementById("onlineCount").textContent = data.online;
-}, 30000);
+}, 90000);
+
+
+async function loadStats() {
+    const cached = JSON.parse(localStorage.getItem("web_stats"));
+
+    // use cached data immediately
+    if (cached) {
+        hourly = cached.hourly;
+        updateSiteStats();
+
+        // returns if the cached data is up to date
+        if (Date.now() - cached.cachedAt < WEB_STATS_CACHE_TIME)
+            return;
+    }
+
+    // if cached data is old this tries to fetch new data and update
+    try {
+        const res = await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/stats");
+        const data = await res.json();
+
+        hourly = data.hourly;
+
+        localStorage.setItem("web_stats", JSON.stringify({
+            cachedAt: Date.now(), hourly
+        }));
+
+        updateSiteStats();
+    } catch (err) {
+        console.error("failed to fetch stats:", err);
+    }
+}
 
 async function loadStuff() {
     renderPageButtons();
+    loadStats();
     loadQuotes();
     loadSongEventListeners();
     loadPageFromUrl();
@@ -109,12 +133,12 @@ async function fetchLastFM() {
         scheduleNextLastfmFetch(track.nowPlaying);
     } catch (err) {
         console.error("Error fetching Last.fm:", err);
-        setTimeout(fetchLastFM, 60000);
+        setTimeout(fetchLastFM, 90000);
     }
 }
 
 function scheduleNextLastfmFetch(isPlaying) {
-    const interval = isPlaying ? 20000 : 120000;
+    const interval = isPlaying ? 60000 : 240000;
     setTimeout(fetchLastFM, interval);
 }
 
