@@ -921,6 +921,7 @@ ul {
     gap: 8px;
     padding: 0;
     margin-bottom: 12px;
+    animation: fadeEffect 0.3s;
 }
 
 .fav {
@@ -999,24 +1000,24 @@ ul {
     opacity: 1;
 }
 
-li.fav > a {
+li.fav > a, .favBtnLink:hover {
     transition: none !important;
     letter-spacing: 0px !important;
 }
 
-#favoritesPanel {
+#favoritesPanel, #favoritesList {
     max-height: 500px;
     opacity: 1;
     overflow: hidden;
     transition: max-height 0.4s ease, opacity 0.25s ease;
 }
 
-#favoritesPanel.collapsed {
+#favoritesPanel.collapsed, #favoritesList.collapsed {
     max-height: 0;
     opacity: 0;
     pointer-events: none;
 }
- 
+
 #marqueeWrapper {
     margin: 0 auto;
     width: 700px;

@@ -1,4 +1,5 @@
 const navLinks = document.querySelectorAll(".navlink");
+const favLinks = document.querySelectorAll(".favBtnLink");
 const options = document.querySelectorAll(".option-check");
 const cursor = document.querySelector(".cursor");
 const content = document.getElementById("lastfm");
@@ -112,6 +113,29 @@ function showPanel(option) {
     if (visitedPanels.size === navLinks.length) {
         getAchievement("curious");
     }
+}
+
+function showFavPanel(option) {
+    const panels = document.querySelectorAll("[fav-data-panel]");
+    const panelName = option.getAttribute("fav-panel-id");
+
+    panels.forEach(panel => {
+        if (panel.getAttribute("fav-data-panel") === panelName) {
+            panel.classList.remove("hidden");
+            panel.classList.add("active");
+        } else {
+            panel.classList.remove("active");
+            panel.classList.add("hidden");
+        }
+    })
+
+    favLinks.forEach(link => {
+        if (link === option) {
+            link.classList.add("highlight");
+        } else {
+            link.classList.remove("highlight");
+        }
+    });
 }
 
 function copyMyButton() {
@@ -316,6 +340,12 @@ navLinks.forEach((link) => {
         if (!location.hash.startsWith("#blogs")) 
             closeAllBlogs();
         showPanel(link);
+    });
+});
+
+favLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        showFavPanel(link);
     });
 });
 
@@ -601,6 +631,7 @@ favBtn.addEventListener("click", () => {
     expandedFav = !expandedFav;
     favPanel.classList.toggle("collapsed", !expandedFav);
     favBtn.classList.toggle("open", !expandedFav);
+    document.getElementById("favoritesList").classList.toggle("collapsed", !expandedFav);
     favBtn.textContent = expandedFav ? "▼ ▼ ▼" : "▶ ▶ ▶";
 });
 
@@ -661,6 +692,7 @@ function openOverlay(e) {
         }
     })
 }
+
 
 // open an overlay when clicked on element with specific class
 document.addEventListener("click", (e) => {

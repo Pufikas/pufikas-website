@@ -33,6 +33,17 @@
   font-weight: normal;
 }
 
+/* text selection */
+::-moz-selection { /* firefox support */
+  background: var(--m-pink);
+  color: #fff;
+}
+
+::selection {
+  background: var(--m-pink);
+  color: #fff;
+}
+
 /* cursors */
 [data-theme="miku"] {
   --cursor-default: url("/assets/cursors/miku/normal-select.cur"), auto;

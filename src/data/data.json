@@ -352,6 +352,32 @@
                 "name": "Tetora 'Tetra'",
                 "image": "tetra.jpg"
             }
+        ],
+        "games": [
+            {
+                "title": "Warframe",
+                "image": "warframe.png"
+            },
+            {
+                "title": "osu!",
+                "image": "osu.png"
+            },
+            {
+                "title": "Factorio",
+                "image": "factorio.png"
+            },
+            {
+                "title": "Muse Dash",
+                "image": "musedash.png"
+            },
+            {
+                "title": "Terraria",
+                "image": "terr.png"
+            },
+            {
+                "title": "Path of Exile",
+                "image": "path.png"
+            }
         ]
     },
     "quotes": [
