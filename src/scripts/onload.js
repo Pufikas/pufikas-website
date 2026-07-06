@@ -83,7 +83,6 @@ async function loadStats() {
         if (Date.now() - cached.cachedAt < WEB_STATS_CACHE_TIME)
             return;
     }
-
     // if cached data is old this tries to fetch new data and update
     try {
         const res = await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/stats");
@@ -103,6 +102,7 @@ async function loadStats() {
 
 async function loadStuff() {
     renderPageButtons();
+    fetchLastFM();
     loadStats();
     loadQuotes();
     loadSongEventListeners();
@@ -616,5 +616,3 @@ function loadQuotes() {
     getNewQuoteNum();
     document.getElementById("quoteNew").addEventListener("click", getNewQuoteNum);
 }
-
-fetchLastFM();

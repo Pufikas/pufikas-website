@@ -968,6 +968,7 @@ ul {
     line-height: 1.2em;
     display: -webkit-box;
     overflow: hidden;
+    word-wrap: anywhere;
 }
 
 .favRelease {
