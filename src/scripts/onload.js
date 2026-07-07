@@ -31,7 +31,7 @@ let currPage = 1;
 let totalPages = 0;
 let totalAch = 0;
 let foundAch = 0;
-let itemsPerPage = 8; // 2 cols
+let itemsPerPage = 10; // 2 cols
 let dailyYesterday = {};
 const WEB_STATS_CACHE_TIME = 2 * 60 * 60 * 1000; // 2 hours
 const today = new Date();
@@ -70,7 +70,6 @@ setInterval(async () => {
     document.getElementById("onlineCount").textContent = data.online;
 }, 90000);
 
-
 async function loadStats() {
     const cached = JSON.parse(localStorage.getItem("web_stats"));
 
@@ -91,7 +90,8 @@ async function loadStats() {
         hourly = data.hourly;
 
         localStorage.setItem("web_stats", JSON.stringify({
-            cachedAt: Date.now(), hourly
+            cachedAt: Date.now(), 
+            hourly
         }));
 
         updateSiteStats();
@@ -371,7 +371,6 @@ function renderPageButtons() {
     const end = start + itemsPerPage;
     const btns = buttons.slice(start, end);
     totalPages = Math.ceil(buttons.length / itemsPerPage);
-
     // cache buttons
     if (!pageCache[currPage]) {
         const html = btns.map(e => `
