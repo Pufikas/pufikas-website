@@ -192,16 +192,11 @@ button:hover {
 
 /* side panels */
 .menu-panel {
-    display: flex;
-    flex-direction: column;
     flex: 0 0 12%;
 }
 
 /* middle panel */
 .main-panel {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
     flex: 0 1 43%;
     animation: fadeEffect 0.3s;
 }
@@ -288,6 +283,7 @@ button:hover {
         transform: translate3d(0, 20000%, 0);
     }
 }
+
 @keyframes scanlines {
     0% {
         background-position: 0 50%;
@@ -467,7 +463,6 @@ ul {
     padding: 6px;
 }
 
-
 #background {
     position: fixed;
     top: 0;
@@ -491,6 +486,7 @@ ul {
     transform: translate(-50%, -50%);
     display: none;
 }
+
 @keyframes colors {
     0%{
         filter: hue-rotate(0deg);
@@ -1214,15 +1210,35 @@ li.fav > a, .favBtnLink:hover {
 
 .floatingButton {
     position: fixed;
-
     width: 88px;
     height: 31px;
-
     transform-origin: center;
-
     user-select: none;
-
     cursor: grab;
-
     z-index: 99999000;
+}
+
+.project p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.project a {
+    font-size: 16px;
+}
+
+.project .tag {
+    display: inline-block;
+    padding: 1px 8px;
+    border: 1px solid var(--m-primary);
+    color: var(--m-secondary);
+}
+
+.headerBox {
+    position: relative;
+    z-index: 10;
+    margin: auto;
+    padding-bottom: 40px;
+    text-align: center !important;
+    display: block;
 }
