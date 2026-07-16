@@ -378,43 +378,6 @@
                 "title": "Path of Exile",
                 "image": "path.png"
             }
-        ],
-        "composer": [
-            {
-                "title": "Release Hallucination",
-                "image": "release_hallucination.png",
-                "link": "https://www.youtube.com/@ReleaseHallucination/"
-            },
-            {
-                "title": "Imperial Circus Dead Decadence",
-                "image": "imperial_circus_dead_decadence.png",
-                "link": "https://www.youtube.com/@icddecadence"
-            },
-            {
-                "title": "ProjectMili",
-                "image": "projectmili.png",
-                "link": "https://www.youtube.com/@ProjectMili"
-            },
-            {
-                "title": "S3RL",
-                "image": "s3rl.png",
-                "link": "https://www.youtube.com/@S3RL"
-            },
-            {
-                "title": "Infected Mushroom",
-                "image": "infected_mushroom.png",
-                "link": "https://www.youtube.com/@infectedmushroom"
-            },
-            {
-                "title": "BABYMETAL",
-                "image": "babymetal.png",
-                "link": "https://www.youtube.com/@BABYMETAL"
-            },
-            {
-                "title": "ななひら (Nanahira)",
-                "image": "nanahira.png",
-                "link": "https://www.youtube.com/@Nanahira_Confetto"
-            }
         ]
     },
     "quotes": [

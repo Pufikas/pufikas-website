@@ -371,7 +371,7 @@ document.getElementById("copyButtonCode").addEventListener("click", (e) => {
     getAchievement("share");
 });
 
-document.getElementById('prevBtn').onclick = () => {
+document.getElementById("prevBtn").onclick = () => {
     if (currPage > 1) {
         currPage--;
     } else {
@@ -380,7 +380,7 @@ document.getElementById('prevBtn').onclick = () => {
     renderPageButtons();
 };
 
-document.getElementById('nextBtn').onclick = () => {
+document.getElementById("nextBtn").onclick = () => {
     if (currPage < totalPages) {
         currPage++;
     } else {
