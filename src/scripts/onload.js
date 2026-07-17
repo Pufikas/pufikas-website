@@ -394,7 +394,7 @@ function renderPageButtons() {
         setTimeout(() => buttonList.classList.remove('slide-in-right'), 300);
     }, 400)
     
-    document.getElementById('pageIndicator').textContent = `${currPage} / ${totalPages}`;
+    document.getElementById("pageIndicator").textContent = `${currPage} / ${totalPages}`;
 }
 
 function createContact(e) {

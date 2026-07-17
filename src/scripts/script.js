@@ -363,6 +363,9 @@ window.addEventListener("hashchange", () => {
     if (location.hash.startsWith("#blogs")) 
         return;
     loadPageFromUrl();
+
+    if (location.hash.startsWith("#guestbook"))
+        fetchGuestbook();
 });
 
 document.getElementById("copyButtonCode").addEventListener("click", (e) => { 

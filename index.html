@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="darkreader-lock" content="">
-    <meta http-equiv="Content-Security-Policy"
+    <!-- <meta http-equiv="Content-Security-Policy"
       content="default-src 'self';
                 connect-src 'self' https://file.garden https://api.github.com/repos/Pufikas/pufikas-website/commits/main https://nekoweb.org/api/site/info/pufikas.nekoweb.org https://pufikasapistuff.netlify.app;
                 img-src 'self'  https://electric-tenshi.nekoweb.org https://files.catbox.moe https://lastfm.freetls.fastly.net https://file.garden;
@@ -12,12 +12,13 @@
                 style-src 'self' https://electric-tenshi.nekoweb.org https://first-sound.moe;
                 font-src 'self' https://file.garden;
                 frame-src 'self' https://nekoweb.org https://pufikas.atabook.org;
-            ">
+            "> -->
     
     <link rel="stylesheet" href="src/css/splash.css">
     <link rel="stylesheet" href="src/css/blog.css">
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/prism-atom-dark.css">
+    <link rel="stylesheet" href="src/css/guestbook.css">
 
     <script src="src/scripts/boot.js"></script>
 
@@ -406,8 +407,62 @@
             <!-- MAIN GUESTBOOK -->
             <div data-panel="guestbook" class="main-panel hidden">
                 <div class="box height100only">
-                    <a target="_blank" rel="nofollow" href="https://pufikas.atabook.org/">open in a new tab</a>
-                    <iframe src="https://pufikas.atabook.org/" title="pufikas guestbook" class="atabook noborder" loading="lazy"></iframe>
+                    <a target="_blank" rel="nofollow" href="https://pufikas.atabook.org/">legacy guestbook</a>
+
+                    <form id="guestbook" method="post">
+                        <div id="header">
+
+                        </div>
+
+                        <div id="questions" class="msgBox">
+                            <div>
+                                <label for="name">Name:</label>
+                                <input id="name" type="text" name="name" maxlength="40" placeholder="Anonymous">
+                            </div>
+                    
+                            <div>
+                                <label for="name">Website:</label>
+                                <input id="website" type="text" name="website" maxlength="255" placeholder="https://...">
+                            </div>
+
+                            <!-- custom questions -->
+                            <div>
+                                <label for="q1">Your favorite color?:</label>
+                                <input id="q1" type="color" name="q1" value="#ff0000">
+                            </div>
+                            
+                            <div>
+                                <label for="q2">How did you find me?:</label>
+                                <input id="q2" type="text" name="q2" maxlength="255">
+                            </div>
+
+                            <div>
+                                <label for="q3">Favorite musician/music?:</label>
+                                <input id="q3" type="text" name="q3" maxlength="255" placeholder="I like nanahira!">
+                            </div>
+                    
+                            <!-- end of questions -->
+
+                            <div>
+                                <label for="message">Message*:</label>
+                                <textarea id="message" type="text" name="message" minlength="5" maxlength="2000" placeholder="Your message" autocomplete="off"></textarea>
+                            </div>
+                            
+                            <input type="text" name="password" autocomplete="off" tabindex="-1" autocomplete="off">
+                            
+                            <div>
+                                <button id="submitbtn" type="submit">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div id="guestbookMessages"></div>
+
+                    <div id="guestbookPagination" class="center">
+                        <button id="guestbookPrevBtn"><</button>
+                        <span id="guestbookPageIndicator"></span>
+                        <button id="guestbookNextBtn">></button>
+                    </div>
                 </div>
             </div>
 
@@ -552,5 +607,6 @@
     <script src="src/scripts/themes.js" defer></script>
     <script src="src/libs/matter.min.js" defer></script>
     <script src="src/scripts/button_matter.js" defer></script>
+    <script src="src/scripts/guestbook.js" defer></script>
 </body>
 </html>
