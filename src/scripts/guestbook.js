@@ -5,6 +5,7 @@ let messagesPerPage = 10;
 let gbCurrPage = 1;
 let gbTotalPages = 0;
 
+let gbLoaded = false;
 let messageList = [];
 // q1 is not typed here because it's the color input, we don't need to render a question label for that
 let questions = [
@@ -67,7 +68,6 @@ form.addEventListener("submit", async (e) => {
         q3: document.getElementById("q3").value
     };
 
-    console.log(body)
     if (!body.message) {
         alert("Write a message first!");
         return;
@@ -97,11 +97,16 @@ form.addEventListener("submit", async (e) => {
     }
 });
 
-function fetchGuestbook() {
-    fetch("https://pufikasapistuff.netlify.app/.netlify/functions/guestbook_messages")
+async function fetchGuestbook() {
+    if (gbLoaded) {
+        return;
+    }
+
+    await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/guestbook_messages")
         .then(res => res.json())
         .then(data => {
             messageList = data.messages;
+            gbLoaded = true;
             renderGBPageButtons();
         }).catch(err => console.error("failed to fetch guestbook messages", err));
 }

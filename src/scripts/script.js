@@ -365,7 +365,6 @@ window.addEventListener("hashchange", () => {
     loadPageFromUrl();
 
     if (location.hash.startsWith("#guestbook")) {
-        console.log("guestbook")
         fetchGuestbook();
     } 
 });
