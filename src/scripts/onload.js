@@ -76,7 +76,6 @@ async function loadStats() {
     // use cached data immediately
     if (cached) {
         hourly = cached.hourly;
-        updateSiteStats();
 
         // returns if the cached data is up to date
         if (Date.now() - cached.cachedAt < WEB_STATS_CACHE_TIME)

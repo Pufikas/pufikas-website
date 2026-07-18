@@ -18,6 +18,9 @@ let questions = [
     },
 ];
 
+if (location.hash.startsWith("#guestbook")) {
+    fetchGuestbook();
+}
 
 function renderGBPageButtons() {
     const start = (gbCurrPage - 1) * messagesPerPage;
@@ -31,7 +34,7 @@ function renderGBPageButtons() {
     messageList.slice(start, end)
         .forEach(createMessageElement);
 
-    document.getElementById("pageIndicator").textContent = `${gbCurrPage} / ${gbTotalPages}`;
+    document.getElementById("guestbookPageIndicator").textContent = `${gbCurrPage} / ${gbTotalPages}`;
 }
 
 document.getElementById("guestbookPrevBtn").onclick = () => {
@@ -55,9 +58,6 @@ document.getElementById("guestbookNextBtn").onclick = () => {
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    submitbtn.disabled = true;
-    submitbtn.textContent = "Sending...";
-
     const body = {
         username: document.getElementById("name").value,
         message: document.getElementById("message").value,
@@ -67,7 +67,16 @@ form.addEventListener("submit", async (e) => {
         q3: document.getElementById("q3").value
     };
 
-    const res = await fetch("http://localhost:8888/.netlify/functions/guestbook", {
+    console.log(body)
+    if (!body.message) {
+        alert("Write a message first!");
+        return;
+    }
+
+    submitbtn.disabled = true;
+    submitbtn.textContent = "Sending...";
+
+    const res = await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/guestbook", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -89,12 +98,11 @@ form.addEventListener("submit", async (e) => {
 });
 
 function fetchGuestbook() {
-    fetch("http://localhost:8888/.netlify/functions/guestbook_messages")
+    fetch("https://pufikasapistuff.netlify.app/.netlify/functions/guestbook_messages")
         .then(res => res.json())
         .then(data => {
             messageList = data.messages;
-            console.log("data", messageList)
-            renderPageButtons();
+            renderGBPageButtons();
         }).catch(err => console.error("failed to fetch guestbook messages", err));
 }
 
@@ -245,5 +253,3 @@ function hexToHsl(hex) {
         l: l * 100
     };
 }
-
-fetchGuestbook();

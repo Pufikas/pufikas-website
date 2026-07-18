@@ -364,8 +364,10 @@ window.addEventListener("hashchange", () => {
         return;
     loadPageFromUrl();
 
-    if (location.hash.startsWith("#guestbook"))
+    if (location.hash.startsWith("#guestbook")) {
+        console.log("guestbook")
         fetchGuestbook();
+    } 
 });
 
 document.getElementById("copyButtonCode").addEventListener("click", (e) => { 
