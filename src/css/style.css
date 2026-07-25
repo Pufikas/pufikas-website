@@ -10,7 +10,7 @@ body {
     height: 3000px;
 }
 
-.emoji {
+.navEmoji {
     cursor: var(--cursor-busy);
     width: 24px; 
     height: 24px;

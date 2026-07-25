@@ -6,6 +6,14 @@ let gbCurrPage = 1;
 let gbTotalPages = 0;
 
 let gbLoaded = false;
+const emojis = [
+    "steambored.png",
+    "steamhappy.png",
+    "steammocking.png",
+    "steamthumbsdown.png",
+    "steamthumbsup.png"
+];
+const emojiSet = new Set(emojis.map(file => file.replace(/\.[^.]+$/, "")));
 let messageList = [];
 // q1 is not typed here because it's the color input, we don't need to render a question label for that
 let questions = [
@@ -56,6 +64,10 @@ document.getElementById("guestbookNextBtn").onclick = () => {
     renderGBPageButtons();
 };
 
+document.getElementById("emojisBtn").onclick = () => {
+    document.getElementById("emojiPanel").classList.toggle("hidden");
+}
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -98,17 +110,51 @@ form.addEventListener("submit", async (e) => {
 });
 
 async function fetchGuestbook() {
-    if (gbLoaded) {
-        return;
-    }
-
+    if (gbLoaded) return;
+    
     await fetch("https://pufikasapistuff.netlify.app/.netlify/functions/guestbook_messages")
         .then(res => res.json())
         .then(data => {
+            generateEmojiPanel(emojis)
             messageList = data.messages;
             gbLoaded = true;
             renderGBPageButtons();
         }).catch(err => console.error("failed to fetch guestbook messages", err));
+}
+
+function generateEmojiPanel(emojis) {
+    const panel = document.getElementById("emojiPanel");
+
+    emojis.forEach(e => {
+        const button = document.createElement("button");
+        button.className = "emojiButton";
+        button.type = "button";
+
+        const img = document.createElement("img");
+        img.src = `assets/emoji/${e}`;
+        img.alt = e.substring(0, e.lastIndexOf(".")); // keeps the clean name of emoji without the extension name
+        img.classList.add("bigEmoji")
+        
+        button.append(img);
+
+        button.onclick = () => {
+            insertEmoji(e.substring(0, e.lastIndexOf(".")));
+        };
+
+        panel.append(button);
+    });
+}
+
+function insertEmoji(emoji) {
+    const textarea = document.getElementById("message");
+    const shortcode = `:${emoji}:`;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+
+    textarea.setRangeText(shortcode, start, end, "end");
+
+    document.getElementById("emojiPanel").classList.toggle("hidden");
+    textarea.focus();
 }
 
 function createQuestionElement(m, q) {
@@ -180,7 +226,7 @@ function createMessageElement(m) {
 
     const mMessage = document.createElement("div");
     mMessage.className = "msgText";
-    mMessage.textContent = m.message;
+    renderMessage(m.message, mMessage);
     
     // show reply if there is one
     if (m.reply) {
@@ -215,6 +261,43 @@ function createMessageElement(m) {
     }
     mBox.append(mMessage)
     board.append(mBox);
+}
+
+// looks for a regex like :text: and if it finds that it tries to render the image from it from an emojiSet (if doesnt exists keeps it :text:)
+function renderMessage(message, container) {
+    const regex = /:([a-zA-Z0-9_-]+):/g; // looks for :text:
+    let lastIndex = 0; // track message text index
+    let match;
+    
+    while ((match = regex.exec(message)) !== null) {
+        // load all the text before the emoji match index
+        if (match.index > lastIndex) {
+            container.append(
+                document.createTextNode(message.slice(lastIndex, match.index)) // (Hello :emoji: testing => Hello )
+            );
+        }
+
+        // append the emoji to the container (if it exists in emojiSet)
+        if (emojiSet.has(match[1])) { // match[1] is cat, match[0] is :cat:
+            const img = document.createElement("img");
+            img.className = "emoji";
+            img.src = `assets/emoji/${match[1]}.png`;
+            img.alt = match[1];
+
+            container.append(img);
+        } else {
+            container.append(document.createTextNode(match[0]));
+        }
+
+        lastIndex = regex.lastIndex;
+    }
+
+    // load remaining of the message
+    if (lastIndex < message.length) {
+        container.append(
+            document.createTextNode(message.slice(lastIndex))
+        );
+    }
 }
 
 function hexToHsl(hex) {

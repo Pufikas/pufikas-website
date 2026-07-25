@@ -51,5 +51,15 @@
     "title": "Creating your own LastFm last played widget",
     "intro": "A guide on how to build a small serverless API using Netlify that fetches your most recently played track from Lastfm and displays it on your website",
     "date": "2026-04-22T18:14:52.000Z"
+  },
+  {
+    "id": "post-6",
+    "file": "post-6.html",
+    "tags": [
+      "fun"
+    ],
+    "title": "New Guestbook!",
+    "intro": "Write away in style!",
+    "date": "2026-07-25T19:21:32.000Z"
   }
 ]

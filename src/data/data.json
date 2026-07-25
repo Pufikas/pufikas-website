@@ -485,6 +485,11 @@
                 "href": "https://emoji.gg/packs/miku"
             },
             {
+                "user": "emoji.gg",
+                "desc": "steam emojis",
+                "href": "https://emoji.gg/pack/5907-steam-default-emoticons"
+            },
+            {
                 "user": "blinkie.wiki",
                 "desc": "for some buttons and assets",
                 "href": "https://blinkie.wiki/"

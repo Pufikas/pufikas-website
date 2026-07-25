@@ -1,3 +1,7 @@
+@import url(base.css);
+@import url(style.css);
+
+
 .hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -79,7 +83,7 @@ input, textarea {
 }
 
 .userTime {
-    color: #999;
+    color: var(--m-grey);
     font-size: .8rem;
 }
 
@@ -121,6 +125,7 @@ input, textarea {
     white-space: pre-wrap;
     line-height: 1.5;
     overflow-wrap: break-word;
+    color: var(--window-highlight)
 }
 
 .msgQuestions {
@@ -132,7 +137,7 @@ input, textarea {
 
 .msgQuestion {
     border-left: 3px solid #ff5050;
-    padding-left: 6px;
+    padding-left: 11px;
     margin-bottom: 10px;
 }
 
@@ -142,7 +147,7 @@ input, textarea {
 }
 
 .msqAnswer {
-    color: aquamarine;
+    color: #0ef0f0;
 }
 
 /* reply */
@@ -176,3 +181,34 @@ input, textarea {
     padding-top: 10px;
     color: white;
 }
+
+#emojiPanel {
+    position: absolute;
+    margin-top: 26px;
+    z-index: 999;
+    border: 2px solid var(--m-pink);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.emoji {
+    width: 16px;
+    height: 16px;
+}
+
+.bigEmoji {
+    width: 24px;
+    height: 24px;
+}
+
+.misc {
+    display: flex;
+    gap: 2px;
+    margin-top: 5px;
+    position: relative;
+}
+
+#emojisBtn {
+    border: 1px hidden;
+    width: 5% !important;
+}
+
