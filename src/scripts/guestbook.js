@@ -11,7 +11,11 @@ const emojis = [
     "steamhappy.png",
     "steammocking.png",
     "steamthumbsdown.png",
-    "steamthumbsup.png"
+    "steamthumbsup.png",
+    "miku_comfy.png",
+    "miku_hello.png",
+    "miku_love.png",
+    "miku_smirk.png"
 ];
 const emojiSet = new Set(emojis.map(file => file.replace(/\.[^.]+$/, "")));
 let messageList = [];
