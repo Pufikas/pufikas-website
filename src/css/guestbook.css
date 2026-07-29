@@ -165,6 +165,7 @@ input, textarea {
     margin-bottom: 6px;
     font-weight: bold;
     color: #ff79c6;
+    border-bottom: 1px solid hsl(var(--hue),100%,55%);
 }
 
 .msgReplyText {
@@ -191,8 +192,8 @@ input, textarea {
 }
 
 .emoji {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
 }
 
 .bigEmoji {

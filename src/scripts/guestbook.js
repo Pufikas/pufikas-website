@@ -223,7 +223,6 @@ function createMessageElement(m) {
         questionBox.append(element);
     });
 
-
     const mTime = document.createElement("span");
     mTime.textContent = new Date(m.created_at).toLocaleString("lt-LT"); 
     mTime.className = "userTime";
@@ -242,8 +241,9 @@ function createMessageElement(m) {
         mReplyName.className = "usernameBox";
         mReplyName.style.setProperty("--hue", 326);
 
-        const mReplyHeader = document.createElement("div");
-        mReplyHeader.className = "msgReplyHeader";
+        const mUpper = document.createElement("div");
+        mUpper.className = "msgUpper";
+        mUpper.style.setProperty("--hue", 326);
 
         const mReplyTime = document.createElement("span");
         mReplyTime.className = "msgReplyTime";
@@ -251,10 +251,10 @@ function createMessageElement(m) {
 
         const mReply = document.createElement("p");
         mReply.className = "msgReplyText";
-        mReply.textContent = m.reply;
-
-        mReplyHeader.append(mReplyName, mReplyTime);
-        mReplyBox.append(mReplyHeader, mReply);
+        renderMessage(m.reply, mReply);
+        
+        mUpper.append(mReplyName, mReplyTime);
+        mReplyBox.append(mUpper, mReply);
         mMessage.append(mReplyBox);
     }
 
