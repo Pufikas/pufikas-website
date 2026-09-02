@@ -77,6 +77,8 @@ async function loadStats() {
     if (cached) {
         hourly = cached.hourly;
 
+        updateSiteStats();
+
         // returns if the cached data is up to date
         if (Date.now() - cached.cachedAt < WEB_STATS_CACHE_TIME)
             return;
@@ -187,11 +189,10 @@ function websiteStats() {
     let upd = document.getElementById("nekoweb-updates");
     let fol = document.getElementById("nekoweb-followers");
     let vie = document.getElementById("nekoweb-views");
-    let localCached = JSON.parse(localStorage.getItem("web_stats")) || 0;
 
-    setStat(vie, "booted ", localCached.views, " times", "ok");
-    setStat(fol, "installed by ", localCached.followers, " users", "ok");
-    setStat(upd, "deployed ", localCached.site_updates, " times", "ok");
+    setStat(vie, "booted ", hourly.views, " times", "ok");
+    setStat(fol, "installed by ", hourly.followers, " users", "ok");
+    setStat(upd, "deployed ", hourly.site_updates, " times", "ok");
 }
 
 function setStat(el, before, value, after, name_class) {
