@@ -102,7 +102,7 @@ function showPanel(option) {
     })
 
     navLinks.forEach(link => {
-        if (link === option) {
+        if (link.dataset.id === option.dataset.id) {
             link.classList.add("highlight");
             visitedPanels.add(link.dataset.id);
         } else {
