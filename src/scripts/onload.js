@@ -169,6 +169,11 @@ function updateLastfmPanel(track) {
 function updateSiteStats() {
     const url = "https://github.com/Pufikas/pufikas-website/commit/";
     const container = document.getElementById("lastupdate-message");
+    
+    if (!hourly) {
+        hourly = JSON.parse(localStorage.getItem("web_stats"));
+    }
+
     const link = document.createElement('a');
         link.className = 'nn not-smaller';
         link.href = `${url}/${hourly.code_sha}`;
@@ -176,7 +181,7 @@ function updateSiteStats() {
         link.rel = 'nofollow';
         link.textContent = `„${hourly.code_message}”`;
 
-    document.getElementById("lastupdate").textContent = hourly.generated_at.split("T")[0];
+    document.getElementById("lastupdate").textContent = hourly?.generated_at?.split("T")[0] || hourly?.data_refreshed;
     document.getElementById("lastupdate-additions").textContent = hourly.code_additions + "+" || 0;
     document.getElementById("lastupdate-deletions").textContent = hourly.code_deletions + "-" || 0;
     container.innerHTML = '';
