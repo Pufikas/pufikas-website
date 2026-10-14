@@ -76,7 +76,7 @@ form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const body = {
-        username: document.getElementById("name").value,
+        username: document.getElementById("name").value || "Anonymous",
         message: document.getElementById("message").value,
         website: document.getElementById("website").value,
         q1: document.getElementById("q1").value,
