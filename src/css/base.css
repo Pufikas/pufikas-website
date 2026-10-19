@@ -232,6 +232,62 @@
   }
 }
 
+/* secret theme halloween */
+[data-secret="halloween"] {
+  --link-color: #ff9a3c;
+  --window-highlight: color-mix(in srgb, var(--window-surface) 70%, #ff7a00);
+  --window-shadow: color-mix(in srgb, var(--window-shadow) 70%, #1a0033);
+
+  body {
+    background-blend-mode: multiply;
+    background-color: #2b1200;
+  }
+
+  /* subtle glow */
+  h1, h2, .window-title {
+    text-shadow: 0 0 6px rgba(255, 140, 0, 0.8);
+    animation: candle 3s infinite alternate ease-in-out;
+  }
+}
+
+[data-secret="halloween"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background:
+    radial-gradient(ellipse at center, transparent 55%, rgba(60, 0, 90, 0.15) 100%),
+    linear-gradient(rgba(255, 120, 0, 0.05), rgba(255, 120, 0, 0.05));
+}
+
+/* cobweb in the corner */
+[data-secret="halloween"] .box {
+  position: relative;
+}
+
+[data-secret="halloween"] #main.box::before, div#timer::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 64px; 
+  height: 64px;
+  pointer-events: none;
+  opacity: 0.35;
+  background: url("/assets/secret/halloween/cobweb.png") no-repeat top left / contain;
+  image-rendering: smooth !important;
+}
+
+@keyframes candle {
+  0%   { 
+    text-shadow: 0 0 4px rgba(255, 140, 0, 0.4); 
+  }
+  100% { 
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.8); 
+  }
+}
+
 @keyframes borderColorCycle {
   0%, 33% {
     border-color: #239fa5;

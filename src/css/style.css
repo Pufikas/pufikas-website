@@ -570,7 +570,15 @@ ul {
     margin-bottom: 6px;
 }
 
-#theme-switch {
+.themes {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.6rem;
+}
+
+#theme-switch, #secret-switch {
     display: flex;
     margin: auto;
     width: auto !important;
@@ -1241,4 +1249,13 @@ li.fav > a, .favBtnLink:hover {
     padding-bottom: 40px;
     text-align: center !important;
     display: block;
+}
+
+.secretText {
+    display: inline-block;
+}
+
+.secretText:hover {
+    transform: scale(3);
+    transition: transform 3s linear;
 }

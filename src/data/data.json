@@ -263,6 +263,11 @@
             "unlocked": false,
             "title": "Oops!",
             "desc": "Bootloader broke!"
+        },
+        "secret": {
+            "unlocked": false,
+            "title": "Super secret..",
+            "desc": "More themes?"
         }
     },
     "favorites": {

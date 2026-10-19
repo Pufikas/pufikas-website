@@ -65,10 +65,20 @@
                 </div>
                 <div class="box center">
                     <p>current theme</p>
-                    <span id="current-theme" class="gradient-text"></span>
+                    <div class="themes">
+                        <span id="current-theme" class="gradient-text"></span>
+                        
+                        <div class="hidden" id="secret-box">
+                            <button id="secret-switch">
+                                <span id="current-secret" class="gradient-text"></span>
+                            </button>
+                        </div>
+                    </div>
                     
                     <button id="theme-switch">switch!</button>
+
                 </div>
+                
 
                 <div class="box" id="mikupls">
                     <img src="./assets/misc/mikuplsinteract.gif" class="width100 enlargeOnClick">
@@ -179,6 +189,8 @@
                         <p>Lately, I've been tinkering with servers, databases, cybersecurity, open-source tools and learning Japanese.</p>
                         <br>
                         
+                        <p class="normal">Currently the site has <span class="gradient-text">4</span> themes! or was it <span class="secretText">more..?</span></p>
+
                         <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="24" loading="lazy"></iframe>
                         
                         <br>

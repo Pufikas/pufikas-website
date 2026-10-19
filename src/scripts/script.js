@@ -504,6 +504,12 @@ function pop(e) {
     }
 }
 
+function pop_custom_coords(x, y) {
+    for (let i = 0; i < particleCount; i++) {
+        createExplosionParticle(x, y);
+    }
+}
+
 function createExplosionParticle(x, y) {
   const particle = document.createElement("div");
 
