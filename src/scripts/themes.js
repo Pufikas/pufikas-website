@@ -6,7 +6,7 @@ const currSecretName = document.getElementById("current-secret");
 const currThemeName = document.getElementById("current-theme");
 
 const themes = ["miku", "teto", "neru", "triplebaka"];
-const secret_themes = ["none", "halloween"];
+const secret_themes = ["normal", "halloween"];
 
 // maybe parsing and stringify isnt needed here, but this works soo..
 // syncs the rotation to next theme based on current theme, and also need to parse cuz I stringified it earlier...
@@ -27,7 +27,7 @@ if (secI === -1) secI = 0; // if something corrupts or smth
 function updateSecretStuff(index) {
     const secret = secret_themes[index];
     currSecretName.innerText = secret;
-    if (secret === "none") 
+    if (secret === "normal") 
         delete document.documentElement.dataset.secret;
     else 
         document.documentElement.dataset.secret = secret;
@@ -75,6 +75,12 @@ secretText.addEventListener("transitionend", (e) => {
         pop_custom_coords(t.getBoundingClientRect().left, t.getBoundingClientRect().top)
     }
 });
+
+const flashlight = document.getElementById("custom-flashlight-cursor");
+window.addEventListener("mousemove", (e) => {
+    flashlight.style.left = e.clientX - 250 + "px";
+    flashlight.style.top = e.clientY - 250 + "px";
+})
 
 updateThemeStuff(i);
 updateSecretStuff(secI);

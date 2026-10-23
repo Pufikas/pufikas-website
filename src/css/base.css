@@ -251,6 +251,7 @@
 }
 
 [data-secret="halloween"] body::after {
+  mix-blend-mode: overlay;
   content: "";
   position: fixed;
   inset: 0;
@@ -261,12 +262,31 @@
     linear-gradient(rgba(255, 120, 0, 0.05), rgba(255, 120, 0, 0.05));
 }
 
+[data-secret="halloween"] {
+  #custom-flashlight-cursor {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle,
+      rgba(225, 225, 225, 0.1) 0%,
+      rgba(25, 25, 25, 0) 70%
+    );
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: exclusion;
+  }
+}
+
 /* cobweb in the corner */
 [data-secret="halloween"] .box {
   position: relative;
 }
 
-[data-secret="halloween"] #main.box::before, div#timer::before {
+[data-secret="halloween"] #main.box::before, [data-secret="halloween"] div#timer::before {
   content: "";
   position: absolute;
   top: 0; 
